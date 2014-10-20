@@ -1,7 +1,7 @@
 ---
 title: Trigonometry
 layout: post
-postTitle: Basics
+postTitle: Unit circle definition of trig functions
 categories: trig
 ---
 
@@ -9,10 +9,21 @@ categories: trig
 
 <div class="row">
   <div class="col-sm-5">
+    <div id="svg00"></div>
+  </div>
+  <div class="col-sm-7">
+    <h3>
+    １　radianとは、半径rの円で、円弧の長さが r となる角度。
+    </h3>
+    $$\theta = 1(radian)$$
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-5">
     <div id="svg01"></div>
   </div>
   <div class="col-sm-7">
-    <table class="table">
+   <table class="table">
       <tr>
         <th>angle</th><th>degrees</th><th>radians</th>
       </tr>
@@ -43,7 +54,7 @@ categories: trig
 
 --------
 
-## 三角関数（trigonometric function）
+## Finding arc length from radian angle measure
 
 <div class="row">
   <div class="col-sm-5">
@@ -51,47 +62,31 @@ categories: trig
   </div>
   <div class="col-sm-7">
     <p>
-      三角形ABCで<br>
-      ＡＣ：hypotenuse<br>
-      ＡＢ：adjacent<br>
-      ＢＣ：opposite to the θ
+      半径１単位の円で、0.4(rad)の角度が作る円弧の長さは0.4 radii である。
     </p>
-    <table class="table">
-      <thead>
-        <th>sin</th>
-        <th>cos</th>
-        <th>tan</th>
-      </thead>
-      <tr>
-        <td>soh<br>sine is opposite over hypotenus</td>
-        <td>cah<br>cosine is adjacent over hypotenuse</td>
-        <td>toa<br>tangent is opposite over adjacent</td>
-      </tr>
-      <tr>
-        <td>$$sin\theta=\frac{opposite}{hypotenuse}$$</td>
-        <td>$$cos\theta=\frac{adjacent}{hypotenuse}$$</td>
-        <td>$$tan\theta=\frac{opposite}{adjecent}$$</td>
-      </tr>
-    </table>
+    <p>
+      半径５単位の円で、角度 0.4(rad)が作る円弧の長さは
+    </p>
+    $$5\frac{units}{radii} \times 0.4 radii = 2 \quad units$$
+    となる。   
   </div>
 </div>
 
 --------
 
-## Sine and cosine of complements
+## Ratio between concentric arcs
 
 <div class="row">
   <div class="col-sm-5">
     <div id="svg03"></div>
   </div>
   <div class="col-sm-7">
-      三角形ABCで<br>
-      角Ｂは直角<br>
-      角Ｃは58°<br>
-      ならば
-      $$cos58° \approx  0.53$$
-      このとき
-      $$sin\theta=?$$
+    x radians の円弧が２つあり<br>
+    小さいほうの円弧の半径は　5<br>
+    大きいほうの円弧の半径は　9<br>
+    この時
+    $$\overline{AB}の長さと\overline{CD}の長さの比率は$$
+    $$\frac{\overline{CD}}{\overline{AB}}=\frac{5}{9}$$
   </div>
 </div>
 
@@ -160,6 +155,12 @@ $$cos\theta = sin(90°-\theta)$$
   
 
 /**  */
+  var svg00 = d3.select("#svg00")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",width)
+                .style("background","#000");
+
   var svg01 = d3.select("#svg01")
                 .append("svg")
                 .attr("height",height)
@@ -186,6 +187,7 @@ $$cos\theta = sin(90°-\theta)$$
     "yScale":yScale01
   };
   
+  drawAxes(svg00,axesData01);
   drawAxes(svg01,axesData01);
 
   // circle
@@ -193,9 +195,30 @@ $$cos\theta = sin(90°-\theta)$$
     {"cx":0,"cy":0,"r":135,"stroke":"#fff","strokeWidth":4,"fillColor":"none"}
   ];   
 
+  drawCircle(svg00,circleData01,xScale01,yScale01);
   drawCircle(svg01,circleData01,xScale01,yScale01);
 
   // Arc
+  var arcData00 = [
+    {
+      "startPos":90,
+      "endPos":135/pi,
+      "innerRadius":0,
+      "outerRadius":135,
+      "stroke":"#0f0",
+      "strokeWidth":4,
+      "fillColor":"none"
+    }
+   ,{
+      "startPos":90,
+      "endPos":135/pi,
+      "innerRadius":30,
+      "outerRadius":30,
+      "stroke":"#f00",
+      "strokeWidth":2,
+      "fillColor":"none"
+    }
+  ];
   var arcData01 = [
     {
       "startPos":0,
@@ -227,6 +250,7 @@ $$cos\theta = sin(90°-\theta)$$
     }
 
   ];
+  drawArc(svg00,arcData00,xScale01,yScale01);
   drawArc(svg01,arcData01,xScale01,yScale01);
 
   // 矢印
@@ -263,6 +287,27 @@ $$cos\theta = sin(90°-\theta)$$
   drawVectorB(svg01,vecbData01,xScale01,yScale01);
 
   // text   
+  var textData00 = [
+    {"x":0.5,
+    "y":-0.25,
+    "text":"r",
+    "stroke":"#fff",
+    "fontFamily":"メイリオ",
+    "fontSize":18},
+    {"x":1,
+    "y":0.4,
+    "text":"r",
+    "stroke":"#fff",
+    "fontFamily":"メイリオ",
+    "fontSize":18},
+    {"x":0.25,
+    "y":0.1,
+    "text":"Θ",
+    "stroke":"#f00",
+    "fontFamily":"メイリオ",
+    "fontSize":18}
+
+      ];
   var textData01 = [
     {"x":-0.25,
     "y":-0.25,
@@ -290,10 +335,10 @@ $$cos\theta = sin(90°-\theta)$$
     "fontSize":18}
       ];
 
- 
+  drawText(svg00,textData00,xScale01,yScale01);
   drawText(svg01,textData01,xScale01,yScale01);
  
-/**  */
+/**  Finding arc length from .... */
   var svg02 = d3.select("#svg02")
                 .append("svg")
                 .attr("height",height)
@@ -301,244 +346,173 @@ $$cos\theta = sin(90°-\theta)$$
                 .style("background","#000");
 
   var xScale02 = d3.scale.linear()
-                       .domain([0,8])
+                       .domain([-2,6])
                        .range([50,350]);
   
   var yScale02 = d3.scale.linear()
                        .domain([8,0])
                        .range([50,350]);                       
-
-  /** right triangle */
-  var triangleData02 = [
-    {"x1":1,
-    "y1":1,
-    "angle":0,
-    "adjacent":200,
-    "theta":30,
-    "stroke":"#fff"}
+  var arcData02 = [
+    {
+      "startPos":-20,
+      "endPos":60,
+      "innerRadius":300,
+      "outerRadius":300,
+      "stroke":"#ccc"
+    },
+    {
+      "startPos":20,
+      "endPos":0.4*300/pi,
+      "innerRadius":0,
+      "outerRadius":300,
+      "stroke":"#ff0",
+      "fillColor":"none"
+    },
+    {
+      "startPos":20,
+      "endPos":0.4*300/pi,
+      "innerRadius":50,
+      "outerRadius":50,
+      "stroke":"#f00",
+      "fillColor":"none"
+    }
   ];
-
-  drawRTriangle(svg02,triangleData02,xScale02,yScale02);
-  
-  // right angle
-  pathData02 = [
-    {"x":6,"y":1},
-    {"x":6,"y":1.3},
-    {"x":6.35,"y":1.3}
-  ]
-  drawPath(svg02,pathData02,"#fff",2,"none",xScale02,yScale02);
-  var textData02 = [
-    {"x":-2,
-    "y":1.5,
-    "text":"hypotenuse",
-    "stroke":"#ff0",
-    "fontFamily":"メイリオ",
-    "fontSize":"18px",
-    "rAngle":-30},
-    {"x":6.5,
-    "y":2.5,
-    "text":"opposite",
-    "stroke":"#ff0",
-    "fontFamily":"メイリオ",
-    "fontSize":"18px"},
-    {"x":3,
-    "y":0.3,
-    "text":"adjacent",
-    "stroke":"#ff0",
-    "fontFamily":"メイリオ",
-    "fontSize":"18px"}
-  ];
-  drawText(svg02,textData02,xScale02,yScale02);
-
   var foData02 = [
-    {"x":1.5,
-    "y":2.7,
-    "text":"$$\\theta$$",
-    "fontSize":"16px"},
-    {"x":0,"y":10,
-    "text":"$$直角三角形（right \\quad triangle）$$",
-    "stroke":"#fff",
-    "fontSize":"20px"},
-    {"x":0.5,
-    "y":2.3,
-    "text":"$$A$$",
-    "stroke":"#fff",
-    "fontSize":"16px"},
-    {"x":6.3,
-    "y":2.3,
-    "text":"$$B$$",
-    "stroke":"#fff",
-    "fontSize":"16px"},
-    {"x":6.3,
-    "y":6,
-    "text":"$$C$$",
-    "stroke":"#fff",
-    "fontSize":"16px"}
+    {
+      "x":0.8,
+      "y":5,
+      "text":"$$5$$"
+    },
+    {
+      "x":0.8,
+      "y":3.5,
+      "text":"$$0.4$$"
+    },
+    {
+      "x":4,
+      "y":9,
+      "text":"$$2=5 \\times 0.4$$"
+    },
+    {
+      "x":0,
+      "y":1,
+      "text":"$$P$$"
+    },
+    {
+      "x":2.5,
+      "y":9.5,
+      "text":"$$A$$"
+    },
+    {
+      "x":5,
+      "y":8,
+      "text":"$$B$$"
+    },
   ];
+  drawArc(svg02,arcData02,xScale02,yScale02);
   drawMathjax(svg02,foData02,xScale02,yScale02);
 
-/** Sine and cosine of complements  */
+/**  Ratio between concentric arcs */
   var svg03 = d3.select("#svg03")
                 .append("svg")
-                .attr("height",300)
-                .attr("width",400)
+                .attr("height",height)
+                .attr("width",width)
                 .style("background","#000");
 
   var xScale03 = d3.scale.linear()
-                       .domain([0,300])
+                       .domain([-1,7])
                        .range([50,350]);
   
   var yScale03 = d3.scale.linear()
-                       .domain([200,0])
-                       .range([50,250]);
-
-var triangleData03 = [
- {"x1":0,
- "y1":0,
- "angle":0,
- "adjacent":250,
- "theta":32,
- "stroke":"#fff",
- "strokeWidth":3}
-];
-  // right angle
-  pathData03 = [
-    {"x":235,"y":0},
-    {"x":235,"y":15},
-    {"x":250,"y":15}
-  ]
-  // text
-  foData03 = [
-    {"x":-20,
-    "y":40,
-    "text":"$$A$$",
-    "stroke":"#ff0",
-    "fontSize":"18px"
+                       .domain([8,0])
+                       .range([50,350]);                       
+  var arcData03 = [
+    {
+      "startPos":0,
+      "endPos":70,
+      "innerRadius":300,
+      "outerRadius":300,
+      "stroke":"#ccc"
+    },
+    {
+      "startPos":10,
+      "endPos":0.6*300/pi,
+      "innerRadius":0,
+      "outerRadius":300,
+      "stroke":"#ff0",
+      "fillColor":"none"
+    },
+    {
+      "startPos":10,
+      "endPos":0.6*300/pi,
+      "innerRadius":50,
+      "outerRadius":50,
+      "stroke":"#f00",
+      "fillColor":"none"
     }
-   ,{"x":250,
-    "y":40,
-    "text":"$$B$$",
-    "stroke":"#ff0",
-    "fontSize":"18px"
-    }
-   ,{"x":250,
-    "y":230,
-    "text":"$$C$$",
-    "stroke":"#ff0",
-    "fontSize":"18px"
-    }
-   ,{"x":30,
-    "y":67,
-    "text":"$$\\theta$$",
-    "stroke":"#ff0",
-    "fontSize":"16px"
-    }
-   ,{"x":220,
-    "y":180,
-    "text":"$$58°$$",
-    "stroke":"#ff0",
-    "fontSize":"16px"
-    }
-   ,{"x":255,
-    "y":180,
-    "text":"$$(=90-\\theta)$$",
-    "stroke":"#ff0",
-    "fontSize":"16px"
+   ,{
+      "startPos":10,
+      "endPos":0.6*300/pi,
+      "innerRadius":500/3,
+      "outerRadius":500/3,
+      "stroke":"#ccc",
+      "fillColor":"none"
     }
   ];
-
-drawRTriangle(svg03,triangleData03,xScale03,yScale03);
-drawPath(svg03,pathData03,"#fff",2,"none",xScale03,yScale03);
-drawMathjax(svg03,foData03,xScale03,yScale03);
-
-/** Sine and cosine of complements  */
-  var svg04 = d3.select("#svg04")
-                .append("svg")
-                .attr("height",300)
-                .attr("width",400)
-                .style("background","#000");
-
-  var xScale04 = d3.scale.linear()
-                       .domain([0,15])
-                       .range([50,350]);
-  
-  var yScale04 = d3.scale.linear()
-                       .domain([10,0])
-                       .range([50,250]);
-  var triangleData04 = [
-  { "x1":13,
-    "y1":9,
-    "angle":180,
-    "adjacent":240,
-    "theta":23.86,
-    "stroke":"#fff",
-    "strokeWidth":3}
+  var foData03 = [
+    {
+      "x":0,
+      "y":4,
+      "text":"$$5$$"
+    },
+    {
+      "x":0.5,
+      "y":8,
+      "text":"$$4$$"
+    },
+    {
+      "x":0.7,
+      "y":3,
+      "text":"$$x$$"
+    },
+    {
+      "x":4,
+      "y":9,
+      "text":"$$9x$$"
+    },
+    {
+      "x":2.5,
+      "y":5.6,
+      "text":"$$5x$$"
+    },
+    {
+      "x":0,
+      "y":1,
+      "text":"$$P$$"
+    },
+    {
+      "x":1.3,
+      "y":9.8,
+      "text":"$$A$$"
+    },
+    {
+      "x":7,
+      "y":6,
+      "text":"$$B$$"
+    },
+    {
+      "x":0.4,
+      "y":6,
+      "text":"$$C$$"
+    },
+    {
+      "x":3.8,
+      "y":3.8,
+      "text":"$$D$$"
+    },
   ];
-  // right angle
-  pathData04 = [
-    {"x":1.5,"y":9},
-    {"x":1.5,"y":8.5},
-    {"x":1,"y":8.5}
-  ]
-  // text
-  foData04 = [
-    {"x":0,
-    "y":6,
-    "text":"$$A$$",
-    "stroke":"#ff0",
-    "fontSize":"18px"
-    }
-   ,{"x":0,
-    "y":12.5,
-    "text":"$$B$$",
-    "stroke":"#ff0",
-    "fontSize":"18px"
-    }
-   ,{"x":13,
-    "y":12,
-    "text":"$$C$$",
-    "stroke":"#ff0",
-    "fontSize":"18px"
-    }
-   ,{"x":1.2,
-    "y":7.5,
-    "text":"$$\\theta$$",
-    "stroke":"#ff0",
-    "fontSize":"16px"
-    }
-   ,{"x":0,
-    "y":9,
-    "text":"$$5$$",
-    "stroke":"#ff0",
-    "fontSize":"16px"
-    }
-   ,{"x":6,
-    "y":12.5,
-    "text":"$$12$$",
-    "stroke":"#ff0",
-    "fontSize":"16px"
-    }
-   ,{"x":6,
-    "y":8,
-    "text":"$$13$$",
-    "stroke":"#ff0",
-    "fontSize":"16px"
-    }
-  ];
-  var vecData04 = [
-    {"x1":2,"y1":5,"x2":6,"y2":8,"stroke":"#ff0"}
-   ,{"x1":2,"y1":8,"x2":6.5,"y2":6.5,"stroke":"#0f0"}
-  ];
-  var textData04 = [
-    {"x":8,"y":10,"text":"opp","stroke":"#ff0","fontSize":20}
-   ,{"x":8,"y":5,"text":"hyp","stroke":"#0f0","fontSize":20}
-   ,{"x":-1,"y":7,"text":"adj","stroke":"#ccc","fontSize":20}
-  ];
+  drawArc(svg03,arcData03,xScale03,yScale03);
+  drawMathjax(svg03,foData03,xScale03,yScale03);
 
-  drawRTriangle(svg04,triangleData04,xScale04,yScale04);
-  drawPath(svg04,pathData04,"#fff",2,"none",xScale04,yScale04);
-  drawMathjax(svg04,foData04,xScale04,yScale04);
-  drawVectorB(svg04,vecData04,xScale04,yScale04);
-  drawText(svg04,textData04,xScale04,yScale04);
 
 </script>
