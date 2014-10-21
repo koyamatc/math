@@ -87,59 +87,53 @@ categories: trig
     この時
     $$\overline{AB}の長さと\overline{CD}の長さの比率は$$
     $$\frac{\overline{CD}}{\overline{AB}}=\frac{5}{9}$$
+    ここで
+    $$\overline{CD}の長さを\frac{25}{8}$$
+    だとすると
+    $$5x=\frac{25}{8}$$
+    $$x=\frac{5}{8}\quad radians$$
+    となります。したがって
+    $$\overline{AB}=9 \times \frac{5}{8} = \frac{45}{8}$$
+    です。 
   </div>
 </div>
 
-三角形の内角の和は１８０°　→　角Ｂ=90°なので　角Ａ　+ 角Ｃ = 90°
-
-$$ \theta = 90° - \angle C = 90° - 58° = 32°$$
-
-$$cos58°=\frac{BC}{AC}, \quad 
-sin32°=\frac{BC}{AC}$$ 
-$$\therefore$$
-$$sin32°=cos58° \approx 0.53$$
-
-<h3 class="panel">
-$$sin\theta = cos(90°-\theta)$$
-$$cos\theta = sin(90°-\theta)$$
-</h3>
-
 --------
 
-## Secant(sec), cosecant(csc) and cotangent(cot)
+## Unit circle
 
 <div class="row">
   <div class="col-sm-5">
     <div id="svg04"></div>
   </div>
   <div class="col-sm-7">
-    <table class="table">
-      <tr>
-        <th>$$sin\theta$$</th>
-        <th>$$cos\theta$$</th>
-        <th>$$tan\theta$$</th>
-      </tr>
-      <tr>
-        <td>$$\frac{opp}{hyp}=\frac{12}{13}$$</td>
-        <td>$$\frac{adj}{hyp}=\frac{5}{13}$$</td>
-        <td>$$\frac{opp}{adj}=\frac{12}{5}$$</td>
-      </tr>
-      <tr>
-        <th colspan="3">
-        Reciprocal trig functions
-        </th>
-      </tr>
-      <tr>
-        <th>$$csc\theta$$</th>
-        <th>$$sec\theta$$</th>
-        <th>$$cot\theta$$</th>
-      </tr>
-      <tr>
-        <td>$$\frac{hyp}{opp}=\frac{13}{12}$$</td>
-        <td>$$\frac{hyp}{adj}=\frac{13}{5}$$</td>
-        <td>$$\frac{adj}{opp}=\frac{5}{12}$$</td>
-      </tr>
-    </table>
+    <p>
+      Unit circle(単位円)は、半径が　１　の円です。
+    </p>
+    $$cos\theta = \frac{a}{1}= a$$
+    $$sin\theta = \frac{b}{1}= b$$
+    <div class="panel">
+      <h3>$$a=cos\theta\cdots(x座標)$$</h3>
+      <h3>$$b=sin\theta\cdots(y座標)$$</h3>
+    </div>
+  </div>
+</div>
+
+--------
+
+## Solving triangle in unit circle
+
+<div class="row">
+  <div class="col-sm-5">
+    <div id="svg05"></div>
+  </div>
+  <div class="col-sm-7">
+    $$\angle BAD = \frac{\pi}{4} \quad radiansです$$
+    $$\angle ABD = ?$$
+    $$三角形の内角の和は 180^\circなので$$　
+    $$\angle ABD + \frac{\pi}{4} + \frac{\pi}{2} = \pi$$
+    $$\angle ABD　= \pi - \frac{\pi}{4}-\frac{\pi}{2}$$
+    $$\qquad \qquad = \frac{4\pi-\pi-2\pi}{4}$$
   </div>
 </div>
 
@@ -513,6 +507,262 @@ $$cos\theta = sin(90°-\theta)$$
   ];
   drawArc(svg03,arcData03,xScale03,yScale03);
   drawMathjax(svg03,foData03,xScale03,yScale03);
+
+/**  Unit circle */
+  var svg04 = d3.select("#svg04")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",width)
+                .style("background","#000");
+
+  drawAxes(svg04,axesData01);
+
+  // circle
+  drawCircle(svg04,circleData01,xScale01,yScale01);
+
+  var vecData04 = [
+    {
+      "x1":0,
+      "y1":0,
+      "angles":0,
+      "length":1.2,
+      "stroke":"#ff0"
+    }
+   ,{
+      "x1":0,
+      "y1":0,
+      "angles":60,
+      "length":1.2,
+      "stroke":"#ff0"
+    }
+  ];
+  drawVectorA(svg04,vecData04,xScale01,yScale01);
+
+  var lineData04 = [
+    {
+      "x1":Math.cos(pi/3),
+      "y1":Math.sin(pi/3),
+      "x2":Math.cos(pi/3),
+      "y2":0,
+      "stroke":"#0f0"
+    }
+   ,{
+      "x1":Math.cos(pi/3),
+      "y1":0,
+      "x2":0,
+      "y2":0,
+      "stroke":"#f0f"
+    }
+  ];
+  drawLine(svg04,lineData04,xScale01,yScale01);
+
+  // right angle
+  var pathData04 = [
+    {"x":Math.cos(pi/3)-0.1,
+     "y":0
+    },
+    {"x":Math.cos(pi/3)-0.1,
+     "y":0.1
+    },
+    {"x":Math.cos(pi/3),
+     "y":0.1
+    }
+  ];
+  drawPath(svg04,pathData04,"#fff",2,"none",xScale01,yScale01);
+
+  var foData04 = [
+    {
+      "x":0,
+      "y":0.3,
+      "text":"$$O$$"
+    },
+    {
+      "x":0.15,
+      "y":0.9,
+      "text":"$$1$$"
+    },
+    {
+      "x":0.55,
+      "y":0.8,
+      "text":"$$b$$"
+    },
+    {
+      "x":0.25,
+      "y":0.3,
+      "text":"$$a$$"
+    },
+    {
+      "x":0.1,
+      "y":0.5,
+      "text":"$$\\theta$$"
+    },
+    {
+      "x":0,
+      "y":1.5,
+      "text":"$$(0,1)$$"
+    },
+    {
+      "x":0,
+      "y":-0.7,
+      "text":"$$(0,-1)$$"
+    },
+    {
+      "x":1,
+      "y":0.3,
+      "text":"$$(1,0)$$"
+    },
+    {
+      "x":-1.4,
+      "y":0.3,
+      "text":"$$(-1,0)$$"
+    },
+    {
+      "x":0.55,
+      "y":1.3,
+      "text":"$$(a, b)$$"
+    }
+
+  ];
+  drawMathjax(svg04,foData04,xScale01,yScale01);
+
+/**
+    Solving triangle in unit circle  
+                                      */
+  var svg05 = d3.select("#svg05")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",width)
+                .style("background","#000");
+
+
+  var xScale05 = d3.scale.linear()
+                       .domain([-1,1])
+                       .range([20,380]);
+  
+  var yScale05 = d3.scale.linear()
+                       .domain([1,-1])
+                       .range([20,380]);       
+
+  // 軸
+  axesData05 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[-1,1],
+    "yTickValues":[-1,1],
+    "yPadding":10,
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "xScale":xScale05,
+    "yScale":yScale05
+  };
+
+  drawAxes(svg05,axesData05);
+
+  // circle
+  var circleData05 = [
+    {"cx":0,"cy":0,"r":180,"stroke":"#999","strokeWidth":2,"fillColor":"none"}
+ ];   
+  drawCircle(svg05,circleData05,xScale05,yScale05);
+
+  var vecData05 = [
+    {
+      "x1":0,
+      "y1":0,
+      "angles":0,
+      "length":1.2,
+      "stroke":"#ff0"
+    }
+   ,{
+      "x1":0,
+      "y1":0,
+      "angles":45,
+      "length":1.5,
+      "stroke":"#ff0"
+    }
+  ];
+  drawVectorA(svg05,vecData05,xScale05,yScale05);
+
+  var lineData05 = [
+    {
+      "x1":Math.cos(pi/4),
+      "y1":Math.sin(pi/4),
+      "x2":Math.cos(pi/4),
+      "y2":0,
+      "stroke":"#0f0"
+    }
+   ,{
+      "x1":Math.cos(pi/4),
+      "y1":0,
+      "x2":0,
+      "y2":0,
+      "stroke":"#f0f"
+    }
+  ];
+  drawLine(svg05,lineData05,xScale05,yScale05);
+
+  // right angle
+  var pathData05 = [
+    {"x":Math.cos(pi/4)-0.1,
+     "y":0
+    },
+    {"x":Math.cos(pi/4)-0.1,
+     "y":0.1
+    },
+    {"x":Math.cos(pi/4),
+     "y":0.1
+    }
+  ];
+  drawPath(svg05,pathData05,"#fff",2,"none",xScale05,yScale05);
+
+  var foData05 = [
+    {
+      "x":0,
+      "y":0.23,
+      "text":"$$A$$"
+    },
+    {
+      "x":0.65,
+      "y":1.12,
+      "text":"$$B$$"
+    },
+    {
+      "x":1.05,
+      "y":0.23,
+      "text":"$$C$$"
+    },
+    {
+      "x":0.7,
+      "y":0.23,
+      "text":"$$D$$"
+    },
+    {
+      "x":0.2,
+      "y":0.7,
+      "text":"$$1$$"
+    },
+    {
+      "x":0.75,
+      "y":0.7,
+      "text":"$$y$$"
+    },
+    {
+      "x":0.3,
+      "y":0.23,
+      "text":"$$x$$"
+    },
+    {
+      "x":0.15,
+      "y":0.4,
+      "text":"$$\\frac{\\pi}{4}$$"
+    },
+    {
+      "x":0.75,
+      "y":1.0,
+      "text":"$$(x, y)$$"
+    }
+
+  ];
+  drawMathjax(svg05,foData05,xScale05,yScale05);
 
 
 </script>
