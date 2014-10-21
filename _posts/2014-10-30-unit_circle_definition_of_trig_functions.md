@@ -121,6 +121,8 @@ categories: trig
 
 --------
 
+# Trig functions of special angles
+
 ## Solving triangle in unit circle
 
 <div class="row">
@@ -132,11 +134,120 @@ categories: trig
     $$\angle ABD = ?$$
     $$三角形の内角の和は 180^\circなので$$　
     $$\angle ABD + \frac{\pi}{4} + \frac{\pi}{2} = \pi$$
-    $$\angle ABD　= \pi - \frac{\pi}{4}-\frac{\pi}{2}$$
-    $$\qquad \qquad = \frac{4\pi-\pi-2\pi}{4}$$
+    $$\angle ABD　= \pi - \frac{\pi}{4}-\frac{\pi}{2}
+    = \frac{4\pi-\pi-2\pi}{4}=\frac{\pi}{4}$$
+    $$２つの角が同じ三角形は２等辺三角形なので$$
+    $$x=y$$
+    $$x^2+y^2=1 \rightarrow x^2+x^2=1$$
+    $$2x^2=1$$
+    $$x^2=\frac{1}{2}$$
+    $$x = \frac{1}{\sqrt{2}}=\frac{1}{\sqrt{2}}\cdot\frac{\sqrt{2}}{\sqrt{2}}
+    =\frac{\sqrt{2}}{2}$$
+    $$y=\frac{\sqrt{2}}{2}$$
+    $$sin\frac{\pi}{4}=\frac{y}{1}=\frac{\sqrt{2}}{2}$$
+    $$cos\frac{\pi}{4}=\frac{x}{1}=\frac{\sqrt{2}}{2}$$
+    $$tan\frac{\pi}{4}=\frac{y}{x}
+    =\frac{\frac{\sqrt{2}}{2}}{\frac{\sqrt{2}}{2}}=1$$
   </div>
 </div>
 
+---------
+
+## Finding trig functions of special angles
+
+<div class="row">
+  <div class="col-sm-5">
+    <div id="svg06"></div>
+  </div>
+  <div class="col-sm-7">
+    $$三角形の２辺は長さが２で同じなので、この三角形は２等辺三角形である$$
+    $$したがって$$
+    $$\beta=\frac{\pi}{3}$$
+    $$\alpha+\frac{\pi}{3}+\frac{\pi}{2}=\pi
+    \rightarrow \alpha = \pi-\frac{\pi}{3}-\frac{\pi}{2}
+    = \frac{6\pi-2\pi-3\pi}{6}=\frac{\pi}{6}$$
+    $$この三角形の３つの内角はすべて\frac{\pi}{3}であるので、この三角形は正三角形である$$
+    $$底辺に対する頂点から降ろされた垂線は底辺を２等分するので$$
+    $$b=1$$
+    $$a^2+b^2=2^2 \rightarrow a^2+1^2=4$$
+    $$a^2=4-1=3$$
+    $$a=\sqrt{3}$$
+    <table class="table">
+      <tr>
+        <th>$$sin\frac{\pi}{3}$$</th>
+        <th>$$cos\frac{\pi}{3}$$</th>
+        <th>$$tan\frac{\pi}{3}$$</th>
+      </tr>
+      <tr>
+        <td>$$\frac{\sqrt{3}}{2}$$</td>
+        <td>$$\frac{1}{2}$$</td>
+        <td>$$\sqrt{3}$$</td>
+      </tr>
+      <tr>
+        <th>$$sin\frac{\pi}{6}$$</th>
+        <th>$$cos\frac{\pi}{6}$$</th>
+        <th>$$tan\frac{\pi}{6}$$</th>
+      <tr>
+        <td>$$\frac{1}{2}$$</td>
+        <td>$$\frac{\sqrt{3}}{2}$$</td>
+        <td>$$\frac{1}{\sqrt{3}}=\frac{\sqrt{3}}{3}$$</td>
+      </tr>
+      </tr>
+    </table>
+  </div>
+</div>
+
+--------
+
+# Invrse trig functions
+
+## arcsin
+
+<div class="row">
+  <div class="col-sm-5">
+    <div id="svg07"></div>
+  </div>
+  <div class="col-sm-7">
+  $$sin\frac{\pi}{4}=\frac{\sqrt{2}}{2}$$
+  $$では、sin\theta = \frac{\sqrt{2}}{2} のとき、\theta の角度は?$$
+  $$arcsin\frac{\sqrt{2}}{2}=\theta \quad
+  または \quad
+  sin^{-1}\frac{\sqrt{2}}{2}=\theta$$
+  $$という関数を使います$$
+  $$ただし$$
+  $$-1 \le y \le 1 \quad 
+  で \quad 
+  -\frac{\pi}{2} \le \theta \le \frac{\pi}{2}
+  \quad という制限を設けます$$ 
+  $$arcsin\frac{\sqrt{2}}{2}=\frac{\pi}{4}$$
+  $$$$
+  $$arcsin\frac{-\sqrt{3}}{2}=? \to -\frac{\pi}{3}$$
+  </div>
+</div>
+
+--------
+
+## arccos
+
+<div class="row">
+  <div class="col-sm-5">
+    <div id="svg08"></div>
+  </div>
+  <div class="col-sm-7">
+  </div>
+</div>
+
+-------
+
+## arctan
+
+<div class="row">
+  <div class="col-sm-5">
+    <div id="svg09"></div>
+  </div>
+  <div class="col-sm-7">
+  </div>
+</div>
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -763,6 +874,248 @@ categories: trig
 
   ];
   drawMathjax(svg05,foData05,xScale05,yScale05);
+
+/**
+    Finding trig functions ...  
+                                      */
+  var svg06 = d3.select("#svg06")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",width)
+                .style("background","#000");
+
+ var polyData06 = [
+  {"cx":0,"cy":0,"r":1,"sides":3,"start":90,"stroke":"#ff0"},
+ ];
+
+  drawPolygon(svg06,polyData06,xScale05,yScale05);
+
+  // line
+  var lineData06 = [
+    {
+      "x1":0,
+      "y1":1,
+      "x2":0,
+      "y2":-0.5,
+      "stroke":"#0f0"
+    }
+   ,{
+      "x1":-0.1,
+      "y1":-0.4,
+      "x2":-0.1,
+      "y2":-0.5,
+      "stroke":"#fff"
+    }
+   ,{
+      "x1":-0.1,
+      "y1":-0.4,
+      "x2":0,
+      "y2":-0.4,
+      "stroke":"#fff"
+    }
+  ];
+  drawLine(svg06,lineData06,xScale05,yScale05);
+
+  var foData06 = [
+    {
+      "x":-0.1,
+      "y":1.1,
+      "text":"$$\\alpha$$"
+    },
+    {
+      "x":-0.8,
+      "y":-0.15,
+      "text":"$$\\beta$$"
+    },
+    {
+      "x":-0.45,
+      "y":0.7,
+      "text":"$$2$$"
+    },
+    {
+      "x":0.45,
+      "y":0.7,
+      "text":"$$2$$"
+    },
+    {
+      "x":0.1,
+      "y":0.4,
+      "text":"$$a$$"
+    },
+    {
+      "x":0.6,
+      "y":-0.0,
+      "text":"$$\\frac{\\pi}{3}$$"
+    },
+    {
+      "x":-0.5,
+      "y":-0.3,
+      "text":"$$b$$"
+    }
+
+  ];
+  drawMathjax(svg06,foData06,xScale05,yScale05);
+
+/**
+    arcsin  
+                                      */
+  var svg07 = d3.select("#svg07")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",width)
+                .style("background","#000");
+
+  // axess    
+   axesData07 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "yPadding":10,
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "xScale":xScale05,
+    "yScale":yScale05
+  };
+
+  drawAxes(svg07,axesData07);                
+  // circle
+  drawCircle(svg07,circleData05,xScale05,yScale05);
+  // line
+  var lineData07 = [
+    {
+      "x1":Math.cos(pi/4),
+      "y1":Math.sin(pi/4),
+      "x2":Math.cos(pi/4),
+      "y2":0,
+      "stroke":"#0f0"
+    }
+   ,{
+      "x1":Math.cos(pi/4),
+      "y1":0,
+      "x2":0,
+      "y2":0,
+      "stroke":"#f0f"
+    }
+   ,{
+      "x1":Math.cos(pi/4),
+      "y1":Math.sin(pi/4),
+      "x2":0,
+      "y2":0,
+      "stroke":"#ff0"
+    }
+   ,{
+      "x1":Math.cos(-pi/3),
+      "y1":Math.sin(-pi/3),
+      "x2":Math.cos(-pi/3),
+      "y2":0,
+      "stroke":"#0f0"
+    }
+   ,{
+      "x1":Math.cos(-pi/3),
+      "y1":0,
+      "x2":0,
+      "y2":0,
+      "stroke":"#f0f"
+    }
+   ,{
+      "x1":Math.cos(-pi/3),
+      "y1":Math.sin(-pi/3),
+      "x2":0,
+      "y2":0,
+      "stroke":"#ff0"
+    }
+   ,{
+      "x1":Math.cos(-pi/3)-0.1,
+      "y1":0,
+      "x2":Math.cos(-pi/3)-0.1,
+      "y2":-0.1,
+      "stroke":"#fff"
+    }
+   ,{
+      "x1":Math.cos(-pi/3)-0.1,
+      "y1":-0.1,
+      "x2":Math.cos(-pi/3),
+      "y2":-0.1,
+      "stroke":"#fff"
+    }
+  ];
+  drawLine(svg07,lineData07,xScale05,yScale05);
+
+  // right angle
+  var pathData07 = [
+    {"x":Math.cos(pi/4)-0.1,
+     "y":0
+    },
+    {"x":Math.cos(pi/4)-0.1,
+     "y":0.1
+    },
+    {"x":Math.cos(pi/4),
+     "y":0.1
+    }
+  ];
+  drawPath(svg07,pathData07,"#fff",2,"none",xScale05,yScale05);
+
+  var foData07 = [
+    {
+      "x":0.2,
+      "y":0.7,
+      "text":"$$1$$"
+    },
+    {
+      "x":0.75,
+      "y":0.7,
+      "text":"$$y$$"
+    },
+    {
+      "x":0.6,
+      "y":0.23,
+      "text":"$$x$$"
+    },
+    {
+      "x":0.15,
+      "y":0.4,
+      "text":"$$\\frac{\\pi}{4}$$"
+    },
+    {
+      "x":0.75,
+      "y":1.2,
+      "text":"$$(\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2})$$"
+    },
+    {
+      "x":0.5,
+      "y":-0.6,
+      "text":"$$(\\frac{1}{2}, -\\frac{\\sqrt{3}}{2})$$"
+    }
+
+  ];
+  drawMathjax(svg07,foData07,xScale05,yScale05);
+
+/**
+    arccos  
+                                      */
+  var svg08 = d3.select("#svg08")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",width)
+                .style("background","#000");
+
+  // axes
+  drawAxes(svg08,axesData07);
+  // circle
+  drawCircle(svg08,circleData05,xScale05,yScale05);                
+/**
+    arctan  
+                                      */
+  var svg09 = d3.select("#svg09")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",width)
+                .style("background","#000");
+  // 軸                
+  drawAxes(svg09,axesData07);
+  // circle
+  drawCircle(svg09,circleData05,xScale05,yScale05);                
 
 
 </script>
