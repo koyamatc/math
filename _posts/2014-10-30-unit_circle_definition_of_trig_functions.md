@@ -201,7 +201,7 @@ categories: trig
 
 # Invrse trig functions
 
-## arcsin
+## $$\arcsin$$
 
 <div class="row">
   <div class="col-sm-5">
@@ -222,28 +222,80 @@ categories: trig
   $$arcsin\frac{\sqrt{2}}{2}=\frac{\pi}{4}$$
   $$$$
   $$arcsin\frac{-\sqrt{3}}{2}=? \to -\frac{\pi}{3}$$
+  $$$$
+  $$\arcsin(\sin\theta)=\arcsin(y)=\theta$$
+  $$\sin(\arcsin y)=\sin \theta = y$$
   </div>
 </div>
 
 --------
 
-## arccos
+## $$\arccos$$
 
 <div class="row">
   <div class="col-sm-5">
     <div id="svg08"></div>
   </div>
   <div class="col-sm-7">
+  $$\cos\theta = x \to 
+  \arccos x= \theta ,\quad  \cos^{-1}x= \theta$$
+  $$$$
+  $$\arccos (-\frac{1}{2})=\theta? \to \cos\theta = (-\frac{1}{2})
+  \to x = -\frac{1}{2}$$
+  $$Domain:-1 \le x \le 1$$
+  $$Range \quad restrict:0 \le \theta \le \pi$$
+  $$\alpha = \arccos (\frac{1}{2}) = \frac{\pi}{3}$$
+  $$\theta = \pi - \alpha = \pi - \frac{\pi}{3} = \frac{2\pi}{3}$$
+  $$$$
+  $$\arccos(\cos\theta)=\arccos(x)=\theta$$
+  $$\cos(\arccos x)=\cos \theta = x$$
   </div>
 </div>
 
 -------
 
-## arctan
+## $$\arctan$$
 
 <div class="row">
   <div class="col-sm-5">
     <div id="svg09"></div>
+  </div>
+  <div class="col-sm-7">
+  $$\tan \theta = x \to \arctan x = \theta, \quad \tan^{-1}x=\theta$$
+  $$\tan \theta = \frac{\sin \theta}{\cos \theta} 
+  \to \frac{y-value}{x-value} \to slope(傾き)$$
+  $$\arctan(-1)=\theta?$$
+  $$\tan \theta = -1 \to 傾きが　-1 \to 長さx = 長さy$$
+  $$Domain:-\infty \lt y \lt \infty$$
+  $$Range \quad restrict:-\frac{\pi}{2} \lt \theta \lt \frac{\pi}{2}$$
+  $$\theta = -45^\circ = -\frac{\pi}{4}rad$$
+
+  </div>
+</div>
+
+-------
+
+## Restricting domain of trig function to make invertible
+
+<div class="row">
+  <div class="col-sm-5">
+    <div id="svg10"></div>
+  </div>
+  <div class="col-sm-7">
+  $$関数fは、domainの要素を元にrangeの要素を示します$$
+  $$逆関数f^{-1}は、rangeの要素を元にdomainの要素を示します$$
+  $$上側のrangeの要素は１つのdomainの要素から指し示されています$$
+  $$この場合、逆関数f^{-1}はdomainの要素を特定できます$$
+  $$一方、下側のrangeの要素は２つのdomain要素から指し示されています$$
+  $$こちらの場合、逆関数f^{-1}はdomainの要素を特定できません$$
+  $$そのため、domainに制限を与えて、
+  domainの要素とrangeの要素が１対１となるようにします$$
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-5">
+    <div id="svg11"></div>
   </div>
   <div class="col-sm-7">
   </div>
@@ -1104,6 +1156,83 @@ categories: trig
   drawAxes(svg08,axesData07);
   // circle
   drawCircle(svg08,circleData05,xScale05,yScale05);                
+  // line
+  var lineData08 = [
+    {
+      "x1":Math.cos(pi*2/3),
+      "y1":Math.sin(pi*2/3),
+      "x2":Math.cos(pi*2/3),
+      "y2":0,
+      "stroke":"#0f0"
+    }
+   ,{
+      "x1":Math.cos(pi*2/3),
+      "y1":0,
+      "x2":0,
+      "y2":0,
+      "stroke":"#f0f"
+    }
+   ,{
+      "x1":Math.cos(pi*2/3),
+      "y1":Math.sin(pi*2/3),
+      "x2":0,
+      "y2":0,
+      "stroke":"#ff0"
+    }
+   ,{
+      "x1":Math.cos(pi*2/3)+0.1,
+      "y1":0,
+      "x2":Math.cos(pi*2/3)+0.1,
+      "y2":0.1,
+      "stroke":"#fff"
+    }
+   ,{
+      "x1":Math.cos(pi*2/3)+0.1,
+      "y1":0.1,
+      "x2":Math.cos(pi*2/3),
+      "y2":0.1,
+      "stroke":"#fff"
+    }
+  ];
+  drawLine(svg08,lineData08,xScale05,yScale05);
+  // arc
+  var arcData08 = [
+    {
+      "startPos":90,
+      "endPos":-30,
+      "innerRadius":50,
+      "outerRadius":50,
+      "stroke":"#f0f"
+    },
+    {
+      "startPos":-30,
+      "endPos":-90,
+      "innerRadius":30,
+      "outerRadius":30,
+      "stroke":"#00f"
+    },
+  ];
+  // MathJax
+  var foData08 = [
+    {
+      "x":0.05,
+      "y":0.4,
+      "text":"$$\\theta$$"
+    },
+    {
+      "x":-0.2,
+      "y":0.4,
+      "text":"$$\\alpha$$"
+    },
+    {
+      "x":-0.6,
+      "y":0.2,
+      "text":"$$-\\frac{1}{2}$$"
+    },
+  ];
+  drawArc(svg08,arcData08,xScale05,yScale05);
+  drawMathjax(svg08,foData08,xScale05,yScale05);
+
 /**
     arctan  
                                       */
@@ -1116,6 +1245,170 @@ categories: trig
   drawAxes(svg09,axesData07);
   // circle
   drawCircle(svg09,circleData05,xScale05,yScale05);                
+  // line
+  var lineData09 = [
+    {
+      "x1":Math.cos(-pi/4),
+      "y1":Math.sin(-pi/4),
+      "x2":Math.cos(-pi/4),
+      "y2":0,
+      "stroke":"#0f0"
+    }
+   ,{
+      "x1":Math.cos(-pi/4),
+      "y1":0,
+      "x2":0,
+      "y2":0,
+      "stroke":"#f0f"
+    }
+   ,{ // slope
+      "x1":Math.cos(pi*3/4),
+      "y1":Math.sin(pi*3/4),
+      "x2":Math.cos(-pi/4),
+      "y2":Math.sin(-pi/4),
+      "stroke":"#ff0"
+    }
+   ,{ // right angle
+      "x1":Math.cos(-pi/4)-0.1,
+      "y1":0,
+      "x2":Math.cos(-pi/4)-0.1,
+      "y2":-0.1,
+      "stroke":"#fff"
+    }
+   ,{
+      "x1":Math.cos(-pi/4)-0.1,
+      "y1":-0.1,
+      "x2":Math.cos(-pi/4),
+      "y2":-0.1,
+      "stroke":"#fff"
+    }
+  ];
+  drawLine(svg09,lineData09,xScale05,yScale05);
+  // arc
+  var arcData09 = [
+    {
+      "startPos":90,
+      "endPos":135,
+      "innerRadius":30,
+      "outerRadius":30,
+      "stroke":"#f0f"
+    },
+  ];
+  // MathJax
+  var foData09 = [
+    {
+      "x":0.17,
+      "y":0.2,
+      "text":"$$\\theta$$"
+    },
+    {
+      "x":0.3,
+      "y":0.35,
+      "text":"$$x$$"
+    },
+    {
+      "x":0.75,
+      "y":0,
+      "text":"$$y$$"
+    },
+  ];
+  drawArc(svg09,arcData09,xScale05,yScale05);
+  drawMathjax(svg09,foData09,xScale05,yScale05);
 
+/**
+    Restricting domain of trig function ....  
+                                      */
+  var svg10 = d3.select("#svg10")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",width)
+                .style("background","#000");
+
+  // ellipse
+  var ellipseData10 = [
+    {
+      "cx":120,
+      "cy":200,
+      "ry":150,
+      "rx":70,
+      "stroke":"#0f0"
+    }
+    ,
+    {
+      "cx":280,
+      "cy":200,
+      "ry":150,
+      "rx":70,
+      "stroke":"#f0f"
+    }
+  ];
+  drawEllipse(svg10,ellipseData10);
+
+  //circle
+  var circleData10 = [
+    {"cx":120,"cy":150,"r":10,"fillColor":"#0f0"},
+    {"cx":120,"cy":220,"r":10,"fillColor":"#0f0"},
+    {"cx":120,"cy":260,"r":10,"fillColor":"#0f0"},
+    {"cx":280,"cy":150,"r":10,"fillColor":"#f0f"},
+    {"cx":280,"cy":240,"r":10,"fillColor":"#f0f"},
+  ];
+  drawCircle(svg10,circleData10);
+
+  //vector
+  var vecData10 = [
+    {"x1":130,"y1":140,"x2":270,"y2":145,"stroke":"#0f0"},
+    {"x1":130,"y1":220,"x2":270,"y2":230,"stroke":"#0f0"},
+    {"x1":130,"y1":260,"x2":270,"y2":250,"stroke":"#0f0"},
+    {"x1":270,"y1":160,"x2":130,"y2":155,"stroke":"#f0f"},
+    {"x1":270,"y1":240,"x2":170,"y2":240,"stroke":"#f0f"}
+  ];
+  drawVectorB(svg10,vecData10);
+
+  // MathJax
+  var foData10 = [
+    {
+      "x":70,
+      "y":-20,
+      "text":"$$Domain$$",
+      "fontSize":"1.5em"
+    },
+    {
+      "x":250,
+      "y":-20,
+      "text":"$$Range$$",
+      "fontSize":"1.5em"
+    },
+    {
+      "x":150,
+      "y":60,
+      "text":"$$f$$",
+      "fontSize":"1.1em"
+    },
+    {
+      "x":220,
+      "y":110,
+      "text":"$$f^{-1}$$",
+      "fontSize":"1.1em"
+    },
+    {
+      "x":150,
+      "y":140,
+      "text":"$$f$$",
+      "fontSize":"1.1em"
+    },
+    {
+      "x":150,
+      "y":210,
+      "text":"$$f$$",
+      "fontSize":"1.1em"
+    },
+  ];
+  drawMathjax(svg10,foData10);
+
+  var svg11 = d3.select("#svg11")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",width)
+                .style("background","#000");
 
 </script>
