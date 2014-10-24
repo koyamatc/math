@@ -85,15 +85,15 @@ categories: trig
     小さいほうの円弧の半径は　5<br>
     大きいほうの円弧の半径は　9<br>
     この時
-    $$\overline{AB}の長さと\overline{CD}の長さの比率は$$
-    $$\frac{\overline{CD}}{\overline{AB}}=\frac{5}{9}$$
+    $$\stackrel{\frown}{AB}の長さと\stackrel{\frown}{CD}の長さの比率は$$
+    $$\frac{\stackrel{\frown}{CD}}{\stackrel{\frown}{AB}}=\frac{5}{9}$$
     ここで
-    $$\overline{CD}の長さを\frac{25}{8}$$
+    $$\stackrel{\frown}{CD}の長さを\frac{25}{8}$$
     だとすると
     $$5x=\frac{25}{8}$$
     $$x=\frac{5}{8}\quad radians$$
     となります。したがって
-    $$\overline{AB}=9 \times \frac{5}{8} = \frac{45}{8}$$
+    $$\stackrel{\frown}{AB}=9 \times \frac{5}{8} = \frac{45}{8}$$
     です。 
   </div>
 </div>
@@ -288,8 +288,8 @@ categories: trig
   $$この場合、逆関数f^{-1}はdomainの要素を特定できます$$
   $$一方、下側のrangeの要素は２つのdomain要素から指し示されています$$
   $$こちらの場合、逆関数f^{-1}はdomainの要素を特定できません$$
-  $$そのため、domainに制限を与えて、
-  domainの要素とrangeの要素が１対１となるようにします$$
+  $$そのため、domainに制限を与えて、$$
+  $$domainの要素とrangeの要素が１対１となるようにします$$
   </div>
 </div>
 
@@ -298,6 +298,11 @@ categories: trig
     <div id="svg11"></div>
   </div>
   <div class="col-sm-7">
+    $$グラフの　値0.5の青線は赤い曲線と３か所で交わっています。$$
+    $$赤い曲線を表す関数f(x)には、f(x)=0.5となるxが複数存在するということです。$$
+    $$この場合f(x)の逆関数f^{-1}(0.5)は、xを特定できません。$$
+    $$そこで、xのとる値ををピンクの矢印の範囲に限定することで$$
+    $$逆関数f^{-1}(0.5)は値を特定することができます$$
   </div>
 </div>
 
@@ -1402,6 +1407,12 @@ categories: trig
       "text":"$$f$$",
       "fontSize":"1.1em"
     },
+    {
+      "x":150,
+      "y":175,
+      "text":"$$?$$",
+      "fontSize":"1.1em"
+    }
   ];
   drawMathjax(svg10,foData10);
 
@@ -1410,5 +1421,88 @@ categories: trig
                 .attr("height",height)
                 .attr("width",width)
                 .style("background","#000");
+
+  var xScale11 = d3.scale.linear()
+                       .domain([-200,360])
+                       .range([20,380]);
+  
+  var yScale11 = d3.scale.linear()
+                       .domain([1.2,-1.2])
+                       .range([20,380]);       
+
+  // axes
+  axesData11 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "yPadding":10,
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "xScale":xScale11,
+    "yScale":yScale11
+  };
+
+  drawAxes(svg11,axesData11);
+
+  // graph
+  var pi = Math.PI;
+  var aDegree = pi / 180;
+  var graphData11 = [];
+
+  for (var i=-200;i<=340;i++){
+
+    graphData11.push(new Point(i+50,Math.cos(aDegree*i)));
+  };
+  drawPath(svg11,graphData11,"#f00",2,"none",xScale11,yScale11);
+
+  // lines
+  var lineData11 = [
+    {"x1":-200,
+     "y1":0.5,
+     "x2":370,
+     "y2":0.5,
+     "stroke":"aqua",
+     "strokeWidth":1
+    },
+    {"x1":50,
+     "y1":-1.1,
+     "x2":50,
+     "y2":1.1,
+     "stroke":"#0f0",
+     "strokeWidth":1
+    },
+    {"x1":230,
+     "y1":-1.1,
+     "x2":230,
+     "y2":1.1,
+     "stroke":"#0f0",
+     "strokeWidth":1
+    }
+  ];
+  drawLine(svg11,lineData11,xScale11,yScale11);
+
+  // vector
+  var vecData11 = [
+    {"x1":50,
+     "y1":0,
+     "x2":230,
+     "y2":0,
+     "stroke":"#f0f",
+     "strokeWidth":5
+    }
+  ];
+  drawVectorW(svg11,vecData11,xScale11,yScale11);
+
+  // MathJax
+  var foData11 = [
+    {
+      "x":-150,
+      "y":0.8,
+      "text":"$$0.5$$",
+      "fontSize":"1.1em"
+    }
+  ];
+  drawMathjax(svg11,foData11,xScale11,yScale11);
 
 </script>
