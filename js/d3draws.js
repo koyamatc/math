@@ -303,9 +303,40 @@
 
     svg.append("path")
           .attr("d", path(data))
-          .attr("stroke",stroke)
-          .attr("stroke-width",strokeWidth)
-          .style("fill",fillColor);
+          .attr("stroke", stroke)
+          .attr("stroke-width", strokeWidth)
+          .style("fill", fillColor);
+ 
+  };
+
+  /* path　描画関数　*/
+  function drawPath2(svg,data,attrs,xScale,yScale){
+
+    var stroke = stroke?stroke:"#000";
+    var strokeWidth = strokeWidth?strokeWidth:2;
+    var fillColor = fillColor?fillColor:"none";
+
+    var path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("linear");
+
+    svg.append("path")
+          .attr("d", path(data))
+          .attr("stroke",function(){
+            return attrs.stroke?attrs.stroke:"#000"})
+          .attr("stroke-width", function(){
+            return attrs.strokeWidth?attrs.strokeWidth:2
+          })
+          .attr("opacity", function(){
+            return attrs.opacity?attrs.opacity:1
+          })
+          .style("fill", function(){
+            return attrs.fillColor?attrs.fillColor:"none"
+          })
+          .attr("id", function(){
+            return attrs.id?attrs.id:""
+          });
  
   };
 
