@@ -290,27 +290,7 @@
 
 
   /* path　描画関数　*/
-  function drawPath(svg,data,stroke,strokeWidth,fillColor,xScale,yScale){
-
-    var stroke = stroke?stroke:"#000";
-    var strokeWidth = strokeWidth?strokeWidth:2;
-    var fillColor = fillColor?fillColor:"none";
-
-    var path = d3.svg.line()
-        .x(function(d) { return xScale?xScale(d.x):d.x; })
-        .y(function(d) { return yScale?yScale(d.y):d.y; })
-        .interpolate("linear");
-
-    svg.append("path")
-          .attr("d", path(data))
-          .attr("stroke", stroke)
-          .attr("stroke-width", strokeWidth)
-          .style("fill", fillColor);
- 
-  };
-
-  /* path　描画関数　*/
-  function drawPath2(svg,data,attrs,xScale,yScale){
+  function drawPath(svg,data,attrs,xScale,yScale){
 
     var stroke = stroke?stroke:"#000";
     var strokeWidth = strokeWidth?strokeWidth:2;

@@ -48,13 +48,18 @@ categories: trig
 
 --------
 
-## Ratio between concentric arcs
+## Intersection of sine and cpsine 
 
 <div class="row">
-  <div class="col-sm-5">
+  <div class="col-sm-6">
     <div id="svg03"></div>
   </div>
-  <div class="col-sm-7">
+  <div class="col-sm-6">
+    $$0 \ge \theta \ge 2\piのとき$$
+    $$y=sin\theta とy=cos\theta が交差する点はいくつか？$$
+    $$左図を見ると２か所$$
+    $$0 \ge \theta \ge \frac{\pi}{2}の間と
+    \pi\ge\theta\ge\frac{3}{4}\piの間$$
   </div>
 </div>
 
@@ -105,7 +110,7 @@ categories: trig
   for (var i=-630;i<=450;i++){
     graphData01.push(new Point(i+90,Math.cos(aDegree*i)*3+1));
   };
-  drawPath(svg01,graphData01,"#f00",2,"none",xScale01,yScale01);
+  drawPath(svg01,graphData01,{"stroke":"#f00"},xScale01,yScale01);
  
   var gridData01 = 
   {
@@ -231,10 +236,10 @@ categories: trig
   path2Attr02 = {"id":"path2","stroke":"#0f0","opacity":"0"};
   path3Attr02 = {"id":"path3","stroke":"#ff0","opacity":"0"};
   path4Attr02 = {"id":"path4","stroke":"#f0f","opacity":"0"};
-  drawPath2(svg02,graph1Data02,path1Attr02,xScale02,yScale02);
-  drawPath2(svg02,graph2Data02,path2Attr02,xScale02,yScale02);
-  drawPath2(svg02,graph3Data02,path3Attr02,xScale02,yScale02);
-  drawPath2(svg02,graph4Data02,path4Attr02,xScale02,yScale02);
+  drawPath(svg02,graph1Data02,path1Attr02,xScale02,yScale02);
+  drawPath(svg02,graph2Data02,path2Attr02,xScale02,yScale02);
+  drawPath(svg02,graph3Data02,path3Attr02,xScale02,yScale02);
+  drawPath(svg02,graph4Data02,path4Attr02,xScale02,yScale02);
 
   var gridData02 = 
   {
@@ -324,16 +329,14 @@ categories: trig
 
   // TEXT
   var foData03 = [
-    {"x":15,"y":1.2,"text":"y","stroke":"#ff0","fontSize":"18px"},
-    {"x":360,"y":0.5,"text":"x","stroke":"#ff0","fontSize":"18px"},
-    {"x":-380,"y":0.25,"text":"$$-2\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":-310,"y":0.25,"text":"$$-\\frac{3}{4}\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":-200,"y":0.25,"text":"$$-\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":-130,"y":0.25,"text":"$$-\\frac{\\pi}{2}$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":80,"y":0.25,"text":"$$\\frac{\\pi}{2}$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":170,"y":0.25,"text":"$$\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":260,"y":0.25,"text":"$$\\frac{3}{4}\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":350,"y":0.25,"text":"$$2\\pi$$","stroke":"#ff0","fontSize":"16px"}
+    {"x":0,"y":1.5,"text":"$$y$$","stroke":"#ff0","fontSize":"18px"},
+    {"x":380,"y":0.3,"text":"$$\\theta$$","stroke":"#ff0","fontSize":"18px"},
+    {"x":80,"y":0.2,"text":"$$\\frac{\\pi}{2}$$","stroke":"#ff0","fontSize":"16px"},
+    {"x":170,"y":0.2,"text":"$$\\pi$$","stroke":"#ff0","fontSize":"16px"},
+    {"x":260,"y":0.2,"text":"$$\\frac{3}{4}\\pi$$","stroke":"#ff0","fontSize":"16px"},
+    {"x":350,"y":0.2,"text":"$$2\\pi$$","stroke":"#ff0","fontSize":"16px"},
+    {"x":150,"y":1.0,"text":"$$y=sin\\theta$$","stroke":"#ff0","fontSize":"16px"},
+    {"x":320,"y":1.0,"text":"$$y=cos\\theta$$","stroke":"#ff0","fontSize":"16px"}
   ];
   drawMathjax(svg03,foData03,xScale03,yScale03);
  
@@ -347,8 +350,8 @@ categories: trig
   };
   path1Attr03 = {"id":"path1","stroke":"#f00"};
   path2Attr03 = {"id":"path2","stroke":"#0f0"};
-  drawPath2(svg03,graph1Data03,path1Attr03,xScale03,yScale03);
-  drawPath2(svg03,graph2Data03,path2Attr03,xScale03,yScale03);
+  drawPath(svg03,graph1Data03,path1Attr03,xScale03,yScale03);
+  drawPath(svg03,graph2Data03,path2Attr03,xScale03,yScale03);
 
   var gridData03 = 
   {

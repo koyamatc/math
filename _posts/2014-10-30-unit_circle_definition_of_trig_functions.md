@@ -736,7 +736,7 @@ categories: trig
      "y":0.1
     }
   ];
-  drawPath(svg04,pathData04,"#fff",2,"none",xScale01,yScale01);
+  drawPath(svg04,pathData04,{"stroke":"#fff"},xScale01,yScale01);
 
   var foData04 = [
     {
@@ -880,7 +880,7 @@ categories: trig
      "y":0.1
     }
   ];
-  drawPath(svg05,pathData05,"#fff",2,"none",xScale05,yScale05);
+  drawPath(svg05,pathData05,{"stroke":"#fff"},xScale05,yScale05);
 
   var foData05 = [
     {
@@ -1111,7 +1111,7 @@ categories: trig
      "y":0.1
     }
   ];
-  drawPath(svg07,pathData07,"#fff",2,"none",xScale05,yScale05);
+  drawPath(svg07,pathData07,{"stroke":"#fff"},xScale05,yScale05);
 
   var foData07 = [
     {
@@ -1454,7 +1454,7 @@ categories: trig
 
     graphData11.push(new Point(i+50,Math.cos(aDegree*i)));
   };
-  drawPath(svg11,graphData11,"#f00",2,"none",xScale11,yScale11);
+  drawPath(svg11,graphData11,{"stroke":"#f00"},xScale11,yScale11);
 
   // lines
   var lineData11 = [
