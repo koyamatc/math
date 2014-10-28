@@ -630,8 +630,8 @@
     .text(function(d){return d.text;})
     .style("position","fixed")
     .style("font-size",function(d){
-      return d.fontSize?d.fontSize:20;});
-  }
+      return d.fontSize?d.fontSize:"20px";});
+  };
 
 
   /** set attributes */
