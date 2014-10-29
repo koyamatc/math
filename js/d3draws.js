@@ -1,5 +1,5 @@
 /**
-  d3draws.js  v1.0.0
+  d3draws.js  v1.2.0
   functions to draw svg shapes with d3.js
 **/
 
@@ -450,7 +450,9 @@
       
   };
 
-  /** 直角三角形 */
+  /** 直角三角形 
+    2014.10.29  v1.2.0 直角マーク描画機能追加
+                                    */
   function drawRTriangle(svg,data,xScale,yScale){
     
     svgContainer = svg;
@@ -481,9 +483,10 @@
     var stroke = d.stroke?d.stroke:"#000";
     var strokeWidth = d.strokeWidth?d.strokeWidth:2;
     var fillColor = d.fillColor?d.fillColor:"none";
+    var rightMark = d.rightMark?d.rightMark:false;
 
     var pointsData = [];
-    var x1,x2,x3,y1,y2,y3;
+    var x1,x2,x3,x4,x5,x6,y1,y2,y3,y4,y5,y6;
     var opposite; // length of opposite side
     var rightAngle = (d.theta >=0)?-pi/2:pi/2;
     var factor = (d.theta >=0)?1:-1;
@@ -516,6 +519,29 @@
         .style("fill", function(d){ return fillColor; })     
         .attr("class","rightAngle")
         .attr("id", function(d,i){ return "rightAngle" + i;});
+
+    // right angle mark
+    if (rightMark){
+
+      var rMark = [];
+      x4 = Math.cos(radians+rightAngle) * 10 + x2;
+      y4 = Math.sin(radians+rightAngle) * 10 + y2;
+      x5 = Math.cos(radians+rightAngle*2) * 10 + x4;
+      y5 = Math.sin(radians+rightAngle*2) * 10 + y4;
+      x6 = Math.cos(radians+rightAngle*3) * 10 + x5;
+      y6 = Math.sin(radians+rightAngle*3) * 10 + y5;
+
+      rMark.push(new Point(x4,y4));
+      rMark.push(new Point(x5,y5));
+      rMark.push(new Point(x6,y6));
+
+      svgContainer.append("path")
+        .attr("d", function(d) { 
+        return rightAngleLine(rMark)}) 
+        .attr("stroke", function(d){ return stroke; })
+        .attr("stroke-width", function(d){ return strokeWidth; })
+        .style("fill", function(d){ return fillColor; });
+    };
 
     d3.select(this).remove();
    
@@ -630,8 +656,8 @@
     .text(function(d){return d.text;})
     .style("position","fixed")
     .style("font-size",function(d){
-      return d.fontSize?d.fontSize:"20px";});
-  };
+      return d.fontSize?d.fontSize:20;});
+  }
 
 
   /** set attributes */
@@ -708,7 +734,6 @@
 
   /** draw grid */
   function drawGrid(svg,data){
-
     var x0 = data["xScale"].domain()[0];
     var x1 = data["xScale"].domain()[1];
     var y0 = data["yScale"].domain()[0];
@@ -733,8 +758,8 @@
     var strokeWidth = data["strokeWidth"]?data["strokeWidth"]:1;
     var opacity = data["opacity"]?data["opacity"]:0.5;
 
- //   var gridGroup = svg.append("g")
-   //                   .attr("class","gridGroup");
+    var gridGroup = svg.append("g")
+                      .attr("class","gridGroup");
 
     if (data["xGrid"]){
 
@@ -742,7 +767,7 @@
 
         if (i!=0){
 
-          svg.append("line")
+          gridGroup.append("line")
             .attr("x1",data["xScale"](i))
             .attr("y1",data["yScale"](y0))
            .attr("x2",data["xScale"](i))
@@ -761,7 +786,7 @@
 
         if (i!=0){
 
-          svg.append("line")
+          gridGroup.append("line")
             .attr("x1",data["xScale"](x0))
             .attr("y1",data["yScale"](i))
            .attr("x2",data["xScale"](x1))

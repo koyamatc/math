@@ -356,7 +356,9 @@ categories: trig
 
   //  right Triangle
   triData003 = [
-    {"x1":100,"y1":150,"angle":0,"adjacent":300,"theta":35,"stroke":"#ff0"}
+    {"x1":100,"y1":150,
+     "angle":0,"adjacent":300,"theta":35,
+     "stroke":"#ff0","rightMark":true}
   ]                          
   drawRTriangle(svg03,triData003,xScale03,yScale03);
 
@@ -367,12 +369,6 @@ categories: trig
     {"x":250,"y":350,"text":"$$c$$","fontSize":"22px"},
 
     {"x":130,"y":225,"text":"$$\\theta$$","fontSize":"20px"},
-    {"x":80,"y":0.2,"text":"$$\\frac{\\pi}{2}$$","fontSize":"16px"},
-    {"x":170,"y":0.2,"text":"$$\\pi$$","fontSize":"16px"},
-    {"x":260,"y":0.2,"text":"$$\\frac{3}{4}\\pi$$","fontSize":"16px"},
-    {"x":350,"y":0.2,"text":"$$2\\pi$$","fontSize":"16px"},
-    {"x":150,"y":1.0,"text":"$$y=sin\\theta$$","fontSize":"16px"},
-    {"x":320,"y":1.0,"text":"$$y=cos\\theta$$","fontSize":"16px"}
   ];
   drawMathjax(svg03,foData03,xScale03,yScale03);
  
@@ -393,18 +389,7 @@ categories: trig
                        .range([50,450]);       
 
   // 軸
-  axesData04 = {
-    "xAxis":true,
-    "yAxis":true,
-    "xTickValues":[-1,1],
-    "yTickValues":[-1,1],
-    "stroke":"#ff0",
-    "strokeWidth":1,
-    "xScale":xScale04,
-    "yScale":yScale04
-  };
-  
-  drawAxes(svg04,axesData04);
+  drawVectorW(svg04,axesData01,xScale04,yScale04);
 
   // unit circle
   circleData04 = [{
@@ -417,19 +402,38 @@ categories: trig
 
   drawCircle(svg04,circleData04,xScale04,yScale04);
 
+  // lines and vectors
+  vecData04 = [
+    {"x1":0,"y1":0,"angles":35,"length":1.2,"stroke":"lime"}
+  ];
+  drawVectorA(svg04,vecData04,xScale04,yScale04);
 
+  lineData04 = [
+    { 
+      "x1":0,
+      "y1":0,
+      "x2":Math.cos(35*aDegree),
+      "y2":0,
+      "stroke":"#f0f","strokeWidth":3
+    },
+    { 
+      "x1":Math.cos(35*aDegree),
+      "y1":Math.sin(35*aDegree),
+      "x2":Math.cos(35*aDegree),
+      "y2":0,
+      "stroke":"#ff0","strokeWidth":3
+    },
+  ];
+  drawLine(svg04,lineData04,xScale04,yScale04);
  // mathjax
  var foData04 = [
-    {"x":0,"y":1.4,"text":"$$y$$","fontSize":"18px"},
+    {"x":0,"y":1.5,"text":"$$y$$","fontSize":"18px"},
     {"x":1.1,"y":0.3,"text":"$$x$$","fontSize":"18px"},
-    {"x":0.3,"y":0.2,"text":"$$a$$","fontSize":"18px"},
-    {"x":0.75,"y":0.6,"text":"$$a$$","fontSize":"18px"},
-    {"x":0.1,"y":0.35,"text":"$$45^\\circ$$","fontSize":"16px"},
-    {"x":-0.5,"y":0.5,"text":"$$225^\\circ$$","fontSize":"16px"},
-    {"x":-1.2,"y":-0.6,
-    "text":"$$（-\\frac{\\sqrt{2}}{2},-\\frac{\\sqrt{2}}{2})$$","fontSize":"12px"},
-    {"x":0.7,"y":1.1,
-    "text":"$$（\\frac{\\sqrt{2}}{2},\\frac{\\sqrt{2}}{2})$$","fontSize":"12px"},
+    
+    {"x":0.3,"y":0.2,"text":"$$\\cos\\theta$$","fontSize":"18px"},
+    {"x":0.9,"y":0.6,"text":"$$\\sin\\theta$$","fontSize":"18px"},
+    
+    {"x":0.15,"y":0.32,"text":"$$\\theta$$","fontSize":"16px"},
   ];
  drawMathjax(svg04,foData04,xScale04,yScale04);
 
