@@ -5,49 +5,92 @@ postTitle: Symmetry and periodicity trig functions
 categories: trig
 ---
 
+# Symmetry and periodicity of trig functions
+
+------
+
 ## Symmetry of trig values
 
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-9">
     <div id="svg01"></div>
   </div>
+  <div class="col-sm-3">
+    <p>単位円において、４本のベクトルが単位円と交わる点の相互関係</p>
+  </div>
 </div>
 
 --------
 
-## Example of amplitude and period
+## Relating trig functions through angle rotations
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-8">
     <div id="svg02"></div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-4">
+    $$角度\thetaのベクトルを反時計回りに\frac{\pi}{2}回転する$$
+    $$２つの単位円との交点の関係を表すと$$
+    $$\cos(\theta)=\sin(\frac{\pi}{2}+\theta)$$
+    $$\sin(\theta)=-\cos(\frac{\pi}{2}+\theta)$$
+    $$\tan(\theta)=-\frac{1}{\tan(\frac{\pi}{2}+\theta)}$$  
+    $$\quad \tan(\frac{\pi}{2}+\theta)
+    =\frac{\sin(\frac{\pi}{2}+\theta)}{\cos(\frac{\pi}{2}+\theta)}$$
+    $$\qquad =\frac{\cos(\theta)}{-\sin(\theta)}
+    =-\frac{1}{\tan(\theta)}$$
+
   </div>
 </div>
 
 --------
 
-## Intersection of sine and cosine 
+# Pythagorean identity 
+
+------
+
+## Pythagorean trig identity from soh cah toa
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg03"></div>
   </div>
   <div class="col-sm-6">
+    正三角形があります各辺を a, b, c とすると
+    $$a^2 + b^2 = c^2 \quad です$$
+    $$\angle acを\thetaとすると$$
+    $$\sin\theta = \frac{b}{c} \quad \cos\theta = \frac{a}{c} \to
+    \sin^2\theta = \frac{b^2}{c^2} \quad \cos^2\theta = \frac{a^2}{c^2}$$
+    $$\sin^2\theta + \cos^2\theta = \frac{b^2}{c^2} + \frac{a^2}{c^2}
+    =\frac{b^2 + a^2}{c^2}=\frac{c^2}{c^2}=1$$
+    <div class="panel">
+      <h3>$$\sin^2\theta + \cos^2\theta = 1$$</h3>
+    </div>
   </div>
 </div>
+
+--------
+
+## Pythagorean trig identity from unit circle
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg04"></div>
   </div>
   <div class="col-sm-6">
+    $$x=\cos\theta \quad y=\sin\theta$$
+    $$x^2 + y^2 = 1$$
+    $$\sin^2\theta + \cos^2\theta = 1$$
+
+
   </div>
 </div>
 
+
+--------
+# Angle addition formulas
 --------
 
-## Tangent graph
+## Applying angle addition formula for sin
 
 <div class="row">
   <div class="col-sm-6">
@@ -58,6 +101,7 @@ categories: trig
 </div>
 
 
+
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="{{site.url}}/js/d3draws.js" charset="utf-8"></script>
@@ -65,7 +109,7 @@ categories: trig
 <script>
 
   var height = 500;
-  var width = 500;
+  var width = 800;
   
 
 /**  */
@@ -191,201 +235,153 @@ categories: trig
   drawArc(svg01,arcData01,xScale01,yScale01);
 
 
-/**  Example of amplitude and period  */
+/**  rotations  */
   var svg02 = d3.select("#svg02")
                 .append("svg")
                 .attr("height",height)
                 .attr("width",width)
                 .style("background","#000");
 
-  var xScale02 = d3.scale.linear()
-                       .domain([-360,360])
-                       .range([20,480]);
-  
-  var yScale02 = d3.scale.linear()
-                       .domain([2,-2])
-                       .range([20,480]);       
-
   // 軸
-  axesData02 = {
-    "xAxis":true,
-    "yAxis":true,
-    "xTickValues":[],
-    "yTickValues":[-2,-1,-0.5,0.5,1,1.5,2],
-    "stroke":"#ff0",
-    "strokeWidth":1,
-    "xScale":xScale02,
-    "yScale":yScale02
-  };
-  
-  drawAxes(svg02,axesData02);
+  drawVectorW(svg02,axesData01,xScale01,yScale01);
+
+  // unit circle
+  drawCircle(svg02,circleData01,xScale01,yScale01); 
+
+  // vector
+  vecData02 = [
+    {"x1":0,"y1":0,"angles":30,"length":1.2,"stroke":"lime"}
+   ,{"x1":0,"y1":0,"angles":120,"length":1.2,"stroke":"lime"}
+  ]
+  drawVectorA(svg02,vecData02,xScale01,yScale01);
+
+  // lines
+  lineData02 = [
+    {
+      "x1":Math.cos(30*aDegree),
+      "y1":Math.sin(30*aDegree),
+      "x2":Math.cos(30*aDegree),
+      "y2":0,
+      "stroke":"#999"
+    }
+   ,{
+      "x1":Math.cos(120*aDegree),
+      "y1":Math.sin(120*aDegree),
+      "x2":0,
+      "y2":Math.sin(120*aDegree),
+      "stroke":"#999"
+    }
+   ,{
+      "x1":0,
+      "y1":0,
+      "x2":Math.cos(30*aDegree),
+      "y2":0,
+      "stroke":"#f0f"
+    }
+   ,{
+      "x1":0,
+      "y1":0,
+      "x2":0,
+      "y2":Math.sin(120*aDegree),
+      "stroke":"#f0f"
+    }
+  ]
+  drawLine(svg02,lineData02,xScale01,yScale01);
+
+  // arc
+  arcData02 = [
+    {
+      "startPos":60,
+      "endPos":-30,
+      "innerRadius":40,
+      "outerRadius":40,
+      "stroke":"red"
+    }
+  ];
+  drawArc(svg02,arcData02,xScale01,yScale01);
+
+  // arrow head
+  headData02 = [
+   {
+     "x1":Math.cos(120*aDegree)/5+0.00001,
+     "y1":Math.sin(120*aDegree)/5+0.00001,
+     "x2":Math.cos(120*aDegree)/5,
+     "y2":Math.sin(120*aDegree)/5,
+     "stroke":"red"}
+  ]
+  drawVectorB(svg02,headData02,xScale01,yScale01);
 
   // mathjax
   var foData02 = [
-    {"x":15,"y":2.4,"text":"y","stroke":"#ff0","fontSize":"18px"},
-    {"x":360,"y":0.5,"text":"x","stroke":"#ff0","fontSize":"18px"},
-    {"x":-380,"y":0.25,"text":"$$-2\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":-310,"y":0.25,"text":"$$-\\frac{3}{4}\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":-200,"y":0.25,"text":"$$-\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":-130,"y":0.25,"text":"$$-\\frac{\\pi}{2}$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":80,"y":0.25,"text":"$$\\frac{\\pi}{2}$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":170,"y":0.25,"text":"$$\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":260,"y":0.25,"text":"$$\\frac{3}{4}\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":350,"y":0.25,"text":"$$2\\pi$$","stroke":"#ff0","fontSize":"16px"}
+    {"x":0,"y":1.5,"text":"$$y$$","fontSize":"20px"},
+    {"x":1.2,"y":0.3,"text":"$$x$$","fontSize":"20px"},
+    
+    {"x":0.15,"y":0.33,"text":"$$\\theta$$","fontSize":"16px"},
+
+    {"x":0.9,"y":0.5,
+      "text":"$$\\sin (\\theta)$$","fontSize":"16px"},
+    {"x":0.4,"y":0.2,
+      "text":"$$\\cos(\\theta)$$","fontSize":"16px"},
+
+    {"x":0.9,"y":0.8,
+      "text":"$$(\\cos(\\theta),\\sin (\\theta))$$","fontSize":"16px"},
+    {"x":-1.7,"y":1.2,
+      "text":"$$(\\cos(\\frac{\\pi}{2}+\\theta),\\sin (\\frac{\\pi}{2}+\\theta))$$",
+      "fontSize":"16px"},
+    {"x":0.05,"y":0.8,
+      "text":"$$\\sin (\\frac{\\pi}{2}+\\theta)$$","fontSize":"16px"},
+    {"x":-0.5,"y":1.4,
+      "text":"$$\\cos (\\frac{\\pi}{2}+\\theta)$$","fontSize":"16px"},
+
+
   ];
-  drawMathjax(svg02,foData02,xScale02,yScale02);
+  drawMathjax(svg02,foData02,xScale01,yScale01);
  
-  // graph
-  var graph1Data02 = [];   
-  var graph2Data02 = [];   
-  var graph3Data02 = [];  
-  var graph4Data02 = [];   
 
-  for (var i=-360;i<=360;i++){
-    graph1Data02.push(new Point(i,Math.sin(aDegree*i)));
-    graph2Data02.push(new Point(i,-Math.sin(aDegree*i)));
-    graph3Data02.push(new Point(i,Math.sin(aDegree*i)*2));
-    graph4Data02.push(new Point(i,Math.sin(aDegree*i*3)));
-  };
-  path1Attr02 = {"id":"path1","stroke":"#f00","opacity":"1"};
-  path2Attr02 = {"id":"path2","stroke":"#0f0","opacity":"0"};
-  path3Attr02 = {"id":"path3","stroke":"#ff0","opacity":"0"};
-  path4Attr02 = {"id":"path4","stroke":"#f0f","opacity":"0"};
-  drawPath(svg02,graph1Data02,path1Attr02,xScale02,yScale02);
-  drawPath(svg02,graph2Data02,path2Attr02,xScale02,yScale02);
-  drawPath(svg02,graph3Data02,path3Attr02,xScale02,yScale02);
-  drawPath(svg02,graph4Data02,path4Attr02,xScale02,yScale02);
-
-  var gridData02 = 
-  {
-    "xGrid":true,
-    "yGrid":true,
-    "xStep":90,
-    "yStep":1,
-    "stroke":"#0f0",
-    "strokeWidth":1,
-    "opacity":0.3,
-    "xScale":xScale02,
-    "yScale":yScale02
-    };
-  drawGrid(svg02,gridData02);
-
-  d3.select("#runPath2").on("click",function(){
-    var btnState =  svg02.select("#path2").attr("opacity")==0?true:false;
-    if (btnState){
-      svg02.select("#path2")
-        .transition()
-        .duration(1000)
-        .attr("opacity",1);
-    } else {
-      svg02.select("#path2")
-        .transition()
-        .duration(1000)
-        .attr("opacity",0);
-    } 
-  });
-  d3.select("#runPath3").on("click",function(){
-    var btnState =  svg02.select("#path3").attr("opacity")==0?true:false;
-    if (btnState){
-      svg02.select("#path3")
-        .transition()
-        .duration(1000)
-        .attr("opacity",1);
-    } else {
-      svg02.select("#path3")
-        .transition()
-        .duration(1000)
-        .attr("opacity",0);
-    } 
-  });
-  d3.select("#runPath4").on("click",function(){
-    var btnState =  svg02.select("#path4").attr("opacity")==0?true:false;
-    if (btnState){
-      svg02.select("#path4")
-        .transition()
-        .duration(1000)
-        .attr("opacity",1);
-    } else {
-      svg02.select("#path4")
-        .transition()
-        .duration(1000)
-        .attr("opacity",0);
-    } 
-  });
 
 /**  Intersections of sine curve and cosine curve  */
   var svg03 = d3.select("#svg03")
                 .append("svg")
                 .attr("height",height)
-                .attr("width",width)
+                .attr("width",500)
                 .style("background","#000");
 
   var xScale03 = d3.scale.linear()
-                       .domain([0,360])
+                       .domain([50,450])
                        .range([50,450]);
   
   var yScale03 = d3.scale.linear()
-                       .domain([1,-1])
-                       .range([50,450]);       
+                       .domain([450,50])
+                       .range([50,450]);  
 
-  // 軸
-  axesData03 = {
-    "xAxis":true,
-    "yAxis":true,
-    "xTickValues":[],
-    "yTickValues":[-1,-0.5,0.5,1],
-    "stroke":"#ff0",
-    "strokeWidth":1,
-    "xScale":xScale03,
-    "yScale":yScale03
-  };
-  
-  drawAxes(svg03,axesData03);
+  //  right Triangle
+  triData003 = [
+    {"x1":100,"y1":150,"angle":0,"adjacent":300,"theta":35,"stroke":"#ff0"}
+  ]                          
+  drawRTriangle(svg03,triData003,xScale03,yScale03);
 
   // TEXT
   var foData03 = [
-    {"x":0,"y":1.5,"text":"$$y$$","stroke":"#ff0","fontSize":"18px"},
-    {"x":380,"y":0.3,"text":"$$\\theta$$","stroke":"#ff0","fontSize":"18px"},
-    {"x":80,"y":0.2,"text":"$$\\frac{\\pi}{2}$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":170,"y":0.2,"text":"$$\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":260,"y":0.2,"text":"$$\\frac{3}{4}\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":350,"y":0.2,"text":"$$2\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":150,"y":1.0,"text":"$$y=sin\\theta$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":320,"y":1.0,"text":"$$y=cos\\theta$$","stroke":"#ff0","fontSize":"16px"}
+    {"x":250,"y":200,"text":"$$a$$","fontSize":"22px"},
+    {"x":410,"y":290,"text":"$$b$$","fontSize":"22px"},
+    {"x":250,"y":350,"text":"$$c$$","fontSize":"22px"},
+
+    {"x":130,"y":225,"text":"$$\\theta$$","fontSize":"20px"},
+    {"x":80,"y":0.2,"text":"$$\\frac{\\pi}{2}$$","fontSize":"16px"},
+    {"x":170,"y":0.2,"text":"$$\\pi$$","fontSize":"16px"},
+    {"x":260,"y":0.2,"text":"$$\\frac{3}{4}\\pi$$","fontSize":"16px"},
+    {"x":350,"y":0.2,"text":"$$2\\pi$$","fontSize":"16px"},
+    {"x":150,"y":1.0,"text":"$$y=sin\\theta$$","fontSize":"16px"},
+    {"x":320,"y":1.0,"text":"$$y=cos\\theta$$","fontSize":"16px"}
   ];
   drawMathjax(svg03,foData03,xScale03,yScale03);
  
-  // graph
-  var graph1Data03 = [];   
-  var graph2Data03 = [];   
 
-  for (var i=0;i<=360;i++){
-    graph1Data03.push(new Point(i,Math.sin(aDegree*i)));
-    graph2Data03.push(new Point(i,Math.cos(aDegree*i)));
-  };
-  path1Attr03 = {"id":"path1","stroke":"#f00"};
-  path2Attr03 = {"id":"path2","stroke":"#0f0"};
-  drawPath(svg03,graph1Data03,path1Attr03,xScale03,yScale03);
-  drawPath(svg03,graph2Data03,path2Attr03,xScale03,yScale03);
-
-  var gridData03 = 
-  {
-    "xGrid":true,
-    "yGrid":true,
-    "xStep":90,
-    "yStep":0.2,
-    "stroke":"#0f0",
-    "strokeWidth":1,
-    "opacity":0.3,
-    "xScale":xScale03,
-    "yScale":yScale03
-    };
-  drawGrid(svg03,gridData03);
-
+  //
   var svg04 = d3.select("#svg04")
                 .append("svg")
                 .attr("height",height)
-                .attr("width",width)
+                .attr("width",500)
                 .style("background","#000");
 
   var xScale04 = d3.scale.linear()
@@ -421,15 +417,6 @@ categories: trig
 
   drawCircle(svg04,circleData04,xScale04,yScale04);
 
-  //path
-  pathData04 = [
-    {"x":Math.sqrt(2)/2,"y":0},
-    {"x":Math.sqrt(2)/2,"y":Math.sqrt(2)/2},
-    {"x":-Math.sqrt(2)/2,"y":-Math.sqrt(2)/2},
-    {"x":-Math.sqrt(2)/2,"y":0}
-  ];
-
-  drawPath(svg04,pathData04,{"stroke":"#ff0"},xScale04,yScale04);
 
  // mathjax
  var foData04 = [
@@ -446,30 +433,15 @@ categories: trig
   ];
  drawMathjax(svg04,foData04,xScale04,yScale04);
 
- arcData04 = [
-  { 
-    "startPos":90,
-    "endPos":45,
-    "innerRadius":50,
-    "outerRadius":50,
-    "stroke":"#f00"}
-  ,{ 
-    "startPos":90,
-    "endPos":-135,
-    "innerRadius":80,
-    "outerRadius":80,
-    "stroke":"#0f0"}
- ];
- drawArc(svg04,arcData04,xScale04,yScale04);
 
  /** 
-    graph of tangent
+    
                       */
 
   var svg05 = d3.select("#svg05")
                 .append("svg")
                 .attr("height",height)
-                .attr("width",width)
+                .attr("width",500)
                 .style("background","#000");
 
   var xScale05 = d3.scale.linear()
@@ -480,68 +452,4 @@ categories: trig
                        .domain([4,-4])
                        .range([20,480]);
 
-  var gridData05 = 
-  {
-    "xGrid":true,
-    "yGrid":true,
-    "xStep":90,
-    "yStep":1,
-    "stroke":"#0f0",
-    "strokeWidth":1,
-    "opacity":0.3,
-    "xScale":xScale05,
-    "yScale":yScale05
-    };
-  drawGrid(svg05,gridData05);
-
-  // 軸
-  axesData05 = {
-    "xAxis":true,
-    "yAxis":true,
-    "xTickValues":[],
-    "yTickValues":[-4,-2,2,4],
-    "stroke":"#ff0",
-    "strokeWidth":1,
-    "xScale":xScale05,
-    "yScale":yScale05
-  };
-
-
-  drawAxes(svg05,axesData05);
-  
-  var tan1Data05 = [];
-  var tan2Data05 = [];
-  var tan3Data05 = [];
-  var tan4Data05 = [];
-  var tan5Data05 = [];
-
-  for (var i = -89; i < 90; i++) {
-       tan1Data05.push(new Point(i-180,Math.tan((i-180)*aDegree)));
-       tan2Data05.push(new Point(i,Math.tan(i*aDegree)));
-       tan3Data05.push(new Point(i+180,Math.tan((i+180)*aDegree)));
-       tan4Data05.push(new Point(i+360,Math.tan((i+360)*aDegree)));
-       tan5Data05.push(new Point(i-360,Math.tan((i-360)*aDegree)));
-  };              
-
-  drawPath(svg05,tan1Data05,{"stroke":"#f0f"},xScale05,yScale05);
-  drawPath(svg05,tan2Data05,{"stroke":"#f0f"},xScale05,yScale05);
-  drawPath(svg05,tan3Data05,{"stroke":"#f0f"},xScale05,yScale05);
-  drawPath(svg05,tan4Data05,{"stroke":"#f0f"},xScale05,yScale05);
-  drawPath(svg05,tan5Data05,{"stroke":"#f0f"},xScale05,yScale05);
-
-  // mathjax
-  var foData05 = [
-    {"x":15,"y":4.9,"text":"$$y$$","stroke":"#ff0","fontSize":"18px"},
-    {"x":360,"y":0.8,"text":"$$\\theta$$","stroke":"#ff0","fontSize":"18px"},
-    {"x":-380,"y":0.25,"text":"$$-2\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":-310,"y":0.25,"text":"$$-\\frac{3}{4}\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":-200,"y":0.25,"text":"$$-\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":-130,"y":0.25,"text":"$$-\\frac{\\pi}{2}$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":80,"y":0.25,"text":"$$\\frac{\\pi}{2}$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":170,"y":0.25,"text":"$$\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":260,"y":0.25,"text":"$$\\frac{3}{4}\\pi$$","stroke":"#ff0","fontSize":"16px"},
-    {"x":350,"y":0.25,"text":"$$2\\pi$$","stroke":"#ff0","fontSize":"16px"}
-  ];
-
-  drawMathjax(svg05,foData05,xScale05,yScale05);
 </script>
