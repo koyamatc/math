@@ -90,16 +90,83 @@ categories: trig
 # Angle addition formulas
 --------
 
-## Applying angle addition formula for sin
+## Angle addition formula for sine
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg05"></div>
   </div>
   <div class="col-sm-6">
+    <div class="panel">
+      $$\sin(x+y) = \sin(x)\cos(y) + \cos(x)\sin(y)$$
+    </div>
+    $$\sin(x+y) = \overline{DF}
+    =\overline{DE}+\overline{EF}
+    =\overline{DE}+\overline{CB}$$
+    $$\overline{EC} \parallel \overline{AB}$$
+    $$\angle ECA = y, \quad
+    90^{\circ}-\angle DCE = \angle CDE = y$$
+    $$\overline{AC}=\cos(x)$$
+    $$\sin(y)=\frac{\overline{CB}}{\overline{AC}}
+    =\frac{\overline{CB}}{\cos{x}}
+    \to \overline{CB}= \cos(x)\sin(y)$$
+    $$\overline{DC}=\sin(x)$$
+    $$\cos(y)=\frac{\overline{DE}}{\overline{DC}}
+    =\frac{\overline{DE}}{\sin(x)}
+    \to \overline{DE}= \sin(x)\cos(y)$$
+    <h3>
+      $$\sin(x+y) = \sin(x)\cos(y) + \cos(x)\sin(y)$$
+    </h3>
+
   </div>
 </div>
 
+## Angle addition formula for cosine
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg06"></div>
+  </div>
+  <div class="col-sm-6">
+  <div class="panel">
+    $$\cos(x+y) = \cos(x)\cos(y) - \sin(x)\sin(y)$$
+  </div>
+  $$\cos(x+y) = \overline{AF} = \overline{AB}-\overline{FB}
+  =\overline{AB}-\overline{EC}$$
+  $$\cos(y)=\frac{\overline{AB}}{\overline{AC}}
+  =\frac{\overline{AB}}{\cos(x)}
+  \to \overline{AB}=\cos(x)\cos(y)$$
+
+  $$\sin(y)=\frac{\overline{EC}}{\overline{DC}}
+  =\frac{\overline{EC}}{\sin(x)}
+  \to \overline{EC}=\sin(x)\sin(y)$$
+  <h3>
+    $$\cos(x+y) = \cos(x)\cos(y) - \sin(x)\sin(y)$$
+  </h3>
+
+  </div>
+</div>
+
+--------
+# Law of cosines and law of sines
+--------
+
+## Law of cosines 
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg07"></div>
+  </div>
+  <div class="col-sm-6">
+    緑の辺　b　と　c　に挟まれた角が　θ　のとき以下の法則が成り立つ
+    <div class="panel">
+      <h3>$$a^2=b^2+c^2-2bc\cos\theta$$</h3>
+    </div>
+    $$a^2=12^2+9^2-2(12)(9)\cos87^{\circ}$$
+    $$\quad = 225-216\cos87^{\circ}$$
+    $$a=\sqrt{225-216\cos87^{\circ}}\approx14.6$$
+  </div>
+</div>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
@@ -439,8 +506,8 @@ categories: trig
 
 
  /** 
-    
-                      */
+   addition formula for sin 
+                            */
 
   var svg05 = d3.select("#svg05")
                 .append("svg")
@@ -449,11 +516,92 @@ categories: trig
                 .style("background","#000");
 
   var xScale05 = d3.scale.linear()
-                       .domain([-360,360])
-                       .range([20,480]);
+                       .domain([0,1])
+                       .range([50,450]);
   
   var yScale05 = d3.scale.linear()
-                       .domain([4,-4])
-                       .range([20,480]);
+                       .domain([1,0])
+                       .range([50,450]);
 
+  triangleData05 = [
+    {"x1":0,"y1":0,"angle":0,"adjacent":400,"theta":30,"stroke":"#0f0","strokeWidth":3,"rightMark":true},
+    {"x1":0,"y1":0,"angle":30,"adjacent":462,"theta":25,"stroke":"#f0f","strokeWidth":3,"rightMark":true},
+    {"x1":0.728,"y1":1.038,"angle":-90,"adjacent":181,"theta":30,"stroke":"#f0f","strokeWidth":3,"rightMark":true},
+    {"x1":0,"y1":0,"angle":0,"adjacent":291,"theta":55,"stroke":"#ff0","strokeWidth":3,"rightMark":true}
+
+  ];
+
+  drawRTriangle(svg05,triangleData05,xScale05,yScale05);                       
+
+  // mathjax
+  foData05 = [
+    {"x":-0.05,"y":0.09,"text":"$$A$$","fontSize":"18px"}
+   ,{"x":1.02,"y":0.1,"text":"$$B$$","fontSize":"18px"}
+   ,{"x":1.02,"y":0.75,"text":"$$C$$","fontSize":"18px"}
+   ,{"x":0.7,"y":1.23,"text":"$$D$$","fontSize":"18px"}
+   ,{"x":0.65,"y":0.75,"text":"$$E$$","fontSize":"18px"}
+   ,{"x":0.7,"y":0.09,"text":"$$F$$","fontSize":"18px"}
+   ,{"x":0.08,"y":0.25,"text":"$$x$$","fontSize":"18px"}
+   ,{"x":0.09,"y":0.19,"text":"$$y$$","fontSize":"18px"}
+   ,{"x":0.93,"y":0.72,"text":"$$y$$","fontSize":"18px"}
+   ,{"x":0.73,"y":1.12,"text":"$$y$$","fontSize":"18px"}
+   ,{"x":0.37,"y":0.75,"text":"$$1$$","fontSize":"18px"}
+   ,{"x":0.5,"y":0.5,"text":"$$1$$","fontSize":"18px"}
+  ];
+  drawMathjax(svg05,foData05,xScale05,yScale05);
+
+ /** 
+   addition formula for cos 
+                            */
+
+  var svg06 = d3.select("#svg06")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",500)
+                .style("background","#000");
+
+  drawRTriangle(svg06,triangleData05,xScale05,yScale05);
+  drawMathjax(svg06,foData05,xScale05,yScale05);
+
+ /** 
+   Law of cosine and sine 
+                            */
+
+  var svg07 = d3.select("#svg07")
+                .append("svg")
+                .attr("height",300)
+                .attr("width",500)
+                .style("background","#000");
+
+  var xScale07 = d3.scale.linear()
+                       .domain([0,15])
+                       .range([50,450]);
+  
+  var yScale07 = d3.scale.linear()
+                       .domain([7.5,0])
+                       .range([50,250]);
+
+  lineData07 = [
+     {"x1":0,"y1":0,"x2":14.6,"y2":0,"stroke":"#f00"}
+    ,{"x1":0,"y1":0,"x2":9.46,"y2":7.38,"stroke":"#0f0"}
+    ,{"x1":14.6,"y1":0,"x2":9.46,"y2":7.38,"stroke":"#0f0"}
+  ];
+
+  drawLine(svg07,lineData07,xScale07,yScale07);
+
+  // mathjax
+  foData07 = [
+    {"x":7,"y":1,"text":"$$a=?$$","fontSize":"18px"}
+   ,{"x":2,"y":6,"text":"$$b=12$$","fontSize":"18px"}
+   ,{"x":13,"y":6,"text":"$$c=9$$","fontSize":"18px"}
+   ,{"x":9,"y":9,"text":"$$\\theta$$","fontSize":"18px"}
+   ,{"x":8.5,"y":8,"text":"$$87^{\\circ}$$","fontSize":"18px"}
+     ];
+  drawMathjax(svg07,foData07,xScale07,yScale07);
+
+  // vector
+  vecData07 = [
+    {"x1":9,"y1":5,"x2":8,"y2":1,"stroke":"#f00"}
+  ];
+  drawVectorB(svg07,vecData07,xScale07,yScale07);
 </script>
