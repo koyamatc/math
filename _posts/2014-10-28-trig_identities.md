@@ -168,6 +168,28 @@ categories: trig
   </div>
 </div>
 
+## Law of sines 
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg08"></div>
+  </div>
+  <div class="col-sm-6">
+    左図のような三角形で
+    <div class="panel">
+      $$\frac{\sin30^{\circ}}{2}
+      =\frac{\sin105^{\circ}}{a}
+      =\frac{\sin45^{\circ}}{b}$$
+    </div>
+    が成り立つ
+    $$\frac{\sin30^{\circ}}{2}=\frac{\frac{1}{2}}{2}=\frac{1}{4}$$
+    なので
+    $$\frac{\sin105^{\circ}}{a}=\frac{1}{4} \to 
+    a=4 \cdot \sin105^{\circ}\approx 3.86$$
+    $$\frac{\sin45^{\circ}}{b}=\frac{1}{4} \to 
+    b=4 \cdot \sin45^{\circ} \approx1.83$$
+  </div>
+</div>
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -604,4 +626,39 @@ categories: trig
     {"x1":9,"y1":5,"x2":8,"y2":1,"stroke":"#f00"}
   ];
   drawVectorB(svg07,vecData07,xScale07,yScale07);
+
+
+  var svg08 = d3.select("#svg08")
+                .append("svg")
+                .attr("height",height)
+                .attr("width",500)
+                .style("background","#000");
+
+  var xScale08 = d3.scale.linear()
+                       .domain([-2.5,2.5])
+                       .range([100,500]);
+  
+  var yScale08 = d3.scale.linear()
+                       .domain([2.5,-2.5])
+                       .range([50,450]);
+
+  lineData08 = [
+     {"x1":0,"y1":0,"x2":0,"y2":2,"stroke":"#f00"}
+    ,{"x1":0,"y1":0,"x2":-2.15,"y2":-1.84,"stroke":"#0f0"}
+    ,{"x1":0,"y1":2,"x2":-2.15,"y2":-1.84,"stroke":"#0f0"}
+  ];
+
+  drawLine(svg08,lineData08,xScale08,yScale08);
+
+  // mathjax
+  foData08 = [
+    {"x":-1.3,"y":1,"text":"$$a$$","fontSize":"18px"}
+   ,{"x":-0.9,"y":-0.2,"text":"$$b$$","fontSize":"18px"}
+   ,{"x":0.2,"y":1.8,"text":"$$2$$","fontSize":"18px"}
+   ,{"x":-1.72,"y":-0.5,"text":"$$30^{\\circ}$$","fontSize":"16px"}
+   ,{"x":-0.33,"y":2,"text":"$$45^{\\circ}$$","fontSize":"16px"}
+   ,{"x":-0.5,"y":0.8,"text":"$$105^{\\circ}$$","fontSize":"16px"}
+  ];
+  drawMathjax(svg08,foData08,xScale08,yScale08);
+
 </script>
