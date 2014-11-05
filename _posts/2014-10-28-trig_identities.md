@@ -191,6 +191,72 @@ categories: trig
   </div>
 </div>
 
+## Proof : Law of cosines 
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg09"></div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel">
+      <h3>$$a^2=b^2+c^2-2bc\cos\theta$$</h3>
+    </div>
+    $$\cos \theta = \frac{d}{b} \to d=b\cos \theta$$
+    $$e = c - d = c - b\cos \theta$$
+    $$\sin \theta = \frac{m}{b} \to m=b\sin \theta$$
+    $$a^2 = m^2 + e^2$$
+    $$\quad = (b\sin\theta)^2 + (c - b\cos \theta)^2$$
+    $$\quad = b^2\sin^2\theta + c^2 - 2bc\cos\theta + b^2\cos^2\theta$$
+    $$\quad = b^2(\sin^2\theta + \cos^2\theta) + c^2 - 2bc\cos\theta$$
+    $$\sin^2\theta + \cos^2\theta=1なので$$
+    $$\underline{a^2 = b^2 + c^2 - 2bc\cos\theta}$$
+  </div>
+</div>
+
+## Proof : Law of sines 
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg10"></div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel">
+      <h3>$$\frac{\sin\alpha}{A}=\frac{\sin\beta}{B}$$</h3>
+    </div>
+    $$\sin\alpha = \frac{x}{B} \to B\sin\alpha = x$$
+    $$\sin\beta = \frac{x}{A} \to A\sin\beta = x$$
+    $$B\sin\alpha = A\sin\beta$$
+    $$\underline{\frac{\sin\alpha}{A} = \frac{\sin\beta}{B}}$$
+  </div>
+</div>
+
+## Trig identities review and fun
+<div>
+<h3>
+<div class="panel">
+$$\sin(a+b)=\sin(a) \cdot \cos(b) + \sin(b) \cdot \cos(a)$$
+</div>
+$$\sin(a+(-b))=\sin(a) \cdot \cos(-b) + \sin(-b) \cdot \cos(a)$$
+$$\quad \cos(-b)=\cos(b), \quad \sin(-b)=-\sin(b)なので$$
+<div class="panel">
+$$\sin(a-b)=\sin(a) \cdot \cos(b) - \sin(b) \cdot \cos(a)$$
+</div>
+<div class="panel">
+$$\sin(2a)=\sin(a+a)=2\sin(a)\cos(a)$$
+</div>
+<div class="panel">
+$$\cos(a+b)=\cos(a) \cdot \cos(b) - \sin(a) \cdot \sin(b)$$
+</div>
+<div class="panel">
+$$\cos(a-b)=\cos(a) \cdot \cos(b) + \sin(a) \cdot \sin(b)$$
+</div>
+<div class="panel">
+$$\cos(2a)=\cos(a+a)=\cos^2(a) - \sin^2(a)$$
+</div>
+
+</h3>
+</div>
+
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="{{site.url}}/js/d3draws.js" charset="utf-8"></script>
@@ -660,5 +726,90 @@ categories: trig
    ,{"x":-0.5,"y":0.8,"text":"$$105^{\\circ}$$","fontSize":"16px"}
   ];
   drawMathjax(svg08,foData08,xScale08,yScale08);
+
+ /** 
+   Proof :Law of cosines  
+                            */
+
+  var svg09 = d3.select("#svg09")
+                .append("svg")
+                .attr("height",300)
+                .attr("width",500)
+                .style("background","#000");
+
+  var xScale09 = d3.scale.linear()
+                       .domain([0,15])
+                       .range([50,450]);
+  
+  var yScale09 = d3.scale.linear()
+                       .domain([7.5,0])
+                       .range([50,250]);
+
+  lineData09 = [
+     {"x1":0,"y1":0,"x2":14.6,"y2":0,"stroke":"#0f0"}
+    ,{"x1":0,"y1":0,"x2":9.46,"y2":7.38,"stroke":"#0f0"}
+    ,{"x1":14.6,"y1":0,"x2":9.46,"y2":7.38,"stroke":"#f00"}
+    ,{"x1":9.46,"y1":0,"x2":9.46,"y2":7.38,"stroke":"#999"}
+    // right angle
+    ,{"x1":9.46,"y1":0.5,"x2":9.,"y2":0.5,"stroke":"#999"}
+    ,{"x1":9,"y1":0,"x2":9.,"y2":0.5,"stroke":"#999"}
+  ];
+
+  drawLine(svg09,lineData09,xScale09,yScale09);
+
+  // mathjax
+  foData09 = [
+    {"x":7,"y":1.5,"text":"$$c$$","fontSize":"18px"}
+   ,{"x":3,"y":6.5,"text":"$$b$$","fontSize":"18px"}
+   ,{"x":13,"y":7,"text":"$$a$$","fontSize":"18px"}
+   ,{"x":1.5,"y":2.8,"text":"$$\\theta$$","fontSize":"18px"}
+   ,{"x":8.5,"y":6,"text":"$$m$$","fontSize":"18px"}
+   ,{"x":5,"y":2.8,"text":"$$d$$","fontSize":"18px"}
+   ,{"x":12,"y":2.8,"text":"$$e$$","fontSize":"18px"}
+     ];
+  drawMathjax(svg09,foData09,xScale09,yScale09);
+
+ /** 
+   Proof :Law of sines  
+                            */
+  var svg10 = d3.select("#svg10")
+                .append("svg")
+                .attr("height",300)
+                .attr("width",500)
+                .style("background","#000");
+
+  var xScale10 = d3.scale.linear()
+                       .domain([0,15])
+                       .range([50,450]);
+  
+  var yScale10 = d3.scale.linear()
+                       .domain([7.5,0])
+                       .range([50,250]);
+
+  lineData10 = [
+     {"x1":0,"y1":0,"x2":14.6,"y2":0,"stroke":"#0f0"}
+    ,{"x1":0,"y1":0,"x2":9.46,"y2":7.38,"stroke":"#0f0"}
+    ,{"x1":14.6,"y1":0,"x2":9.46,"y2":7.38,"stroke":"#f00"}
+    ,{"x1":9.46,"y1":0,"x2":9.46,"y2":7.38,"stroke":"#999"}
+    // right angle
+    ,{"x1":9.46,"y1":0.5,"x2":9.,"y2":0.5,"stroke":"#999"}
+    ,{"x1":9,"y1":0,"x2":9.,"y2":0.5,"stroke":"#999"}
+  ];
+
+  drawLine(svg10,lineData10,xScale10,yScale10);
+
+  // mathjax
+  foData10 = [
+    {"x":7,"y":1.5,"text":"$$C$$","fontSize":"18px"}
+   ,{"x":3,"y":6.5,"text":"$$B$$","fontSize":"18px"}
+   ,{"x":13,"y":7,"text":"$$A$$","fontSize":"18px"}
+   ,{"x":1.2,"y":2.8,"text":"$$\\alpha$$","fontSize":"18px"}
+   ,{"x":13.4,"y":2.8,"text":"$$\\beta$$","fontSize":"18px"}
+   ,{"x":8.5,"y":6,"text":"$$x$$","fontSize":"18px"}
+   ,{"x":8.7,"y":8.5,"text":"$$\\theta$$","fontSize":"18px"}
+  ];
+  drawMathjax(svg10,foData10,xScale10,yScale10);
+
+
 
 </script>
