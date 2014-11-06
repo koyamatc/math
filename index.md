@@ -1,9 +1,9 @@
 ---
-title: physics
+title: math
 layout: default
 ---
 
-#Physics
+#Mathematics
 
 - - -
 
