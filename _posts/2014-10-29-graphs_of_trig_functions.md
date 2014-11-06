@@ -5,6 +5,8 @@ postTitle: Graphs of trig functions
 categories: trig
 ---
 
+------
+
 ## Midline, amplitude and period of a function
 
 <div class="row">

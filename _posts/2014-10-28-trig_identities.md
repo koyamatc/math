@@ -5,8 +5,6 @@ postTitle: Symmetry and periodicity trig functions
 categories: trig
 ---
 
-# Symmetry and periodicity of trig functions
-
 ------
 
 ## Symmetry of trig values
