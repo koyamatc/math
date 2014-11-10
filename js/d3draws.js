@@ -295,11 +295,21 @@
     var stroke = stroke?stroke:"#000";
     var strokeWidth = strokeWidth?strokeWidth:2;
     var fillColor = fillColor?fillColor:"none";
+    var interPolate = attrs.interPolate?attrs.interPolate:"linear"
+    var path;
 
-    var path = d3.svg.line()
+    if (interPolate=="linear") {
+      path = d3.svg.line()
         .x(function(d) { return xScale?xScale(d.x):d.x; })
         .y(function(d) { return yScale?yScale(d.y):d.y; })
         .interpolate("linear");
+    };
+    if (interPolate=="basis") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("basis");
+    };
 
     svg.append("path")
           .attr("d", path(data))
