@@ -683,6 +683,8 @@
         return d.fontFamily?d.fontFamily:"sans-serif";})
       .style("fill",function(d){
         return d.fillColor?d.fillColor:"none";})
+      .attr("opacity",function(d){
+        return d.opacity?d.opacity:1}) // 1.2.1
       .attr("transform",function(d){
         return d.rAngle?"rotate("+d.rAngle+")":"rotate(0)"});   
 
