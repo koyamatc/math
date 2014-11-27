@@ -20,8 +20,8 @@ categories: differential
   </div>
   <div class="col-sm-6">
   直線があり、直線上に２点\((x_0,y_0),(x_1,y_1)\)があります<br>
-  直線の傾き(slope)は、\(x\)の変化量\((\triangle x)\)に対する\(y\)の変化量\((\triangle y)\)で<br>
-  $$Slope=m=\frac{\triangle y}{\triangle x}=\frac{y_1 - y_0}{x_1 - x_0}$$
+  直線の傾き(slope)は、\(x\)の変化量\((\Delta x)\)に対する\(y\)の変化量\((\Delta y)\)で<br>
+  $$Slope=m=\frac{\Delta y}{\Delta x}=\frac{y_1 - y_0}{x_1 - x_0}$$
   です
   </div>
 </div>
@@ -30,6 +30,18 @@ categories: differential
     <div id="svg02"></div>
   </div>
   <div class="col-sm-6">
+  曲線の傾きについて考えます<br>
+  まず曲線上の２点\((x_0,y_0),(x_1,y_1)\)の傾きを考えます<br>
+  $$Slope=m=\frac{\Delta y}{\Delta x}=\frac{y_1 - y_0}{x_1 - x_0}$$
+  これは、この範囲において\(x\)に対する\(y\)の変化量の平均です<br>
+
+  いまは、２点を結ぶ直線の傾きを求めています<br>
+
+  この直線のように曲線と交差し２つの部分に分ける線のことを割線(secant line)と呼びます<br>
+
+  点\((x_0,y_0)\)を\((x_1,y_1)\)に近づけてゆくと、傾きの平均値ではなく
+  \((x_1,y_1)\)における傾きに近づいていきます
+
   </div>
 </div>
 
@@ -141,11 +153,11 @@ categories: differential
     "fontSize":"18px"},
     {"x":2.7,
     "y":0,
-    "text":"$$\\triangle x$$",
+    "text":"$$\\Delta x$$",
     "fontSize":"18px"},
     {"x":-1.8,
     "y":5.3,
-    "text":"$$\\triangle y$$",
+    "text":"$$\\Delta y$$",
     "fontSize":"18px"}
   ];
  
@@ -158,11 +170,63 @@ categories: differential
   }
   drawPath(svg02,pathData02,{"stroke":"#ff0"},xScale01,yScale01);
 
+  // line
+  lineData02 = [
+    {"x1":-1,"y1":1.1,"x2":9,"y2":7.1,"stroke":"lime"},
+    {"x1":5,"y1":0,"x2":5,"y2":4.7,"stroke":"#0f0","opacity":0.4},
+    {"x1":0,"y1":4.7,"x2":5,"y2":4.7,"stroke":"#0f0","opacity":0.4},
+    {"x1":3,"y1":0,"x2":3,"y2":3.5,"stroke":"#f0f","opacity":0.5},
+    {"x1":0,"y1":3.5,"x2":3,"y2":3.5,"stroke":"#f0f","opacity":0.5},
+  ];
+  drawLine(svg02,lineData02,xScale01,yScale01);
+
   // circle
   var circleData02 = [
     {"cx":3,"cy":3.5,"r":2,"stroke":"#f0f","fillColor":"#f0f"}
    ,{"cx":5,"cy":4.7,"r":2,"stroke":"#0f0","fillColor":"#0f0"}
   ];   
   drawCircle(svg02,circleData02,xScale01,yScale01);
+
+  // mathjax   
+  foData02 = [
+    {"x":9.5,
+    "y":1.5,
+    "text":"$$x$$",
+    "fontSize":"24px"},
+    {"x":-0.1,
+    "y":11.5,
+    "text":"$$y$$",
+    "fontSize":"24px"},
+    {"x":2.9,
+    "y":1,
+    "text":"$$x_0$$",
+    "fontSize":"18px"},
+    {"x":4.9,
+    "y":1,
+    "text":"$$x_1$$",
+    "fontSize":"18px"},
+    {"x":-0.8,
+    "y":5.0,
+    "text":"$$y_0$$",
+    "fontSize":"18px"},
+    {"x":-0.8,
+    "y":6.3,
+    "text":"$$y_1$$",
+    "fontSize":"18px"},
+    {"x":3.7,
+    "y":0,
+    "text":"$$\\Delta x$$",
+    "fontSize":"18px"},
+    {"x":-1.8,
+    "y":5.5,
+    "text":"$$\\Delta y$$",
+    "fontSize":"18px"},
+    {"x":6,
+    "y":6.5,
+    "text":"$$secant \\quad line$$",
+    "fontSize":"18px"}
+  ];
+ 
+  drawMathjax(svg02,foData02,xScale01,yScale01);
  
 </script>
