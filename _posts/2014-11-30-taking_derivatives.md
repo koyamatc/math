@@ -79,24 +79,30 @@ categories: differential
   =\frac{f(x_0+h)-f(x_0)}{h}$$
   です<br>
   ここで、\(h\)の値を限りなく0に近づけていくと点\( (x_0,f(x_0)) \)での傾きに近づいてゆきます<br>
-  曲線の点\( (x_0,f(x_0)) \)での傾きは
+  曲線の点\( (x_0,f(x_0)) \)での傾きは、この点での接線(tangent line)の傾き
   <h3>
   $$\lim_{h \to 0} \frac{f(x_0+h)-f(x_0)}{h}$$
   </h3>
   となります
-
-
   </div>
 </div>
 
 --------
 
-## 
+## Calculating slope of tangent line using derivative definition
 <div class="row">
   <div class="col-sm-6">
     <div id="svg05"></div>
   </div>
   <div class="col-sm-6">
+    \(f(x)=x^2\)です。<br>
+    \(x=3\)のとき\(f(3)=9\)でピンクの点\((3,9)\)です<br>
+    \(x=3+h\)のとき\(f(3+h)=(3+h)^2\)で黄色の点\((3+h,(3+h)^2))\)です<br>
+    \(f'(x)\)を\(f(x)\)の導関数とすると、\(x=3\)のときの接線の傾きは<br>
+    $$f'(x)=\lim_{h \to 0} \frac{f(3+h)-f(3)}{h}
+    =\lim_{h \to 0} \frac{(3+h)^2-9}{h}$$
+    $$\quad=\lim_{h \to 0} \frac{9+6h+h^2-9}{h}
+    =\lim_{h \to 0} 6+h=6$$
   </div>
 </div>
 
@@ -462,5 +468,113 @@ categories: differential
   function func04(x){
     return x*x/9 + 1;
   };
+
+  // 
+  var svg05 = d3.select("#svg05")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
+
+  var xScale05 = d3.scale.linear()
+                       .domain([-2,7])
+                       .range([50,450]);
+  
+  var yScale05 = d3.scale.linear()
+                       .domain([50,-1])
+                       .range([50,450]);       
+
+  // 軸
+  axesData05 = { 
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale05,
+    "yScale":yScale05
+  };
+  drawAxes(svg05,axesData05);
+  
+  gridData05 = 
+  {
+    "xGrid":true,
+    "yGrid":true,
+    "xStep":1,
+    "yStep":5,
+    "stroke":"#0f0",
+    "strokeWidth":1,
+    "opacity":0.3,
+    "xScale":xScale05,
+    "yScale":yScale05
+  };
+  drawGrid(svg05,gridData05);
+
+  // graph
+  pathData05 = [];
+  for (var i=-2;i<=7;i=i+0.1){
+    pathData05.push(new Point(i,i*i));
+  }
+  drawPath(svg05,pathData05,{"stroke":"#ff0"},xScale05,yScale05);
+
+  lineData05 = [
+    {"x1":2,"y1":0,"x2":2,"y2":3,"stroke":"#f0f","opacity":0.4},
+    {"x1":0,"y1":3,"x2":2,"y2":3,"stroke":"#f0f","opacity":0.4},
+    {"x1":5,"y1":0,"x2":5,"y2":7,"stroke":"#ff0","opacity":0.5},
+    {"x1":0,"y1":7,"x2":5,"y2":7,"stroke":"#ff0","opacity":0.5},
+  ];
+  drawLine(svg05,lineData05,xScale05,yScale05);
+
+  // circle
+  var circleData05 = [
+    {"cx":3,"cy":9,"r":2,"stroke":"#f0f","fillColor":"#f0f"}
+   ,{"cx":6,"cy":36,"r":2,"stroke":"#ff0","fillColor":"#ff0"}
+  ];   
+  drawCircle(svg05,circleData05,xScale05,yScale05);
+
+  // mathjax   
+  foData05 = [
+    {"x":8.5,
+    "y":1.2,
+    "text":"$$x$$",
+    "fontSize":"22px"},
+    {"x":-0.1,
+    "y":10.5,
+    "text":"$$y=f(x)$$",
+    "fontSize":"22px"},
+    {"x":1.9,
+    "y":1,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+    {"x":4.9,
+    "y":1,
+    "text":"$$b$$",
+    "fontSize":"18px"},
+    {"x":-1.2,
+    "y":4.5,
+    "text":"$$f(a)$$",
+    "fontSize":"18px"},
+    {"x":-1.2,
+    "y":8.5,
+    "text":"$$f(b)$$",
+    "fontSize":"18px"},
+    {"x":3,
+    "y":0,
+    "text":"$$\\Delta x$$",
+    "fontSize":"18px"},
+    {"x":-1.8,
+    "y":6.3,
+    "text":"$$\\Delta y$$",
+    "fontSize":"18px"}
+  ];
+ 
+  drawMathjax(svg05,foData05,xScale05,yScale05);
 
 </script>
