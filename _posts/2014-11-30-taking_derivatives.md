@@ -103,8 +103,57 @@ categories: differential
     =\lim_{h \to 0} \frac{(3+h)^2-9}{h}$$
     $$\quad=\lim_{h \to 0} \frac{9+6h+h^2-9}{h}
     =\lim_{h \to 0} 6+h=6$$
+    一般化すると
+    $$f'(x)=\lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
+    =\lim_{h \to 0} \frac{(x+h)^2-x^2}{h}$$
+    $$\quad=\lim_{h \to 0} \frac{x^2+2hx+h^2-x^2}{h}
+    =\lim_{h \to 0} 2x+h=2x$$
+    \(2x\)が曲線\(f(x)=x^2\)の各\(x\)における接線の傾きです
   </div>
 </div>
+
+## Formal and alternate form of the derivative
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg06"></div>
+  </div>
+  <div class="col-sm-6">
+  曲線\(y=f(x)\)の\(x=a\)における接線の傾きは
+  $$点(a,f(a))とｘ軸方向にhだけ離れた点(a+h,f(a+h))を通る割線において$$
+  \(h\)の値が限りなく0に近づいたときに下記の導関数で求められる
+  $$f'(a)=\lim_{h \to 0}\frac{f(a+h)-f(a)}{h}$$  
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg07"></div>
+  </div>
+  <div class="col-sm-6">
+  別の表現をすると
+  曲線\(y=f(x)\)の\(x=a\)における接線の傾きは
+  $$点(a,f(a))と点(x,f(x))を通る割線において$$
+  \(x\)の値が限りなくaに近づいたときに下記の導関数で求められる
+  $$f'(x)=\lim_{x \to a}\frac{f(x)-f(a)}{x-a}$$
+  2つの導関数は同じことを表している  
+  </div>
+</div>
+
+-----------
+
+# Visualizing graphs of functionas and their derivatives
+
+-----------
+
+## Derivative intuition
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg08"></div>
+  </div>
+  <div class="col-sm-6">
+  </div>
+</div>
+
+
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -525,10 +574,12 @@ categories: differential
   drawPath(svg05,pathData05,{"stroke":"#ff0"},xScale05,yScale05);
 
   lineData05 = [
-    {"x1":2,"y1":0,"x2":2,"y2":3,"stroke":"#f0f","opacity":0.4},
-    {"x1":0,"y1":3,"x2":2,"y2":3,"stroke":"#f0f","opacity":0.4},
-    {"x1":5,"y1":0,"x2":5,"y2":7,"stroke":"#ff0","opacity":0.5},
-    {"x1":0,"y1":7,"x2":5,"y2":7,"stroke":"#ff0","opacity":0.5},
+    {"x1":1,"y1":-9,"x2":7,"y2":45,"stroke":"#f0f"},
+    {"x1":0,"y1":-9,"x2":7,"y2":33,"stroke":"lime"},
+    {"x1":3,"y1":0,"x2":3,"y2":9,"stroke":"#f0f","opacity":0.4},
+    {"x1":0,"y1":9,"x2":3,"y2":9,"stroke":"#f0f","opacity":0.4},
+    {"x1":6,"y1":0,"x2":6,"y2":36,"stroke":"#ff0","opacity":0.5},
+    {"x1":0,"y1":36,"x2":6,"y2":36,"stroke":"#ff0","opacity":0.5},
   ];
   drawLine(svg05,lineData05,xScale05,yScale05);
 
@@ -541,40 +592,197 @@ categories: differential
 
   // mathjax   
   foData05 = [
-    {"x":8.5,
-    "y":1.2,
+    {"x":7.5,
+    "y":5.5,
     "text":"$$x$$",
     "fontSize":"22px"},
-    {"x":-0.1,
-    "y":10.5,
+    {"x":0.5,
+    "y":60.5,
     "text":"$$y=f(x)$$",
     "fontSize":"22px"},
-    {"x":1.9,
-    "y":1,
-    "text":"$$a$$",
+    {"x":2.9,
+    "y":5.5,
+    "text":"$$3$$",
     "fontSize":"18px"},
-    {"x":4.9,
-    "y":1,
-    "text":"$$b$$",
-    "fontSize":"18px"},
-    {"x":-1.2,
-    "y":4.5,
-    "text":"$$f(a)$$",
+    {"x":5.5,
+    "y":5.5,
+    "text":"$$3+h$$",
     "fontSize":"18px"},
     {"x":-1.2,
-    "y":8.5,
-    "text":"$$f(b)$$",
+    "y":15,
+    "text":"$$f(3)$$",
     "fontSize":"18px"},
-    {"x":3,
-    "y":0,
+    {"x":-1.8,
+    "y":43,
+    "text":"$$f(3+h)$$",
+    "fontSize":"18px"},
+    {"x":4.2,
+    "y":2,
     "text":"$$\\Delta x$$",
     "fontSize":"18px"},
     {"x":-1.8,
-    "y":6.3,
+    "y":30,
     "text":"$$\\Delta y$$",
+    "fontSize":"18px"},
+    {"x":1.5,
+    "y":32,
+    "text":"$$secant \\quad line$$",
+    "fontSize":"18px"},
+    {"x":4.4,
+    "y":24,
+    "text":"$$tangent \\quad line$$",
     "fontSize":"18px"}
   ];
  
   drawMathjax(svg05,foData05,xScale05,yScale05);
+
+  // Formal and alternate form of the derivative
+  var svg06 = d3.select("#svg06")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg07 = d3.select("#svg07")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
+
+  var xScale06 = d3.scale.linear()
+                       .domain([-1,9])
+                       .range([50,450]);
+  
+  var yScale06 = d3.scale.linear()
+                       .domain([3,-3])
+                       .range([50,450]);       
+
+  // 軸
+  axesData06 = { 
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale06,
+    "yScale":yScale06
+  };
+  drawAxes(svg06,axesData06);
+  drawAxes(svg07,axesData06);
+  
+  gridData06 = 
+  {
+    "xGrid":true,
+    "yGrid":true,
+    "xStep":1,
+    "yStep":1,
+    "stroke":"#0f0",
+    "strokeWidth":1,
+    "opacity":0.3,
+    "xScale":xScale06,
+    "yScale":yScale06
+  };
+  drawGrid(svg06,gridData06);
+  drawGrid(svg07,gridData06);
+
+  // graph
+  pathData06 = [];
+  for (var i=0.05;i<=9;i=i+0.05){
+    pathData06.push(new Point(i,Math.log(i)));
+  }
+  drawPath(svg06,pathData06,{"stroke":"#ff0"},xScale06,yScale06);
+  drawPath(svg07,pathData06,{"stroke":"#ff0"},xScale06,yScale06);
+
+  lineData06 = [
+    {"x1":-1,"y1":-0.3679,"x2":9,"y2":3.3109,"stroke":"#f0f"},
+    {"x1":Math.E,"y1":0,"x2":Math.E,"y2":Math.log(Math.E),"stroke":"#f0f","opacity":0.4},
+    {"x1":0,"y1":1,"x2":Math.E,"y2":1,"stroke":"#f0f","opacity":0.4},
+    {"x1":5,"y1":0,"x2":5,"y2":Math.log(5),"stroke":"#ff0","opacity":0.5},
+    {"x1":0,"y1":Math.log(5),"x2":5,"y2":Math.log(5),"stroke":"#ff0","opacity":0.5},
+  ];
+  drawLine(svg06,lineData06,xScale06,yScale06);
+  drawLine(svg07,lineData06,xScale06,yScale06);
+
+  // circle
+  var circleData06 = [
+    {"cx":Math.E,"cy":Math.log(Math.E),"r":2,"stroke":"#f0f","fillColor":"#f0f"}
+   ,{"cx":5,"cy":Math.log(5),"r":2,"stroke":"#ff0","fillColor":"#ff0"}
+  ];   
+  drawCircle(svg06,circleData06,xScale06,yScale06);
+  drawCircle(svg07,circleData06,xScale06,yScale06);
+
+  // mathjax   
+  foData06 = [
+    {"x":9.5,
+    "y":1.0,
+    "text":"$$x$$",
+    "fontSize":"22px"},
+    {"x":-0.3,
+    "y":4.5,
+    "text":"$$y$$",
+    "fontSize":"22px"},
+    {"x":7.5,
+    "y":3.5,
+    "text":"$$y=f(x)$$",
+    "fontSize":"22px"},
+    {"x":Math.E-0.1,
+    "y":0.5,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+    {"x":4.5,
+    "y":0.5,
+    "text":"$$a+h$$",
+    "fontSize":"18px"},
+    {"x":-1,
+    "y":1.9,
+    "text":"$$f(a)$$",
+    "fontSize":"18px"},
+    {"x":-2,
+    "y":2.5,
+    "text":"$$f(a+h)$$",
+    "fontSize":"18px"},
+  ];
+ 
+  drawMathjax(svg06,foData06,xScale06,yScale06);
+
+  // mathjax   
+  foData07 = [
+    {"x":9.5,
+    "y":1.0,
+    "text":"$$x$$",
+    "fontSize":"22px"},
+    {"x":-0.3,
+    "y":4.5,
+    "text":"$$y$$",
+    "fontSize":"22px"},
+    {"x":7.5,
+    "y":3.5,
+    "text":"$$y=f(x)$$",
+    "fontSize":"22px"},
+    {"x":Math.E-0.1,
+    "y":0.5,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+    {"x":4.9,
+    "y":0.5,
+    "text":"$$x$$",
+    "fontSize":"18px"},
+    {"x":-1,
+    "y":1.9,
+    "text":"$$f(a)$$",
+    "fontSize":"18px"},
+    {"x":-1,
+    "y":2.5,
+    "text":"$$f(x)$$",
+    "fontSize":"18px"},
+  ];
+ 
+  drawMathjax(svg07,foData07,xScale06,yScale06);
 
 </script>
