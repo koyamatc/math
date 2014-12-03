@@ -140,19 +140,166 @@ categories: differential
 
 -----------
 
-# Visualizing graphs of functionas and their derivatives
+# Power rule
 
 -----------
 
-## Derivative intuition
+## Power rule
+
+<div class="panel">
+ <h3>
+ $$f(x)=x^{n},n \ne 0 \to f'(x)= nx^{n-1}$$
+ </h3>
+</div>
+
+$$f(x)=x^2 \to f'(x)=2x^{2-1}=2x$$
+$$g(x)=x^5 \to g'(x)=5x^{5-1}=5x^4$$
+$$h(x)=x^-100 \to h'(x)=-100x^{-100-1}=-100x^{-101}$$
+$$i(x)=x^2.751 \to i'(x)=2.751x^{2.751-1}=2.751x^{1.751}$$
+
 <div class="row">
   <div class="col-sm-6">
     <div id="svg08"></div>
   </div>
   <div class="col-sm-6">
+    $$f(x)=xの導関数は$$
+    $$f'(x)=1 \cdot x^{1-1}=x^0=1$$
+    $$f(x)の傾きはどの点でも１ということです$$
   </div>
 </div>
 
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg09"></div>
+  </div>
+  <div class="col-sm-6">
+  $$g(x)=x^2の導関数は$$
+  $$g'(x)=2x^{2-1}=2x$$
+  $$g(x)の線上の点における傾きは2xです$$ 
+  $$g'(-2)=2 \cdot (-2) = -4$$
+  $$g'(0)=2 \cdot 0 = 0$$
+  $$g'(2)=2 \cdot 2 = 4$$  
+  </div>
+</div>
+
+-----------------------------
+
+## Derivative properties and polynomial derivatives
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg10"></div>
+  </div>
+  <div class="col-sm-6">
+    $$\frac{d}{dx}[x^n]=nx^{n-1},n \ne 0$$
+    ですが\(n=0\)のときはどうなるでしょうか
+    $$\frac{d}{dx}[x^0]=\frac{d}{dx}[1]=0$$
+    $$関数f(x)=1つまりy=1の直線で、その傾きは0です$$
+    $$y=3の直線も、傾きは0です$$
+    
+    $$\frac{d}{dx}[A]=0 \quad Aは定数$$
+    $$\frac{d}{dx}[Af(x)]=A\frac{d}{dx}[f(x)]=Af'(x)$$
+    $$\quad \frac{d}{dx}[2x^5]=2\frac{d}{dx}[x^5]=2 \cdot 5x^{5-1}
+    =10x^4$$
+    $$\frac{d}{dx}[f(x)+g(x)]
+    =\frac{d}{dx}[f(x)]+\frac{d}{dx}[g(x)]=f'(x)+g'(x)$$
+    $$\quad \frac{d}{dx}[x^2+x^{-4}]
+    =\frac{d}{dx}[x^2]+\frac{d}{dx}[x^{-4}]
+    =2x-4x^{-5}$$
+    
+  </div>
+</div>
+
+---------------
+
+## $$Proof:\frac{d}{dx}[x^n]$$
+
+$$\frac{d}{dx}[x^n]=nx^{n-1}$$
+を証明します
+
+$$曲線 x^n の任意の点xにおける接線の傾きは$$ 
+$$\lim_{\Delta x \to 0}\frac{(x+\Delta x)^n-x^n}{\Delta x}$$
+です
+
+これを２項定理を使って展開します
+$$\lim_{\Delta x \to 0}
+\frac{x^n + 
+  \left(
+    \begin{array}{c}
+      n \\\
+      1 \\\
+    \end{array}
+  \right)
+  x^{n-1}\Delta x
+  +
+  \left(
+    \begin{array}{c}
+      n \\\
+      2 \\\
+    \end{array}
+  \right)
+  x^{n-2}\Delta x^2
+  +
+  \cdots
+  +
+  \left(
+    \begin{array}{c}
+      n \\\
+      n \\\
+    \end{array}
+  \right)
+  \Delta x^n
+  - x^n
+  }
+  {\Delta x}
+$$
+$$
+\quad =\lim_{\Delta x \to 0} 
+{
+  \left(
+    \begin{array}{c}
+      n \\\
+      1 \\\
+    \end{array}
+  \right)
+  x^{n-1}
+  +
+  \left(
+    \begin{array}{c}
+      n \\\
+      2 \\\
+    \end{array}
+  \right)
+  x^{n-2}\Delta x^3
+  +
+  \cdots
+  +
+  \left(
+    \begin{array}{c}
+      n \\\
+      n \\\
+    \end{array}
+  \right)
+  \Delta x^{n-1}
+}  
+$$
+$$\quad = 
+{
+  \left(
+    \begin{array}{c}
+      n \\\
+      1 \\\
+    \end{array}
+  \right)
+  x^{n-1}
+}
+=\frac{n!}{(n-1)!1!}x^{n-1}
+$$
+### $$ \quad =nx^{n-1}$$
+
+---------------------
+
+## Chain rule
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
@@ -784,5 +931,204 @@ categories: differential
   ];
  
   drawMathjax(svg07,foData07,xScale06,yScale06);
+
+  // Power rule 
+  var svg08 = d3.select("#svg08")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
+
+  var xScale08 = d3.scale.linear()
+                       .domain([-1,5])
+                       .range([50,450]);
+  
+  var yScale08 = d3.scale.linear()
+                       .domain([5,-1])
+                       .range([50,450]);       
+
+  // 軸
+  axesData08 = { 
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale08,
+    "yScale":yScale08
+  };
+  drawAxes(svg08,axesData08);
+
+  gridData08 = 
+  {
+    "xGrid":true,
+    "yGrid":true,
+    "xStep":1,
+    "yStep":1,
+    "stroke":"#0f0",
+    "strokeWidth":1,
+    "opacity":0.3,
+    "xScale":xScale08,
+    "yScale":yScale08
+  };
+  drawGrid(svg08,gridData08);
+
+  lineData08 = [
+    {"x1":-1,"y1":-1,"x2":5,"y2":5,"stroke":"#fff"},
+    {"x1":-1,"y1":1,"x2":5,"y2":1,"stroke":"#f0f"},
+  ];
+  drawLine(svg08,lineData08,xScale08,yScale08);
+
+  // mathjax   
+  foData08 = [
+    {"x":5.5,
+    "y":1.0,
+    "text":"$$x$$",
+    "fontSize":"22px"},
+    {"x":-0.3,
+    "y":6.5,
+    "text":"$$y$$",
+    "fontSize":"22px"},
+    {"x":3,
+    "y":3.5,
+    "text":"$$y=f(x)=x$$",
+    "fontSize":"18px"},
+    {"x":3,
+    "y":1.5,
+    "text":"$$f'(x)=1$$",
+    "fontSize":"18px"},
+  ];
+ 
+  drawMathjax(svg08,foData08,xScale08,yScale08);
+
+  // g(x)=x^2
+  var svg09 = d3.select("#svg09")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
+
+  var xScale09 = d3.scale.linear()
+                       .domain([-4,4])
+                       .range([50,450]);
+  
+  var yScale09 = d3.scale.linear()
+                       .domain([10,-4])
+                       .range([50,450]);       
+
+  // 軸
+  axesData09 = { 
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[-3,-2,-1,1,2,3],
+    "yTickValues":[1,4,9],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale09,
+    "yScale":yScale09
+  };
+  drawAxes(svg09,axesData09);
+
+  gridData09 = 
+  {
+    "xGrid":true,
+    "yGrid":true,
+    "xStep":1,
+    "yStep":1,
+    "stroke":"#0f0",
+    "strokeWidth":1,
+    "opacity":0.3,
+    "xScale":xScale09,
+    "yScale":yScale09
+  };
+  drawGrid(svg09,gridData09);
+
+  pathData09 =[];
+  for (var i=-3.2;i<=3.3;i=i+0.1){
+    pathData09.push(new Point(i,i*i));
+  }
+  drawPath(svg09,pathData09,{"stroke":"#fff"},xScale09,yScale09);
+
+
+  lineData09 = [
+    {"x1":-2,"y1":-4,"x2":4,"y2":8,"stroke":"#f0f"},
+  ];
+  drawLine(svg09,lineData09,xScale09,yScale09);
+
+  // mathjax   
+  foData09 = [
+    {"x":4,
+    "y":1.0,
+    "text":"$$x$$",
+    "fontSize":"22px"},
+    {"x":-0.3,
+    "y":12.5,
+    "text":"$$y$$",
+    "fontSize":"22px"},
+    {"x":2,
+    "y":12.5,
+    "text":"$$y=g(x)=x^2$$",
+    "fontSize":"18px"},
+    {"x":2.5,
+    "y":6,
+    "text":"$$g'(x)=2x$$",
+    "fontSize":"18px"},
+  ];
+ 
+  drawMathjax(svg09,foData09,xScale09,yScale09);
+  
+  /*
+    derivative properties and polynomial derivatives
+  */
+  var svg10 = d3.select("#svg10")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
+  drawAxes(svg10,axesData08);
+
+  drawGrid(svg10,gridData08);
+
+  lineData10 = [
+    {"x1":-1,"y1":1,"x2":5,"y2":1,"stroke":"#fff"},
+    {"x1":-1,"y1":3,"x2":5,"y2":3,"stroke":"#f0f"},
+  ];
+  drawLine(svg10,lineData10,xScale08,yScale08);
+
+  // mathjax   
+  foData10 = [
+    {"x":5.5,
+    "y":1.0,
+    "text":"$$x$$",
+    "fontSize":"22px"},
+    {"x":-0.3,
+    "y":6.5,
+    "text":"$$y$$",
+    "fontSize":"22px"},
+    {"x":2,
+    "y":4.2,
+    "text":"$$y=3$$",
+    "fontSize":"18px"},
+    {"x":2,
+    "y":2.2,
+    "text":"$$y=1$$",
+    "fontSize":"18px"},
+  ];
+ 
+  drawMathjax(svg10,foData10,xScale08,yScale08);
 
 </script>
