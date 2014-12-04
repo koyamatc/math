@@ -299,7 +299,75 @@ $$
 
 ---------------------
 
-## Chain rule
+# Chain rule
+
+---------------------
+
+## Derivatives of \\(\sin x,\cos x, \tan x, e^x\\) and \\(\ln x\\) 
+
+$$\frac{d}{dx}[\sin x] = \cos x$$
+$$\frac{d}{dx}[\cos x] = -\sin x$$
+$$\frac{d}{dx}[\tan x] = \frac{1}{\cos^2 x}=\sec^2 x$$
+<br>
+$$\frac{d}{dx}[e^x]=e^x$$
+<br>
+$$\frac{d}{dx}[\ln x]=\frac{1}{x}=x^{-1}$$
+
+----------------------
+
+## Chain rule introduction
+
+$$h(x)=(\sin x)^2$$
+の導関数
+$$h'(x)=?$$
+
+$$\frac{d}{dx}[x^2]=2x 
+\quad \frac{d}{da}[a^2]=2a
+\quad \frac{d}{d\sin x}[(\sin x)^2]=2\sin x$$ 
+です
+
+まずは外側の導関数を求めます
+$$\frac{d}{d\sin x}[(\sin x)^2]=2\sin x$$
+内側の導関数を求めます
+$$\frac{d}{dx}[\sin x]=\cos x$$
+２つを連結して
+$$h'(x)= 2\sin x \cdot \cos x$$
+となります
+
+---+---+---+---+---+---+---+---+---+---+---+---+---
+
+２つの関数が組み合わさった関数\\(f(g(x))\\)の導関数を考えます
+$$\frac{d}{dx}[f(g(x))]=f'(g(x)) \cdot g'(x)$$
+外側の関数f(g(x))の導関数を求め、内側の関数g(x)の導関数と連結します
+<br>
+\\(\sqrt{3x^2-x}\\)の導関数を求めてみます
+$$\frac{d}{dx}[\sqrt{3x^2-x}]=?$$
+まず
+$$f(x)=\sqrt{x}=x^{\frac{1}{2}} \quad 
+g(x)=3x^2-x$$
+とします
+$$f'(x)=\frac{1}{2}x^{-\frac{1}{2}}$$
+$$f'(g(x))=\frac{1}{2}(3x^2-x)^{-\frac{1}{2}}$$
+$$g'(x)=6x-1$$
+\\(\sqrt{3x^2-x}\\)の導関数は２つを連結して
+$$\frac{d}{dx}[\sqrt{3x^2-x}]
+=\frac{1}{2}(3x^2-x)^{-\frac{1}{2}} \cdot (6x-1)$$
+<br>
+\\(2^x\\)の導関数を求めてみます
+$$\frac{d}{dx}[2^x]=?$$
+まず２を書き換えます
+$$2=e^{\ln 2}$$
+$$2^x=(e^{\ln 2})^x$$
+$$\frac{d}{dx}[2^x]=\frac{d}{dx}[(e^{\ln 2})^x]$$
+$$\frac{d}{d\ln 2 \cdot x}[e^{\ln 2 \cdot x}]=e^{\ln 2 \cdot x}$$
+$$\frac{d}{dx}[\ln 2 \cdot x]=\ln 2$$
+$$\frac{d}{dx}[(e^{\ln 2})^x]
+=e^{\ln 2 \cdot x} \cdot \ln 2 
+=2^x \cdot \ln 2$$
+
+
+
+
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
