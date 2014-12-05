@@ -365,6 +365,101 @@ $$\frac{d}{dx}[(e^{\ln 2})^x]
 =e^{\ln 2 \cdot x} \cdot \ln 2 
 =2^x \cdot \ln 2$$
 
+----------
+
+## Derivative of log with arbitrary base
+
+自然対数の導関数は
+$$\frac{d}{dx}[\ln x]=\frac{1}{x}$$
+
+ではbを底とする対数の導関数を求めます\\(\frac{d}{dx}[\log_{b} x]\\)
+
+まず、対数の表現を底b　から底eに変更します
+$$\log_{b} x=\frac{\log_{e} x}{\log_{e} x}=\frac{\ln x}{\ln b}$$
+したがって
+$$\frac{d}{dx}[\log_{b} x]
+=\frac{d}{dx}[\frac{1}{\ln b} \cdot \ln x]
+=\frac{1}{\ln b}\frac{d}{dx}[\ln x]
+=\frac{1}{\ln b} \cdot \frac{1}{x}
+=\frac{1}{(\ln b)x}$$
+
+上記に従うと
+$$\frac{d}{dx}[\log_{5} x]=\frac{1}{\ln 5 \cdot x}$$
+となります
+
+--------------
+
+## Chain rule with triple composition
+
+\\(\sin()\ln(x^2)\\)の導関数を求めます
+
+関数を３つに分けます
+$$f(x)=\sin(x)$$
+$$g(x)=\ln x$$
+$$h(x)=x^2$$
+
+$$\frac{d}{dx}[\sin()\ln(x^2)]=\frac{d}{dx}[f(g(h(x)))]$$
+$$ \quad = f'(g(h(x))) \cdot g'(h(x)) \cdot h'(x)$$
+$$ \quad = \cos(\ln (x^2)) \cdot \frac{1}{x^2} \cdot 2x$$
+例
+$$F(x)=\sqrt{\ln(3x)}=(\ln(3x))^{\frac{1}{2}}$$
+$$F'(x)=\frac{1}{2}(\ln(3x))^{-\frac{1}{2}} \cdot \frac{1}{3x} \cdot 3$$
+$$\quad = \frac{1}{2x\sqrt{\ln(3x)}}$$ 
+
+--------------------------
+
+# Product and quotient rules
+
+---------------------------
+
+## The product rule for derivatives
+
+２つの関数の積の導関数を求める法則は
+$$\frac{d}{dx}[f(x)g(x)]=f'(x)g(x)+f(x)g'(x)$$
+です
+\\(\frac{d}{dx}[x^2\sin x]\\)を求めます
+$$f(x)=x^2 \qquad g(x)=\sin x$$
+$$f'(x)=2x \qquad g'(x)=\cos x$$
+<br>
+$$\frac{d}{dx}[x^2\sin x] 
+=2x\sin x + x^2\cos x$$  
+
+----------------
+
+## Product rule for more than two functions
+
+$$\frac{d}{dx}[f(x)g(x)h(x)]を求めます$$
+まず\\(f(x)とg(x)h(x)\\)に分けて考えると
+$$\frac{d}{dx}[f(x)g(x)h(x)]
+=\frac{d}{dx}[f(x)]g(x)h(x)+f(x)\frac{d}{dx}[g(x)h(x)]
+=f'(x)g(x)h(x)+f(x)g'(x)h(x)+f(x)g(x)'h(x)$$
+３つの関数のうちの１つが１回づつ導関数となった積の和なので
+
+関数が４つの場合、４つの関数の積でそのうちの１つが１回筒導関数となった和
+
+ｎ個の関数の場合も同様
+
+-----------------
+
+## Quotient rule from product rule
+
+\\(\frac{d}{dx}[\frac{f(x)}{g(x)}]\\)を求めます
+$$\frac{d}{dx}[\frac{f(x)}{g(x)}]
+=\frac{d}{dx}[f(x)g(x)^{-1}]$$
+puroduct rule と　chain rule を使って
+$$=f'(x)g(x)^{-1}+f(x)(-1)g(x)^{-2}g'(x)
+=\frac{f'(x)}{g(x)}-\frac{f(x)g'(x)}{g(x)^2}
+=\frac{f'(x)g(x)}{g(x)^2}-\frac{f(x)g'(x)}{g(x)^2}$$
+$$\quad = \frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}$$
+
+<br>
+quotient ruleを使って　\\(\tan x\\)の導関数を求めます
+
+$$\frac{d}{dx}[\tan x]=\frac{d}{dx}[\frac{\sin x}{\cos x}]
+=\frac{\cos x \cos x + \sin x \sin x}{\cos^2 x}$$
+$$\quad = \frac{\cos^2 x + \sin^2 x}{\cos^2 x}
+=\frac{1}{\cos^2}=(\frac{1}{\cos x})^2=\sec^2 x$$
+
 
 
 
