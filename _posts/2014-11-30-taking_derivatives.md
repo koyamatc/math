@@ -535,6 +535,16 @@ $$\frac{dy}{dx}=\frac{2y-2x+1}{2y-2x-1}$$
 
 ## Implicit derivative of \\(y=\\cos (5x-3y)\\)
 
+$$\frac{dy}{dx}=\frac{d}{dx}[\cos (5x-3y)]$$
+$$\frac{dy}{dx}=-\sin(5x-3y) \cdot (5-3\frac{dy}{dx})$$
+$$\frac{dy}{dx}=-5\sin(5x-3y)+3\sin(5x-3y)\frac{dy}{dx}$$
+$$(1-3\sin(5x-3y))\frac{dy}{dx}=-5\sin(5x-3y)$$
+$$\frac{dy}{dx}=\frac{-5\sin(5x-3y)}{1-3\sin(5x-3y)}$$
+
+------------
+
+##
+
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
