@@ -460,8 +460,80 @@ $$\frac{d}{dx}[\tan x]=\frac{d}{dx}[\frac{\sin x}{\cos x}]
 $$\quad = \frac{\cos^2 x + \sin^2 x}{\cos^2 x}
 =\frac{1}{\cos^2}=(\frac{1}{\cos x})^2=\sec^2 x$$
 
+---------------
 
+# Implicit differentiation
 
+----------------
+
+## Implicit differentiation
+
+<div class="row">
+  <div class="col-sm-6">
+    単位円上の任意の点\((x,y)\)における接線の傾きを求めます
+    <br>
+    １つの\(x\)の値に対して\(y\)の値は２つ存在します
+    $$x^2 + y^2 = 1$$
+    $$y^2=1-x^2 \to y=\pm \sqrt{1-x}$$
+    この式を微分して傾きを求めることもできますが、今回はimplicit differentiationと呼ばれる方法を行います
+    <br>
+    \(x^2 + y^2 = 1\)の両辺を微分します
+    $$\frac{d}{dx}[x^2 + y^2]=\frac{d}{dx}[1]$$
+    $$\frac{d}{dx}[x^2]+\frac{d}{dx}[y^2]=0$$
+    $$2x+\frac{d(y^2)}{dy} \cdot \frac{dy}{dx}=0$$
+    $$2x+2y \cdot \frac{dy}{dx}=0$$
+    $$\frac{dy}{dx}=\frac{-2x}{2y}$$
+    <h3>$$\frac{dy}{dx}=-\frac{x}{y}$$</h3>
+  </div>
+  <div class="col-sm-6">
+    <div id="svg11"></div>
+    点\( (\frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2})\)での
+    接線の傾きは
+    $$-\frac{x}{y}=\frac{\frac{\sqrt{2}}{2}}{\frac{\sqrt{2}}{2}}=-1$$
+  </div>
+</div>
+
+---------------------
+
+## Showing explicit and implicit differentiation give same result
+
+関数 \\(x\\sqrt{y}=1\\) を明示的に微分すると
+
+$$x\sqrt{y}=1 \to \sqrt{y} = \frac{1}{x}
+\quad y=\frac{1}{x^2}=x^{-2}
+\quad \frac{dy}{dx}=-2x^{-3}$$
+
+暗黙の微分をすると
+$$\frac{d}{dx}[x\sqrt{y}]=\frac{d}{dx}[1]$$
+product ruleで
+$$\frac{d}{dx}[x]\cdot\sqrt{y}+x\cdot\frac{d}{dx}[\sqrt{y}]=0$$
+$$\sqrt{y}+x \cdot \frac{d(\sqrt{y})}{dy}\cdot\frac{dy}{dx}=0$$
+$$\sqrt{y}+x \cdot \frac{1}{2}y^{-\frac{1}{2}}\cdot\frac{dy}{dx}=0$$
+$$\frac{x}{2\sqrt{y}}\frac{dy}{dx}=-\sqrt{y}$$
+$$\frac{dy}{dx}=-\frac{2\sqrt{y}\sqrt{y}}{x}=-\frac{2y}{x}$$
+<br>
+\\(-2x^{-3}\\)と\\(-\frac{2y}{x}\\)はだいぶ形が違うようですが
+<br>
+\\(y=x^{-2}\\)を代入すると
+$$-\frac{2y}{x}=-\frac{2}{x^2\cdotx}=-2x^{-3}$$
+
+--------------
+
+## Implicit derivative of \\((x-y)^2=x+y-1\\)　
+
+$$\frac{d}{dx}[(x-y)^2]=\frac{d}{dx}[x+y-1]$$
+$$\frac{d(x-y)^2}{d(x-y)} \cdot \frac{d(x-y)}{dx} 
+=\frac{d}{dx}[x]+\frac{dy}{dx}-\frac{d}{dx}[1]$$
+$$2(x-y)(1-\frac{dy}{dx})=1+\frac{dy}{dx}$$
+$$(2x-2y)(1-\frac{dy}{dx})=1+\frac{dy}{dx}$$
+$$(2x-2y)+(2y-2x)\frac{dy}{dx}=1+\frac{dy}{dx}$$
+$$(2y-2x)\frac{dy}{dx}-\frac{dy}{dx}=1-(2x-2y)$$
+$$(2y-2x-1)\frac{dy}{dx}=2y-2x+1$$
+$$\frac{dy}{dx}=\frac{2y-2x+1}{2y-2x-1}$$
+
+---------
+
+## Implicit derivative of \\(y=\\cos (5x-3y)\\)
 
 
 
@@ -1293,5 +1365,65 @@ $$\quad = \frac{\cos^2 x + \sin^2 x}{\cos^2 x}
   ];
  
   drawMathjax(svg10,foData10,xScale08,yScale08);
+
+  // Implicit differentiation
+  var svg11 = d3.select("#svg11")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
+
+  var xScale11 = d3.scale.linear()
+                       .domain([-1.2,1.2])
+                       .range([50,450]);
+  
+  var yScale11 = d3.scale.linear()
+                       .domain([1.2,-1.2])
+                       .range([50,450]);       
+
+  // 軸
+  axesData11 = { 
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[-1,1],
+    "yTickValues":[-1,1],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale11,
+    "yScale":yScale11
+  };
+  drawAxes(svg11,axesData11);
+
+  circleData11 = [
+    {"cx":0,"cy":0,"r":2000/12,"stroke":"#fff"},
+    {"cx":Math.sqrt(2)/2,"cy":Math.sqrt(2)/2,"r":2,"stroke":"#0f0"}
+  ];
+  drawCircle(svg11,circleData11,xScale11,yScale11)
+
+  lineData11 = [
+    {"x1":0,"y1":0,"x2":Math.sqrt(2)/2,"y2":Math.sqrt(2)/2,"stroke":"#fff"},
+    {"x1":Math.sqrt(2)/2,"y1":Math.sqrt(2)/2,
+    "x2":Math.sqrt(2)/2-0.5,"y2":Math.sqrt(2)/2+0.5,"stroke":"#0f0"},
+    {"x1":Math.sqrt(2)/2,"y1":Math.sqrt(2)/2,
+    "x2":Math.sqrt(2)/2+0.5,"y2":Math.sqrt(2)/2-0.5,"stroke":"#0f0"},
+  ];
+  drawLine(svg11,lineData11,xScale11,yScale11);
+
+  // mathjax   
+  foData11 = [
+    {"x":0.8,
+    "y":1.2,
+    "text":"$$(\\frac{\\sqrt{2}}{2},\\frac{\\sqrt{2}}{2})$$",
+    "fontSize":"18px"},
+  ];
+ 
+  drawMathjax(svg11,foData11,xScale11,yScale11);
+
 
 </script>
