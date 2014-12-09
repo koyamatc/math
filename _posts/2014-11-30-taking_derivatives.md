@@ -543,7 +543,169 @@ $$\frac{dy}{dx}=\frac{-5\sin(5x-3y)}{1-3\sin(5x-3y)}$$
 
 ------------
 
-##
+## Implicit derivative of \\((x^2+y^2)^3=5x^2y^2\\)
+
+$$\frac{d}{dx}[(x^2+y^2)^3]=\frac{d}{dx}[5x^2y^2]$$
+$$3(x^2+y^2)^{2}(2x+2y\frac{dy}{dx})=5[2xy^2+x^2 2y\frac{dy}{dx}]$$
+$$6x(x^2+y^2)^2+6y(x^2+y^2)^2\frac{dy}{dx}
+=10xy^2+10x^2y\frac{dy}{dx}$$
+$$6y(x^2+y^2)^2\frac{dy}{dx}-10x^2y\frac{dy}{dx}
+=10xy^2-6x(x^2+y^2)^2$$
+$$(6y(x^2+y^2)^2-10x^2y)\frac{dy}{dx}=10xy^2-6x(x^2+y^2)^2$$
+$$\frac{dy}{dx}=\frac{10xy^2-6x(x^2+y^2)^2}{(6y(x^2+y^2)^2-10x^2y)}$$
+
+--------------
+
+## Finding slope of tangent line with implicit differentiation
+
+\\(x^2+(y-x)^3=28\\)の\\(x=1\\)のときの接線の傾きを求めます
+
+最初に\\(x=1\\)のときの\\(y\\)の値を求めておきます
+
+$$1^2+(y-1)^3=28$$
+$$(y-1)^3=27$$
+$$y-1=3$$
+$$y=4$$
+点\\( (1,4) \\)における接線の傾きを求めることになります
+$$\frac{d}{dx}[(x^2+(y-x)^3]=\frac{d}{dx}[28]$$
+$$2x+3(y-x)^2(\frac{dy}{dx}-1)=0$$
+$$2x+3(y-x)^2\frac{dy}{dx}-3(y-x)^2=0$$
+$$3(y-x)^2\frac{dy}{dx}=3(y-x)^2-2x$$
+$$\frac{dy}{dx}=\frac{3(y-x)^2-2x}{3(y-x)^2}
+=\frac{3(4-1)^2-2 \cdot 1}{3(4-1)^2}=\frac{25}{27}$$
+
+---------------
+
+## Implicit derivative of \\(e^{xy^2} = x - y\\)
+
+今回は別の表記法を使って導関数を求めてみます
+
+$$D=\frac{d}{dx} \quad y'=\frac{dy}{dx}$$
+とします
+$$D[e^{xy^2}] = D[x - y]$$
+chain rule
+$$e^{xy^2} \cdot D[xy^2]=1-y'$$
+product rule
+$$e^{xy^2} (y^2+x\cdot 2yy')=1-y'$$
+$$y^2e^{xy^2}+2yxe^{xy^2}y'=1-y'$$
+$$2yxe^{xy^2}y'+y'=1-y^2e^{xy^2}$$
+$$(2yxe^{xy^2}+1)y'=1-y^2e^{xy^2}$$
+$$y'=\frac{1-y^2e^{xy^2}}{2xye^{xy^2}+1}$$
+
+-------------
+
+# Derivatives of inverse functions
+
+-------------
+
+## Derivative of inverse sine
+
+\\(y=\sin^{-1} x\\)の導関数を求めます
+
+$$y=\sin^{-1} x \Leftrightarrow \sin y = x$$
+なので
+$$\frac{d}{dx}[\sin y]=\frac{d}{dx}[x]$$
+$$\cos y \frac{dy}{dx}=1$$
+$$\frac{dy}{dx}=\frac{1}{\cos y}$$
+ここで
+$$\sin^2 y + \cos^2 y = 1 \to \cos^2 y = 1 - \sin^2 y 
+\to \cos y = \sqrt{1-\sin^2 y}$$
+置き換えると
+$$\frac{dy}{dx}=\frac{1}{\sqrt{1-\sin^2 y}}
+=\frac{1}{\sqrt{1-x^2}}$$
+
+----------------
+
+## Derivative of inverse cosine
+
+\\(y=\cos^{-1} x\\)の導関数を求めます
+
+$$y=\cos^{-1} x \Leftrightarrow \cos y = x$$
+なので
+$$\frac{d}{dx}[\cos y]=\frac{d}{dx}[x]$$
+$$-\sin y \frac{dy}{dx}=1$$
+$$\frac{dy}{dx}=-\frac{1}{\sin y}$$
+ここで
+$$\sin^2 y + \cos^2 y = 1 \to \sin^2 y = 1 - \cos^2 y 
+\to \sin y = \sqrt{1-\cos^2 y}$$
+置き換えると
+$$\frac{dy}{dx}=-\frac{1}{\sqrt{1-\cos^2 y}}
+=-\frac{1}{\sqrt{1-x^2}}$$
+
+----------------
+
+## Derivative of inverse tangent
+
+$$\frac{d}{dx}[\tan x]=\sec^2 x = \frac{1}{\cos^2 x}$$
+を知っています
+$$y=\tan^{-1} x \Leftrightarrow \tan y = x$$
+$$\frac{d}{dx}[\tan y]=\frac{d}{dx}[x]$$
+$$\frac{1}{\cos^2 y}\frac{dy}{dx}=1$$
+$$\frac{dy}{dx}=\cos^2 y$$
+ここでテクニックを
+$$\frac{dy}{dx}=\frac{\cos^2 y}{\cos^2 y + \sin^2 y}$$
+\\(\cos^2 y\\)で分子分母を割ります
+$$\frac{dy}{dx}=\frac{1}{1+(\frac{\sin y}{\cos y})^2}$$
+$$\frac{dy}{dx}=\frac{1}{1+(\tan y)^2}=\frac{1}{1+x^2}$$
+
+--------------
+
+## Derivative of natural logarithm
+
+$$\frac{d}{dx}[\ln x]=?$$
+$$y=\ln x \Leftrightarrow e^y=x$$
+$$\frac{d}{dx}[e^y]=\frac{d}{dx}[x]$$
+$$e^y\frac{dy}{dx}=1$$
+$$\frac{dy}{dx}=\frac{1}{e^y}=\frac{1}{e^{\ln x}}=\frac{1}{x}$$
+
+--------------
+
+## Derivative of \\(x^{x^x}\\)
+
+\\(y=x^x\\)の導関数を求めます
+
+両辺の自然対数をとります
+$$\ln y = \ln x^x$$
+$$\ln y = x\ln x$$
+両辺を微分します
+$$\frac{d}{dx}[\ln y]=\frac{d}{dx}[x\ln x]$$
+$$\frac{1}{y}\frac{dy}{dx}=\ln x + x\frac{1}{x}$$
+$$\frac{1}{y}\frac{dy}{dx}=\ln x + 1$$
+$$\frac{dy}{dx}=y(\ln x + 1)$$
+$$\frac{dy}{dx}=x^x(\ln x + 1)$$
+<br>
+上の結果を利用して\\(y=x^{(x^x)}\\)を微分します
+
+両辺の自然対数をとります
+$$\ln y = \ln (x^{(x^x)})=x^x\ln x$$
+両辺を微分します
+$$\frac{d}{dx}[\ln y]=\frac{d}{dx}[x^x\ln x]$$
+$$\frac{1}{y}\frac{dy}{dx}=\frac{d}{dx}[x^x]\ln x + x^x\frac{d}{dx}[\ln x]$$
+$$\frac{1}{y}\frac{dy}{dx}=x^x(\ln x + 1)\ln x + x^x\frac{1}{x}$$
+$$\frac{dy}{dx}=y(x^x(\ln x + 1)\ln x + x^{x-1})$$
+$$\frac{dy}{dx}=x^{(x^x)}(x^x(\ln x + 1)\ln x + x^{x-1})$$
+
+---------------
+
+## Derivative using log properties
+
+\\(f(x)=\ln \frac{x+5}{x-1}\\)の導関数\\(f'(x)\\)を求めます
+
+簡単な方法と難しい方法の２通りあります
+
+Easy way
+
+公式 \\(\ln\frac{a}{b}=\ln a - \ln b\\)を使います
+$$f(x)=\ln \frac{x+5}{x-1}=\ln(x+5)-\ln(x-1)$$
+$$f'(x)=\frac{1}{x+5}-\frac{1}{x-1}$$
+
+Hard way
+$$f'(x)=\frac{1}{\frac{x+5}{x-1}}\frac{d}{dx}[\frac{x+5}{x-1}]$$
+$$\quad =\frac{x-1}{x+5}\frac{d}{dx}[(x+5)(x-1)^{-1}]$$
+$$\quad =\frac{x-1}{x+5}(\frac{1}{x-1}+(x+5)\frac{-1}{(x-1)^2})$$
+$$\quad =\frac{1}{x+5}-\frac{1}{x-1}$$
+
+
 
 
 
