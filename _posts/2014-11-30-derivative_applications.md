@@ -47,7 +47,7 @@ categories: differential
 
 ## Equation of normal line(法線)
 
-幾何において __normal__　とは、与えられたオブジェクトに対して垂直な線やベクトルのようなオブジェクトです。
+幾何において __normal__　とは、与えられたオブジェクトに対して垂直な線やベクトルなどのオブジェクトです。
 
 ２次元の場合、曲線上の任意の点における接線に対してその点を通る垂直な直線を法線(noramal line)といいます。
 
@@ -73,6 +73,89 @@ categories: differential
   </div>
 </div>
 
+---------------
+
+# Motion along a line
+
+導関数はその瞬間の変化の割合を計算することができます。
+時間に対し位置変化の割合が速度(velocity)で、
+時間に対し速度変化の割合が加速度(acceleration)です。
+この考え方を使って、時間の関数として表される位置にある１次元の粒の動きを分析してみましょう。
+
+-----------
+
+## Total distance traveled by a particle
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel">
+    数直線上をうごく粒子の位置は下記の式で表されるとします
+    $$s(t)=\frac{2}{3}t^3-6t^2+10t \quad (t \ge 0)$$
+    tは秒を表します
+    <br>
+    粒子は最初の６秒間に左右に動きます。\(0 \le t \le 6\)の間に粒子が移動する距離の合計はどれだけですか？
+    </div>
+    右方向に動くときを　＋　、左方向に動くときを　―　で表します。
+    <br>
+    \(s(t)\)を微分して、速度の変化を表す式を求めます
+    $$s'(t)=2t^2-12t+10$$
+    \(s'(t)=0\)のとき速度は0で、その時のtを求めます
+    $$2t^2-12t+10=0$$
+    $$t^2-6t+5=0$$
+    $$(t-1)(t-5)=0$$
+    したがって\(t=1\)または\(t=5\)のときに速度は0となります。
+    <br>
+    \(0 \le t \le 1\)で粒子は右方向へ移動し、
+    \(1 \le t \le 5\)で粒子は左方向へ移動し、
+    \(5 \le t \le 6\)で粒子は右方向へ移動します
+    <br>
+    １秒後の位置は\(4\frac{2}{3}\)なので移動距離は\(4\frac{2}{3}\)<br>
+    5秒後の位置は\(-16\frac{2}{3}\)なので、
+    まず\(4\frac{2}{3}\)で最初の位置へ戻りさらに\(16\frac{2}{3}\)移動します<br>
+    ６秒後の位置は\(-12\)なので、移動距離は\(4\frac{2}{3}\)<br>
+    距離の合計は
+    $$4\frac{2}{3}+4\frac{2}{3}+16\frac{2}{3}+4\frac{2}{3}
+    =30\frac{2}{3}$$
+  </div>
+  <div class="col-sm-6">
+    <div id="svg03"></div>
+    <table class="table">
+      <thead>
+        <th>\(t\)</th>
+        <th>\(s(t)\)</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>\(4\frac{2}{3}\)</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>\(-16\frac{2}{3}\)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>-12</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+----------
+
+## When is a particle speeding up?
+<div class="row">
+  <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
+    <div id="svg04"></div>
+  </div>
+</div>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
@@ -88,6 +171,11 @@ categories: differential
                 .attr("width",500)
                 .style("background","#000");
   var svg02 = d3.select("#svg02")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg03 = d3.select("#svg03")
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
@@ -171,11 +259,11 @@ categories: differential
   drawMathjax(svg01,foData01,xScale01,yScale01);
 
   var xScale02 = d3.scale.linear()
-                       .domain([-3,0])
+                       .domain([-1,5])
                        .range([50,450]);
   
   var yScale02 = d3.scale.linear()
-                       .domain([1,0])
+                       .domain([6,0])
                        .range([50,450]);       
 
   // 軸
@@ -197,12 +285,100 @@ categories: differential
   drawAxes(svg02,axesData02);
 
   var pathData02 =[];
-  for (var i=-3;i<=0;i=i+0.1){
+  for (var i=0.2;i<=5;i=i+0.1){
     pathData02.push(new Point(i,func01(i)));
   };
   drawPath(svg02,pathData02,{"stroke":"#fff"},xScale02,yScale02);
 
   function func01(p){
-    return Math.pow(Math.E,p)/Math.pow(p,-2);
+    return Math.pow(Math.E,p)/Math.pow(p,2);
   }
+
+  // Lines
+  lineData02 = [
+    {"x1":0,"y1":2*Math.E,"x2":2,"y2":0,"stroke":"#0f0"},
+    {"x1":2,"y1":Math.E+1/Math.E,"x2":-1,"y2":Math.E-2/Math.E,"stroke":"#f0f"},
+  ];
+  drawLine(svg02,lineData02,xScale02,yScale02);
+
+  // mathjax   
+  foData02 = [
+    {"x":-1.2,
+    "y":3.5,
+    "text":"$$normal$$",
+    "fontSize":"18px"},
+    {"x":1,
+    "y":5.3,
+    "text":"$$f(x)$$",
+    "fontSize":"18px"},
+    {"x":2,
+    "y":2,
+    "text":"$$tangent$$",
+    "fontSize":"18px"}
+  ];
+ 
+  drawMathjax(svg02,foData02,xScale02,yScale02);
+
+
+
+  /*  Total distance traveled by a particle */
+  var xScale03 = d3.scale.linear()
+                       .domain([0,7])
+                       .range([50,450]);
+  
+  var yScale03 = d3.scale.linear()
+                       .domain([11,-9])
+                       .range([50,450]);       
+
+  // 軸
+  axesData03 = { 
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[1,2,3,4,5,6],
+    "yTickValues":[10],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale03,
+    "yScale":yScale03
+  };
+  drawAxes(svg03,axesData03);
+
+  var pathData03 =[];
+  for (var i=0;i<=7;i=i+0.1){
+    pathData03.push(new Point(i,func03(i)));
+  };
+  drawPath(svg03,pathData03,{"stroke":"#fff"},xScale03,yScale03);
+
+  function func03(p){
+    return 2*p*p-12*p+10;
+  }
+
+  // mathjax   
+  foData03 = [
+    {"x":7,
+    "y":1,
+    "text":"$$t$$",
+    "fontSize":"18px"},
+    {"x":-0.5,
+    "y":15,
+    "text":"$$v$$",
+    "fontSize":"18px"},
+    {"x":-0.5,
+    "y":8,
+    "text":"右方向へ",
+    "fontSize":"18px"},
+    {"x":-0.5,
+    "y":-1,
+    "text":"左方向へ",
+    "fontSize":"18px"},
+  ];
+ 
+  drawMathjax(svg03,foData03,xScale03,yScale03);
+
+
 </script>
