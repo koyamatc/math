@@ -151,11 +151,57 @@ categories: differential
 ## When is a particle speeding up?
 <div class="row">
   <div class="col-sm-6">
+    数直線上を粒子が左右に行ったり来たりします
+    <div id="svg04"></div>
+    粒子の位置を時間で表す関数を
+    \(s(t)=t^3-6t^2+9t、ｔ \ge 0\)とします<br>
+    "スピードアップ"とはどういうことでしょうか<br>
+    右方向へスピードアップするとは、速度が正\(v(t) \gt 0\)であり、加速度が正\(a(t) \gt 0\)ということです<br>
+    左方向へスピードアップするとは、速度が負\(v(t) \lt 0\)であり、加速度が負\(a(t) \lt 0\)ということです<br>
+    速度が正（右向き）のとき、加速度が負（左向き）の場合、スピードは遅くなります、
+    速度が負（左向き）のとき、加速度が正（右向き）の場合も、スピードは遅くなります。<br>
+
+    時間に対する位置の変化は位置を表す関数\(s(t)\)の導関数で、それは速度を表しますす
+    $$s'(t)=\frac{ds}{dt}=v(t)$$
+    $$v(t)=3t^2-12t+9$$
+    このグラフを描きます、その時 \(v\)軸との交点は\(v(0)=9\)です<br>
+    \(t\)軸との交点は
+    $$3t^2-12t+9=0$$
+    両辺を３で割ります
+    $$t^2-4t+3=0 \to (t-1)(t-3)=0$$
+    $$t=1 \quad or \quad t=3$$
+    次に、時間に対する速度の変化は\(v(t)\)の導関数で、加速度を表します
+    $$s"(t)=v'(t)=a(t)=6t-12$$
+    \(v(t)\)の点\((t,v(t))\)における接線の傾きです<br>
+    スピードアップの条件は
+    $$v(t) \gt 0 \quad and \quad a(t) \gt 0 \quad または \quad 
+    v(t) \lt 0 \quad and \quad a(t) \lt 0$$
+    よって
+    $$1 \lt t \lt 2 \quad or \quad t \gt 3$$ 
   </div>
   <div class="col-sm-6">
-    <div id="svg04"></div>
+    <div id="svg05"></div>
   </div>
 </div>
+
+--------------
+
+# Critical points and graphing with calculus
+
+---------------
+
+## Minima, maxima and critical points
+
+<div class="row">
+  <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
+    <div id="svg06"></div>
+  </div>
+</div>
+
+
+
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
@@ -176,6 +222,21 @@ categories: differential
                 .attr("width",500)
                 .style("background","#000");
   var svg03 = d3.select("#svg03")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg04 = d3.select("#svg04")
+                .append("svg")
+                .attr("height",50)
+                .attr("width",500)
+                .style("background","#000");
+  var svg05 = d3.select("#svg05")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg06 = d3.select("#svg06")
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
@@ -380,5 +441,124 @@ categories: differential
  
   drawMathjax(svg03,foData03,xScale03,yScale03);
 
+  // When is a particle speeding up?
+  vecData04 = [
+    {"x1":0,"y1":25,"x2":500,"y2":25,"stroke":"#fff"}
+  ];
+  drawVectorW(svg04,vecData04);
+
+  lineData04 = [
+    {"x1":200,"y1":20,"x2":200,"y2":30,"stroke":"#fff"}
+  ];
+  drawLine(svg04,lineData04);
+  
+  circleData04 = [
+    {"cx":200,"cy":25,"r":2,"stroke":"#f0f","fillColor":"#f0f"}
+  ];
+  drawCircle(svg04,circleData04);
+
+  textData04 = [
+    {"x":196,"y":45,"text":"0","stroke":"#fff"}
+  ];
+
+  drawText(svg04,textData04);
+
+  var xScale05 = d3.scale.linear()
+                       .domain([0,5])
+                       .range([50,450]);
+  
+  var yScale05 = d3.scale.linear()
+                       .domain([11,-4])
+                       .range([50,450]);       
+
+  // 軸
+  axesData05 = { 
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[1,2,3,4],
+    "yTickValues":[9],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale05,
+    "yScale":yScale05
+  };
+  drawAxes(svg05,axesData05);
+
+  var pathData05 =[];
+  for (var i=0;i<=5;i=i+0.1){
+    pathData05.push(new Point(i,func05(i)));
+  };
+  drawPath(svg05,pathData05,{"stroke":"#fff"},xScale05,yScale05);
+
+  function func05(p){
+    return 3*p*p-12*p+9;
+  }
+
+  // mathjax   
+  foData05 = [
+    {"x":5,
+    "y":1,
+    "text":"$$t$$",
+    "fontSize":"18px"},
+    {"x":-0.5,
+    "y":13.5,
+    "text":"$$v$$",
+    "fontSize":"18px"},
+    {"x":-0.5,
+    "y":8,
+    "text":"右方向へ",
+    "fontSize":"18px"},
+    {"x":-0.5,
+    "y":-1,
+    "text":"左方向へ",
+    "fontSize":"18px"},
+  ];
+ 
+  drawMathjax(svg05,foData05,xScale05,yScale05);
+
+  // Minima, maxima and critical points
+  var xScale06 = d3.scale.linear()
+                       .domain([-1,15])
+                       .range([50,450]);
+  
+  var yScale06 = d3.scale.linear()
+                       .domain([10,-1])
+                       .range([50,450]);       
+
+  // 軸
+  axesData06 = { 
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale06,
+    "yScale":yScale06
+  };
+  drawAxes(svg06,axesData06,xScale06,yScale06);
+
+  pathData06 = [];
+  for (var i=-2;i<=2;i=i+0.1){
+    pathData06.push(new Point(i,-5/8*i*i+7/4*i+4));
+  };
+  for (var i=1.8;i<=6;i=i+0.1){
+    pathData06.push(new Point(i,2*Math.cos(i-1.7)+3.12));
+  };
+  for (var i=6;i<=11;i=i+0.1){
+    pathData06.push(new Point(i,Math.pow(i,3)/(x^2-1));
+  };
+
+  drawPath(svg06,pathData06,{"stroke":"#fff"},xScale06,yScale06);
 
 </script>
