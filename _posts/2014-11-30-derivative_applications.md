@@ -194,14 +194,85 @@ categories: differential
 
 <div class="row">
   <div class="col-sm-6">
+  関数\(f(x)\)の曲線において<br>
+  最大値は\((x_{0},f(x_{0}))\)の点でグローバル最大値（global maximum）といいます。
+  この点における接線の傾きは0、つまり\(f'(x_{0})=0\)です<br>
+  最小値は、マイナスの無限大と考えられるためグローバル最小値は、存在しません<br>
+  ローカル最小値は \((x_{1},f(x_{1}))\)の点です。この点における接線の傾きは0、つまり\(f'(x_{1})=0\)です<br>
+  ローカル最大値は \((x_{2},f(x_{2}))\)の点です。この点では接線は定義できません、つまり\(f'(x_{2})=undefined\)です<br>
+  両端（end points）ではい、\(x=a\)の点で、最大値や最小値がある、<br>
+  つまり、\(f'(a)=0\)または\(f'(a)\)は未定義となる点をcritical pointと呼びます
   </div>
   <div class="col-sm-6">
     <div id="svg06"></div>
   </div>
 </div>
 
+-----------------
+
+## Finding critical numbers
+
+\\(f(x)=xe^{-2x^2}\\)のクリティカル数を求めます
+
+\\(c\\)を\\(f\\)のクリティカル数とします
+
+\\(f'(c)=0\\) または \\(f'(c)\\)未定義のとき、\\(c\\)はクリティカル数です
+
+\\(f(x)\\)の導関数を求めます
+
+$$f'(x)=\frac{d}{dx}[x]e^{-2x^2}+\frac{d}{dx}[e^{-2x^2}]x$$
+$$\quad = e^{-2x^2}+e^{-2x^2}(-4x)x$$
+$$\quad =e^{-2x^2}(1-4x^2)$$
+$$1-4x^2=0$$
+$$1=4x^2$$
+$$x=\pm\frac{1}{2}$$
+したがって、クリティカル数は\\(\frac{1}{2},-\frac{1}{2}\\)です
+
+-----------------
+
+## Testing critical points for local extrema(極値)
+
+<div class="row">
+  <div class="col-sm-6">
+    クリティカル・ポイントが、最大値か最小値かを調べるには<br>
+    点の前後で傾きの符号がどう変わったかを調べます<br>
+    \(x=x_{0}\)では、傾きは正から負へと変わります<br>
+    \(x=x_{2}\)でも、傾きは正から負へと変わります<br>
+    傾きの符号が正から負に代わる点は最大値です<br>
+    \(x=x_{1}\)では、傾きは負から正へと変わります<br>
+    傾きの符号が負から正に代わる点は最小値です<br>
+    \(x=x_{3}\)では、傾きは負から負です<br>
+    この点はクリティカル・ポイントではありません
+  </div>
+  <div class="col-sm-6">
+    <div id="svg07"></div>
+  </div>
+</div>
 
 
+-----------------
+
+## Identifying minima and maxima for \\(x^3 - 12x + 2\\)
+
+<div class="row">
+  <div class="col-sm-6">
+   \(f(x)=x^3 - 12x + 2\) にクリティカル・ポイントがあるか調べます<br>
+   \(f(x)\)の導関数を求めます
+   $$f'(x)=3x^2-12$$
+   $$3x^2-12=0$$
+   $$3x^2=12$$
+   $$x^2=4$$
+   $$x=\pm2$$
+   $$f'(2)=0 \quad f'(-2)=0$$
+   \(f(x)\)にはクリティカル・ポイントがあります
+   $$$$
+   \(x=-2\)で、傾きの符号が正から負へ変わるので、最大値です<br>
+   \(x=2\)で、傾きの符号が負から正へ変わるので、最小値です<br>
+  </div>
+  <div class="col-sm-6">
+    <div id="svg08"></div>
+  </div>
+</div>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
@@ -237,6 +308,16 @@ categories: differential
                 .attr("width",500)
                 .style("background","#000");
   var svg06 = d3.select("#svg06")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg07 = d3.select("#svg07")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg08 = d3.select("#svg08")
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
@@ -527,7 +608,7 @@ categories: differential
                        .range([50,450]);
   
   var yScale06 = d3.scale.linear()
-                       .domain([10,-1])
+                       .domain([7,-1])
                        .range([50,450]);       
 
   // 軸
@@ -548,17 +629,148 @@ categories: differential
   };
   drawAxes(svg06,axesData06,xScale06,yScale06);
 
-  pathData06 = [];
+  var pathData06 = [];
   for (var i=-2;i<=2;i=i+0.1){
     pathData06.push(new Point(i,-5/8*i*i+7/4*i+4));
   };
   for (var i=1.8;i<=6;i=i+0.1){
     pathData06.push(new Point(i,2*Math.cos(i-1.7)+3.12));
   };
-  for (var i=6;i<=11;i=i+0.1){
-    pathData06.push(new Point(i,Math.pow(i,3)/(x^2-1));
-  };
 
   drawPath(svg06,pathData06,{"stroke":"#fff"},xScale06,yScale06);
+
+  var pathData061 = [
+    {"x":6,"y":2.3},
+    {"x":7,"y":1},
+    {"x":9,"y":0.6},
+    {"x":10,"y":0.5},
+    {"x":11,"y":0.5},
+    {"x":12,"y":0},
+    {"x":15,"y":-2},
+  ];
+  drawPath(svg06,pathData061,{"stroke":"#fff","interPolate":"basis"},xScale06,yScale06);
+
+  lineData06 = [
+    {"x1":0,"y1":5.25,"x2":3,"y2":5.25,"stroke":"#ccc"}
+   ,{"x1":3.9,"y1":1.1,"x2":5.9,"y2":1.1,"stroke":"#ccc"}
+   ,{"x1":1.4,"y1":0,"x2":1.4,"y2":5.25,"stroke":"#ccc","opacity":0.7}
+   ,{"x1":4.9,"y1":0,"x2":4.9,"y2":1.1,"stroke":"#ccc","opacity":0.7}
+   ,{"x1":6,"y1":0,"x2":6,"y2":2.3,"stroke":"#ccc","opacity":0.7}
+   ,{"x1":10.5,"y1":0,"x2":10.5,"y2":0.5,"stroke":"#ccc","opacity":0.7}
+  ]
+  drawLine(svg06,lineData06,xScale06,yScale06);
+
+  circleData06 = [
+    {"cx":1.4,"cy":5.25,"r":2,"stroke":"#f0f","fillColor":"#f0f"}
+   ,{"cx":4.9,"cy":1.1,"r":2,"stroke":"#f0f","fillColor":"#f0f"}
+   ,{"cx":6,"cy":2.3,"r":2,"stroke":"#0f0","fillColor":"#0f0"}
+   ,{"cx":10.5,"cy":0.5,"r":2,"stroke":"#0f0","fillColor":"#00f"}
+  ];
+  drawCircle(svg06,circleData06,xScale06,yScale06);
+
+  // mathjax   
+  foData06 = [
+    {"x":1,
+    "y":7,
+    "text":"$$global \\quad maximum$$",
+    "fontSize":"18px"},
+    {"x":5,
+    "y":4,
+    "text":"$$local \\quad maximum$$",
+    "fontSize":"18px"},
+    {"x":2,
+    "y":2.0,
+    "text":"$$local \\quad min$$",
+    "fontSize":"18px"},
+    {"x":13,
+    "y":0.7,
+    "text":"$$y=f(x)$$",
+    "fontSize":"16px"},
+    {"x":1.2,
+    "y":1.0,
+    "text":"$$x_{0}$$",
+    "fontSize":"16px"},
+    {"x":5.8,
+    "y":1.0,
+    "text":"$$x_{2}$$",
+    "fontSize":"16px"},
+    {"x":4.7,
+    "y":1.0,
+    "text":"$$x_{1}$$",
+    "fontSize":"16px"},
+    {"x":10.3,
+    "y":1.0,
+    "text":"$$x_{3}$$",
+    "fontSize":"16px"},
+  ];
+ 
+  drawMathjax(svg06,foData06,xScale06,yScale06);
+
+
+  drawAxes(svg07,axesData06,xScale06,yScale06);
+
+  drawPath(svg07,pathData06,{"stroke":"#fff"},xScale06,yScale06);
+
+  drawPath(svg07,pathData061,{"stroke":"#fff","interPolate":"basis"},xScale06,yScale06);
+
+  drawLine(svg07,lineData06,xScale06,yScale06);
+
+  drawCircle(svg07,circleData06,xScale06,yScale06);
+
+  drawMathjax(svg07,foData06,xScale06,yScale06);
+
+  // x^3 -12x +2
+  var xScale08 = d3.scale.linear()
+                       .domain([-3.5,3.5])
+                       .range([50,450]);
+  
+  var yScale08 = d3.scale.linear()
+                       .domain([15,-15])
+                       .range([50,450]);       
+
+  // 軸
+  axesData08 = { 
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[-2,2],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale08,
+    "yScale":yScale08
+  };
+  drawAxes(svg08,axesData08,xScale08,yScale08);
+
+  var pathData08 = [];
+  for (var i=-3;i<=3;i=i+0.1){
+    pathData08.push(new Point(i,3*i*i-12));
+  };
+  drawPath(svg08,pathData08,{"stroke":"#fff"},xScale08,yScale08);
+  var pathData081 = [];
+  for (var i=-3;i<=3;i=i+0.1){
+    pathData081.push(new Point(i,i*i*i-12*i+2));
+  };
+  drawPath(svg08,pathData081,{"stroke":"#f0f"},xScale08,yScale08);
+
+  // mathjax   
+  foData08 = [
+    {"x":-1,
+    "y":18,
+    "text":"$$f(x)$$",
+    "fontSize":"18px"},
+    {"x":2.5,
+    "y":7,
+    "text":"$$f'(x)$$",
+    "fontSize":"18px"},
+  ];
+ 
+  drawMathjax(svg08,foData08,xScale08,yScale08);
+
+
 
 </script>
