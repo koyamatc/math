@@ -174,10 +174,10 @@ categories: differential
     $$s"(t)=v'(t)=a(t)=6t-12$$
     \(v(t)\)の点\((t,v(t))\)における接線の傾きです<br>
     スピードアップの条件は
-    $$v(t) \gt 0 \quad and \quad a(t) \gt 0 \quad または \quad 
+    $$v(t) \gt 0 \quad and \quad a(t) \gt 0 \quad または \quad
     v(t) \lt 0 \quad and \quad a(t) \lt 0$$
     よって
-    $$1 \lt t \lt 2 \quad or \quad t \gt 3$$ 
+    $$1 \lt t \lt 2 \quad or \quad t \gt 3$$
   </div>
   <div class="col-sm-6">
     <div id="svg05"></div>
@@ -312,7 +312,6 @@ $$x=\pm\frac{1}{2}$$
   \(x=a\)に限りなく近づいて行くと\(f(a)\)に限りなく近づきますがそこには値がありません<br>
   \(x=b\)に限りなく近づいて行くと\(f(b)\)に限りなく近づきますがそこには値がありません<br>
   したがって、開いた区間では関数に、最大値と最小値が存在するとは限りません。
-   
   </div>
   <div class="col-sm-6">
     <div id="svg092"></div>
@@ -328,12 +327,27 @@ $$x=\pm\frac{1}{2}$$
     <div id="svg10"></div>
   </div>
   <div class="col-sm-6">
+  関数\(f(x)\)は閉じた区間\([a,b]\)において、\(x=a\)のとき最大であり<br>
+  \(x=b\)のとき最少である<br>
+  <br>
+  \(x=c\)のとはどうでしょうか<br>
+  最小値ではないが、\(x=c\)では、その近くの点よりは小さい<br>
+  これをrelative minimum または local minimum と呼ぶ
+  $$f(c)\le f(x) \quad \forall x \in (c-h,c+h), h \gt 0$$
+  \(x=d\)のとはどうでしょうか<br>
+  最大値ではないが、\(x=d\)では、その近くの点よりは大きい<br>
+  これをrelative maximum または local maximum と呼ぶ
+  $$f(d)\ge f(x) \quad \forall x \in (c-h,c+h), h \gt 0$$
   </div>
 </div>
 
 --------------
 
-## 
+# Concavity and inflection points
+
+---------------
+
+## Concavity, concave upwards and concave downwards intervals
 
 <div class="row">
   <div class="col-sm-6">
@@ -345,7 +359,7 @@ $$x=\pm\frac{1}{2}$$
 
 --------------
 
-## 
+##
 
 <div class="row">
   <div class="col-sm-6">
@@ -358,7 +372,7 @@ $$x=\pm\frac{1}{2}$$
 
 --------------
 
-## 
+##
 
 <div class="row">
   <div class="col-sm-6">
@@ -370,7 +384,7 @@ $$x=\pm\frac{1}{2}$$
 
 --------------
 
-## 
+##
 
 <div class="row">
   <div class="col-sm-6">
@@ -453,13 +467,13 @@ $$x=\pm\frac{1}{2}$$
   var xScale01 = d3.scale.linear()
                        .domain([-5,5])
                        .range([50,450]);
-  
+
   var yScale01 = d3.scale.linear()
                        .domain([6,-4])
-                       .range([50,450]);       
+                       .range([50,450]);
 
   // 軸
-  axesData01 = { 
+  axesData01 = {
     "xAxis":true,
     "yAxis":true,
     "xTickValues":[],
@@ -475,7 +489,7 @@ $$x=\pm\frac{1}{2}$$
     "yScale":yScale01
   };
   drawAxes(svg01,axesData01);
-  
+
   var pathData011 =[];
   var pathData012 =[];
   for (var i=-0.25;i>-5;i=i-0.01){
@@ -497,10 +511,10 @@ $$x=\pm\frac{1}{2}$$
   // circle
   var circleData01 = [
     {"cx":1,"cy":1,"r":2,"stroke":"#f0f","fillColor":"#f0f"}
-  ];   
+  ];
   drawCircle(svg01,circleData01,xScale01,yScale01);
 
-  // mathjax   
+  // mathjax
   foData01 = [
     {"x":5.3,
     "y":1.5,
@@ -523,19 +537,19 @@ $$x=\pm\frac{1}{2}$$
     "text":"$$f(x)=\\frac{1}{x}$$",
     "fontSize":"18px"}
   ];
- 
+
   drawMathjax(svg01,foData01,xScale01,yScale01);
 
   var xScale02 = d3.scale.linear()
                        .domain([-1,5])
                        .range([50,450]);
-  
+
   var yScale02 = d3.scale.linear()
                        .domain([6,0])
-                       .range([50,450]);       
+                       .range([50,450]);
 
   // 軸
-  axesData02 = { 
+  axesData02 = {
     "xAxis":true,
     "yAxis":true,
     "xTickValues":[],
@@ -569,7 +583,7 @@ $$x=\pm\frac{1}{2}$$
   ];
   drawLine(svg02,lineData02,xScale02,yScale02);
 
-  // mathjax   
+  // mathjax
   foData02 = [
     {"x":-1.2,
     "y":3.5,
@@ -584,7 +598,7 @@ $$x=\pm\frac{1}{2}$$
     "text":"$$tangent$$",
     "fontSize":"18px"}
   ];
- 
+
   drawMathjax(svg02,foData02,xScale02,yScale02);
 
 
@@ -593,13 +607,13 @@ $$x=\pm\frac{1}{2}$$
   var xScale03 = d3.scale.linear()
                        .domain([0,7])
                        .range([50,450]);
-  
+
   var yScale03 = d3.scale.linear()
                        .domain([11,-9])
-                       .range([50,450]);       
+                       .range([50,450]);
 
   // 軸
-  axesData03 = { 
+  axesData03 = {
     "xAxis":true,
     "yAxis":true,
     "xTickValues":[1,2,3,4,5,6],
@@ -626,7 +640,7 @@ $$x=\pm\frac{1}{2}$$
     return 2*p*p-12*p+10;
   }
 
-  // mathjax   
+  // mathjax
   foData03 = [
     {"x":7,
     "y":1,
@@ -645,7 +659,7 @@ $$x=\pm\frac{1}{2}$$
     "text":"左方向へ",
     "fontSize":"18px"},
   ];
- 
+
   drawMathjax(svg03,foData03,xScale03,yScale03);
 
   // When is a particle speeding up?
@@ -658,7 +672,7 @@ $$x=\pm\frac{1}{2}$$
     {"x1":200,"y1":20,"x2":200,"y2":30,"stroke":"#fff"}
   ];
   drawLine(svg04,lineData04);
-  
+
   circleData04 = [
     {"cx":200,"cy":25,"r":2,"stroke":"#f0f","fillColor":"#f0f"}
   ];
@@ -673,13 +687,13 @@ $$x=\pm\frac{1}{2}$$
   var xScale05 = d3.scale.linear()
                        .domain([0,5])
                        .range([50,450]);
-  
+
   var yScale05 = d3.scale.linear()
                        .domain([11,-4])
-                       .range([50,450]);       
+                       .range([50,450]);
 
   // 軸
-  axesData05 = { 
+  axesData05 = {
     "xAxis":true,
     "yAxis":true,
     "xTickValues":[1,2,3,4],
@@ -706,7 +720,7 @@ $$x=\pm\frac{1}{2}$$
     return 3*p*p-12*p+9;
   }
 
-  // mathjax   
+  // mathjax
   foData05 = [
     {"x":5,
     "y":1,
@@ -725,20 +739,20 @@ $$x=\pm\frac{1}{2}$$
     "text":"左方向へ",
     "fontSize":"18px"},
   ];
- 
+
   drawMathjax(svg05,foData05,xScale05,yScale05);
 
   // Minima, maxima and critical points
   var xScale06 = d3.scale.linear()
                        .domain([-1,15])
                        .range([50,450]);
-  
+
   var yScale06 = d3.scale.linear()
                        .domain([7,-1])
-                       .range([50,450]);       
+                       .range([50,450]);
 
   // 軸
-  axesData06 = { 
+  axesData06 = {
     "xAxis":true,
     "yAxis":true,
     "xTickValues":[],
@@ -794,7 +808,7 @@ $$x=\pm\frac{1}{2}$$
   ];
   drawCircle(svg06,circleData06,xScale06,yScale06);
 
-  // mathjax   
+  // mathjax
   foData06 = [
     {"x":1,
     "y":7,
@@ -829,7 +843,7 @@ $$x=\pm\frac{1}{2}$$
     "text":"$$x_{3}$$",
     "fontSize":"16px"},
   ];
- 
+
   drawMathjax(svg06,foData06,xScale06,yScale06);
 
 
@@ -849,13 +863,13 @@ $$x=\pm\frac{1}{2}$$
   var xScale08 = d3.scale.linear()
                        .domain([-3.5,3.5])
                        .range([50,450]);
-  
+
   var yScale08 = d3.scale.linear()
                        .domain([15,-15])
-                       .range([50,450]);       
+                       .range([50,450]);
 
   // 軸
-  axesData08 = { 
+  axesData08 = {
     "xAxis":true,
     "yAxis":true,
     "xTickValues":[-2,2],
@@ -883,7 +897,7 @@ $$x=\pm\frac{1}{2}$$
   };
   drawPath(svg08,pathData081,{"stroke":"#f0f"},xScale08,yScale08);
 
-  // mathjax   
+  // mathjax
   foData08 = [
     {"x":-1,
     "y":18,
@@ -894,7 +908,7 @@ $$x=\pm\frac{1}{2}$$
     "text":"$$f'(x)$$",
     "fontSize":"18px"},
   ];
- 
+
   drawMathjax(svg08,foData08,xScale08,yScale08);
 
 /****
@@ -903,13 +917,13 @@ $$x=\pm\frac{1}{2}$$
   var xScale09 = d3.scale.linear()
                        .domain([-1,5])
                        .range([50,450]);
-  
+
   var yScale09 = d3.scale.linear()
                        .domain([5,-1])
-                       .range([50,450]);       
+                       .range([50,450]);
 
   // 軸
-  axesData09 = { 
+  axesData09 = {
     "xAxis":true,
     "yAxis":true,
     "xTickValues":[],
@@ -927,7 +941,7 @@ $$x=\pm\frac{1}{2}$$
   drawAxes(svg09,axesData09);
   drawAxes(svg091,axesData09);
   drawAxes(svg092,axesData09);
-  
+
   var pathData09 =[];
   function func09(i){
     return 2*Math.cos(2*i)+2.5;
@@ -954,16 +968,16 @@ $$x=\pm\frac{1}{2}$$
   var circleData09 = [
     {"cx":3.14/2,"cy":func09(3.14/2),"r":2,"stroke":"#ff0","fillColor":"#ff0"},
     {"cx":3.14,"cy":func09(3.14),"r":2,"stroke":"#0ff","fillColor":"#0ff"}
-  ];   
+  ];
   drawCircle(svg09,circleData09,xScale09,yScale09);
   // circle
   circleData091 = [
     {"cx":3.14/2,"cy":func09(3.14/2),"r":3,"stroke":"#fff","fillColor":"#333"},
     {"cx":3.14,"cy":func09(3.14),"r":3,"stroke":"#fff","fillColor":"#333"}
-  ];   
+  ];
   drawCircle(svg091,circleData091,xScale09,yScale09);
 
-  // mathjax   
+  // mathjax
   foData09 = [
     {"x":0.4,
     "y":0.7,
@@ -990,7 +1004,7 @@ $$x=\pm\frac{1}{2}$$
     "text":"$$f(d)$$",
     "fontSize":"16px"}
   ];
- 
+
   drawMathjax(svg09,foData09,xScale09,yScale09);
   drawMathjax(svg091,foData09,xScale09,yScale09);
 
@@ -1006,10 +1020,10 @@ $$x=\pm\frac{1}{2}$$
   circleData092 = [
     {"cx":0.5,"cy":1,"r":3,"stroke":"#fff","fillColor":"#333"},
     {"cx":4,"cy":4,"r":3,"stroke":"#fff","fillColor":"#333"}
-  ];   
+  ];
   drawCircle(svg092,circleData092,xScale09,yScale09);
 
-  // mathjax   
+  // mathjax
   foData092 = [
     {"x":0.4,
     "y":0.7,
@@ -1028,20 +1042,20 @@ $$x=\pm\frac{1}{2}$$
     "text":"$$f(b)$$",
     "fontSize":"16px"}
   ];
- 
+
   drawMathjax(svg092,foData092,xScale09,yScale09);
 
   // Relative minima and maxima
   var xScale10 = d3.scale.linear()
-                       .domain([-100,100])
+                       .domain([-1,10])
                        .range([50,450]);
-  
+
   var yScale10 = d3.scale.linear()
-                       .domain([100,-100])
-                       .range([50,450]);       
+                       .domain([10,-1])
+                       .range([50,450]);
 
   // 軸
-  axesData10 = { 
+  axesData10 = {
     "xAxis":true,
     "yAxis":true,
     "xTickValues":[],
@@ -1060,12 +1074,66 @@ $$x=\pm\frac{1}{2}$$
 
   var pathData10 =[];
   function func10(i){
-    return -Math.pow(i,3)+6*i*i-10*i+20;
+    return (-Math.pow(i,3)*7+107*i*i-481*i+813)/48;
   }
-  for (var i=0.5;i<=100;i=i+0.1){
+  for (var i=1;i<=9;i=i+0.1){
     pathData10.push(new Point(i,func10(i)));
   };
   drawPath(svg10,pathData10,{"stroke":"#fff"},xScale10,yScale10);
 
+  // lines
+  lineData10 = [
+  {"x1":1,"y1":0,"x2":1,"y2":9,"stroke":"#f0f","opacity":0.6},
+  {"x1":0,"y1":9,"x2":1,"y2":9,"stroke":"#f0f","opacity":0.8},
+  {"x1":9,"y1":0,"x2":9,"y2":1,"stroke":"#0ff","opacity":0.8},
+  {"x1":0,"y1":1,"x2":9,"y2":1,"stroke":"#0ff","opacity":0.8},
+  {"x1":3.3,"y1":0,"x2":3.3,"y2":2.9,"stroke":"#ff0","opacity":0.8},
+  {"x1":0,"y1":2.9,"x2":3.3,"y2":2.9,"stroke":"#ff0","opacity":0.8},
+  {"x1":6.9,"y1":0,"x2":6.9,"y2":6,"stroke":"#ff0","opacity":0.8},
+  {"x1":0,"y1":6,"x2":6.9,"y2":6,"stroke":"#ff0","opacity":0.8},
+  ];
+  drawLine(svg10,lineData10,xScale10,yScale10);
+
+  // mathjax
+  foData10 = [
+  {"x":0.9,
+  "y":1,
+  "text":"$$a$$",
+  "fontSize":"18px"},
+  {"x":8.9,
+  "y":1,
+  "text":"$$b$$",
+  "fontSize":"18px"},
+  {"x":3.2,
+  "y":1,
+  "text":"$$c$$",
+  "fontSize":"18px"},
+  {"x":6.8,
+  "y":1,
+  "text":"$$d$$",
+  "fontSize":"18px"},
+  {"x":-1,
+  "y":10.5,
+  "text":"$$f(a)$$",
+  "fontSize":"16px"},
+  {"x":-1,
+  "y":2.5,
+  "text":"$$f(b)$$",
+  "fontSize":"16px"},
+  {"x":-1,
+  "y":4.5,
+  "text":"$$f(c)$$",
+  "fontSize":"16px"},
+  {"x":-1,
+  "y":7.5,
+  "text":"$$f(d)$$",
+  "fontSize":"16px"},
+  {"x":8.9,
+  "y":5,
+  "text":"$$f(x)$$",
+  "fontSize":"16px"}
+  ];
+
+  drawMathjax(svg10,foData10,xScale10,yScale10);
 
 </script>
