@@ -351,9 +351,12 @@ $$x=\pm\frac{1}{2}$$
 
 <div class="row">
   <div class="col-sm-6">
+    <div id="svg11"></div>
   </div>
   <div class="col-sm-6">
-    <div id="svg11"></div>
+    白線：関数\(f(x)\)<br>
+    ピンク：\(f(x)\)の１次導関数\(f'(x)\)<br>
+    緑線：\(f(x)\)の２次導関数\(f''(x)\),\(f'(x)\)の１次導関数<br>
   </div>
 </div>
 
@@ -458,6 +461,11 @@ $$x=\pm\frac{1}{2}$$
                 .attr("width",500)
                 .style("background","#000");
   var svg10 = d3.select("#svg10")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg11 = d3.select("#svg11")
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
@@ -1135,5 +1143,59 @@ $$x=\pm\frac{1}{2}$$
   ];
 
   drawMathjax(svg10,foData10,xScale10,yScale10);
+
+  /** CONCAVITY **/
+  var xScale11 = d3.scale.linear()
+  .domain([-1,8])
+  .range([50,450]);
+
+  var yScale11 = d3.scale.linear()
+  .domain([10,-10])
+  .range([50,450]);
+  // 軸
+  axesData11 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale11,
+    "yScale":yScale11
+  };
+
+  drawAxes(svg11,axesData11);
+  var pathData11_1 =[];
+  var pathData11_2 =[];
+  var pathData11_3 =[];
+  function func11_1(i){
+    return Math.pow(i,3)/3-4*i*i+10*i+4;
+  }
+  function func11_2(i){
+    return Math.pow(i,2)-8*i+10;
+  }
+  function func11_3(i){
+    return 2*i-8;
+  }
+
+  for (var i=0;i<=8;i=i+0.1){
+    pathData11_1.push(new Point(i,func11_1(i)));
+  };
+  drawPath(svg11,pathData11_1,{"stroke":"#fff"},xScale11,yScale11);
+  for (var i=0;i<=8;i=i+0.1){
+    pathData11_2.push(new Point(i,func11_2(i)));
+  };
+  drawPath(svg11,pathData11_2,{"stroke":"#f0f"},xScale11,yScale11);
+
+  for (var i=0;i<=8;i=i+0.1){
+    pathData11_3.push(new Point(i,func11_3(i)));
+  };
+  drawPath(svg11,pathData11_3,{"stroke":"#0f0"},xScale11,yScale11);
+
 
 </script>
