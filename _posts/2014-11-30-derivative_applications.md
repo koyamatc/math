@@ -356,7 +356,26 @@ $$x=\pm\frac{1}{2}$$
   <div class="col-sm-6">
     白線：関数\(f(x)\)<br>
     ピンク：\(f(x)\)の１次導関数\(f'(x)\)<br>
-    緑線：\(f(x)\)の２次導関数\(f''(x)\),\(f'(x)\)の１次導関数<br>
+    緑線：\(f(x)\)の２次導関数\(f''(x)\),\(f'(x)\)の１次導関数<br><br>
+
+    関数\(f(x)\)は\(x \ge 0 \)の表示範囲で、最大値と最小値があります<br>
+    それらの点はクリティカル・ポイントです<br><br>
+    最大値の近くでは\(x\)の小さい方から最大値に近づいていくと、
+    その接線の傾きは正の値が徐々に小さくなり、最大値で0となり、それを過ぎると負の値となりさらに小さくなっていきます。<br><br>
+    最少値の近くでは\(x\)の小さい方から最少値に近づいていくと、
+    その接線の傾きは負の値が徐々に大きくなり、最少値で0となり、それを過ぎると正の値となりさらに大きくなっていきます。<br><br>
+    最大値の近くでは、関数\(f(x)\)の描く曲線は下を向いた凹み(concave downward)となります<br>
+    最少値の近くでは、関数\(f(x)\)の描く曲線は上を向いた凹み(concave upward)となります<br><br>
+    
+    クリティカル・ポイントが最大値か最小値かは、凹みの向きを調べればわかります<br>
+    
+    concave downwardの条件は<br>
+    関数\(f(x)\)の接線の傾きが減少していて\(f''(x) \lt 0\)<br>
+    この時クリティカル・ポイントは最大値です。<br>
+    
+    concave upwardの条件は<br>
+    関数\(f(x)\)の接線の傾きが増加していて\(f''(x) \gt 0\)<br>
+    この時クリティカル・ポイントは最少値です。
   </div>
 </div>
 
@@ -1197,5 +1216,22 @@ $$x=\pm\frac{1}{2}$$
   };
   drawPath(svg11,pathData11_3,{"stroke":"#0f0"},xScale11,yScale11);
 
+  lineData11 = [
+    {"x1":4-Math.sqrt(6),"y1":0,
+     "x2":4-Math.sqrt(6),"y2":func11_1(4-Math.sqrt(6)),
+     "stroke":"#f0f","opacity":0.5},
+    {"x1":4+Math.sqrt(6),"y1":0,
+     "x2":4+Math.sqrt(6),"y2":func11_1(4+Math.sqrt(6)),
+     "stroke":"#f0f","opacity":0.5},
+  ]
+  drawLine(svg11,lineData11,xScale11,yScale11);
+
+  circleData11 = [
+    {"cx":4-Math.sqrt(6),"cy":func11_1(4-Math.sqrt(6)),
+     "r":3,"stroke":"#ff0","fillColor":"#ff0"},
+    {"cx":4+Math.sqrt(6),"cy":func11_1(4+Math.sqrt(6)),
+     "r":3,"stroke":"#ff0","fillColor":"#ff0"},
+  ]
+  drawCircle(svg11,circleData11,xScale11,yScale11);
 
 </script>
