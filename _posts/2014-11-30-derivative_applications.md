@@ -381,20 +381,27 @@ $$x=\pm\frac{1}{2}$$
 
 --------------
 
-##
+## An inflection point (反曲点)
 
 <div class="row">
   <div class="col-sm-6">
+    <div id="svg12"></div>
   </div>
   <div class="col-sm-6">
-    <div id="svg12"></div>
+    関数\(f(x)\)の曲線が、下向きの凹みから上向きの凹み点はどこでしょうか。<br>
+    その点は、関数\(f(x)\)の１次導関数\(f'(x)\)の極値を示す点であり<br>
+    関数\(f(x)\)の２次導関数\(f''(x)\)の符号が変わる点です。
   </div>
 </div>
 
 
 --------------
 
-##
+# Optimization with calculus
+
+--------------
+
+## Minimizing sum of squares
 
 <div class="row">
   <div class="col-sm-6">
@@ -413,6 +420,30 @@ $$x=\pm\frac{1}{2}$$
   </div>
   <div class="col-sm-6">
     <div id="svg14"></div>
+  </div>
+</div>
+
+--------------
+
+##
+
+<div class="row">
+  <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
+    <div id="svg15"></div>
+  </div>
+</div>
+
+--------------
+
+##
+
+<div class="row">
+  <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
+    <div id="svg16"></div>
   </div>
 </div>
 
@@ -485,6 +516,11 @@ $$x=\pm\frac{1}{2}$$
                 .attr("width",500)
                 .style("background","#000");
   var svg11 = d3.select("#svg11")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg12 = d3.select("#svg12")
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
@@ -1233,5 +1269,49 @@ $$x=\pm\frac{1}{2}$$
      "r":3,"stroke":"#ff0","fillColor":"#ff0"},
   ]
   drawCircle(svg11,circleData11,xScale11,yScale11);
+
+  // mathjax
+  foData11 = [
+  {"x":0.9,
+  "y":-3.3,
+  "text":"$$f''(x)$$",
+  "fontSize":"18px"},
+  {"x":3.2,
+  "y":11.5,
+  "text":"$$f(x)$$",
+  "fontSize":"16px"},
+  {"x":7,
+  "y":5,
+  "text":"$$f'(x)$$",
+  "fontSize":"16px"}
+  ];
+
+  drawMathjax(svg11,foData11,xScale11,yScale11);
+
+  /** An inflection point **/
+  drawAxes(svg12,axesData11);
+  drawPath(svg12,pathData11_1,{"stroke":"#fff"},xScale11,yScale11);
+  drawPath(svg12,pathData11_2,{"stroke":"#f0f"},xScale11,yScale11);
+  drawPath(svg12,pathData11_3,{"stroke":"#0f0"},xScale11,yScale11);
+  lineData12 = [
+    {"x1":4,"y1":0,
+     "x2":4,"y2":func11_1(4),
+     "stroke":"#f0f","opacity":0.5},
+    {"x1":4,"y1":0,
+     "x2":4,"y2":func11_2(4),
+     "stroke":"#f0f","opacity":0.5},
+  ]
+  drawLine(svg12,lineData12,xScale11,yScale11);
+  circleData12 = [
+    {"cx":4,"cy":func11_1(4),
+     "r":3,"stroke":"#ff0","fillColor":"#ff0"},
+  ]
+
+  drawCircle(svg12,circleData12,xScale11,yScale11);
+  drawMathjax(svg12,foData11,xScale11,yScale11);
+
+  /**
+    OPTIMIZATION WITH CALCULUS
+  **/
 
 </script>
