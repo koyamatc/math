@@ -403,17 +403,96 @@ $$x=\pm\frac{1}{2}$$
 
 ## Minimizing sum of squares
 
-<div class="row">
-  <div class="col-sm-6">
-  </div>
-  <div class="col-sm-6">
-    <div id="svg13"></div>
-  </div>
+<div class="panel">
+２つの数\(x\)と\(y\)があり、この積が\(xy=-16\)のとき、それぞれの２乗の和\(x^2+y^2\)の最少値を求めよ。
 </div>
+
+\\(S=x^2+y^2\\)において\\(S\\)の値を最少にする
+
+\\(xy=-16　\to y=-\frac{16}{x}\\)
+
+\\(S\\)を\\(x\\)の関数として表すと
+
+$$S(x)=x^2+(-\frac{16}{x})^2=x^2+256x^{-2}$$
+
+１次導関数を求める
+$$S'(x)=2x-512x^{-3}$$
+
+critical pointsを求める
+
+$$2x-512x^{-3}=0$$
+$$2x=512x^{-3}$$
+$$2x \cdot x^3 = 512x^{-3} \cdot x^3$$
+$$2x^4=512$$
+$$x^4=256$$
+$$x^2=16$$
+$$x=\pm 4$$
+
+\\(x=-4,y=4\\) or \\(x=4,y=-4\\)
+
+２次導関数を求める
+$$S''(x)=2+3 \cdot 512x^{-4}$$
+\\(2+3 \cdot 512x^{-4}\\)の値はすべての\\(x\\)で正なので
+
+関数\\(S(x)\\)の描くグラフは上向きの凹　\\(\cup\\)となる
+
+$$S=16 + 16 = 32$$
 
 --------------
 
-##
+##　Optimizing box volume
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg131"></div>
+    縦横\(20cm \times 30cm\) の長方形の厚紙の４隅を１辺\(xcm\)の正方形で切り取ります<br>
+  </div>
+  <div class="col-sm-6">
+    <div id="svg132"></div>
+    左図の用紙を折り曲げて容器を作ります
+  </div>
+</div>
+<div class="panel">
+この時、容器の容量が最大となる\(x\)と容積を求めよ
+</div>
+
+容積を表す関数は
+
+\\(V(x)=x(20-2x)(30-2x)\\)　と表せます
+
+\\(x\\)は、
+$$x \ge 0, \quad 20-2x \ge 0 \to 10 \ge x$$
+なので
+
+\\(0 \le x \le 10\\) です 
+
+\\(V(0)=0 \quad V(10)=0\\)
+となります
+
+\\(V(x)\\)を展開すると
+
+$$V(x)=4x^3-100x^2+600x$$
+
+１次導関数は
+$$V'(x)=12x^2-200x+600$$
+\\(12x^2-200x+600=0\\) とし
+
+解の公式を使ってクリティカル・ポイントを求めます
+
+$$x=\frac{200 \pm \sqrt{40000-4 \cdot 12 \cdot 600}}{24}$$
+$$x \approx 12.74 \quad x \approx 3.92$$
+\\(x le 10\\) なので \\(x \approx 3.92\\)
+
+２次導関数を求めます
+
+$$V''(x)=24x-200$$
+\\(V''(3.92) \lt 0 \to 下向きに凹　\cap \\) となりこの時の容積が最大になります
+
+$$V(3.92)=1056.3cm^3$$
+
+--------------
+
+## Optimizing profit at a shoe factory
 
 <div class="row">
   <div class="col-sm-6">
@@ -425,7 +504,7 @@ $$x=\pm\frac{1}{2}$$
 
 --------------
 
-##
+##　Minimizing the cost of a storage container
 
 <div class="row">
   <div class="col-sm-6">
@@ -524,6 +603,16 @@ $$x=\pm\frac{1}{2}$$
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
+                .style("background","#000");
+  var svg131 = d3.select("#svg131")
+                .append("svg")
+                .attr("height",300)
+                .attr("width",400)
+                .style("background","#000");
+  var svg132 = d3.select("#svg132")
+                .append("svg")
+                .attr("height",300)
+                .attr("width",400)
                 .style("background","#000");
 
 
@@ -1313,5 +1402,123 @@ $$x=\pm\frac{1}{2}$$
   /**
     OPTIMIZATION WITH CALCULUS
   **/
+
+  lineData131 = [
+    // corner boxes 
+    {"x1":100,"y1":50,
+     "x2":100,"y2":100,
+     "stroke":"aqua","opacity":0.5},
+    {"x1":50,"y1":100,
+     "x2":100,"y2":100,
+     "stroke":"aqua","opacity":0.5},
+    {"x1":300,"y1":50,
+     "x2":300,"y2":100,
+     "stroke":"aqua","opacity":0.5},
+    {"x1":350,"y1":100,
+     "x2":300,"y2":100,
+     "stroke":"aqua","opacity":0.5},
+    {"x1":100,"y1":250,
+     "x2":100,"y2":200,
+     "stroke":"aqua","opacity":0.5},
+    {"x1":50,"y1":200,
+     "x2":100,"y2":200,
+     "stroke":"aqua","opacity":0.5},
+    {"x1":300,"y1":250,
+     "x2":300,"y2":200,
+     "stroke":"aqua","opacity":0.5},
+    {"x1":350,"y1":200,
+     "x2":300,"y2":200,
+     "stroke":"aqua","opacity":0.5},
+  ]
+  drawLine(svg131,lineData131);
+  rectData131 = [
+    {"x":50,"y":50,"width":300,"height":200,"stroke":"#fff"}
+   ,{"x":100,"y":100,"width":200,"height":100,"stroke":"gold"}
+  ]
+  drawRect(svg131,rectData131);
+
+  // mathjax
+  foData131 = [
+  {"x":180,
+  "y":-25,
+  "text":"$$30cm$$",
+  "fontSize":"16px"},
+  {"x":0,
+  "y":100,
+  "text":"$$20cm$$",
+  "fontSize":"16px"},
+  {"x":110,
+  "y":15,
+  "text":"$$x$$",
+  "fontSize":"16px"},
+  {"x":70,
+  "y":50,
+  "text":"$$x$$",
+  "fontSize":"16px"},
+  {"x":110,
+  "y":165,
+  "text":"$$x$$",
+  "fontSize":"16px"},
+  {"x":70,
+  "y":130,
+  "text":"$$x$$",
+  "fontSize":"16px"},
+  
+  {"x":280,
+  "y":15,
+  "text":"$$x$$",
+  "fontSize":"16px"},
+  {"x":320,
+  "y":50,
+  "text":"$$x$$",
+  "fontSize":"16px"},
+  {"x":280,
+  "y":165,
+  "text":"$$x$$",
+  "fontSize":"16px"},
+  {"x":320,
+  "y":130,
+  "text":"$$x$$",
+  "fontSize":"16px"},
+  ];
+
+  drawMathjax(svg131,foData131);
+
+  lineData132 = [
+    {"x1":200,"y1":250,"x2":200,"y2":200,"stroke":"#fff"},
+    {"x1":350,"y1":230,"x2":350,"y2":185,"stroke":"#fff"},
+    {"x1":50,"y1":130,"x2":50,"y2":90,"stroke":"#fff"},
+    {"x1":190,"y1":110,"x2":190,"y2":75,"stroke":"#fff"},
+    {"x1":200,"y1":200,"x2":350,"y2":185,"stroke":"#fff"},
+    {"x1":200,"y1":250,"x2":350,"y2":230,"stroke":"#fff"},
+    {"x1":200,"y1":200,"x2":50,"y2":90,"stroke":"#fff"},
+    {"x1":200,"y1":250,"x2":50,"y2":130,"stroke":"#fff"},
+    {"x1":50,"y1":90,"x2":190,"y2":75,"stroke":"#fff"},
+    {"x1":190,"y1":75,"x2":350,"y2":185,"stroke":"#fff"},
+    {"x1":190,"y1":110,"x2":302,"y2":191,"stroke":"#fff"},
+    {"x1":96,"y1":124,"x2":190,"y2":110,"stroke":"#fff"},
+
+  ]
+  drawLine(svg132,lineData132);
+
+  // mathjax
+  foData132 = [
+  {"x":210,
+  "y":165,
+  "text":"$$x$$",
+  "fontSize":"16px"},
+  
+  {"x":250,
+  "y":200,
+  "text":"$$20-2x$$",
+  "fontSize":"16px"},
+
+  {"x":250,
+  "y":50,
+  "text":"$$30-2x$$",
+  "fontSize":"16px"}
+  ];
+
+  drawMathjax(svg132,foData132);
 
 </script>
