@@ -494,17 +494,125 @@ $$V(3.92)=1056.3cm^3$$
 
 ## Optimizing profit at a shoe factory
 
-<div class="row">
-  <div class="col-sm-6">
-  </div>
-  <div class="col-sm-6">
-    <div id="svg14"></div>
-  </div>
+<div class="panel">
+  靴製造工場で、ある靴を生産するときの利益を最大にする生産数を求める<br>
+  数量：\(x\) 単位は千<br>
+  収入：\(r(x)=10x\) １足あたり$10の収入<br>
+  費用：\(c(x)=x^3-6x^2+15x\)<br>
+  利益：\(p(x)=r(x)-c(x)=10x-x^3+6x^2-15x=-x^3+6x^2-5x\)<br>
+  \(p(x)\)が最大となる生産数\(x\)を求める
 </div>
+
+クリティカル・ポイントを求めるため１次導関数を求める
+$$p'(x)=-3x^2+12x-5$$
+$$-3x^2+12x-5=0 \to 3x^2-12x+5=0$$
+$$x=\frac{12 \pm \sqrt{144-4 \cdot 3 \cdot 5}}{6}$$
+$$x=\frac{12 \pm \sqrt{84}}{6}$$
+$$x=\frac{12 + \sqrt{84}}{6} \approx 3.528$$
+$$x=\frac{12 - \sqrt{84}}{6} \approx 0.4725$$
+
+２次導関数を求める
+$$p''(x)=-6x + 12$$
+$$p''(3.528) \lt 0 \to \cap \quad maximum$$
+$$p''(0.4725) \gt 0 \to \cup \quad minimum$$
+したがって
+$$x=3.528$$
+$$p(3.528)=13.128 \to $13,128$$
+
 
 --------------
 
 ##　Minimizing the cost of a storage container
+
+<div class="panel">
+上部の開いた長方形の容器に、材料を保管するのに\(10m^3\)必要である<br>
+容器の底面は、縦の長さは横の２倍である<br>
+保管コストは底面に対して\($10/m^2\)、側面に対しては\($6/m^2\)とすると<br>
+最も安い容器のコストを求めなさい
+</div>
+
+容量:\\(V=10m^3\\)
+
+容器の容量は、底面の横\\((x)\\)、底面の縦\\((2x)\\)、高さ((h)\\)とすると
+$$10=x \cdot 2x \cdot h　= 2x^2h \to h= \frac{5}{x^2}$$
+
+底面のコスト\\(10\cdot x \cdot 2x\\)
+
+４側面のコスト\\(2 \cdot 6 \cdot x \cdot h + 2 \cdot 6 \cdot 2x \cdot h\\)
+
+コスト=底面のコスト+４側面のコスト
+$$cost=20x^2+12xh+24xh=20x^2+36xh$$
+コストを\\(x\\)の関数として表すと
+$$c(x)=20x^2+36x\frac{5}{x^2}=20x^2+180x^{-1}$$
+
+クリティカル・ポイントを求めるため１次導関数を求める
+$$c'(x)=40x-180x^{-2}$$
+$$40x-180x^{-2}=0$$
+$$40x=\frac{180}{x-2}$$
+$$x^3=\frac{180}{40}=\frac{9}{2}$$
+$$x=(\frac{9}{2})^{\frac{1}{3}} \approx 1.65$$
+
+２次導関数を求める
+$$c''(x)=360x^{-3}+40$$
+$$c''(1.65) \gt 0 \to \cup \quad minimum$$
+
+費用は\\(c(1.65) \approx $163.54\\)
+
+容器は横\\(1.65m\\)、縦\\(3.3m\\)、高さ\\(1.84m\\)
+
+--------
+
+## Expression for combined area of triangle and square
+
+<div class="panel">
+長さ\(100m\)のワイヤがあります、このワイヤを２つに切り、片方で正三角形をつくり、
+残りで正方形を作ります<br>
+この時、２つの面積の和が最少となる正三角形のワイヤの長さは<br>
+正三角形に使用するワイヤの長さを\(x\)とします
+</div>
+
+正三角形の面積：\\(\frac{1}{2} \cdot \frac{x}{3} \cdot \frac{xsqrt{3}}{6}\\)
+
+正方形の面積：\\( (\frac{(100-x)}{4})^2 \\)
+
+面積の和：\\(A(x)=\frac{\sqrt{3}}{36}x^2 + \frac{(100-x)^2}{16}\\)
+
+１次導関数
+$$A'(x)=\frac{\sqrt{3}}{18}x + \frac{2(100-x)(-1)}{16}
+=\frac{\sqrt{3}}{18}x+\frac{1}{8}(x-100)
+=\frac{\sqrt{3}}{18}x+\frac{1}{8}x-12.5$$
+
+$$\frac{\sqrt{3}}{18}x+\frac{1}{8}x-12.5=0$$
+$$x=\frac{12.5}{\frac{\sqrt{3}}{18}+\frac{1}{8}} \approx 56.5m$$
+
+２次導関数
+$$A''(x)=\frac{\sqrt{3}}{18}+\frac{1}{8} \gt 0 \to \cup \quad minimum$$
+
+$$正三角形のワイヤの長さ56.5m$$
+
+--------
+
+# Applying differentiation in different fields
+
+--------
+
+## Derivative and marginal cost(限界費用)
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg14"></div>
+  </div>
+  <div class="col-sm-6">
+  生産数\(q\)に対して、その生産コストを表す関数\(c(q)\)を考えます<br>
+  関数\(c(q)\)の導関数は何を表しているのでしょうか？<br>
+  関数\(c(q)\)の曲線における接線の傾きです<br>
+  接線の傾きは\(\frac{\delta c}{\delta q}\)、生産数が１単位変化したときの、コストの変化を表します。これを限界費用といいます。<br>
+  </div>
+</div>
+
+-------
+
+##
 
 <div class="row">
   <div class="col-sm-6">
@@ -613,6 +721,11 @@ $$V(3.92)=1056.3cm^3$$
                 .append("svg")
                 .attr("height",300)
                 .attr("width",400)
+                .style("background","#000");
+  var svg14 = d3.select("#svg14")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
                 .style("background","#000");
 
 
@@ -1520,5 +1633,74 @@ $$V(3.92)=1056.3cm^3$$
   ];
 
   drawMathjax(svg132,foData132);
+
+  /** IN DIFFERENT FIELDS**/
+  var xScale14 = d3.scale.linear()
+  .domain([0,400])
+  .range([50,450]);
+
+  var yScale14 = d3.scale.linear()
+  .domain([10000,0])
+  .range([50,450]);
+  // 軸
+  axesData14 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale14,
+    "yScale":yScale14
+  };
+
+  drawAxes(svg14,axesData14);
+  var pathData14 =[];
+  function func14(i){
+    return 3200+0.1*i-0.001*Math.pow(i,2) + 0.0004*Math.pow(i,3);
+  }
+  function slope14(i){
+    return 0.1-0.002*i + 0.0012*Math.pow(i,2);
+  }
+
+  for (var i=0;i<=400;i=i+1){
+    pathData14.push(new Point(i,func14(i)));
+  };
+  drawPath(svg14,pathData14,{"stroke":"#fff"},xScale14,yScale14);
+
+  circleData14 = [
+    {"cx":100,"cy":func14(100),
+     "r":3,"stroke":"#ff0","fillColor":"#ff0"},
+  ]
+
+  drawCircle(svg14,circleData14,xScale14,yScale14);
+
+  lineData14 = [
+    {"x1":200,"y1":func14(100)+slope14(100)*100,
+    "x2":0,"y2":func14(100)-slope14(100)*100,"stroke":"#f0f"}
+  ];
+
+  drawLine(svg14,lineData14,xScale14,yScale14);
+
+  // mathjax
+  foData14 = [
+  {"x":350,
+  "y":600,
+  "text":"$$quantity$$",
+  "fontSize":"16px"},
+  
+  {"x":-10,
+  "y":12000,
+  "text":"$$cost(q)$$",
+  "fontSize":"16px"},
+
+  ];
+
+  drawMathjax(svg14,foData14,xScale14,yScale14);
 
 </script>
