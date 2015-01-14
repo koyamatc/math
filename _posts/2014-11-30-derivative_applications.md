@@ -612,25 +612,200 @@ $$正三角形のワイヤの長さ56.5m$$
 
 -------
 
-##
+# Related rates
+
+-------
+
+## Rates of change between radius and area of circle
+
+<div class="panel">
+池に石を落すと、落ちた所を中心に波紋が円形に広がっていゆきます<br>
+ある時点で円の半径は\(3cm\)で、波紋は１秒間に\(1cm\)広がるとします<br>
+この時の円の面積の変化はどのようになるか求めなさい
+</div>
+半径を\\(r\\)、円の面積を\\(A\\)とすると
+
+\\(r=3cm \quad \\) \\(A=\pi r^2\\)
+ 半径の変化\\(\frac{d r}{d t}=1\frac{cm}{sec} \\)
+
+時間に対する円の面積の変化を求めます\\(\frac{d A}{d t}=?\\)
+
+$$\frac{d}{d t}[A]=\frac{d}{d t}[\pi r^2]$$
+$$\frac{d A}{d t}=\pi \frac{d}{d t}[r^2]$$
+chain rule 
+$$\qquad =\pi \frac{d}{d r}[r^2]\frac{d r}{d t}$$
+$$\qquad =\pi \cdot 2r\frac{d r}{d t}$$
+$$\qquad =\pi  \cdot 2 \cdot 3 \cdot 1 = 6 \pi \frac{cm^2}{sec}$$
+
+-------------
+
+## Rate of change of baloon height
+
+<div class="panel">
+気球が垂直に上昇しています。この気球を真下の地面から\(500m\)離れた地点から見ると、
+角度\(\frqc{\pi}{4}rad\)の方向に見えます。気球は１分間に\(0.2rad\)で上昇しています、この時の気球の高さの変化率を求めなさい。
+</div>
+角度を
+$$ \theta = \frac{\pi}{4}$$
+時間に対する角度の変化率を
+$$\frac{d \theta}{d t}=0.2\frac{rad}{min}$$
+高さと角度の関係を
+$$ \tan \theta = \frac{h}{500} $$
+求めるのは時間に対する高さの変化
+$$\frac{d h}{d t}= ?$$
+時間に対する高さの変化は
+$$ \frac{d}{d t}[\tan \theta] 
+  = \frac{d}{d t}[\frac{h}{500}] $$
+$$\frac{(d \tan \theta)}{d \theta}\frac{d\theta}{dt} 
+= \frac{1}{500}\frac{d}{d h}[h]\frac{d h}{d t}$$
+$$\sec^2\theta\frac{d\theta}{dt} = \frac{1}{500}\frac{dh}{dt}$$  
+
+$$\cos(\frac{\pi}{4})=\frac{\sqrt{2}}{2}
+\quad \cos^2(\frac{\pi}{4})=\frac{2}{4}=\frac{1}{2}
+\quad \sec^2(\frac{\pi}{4})=2$$
+$$\frac{dh}{dt}=500 \cdot 2 \cdot 0.2 = 200 \frac{m}{min}$$   
+
+------------
+
+## Related rates of water pouring into cone
+
+<div class="panel">
+円錐形の容器があります。容器の口の直径は\(4cm\)、高さ\(4cm\)です。<br>
+現在高さ\(2cm\)の位置まで水が入っています、水は１秒間に\(1cm^3\)増えていきます<br>
+この時の高さの変化を求めなさい
+</div>
+円錐の体積は、高さを\\(h\\)とすると
+$$V=\frac{1}{3}(底面積)h$$
+容器の高さと底面の直径は同じなので、水の入った部分の高さと底面の直径は同じになる
+$$V=\frac{1}{3}\pi(\frac{h}{2})^{2}h
+=\frac{\pi}{12}h^3$$
+体積の変化率は
+$$\frac{dV}{dt}=1cm^3/sec$$
+求めるのは時間に対する高さの変化
+$$\frac{dh}{dt}=?$$
+
+$$\frac{dV}{dt}=\frac{d}{dt}[\frac{\pi}{12}h^3]
+=\frac{\pi}{12}\frac{d}{dt}[h^3]
+=\frac{\pi}{12}\frac{d}{dh}[h^3]\frac{dh}{dt}
+=\frac{\pi}{12}\cdot 3h^2 \cdot \frac{dh}{dt}$$
+$$1 = \frac{\pi}{12} \cdot 3 \cdot 2^2 \cdot \frac{dh}{dt}$$
+$$\frac{dh}{dt}= \frac{1}{\pi}\frac{cm}{sec}$$
+
+--------------
+
+## Rate of change of distance between approaching cars
+
+<div class="panel">
+１台の車が交差点Aに向かって南から北上しています。交差点までの距離は\(0.8km\)、時速\(60km\)で進んでいます。もう１台は、東から交差点までの距離\(0.6km\)を時速\(30km\)で向かっています<br>
+時間に対する２台の車の距離の変化を求めよ
+</div>
+交差点までの距離
+$$北上している車：y=0.8km \quad 西に向かう車:x=0.6km$$
+速度は交差点に向かっているので距離が短くなっているのでマイナスの値となり
+$$北上している車：\frac{dy}{dt}=-60km/h \quad 
+西に向かう車:\frac{dx}{dt}-30km/h$$
+２台の距離をsとっすると
+$$s^2=x^2+y^2$$
+$$s^2=0.6^2 + 0.8^2 = 1$$
+$$s=1$$
+時間に対する２台の車の距離の変化は
+$$\frac{ds}{dt}=?$$
+$$\frac{d}{dt}[s^2]=\frac{d}{dt}{x^2+y^2}$$
+$$\frac{d}{ds}[s^2]\frac{ds}{dt}
+=\frac{d}{dx}[x^2]\frac{dx}{dt}+\frac{d}{dy}[y^2]\frac{dy}{dt}$$
+$$2s\frac{ds}{dt}=2x\frac{dx}{dt}+2y\frac{dy}{dt}$$
+$$2\frac{ds}{dt}=2 \cdot 0.6 \cdot -30 + 2 \cdot 0.8 \cdot -60$$
+$$2\frac{ds}{dt}= -132$$
+$$\frac{ds}{dt}= -66\frac{km}{h}$$
+
+------------
+
+# Mean value theorem
+
+-------------
+
+## Mean value theorem
 
 <div class="row">
   <div class="col-sm-6">
+    <div id="svg15"></div>
   </div>
   <div class="col-sm-6">
-    <div id="svg15"></div>
+  関数\(f(x)\)は、閉区間\([a,b]\)で連続であり、
+  開区間\((a,b)\)で微分可能であるとすると<br>
+  点\((a,f(a))\)と点\((b,f(b))\)の平均変化率は
+  $$\frac{\Delta y}{\Delta x}=\frac{f(b)-f(a)}{b-a}$$
+  であり、これはピンクの割線の傾きである。<br>
+  これと同じ傾きを持つ接線が開区間\((a,b)\)の間にある点\((c,f(c))\)に存在する。
+  $$\frac{\Delta y}{\Delta x}=\frac{f(b)-f(a)}{b-a}=f'(c)$$
   </div>
 </div>
 
 --------------
 
+## Finding where the derivative is equal to the average change
+
+<div class="row">
+  <div class="col-sm-6">
+  $$f(x)=x^2 -6x+8　\quad [2,5]$$
+  \(c \in(2,5)\)のとき、
+  $$f'(c)=\frac{f(5)-f(2)}{5-2}$$
+  となる\(c\)を見つける
+  $$f(5)=25-30+8=3$$
+  $$f(2)=4-4=0$$
+  $$f'(c)=\frac{3}{3}=1$$
+  $$f'(x)=2x-6=1 \to x=\frac{7}{2}$$
+  </div>
+  <div class="col-sm-6">
+    <div id="svg16"></div>
+  </div>
+</div>
+
+--------------
+
+##　Getting a ticket because of the mean value theorem
+
+<div class="row">
+  <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
+    <div id="svg17"></div>
+  </div>
+</div>
+
+---------------
+
 ##
 
 <div class="row">
   <div class="col-sm-6">
   </div>
   <div class="col-sm-6">
-    <div id="svg16"></div>
+    <div id="svg18"></div>
+  </div>
+</div>
+
+---------------
+
+##
+
+<div class="row">
+  <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
+    <div id="svg19"></div>
+  </div>
+</div>
+
+---------------
+
+##
+
+<div class="row">
+  <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
+    <div id="svg20"></div>
   </div>
 </div>
 
@@ -723,6 +898,16 @@ $$正三角形のワイヤの長さ56.5m$$
                 .attr("width",400)
                 .style("background","#000");
   var svg14 = d3.select("#svg14")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg15 = d3.select("#svg15")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg16 = d3.select("#svg16")
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
@@ -1702,5 +1887,153 @@ $$正三角形のワイヤの長さ56.5m$$
   ];
 
   drawMathjax(svg14,foData14,xScale14,yScale14);
+
+  /** Mean value theorem */
+  var xScale15 = d3.scale.linear()
+  .domain([0,10])
+  .range([50,450]);
+
+  var yScale15 = d3.scale.linear()
+  .domain([60,0])
+  .range([50,450]);
+  // 軸
+  axesData15 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale15,
+    "yScale":yScale15
+  };
+
+  drawAxes(svg15,axesData15);
+  var pathData15 =[];
+  function func15(i){
+    return 20 -16 * i + 6*Math.pow(i,2) - 0.45*Math.pow(i,3);
+  };
+  function slope15(i){
+    return -16 + 12*i - 1.35 * Math.pow(i,2);
+  }
+
+  for (var i=1;i<=9;i=i+0.01){
+    pathData15.push(new Point(i,func15(i)));
+  };
+  drawPath(svg15,pathData15,{"stroke":"#fff"},xScale15,yScale15);
+
+  lineData15 = [
+    {"x1":1,"y1":func15(1),"x2":1,"y2":0,"stroke":"#0f0","opacity":0.4}
+   ,{"x1":0,"y1":func15(1),"x2":9,"y2":func15(1),"stroke":"#0f0","opacity":0.4}
+   ,{"x1":9,"y1":func15(9),"x2":9,"y2":0,"stroke":"#0f0","opacity":0.4}
+   ,{"x1":9,"y1":func15(9),"x2":0,"y2":func15(9),"stroke":"#0f0","opacity":0.4}
+   ,{"x1":2.07,"y1":func15(2.07),"x2":2.07,"y2":0,"stroke":"#0f0","opacity":0.4}
+   ,{"x1":6.82,"y1":func15(6.82),"x2":6.82,"y2":0,"stroke":"#0f0","opacity":0.4}
+   //secant
+   ,{"x1":1,"y1":func15(1),"x2":9,"y2":func15(9),"stroke":"#f0f"}
+   // tangent
+   ,{"x1":1.07,"y1":func15(2.07)-slope15(2.07),
+   "x2":3.07,"y2":slope15(2.07)+func15(2.07),"stroke":"#ff0"}
+   ,{"x1":5.82,"y1":func15(6.82)-slope15(6.82),
+   "x2":7.82,"y2":slope15(6.82)+func15(6.82),"stroke":"#ff0"}
+  ]
+  drawLine(svg15,lineData15,xScale15,yScale15);
+
+  // mathjax
+  foData15 = [
+  {"x":10.5,
+  "y":5,
+  "text":"$$x$$",
+  "fontSize":"16px"},
+  
+  {"x":-1,
+  "y":70,
+  "text":"$$y$$",
+  "fontSize":"16px"},
+
+  {"x":0.9,
+  "y":5,
+  "text":"$$a$$",
+  "fontSize":"16px"},
+  {"x":8.9,
+  "y":5,
+  "text":"$$b$$",
+  "fontSize":"16px"},
+  {"x":2,
+  "y":5,
+  "text":"$$c1$$",
+  "fontSize":"16px"},
+  {"x":6.5,
+  "y":5,
+  "text":"$$c2$$",
+  "fontSize":"16px"},
+
+  {"x":-1,
+  "y":19,
+  "text":"$$f(a)$$",
+  "fontSize":"16px"},
+  {"x":-1,
+  "y":43,
+  "text":"$$f(b)$$",
+  "fontSize":"16px"},
+  {"x":9,
+  "y":50,
+  "text":"$$f(x)$$",
+  "fontSize":"16px"},
+
+  ];
+
+  drawMathjax(svg15,foData15,xScale15,yScale15);
+
+  /** */
+  var xScale16 = d3.scale.linear()
+  .domain([0,7])
+  .range([50,450]);
+
+  var yScale16 = d3.scale.linear()
+  .domain([5,-2])
+  .range([50,450]);
+  // 軸
+  axesData16 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[2,3.5,5],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale16,
+    "yScale":yScale16
+  };
+
+  drawAxes(svg16,axesData16);
+  var pathData16 =[];
+  function func16(i){
+    return 8 -6*i + Math.pow(i,2);
+  };
+  function slope16(i){
+    return -6 + 2*i;
+  }
+
+  for (var i=2;i<=5;i=i+0.01){
+    pathData16.push(new Point(i,func16(i)));
+  };
+  drawPath(svg16,pathData16,{"stroke":"#fff"},xScale16,yScale16);
+
+  lineData16 = [
+    {"x1":2,"y1":func16(2),"x2":5,"y2":func16(5),"stroke":"#f0f"}
+   ,{"x1":2.5,"y1":func16(3.5)-slope16(3.5),
+   "x2":4.5,"y2":func16(3.5)+slope16(3.5),"stroke":"#0f0"}
+  ]
+  drawLine(svg16,lineData16,xScale16,yScale16);
 
 </script>
