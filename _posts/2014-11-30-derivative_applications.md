@@ -763,7 +763,126 @@ $$\frac{ds}{dt}= -66\frac{km}{h}$$
 
 --------------
 
-##　Getting a ticket because of the mean value theorem
+##　Maximizing function at value
+
+<div class="panel">
+関数\(f\)はすべての\(x\)で微分可能である。<br>
+\(f(-2)=3\)で\(f'(x) \le 7\)であるとき<br>
+\(f(10)\)がとりうる最大値は？
+</div>
+
+$$\frac{\Delta y}{\Delta x}=\frac{f(10)-3}{10-(-2)} \le 7$$
+$$\frac{f(10)-3}{12} \le 7$$
+$$f(10)-3 \le 84$$
+$$f(10) \le 87$$
+最大値は \\(87\\)
+
+
+--------------
+
+# L'Hôpital's rule
+
+--------------
+
+## Introduction to l'Hôpital's rule
+
+導関数を用いて極限を導き出す方法
+
+<div class="panel">
+$$\lim_{x \to c}f(x)=0 \quad and \quad \lim_{x \to c}g(x)=0$$
+$$\lim_{x \to c}\frac{f(x)}{g(x)}=\frac{0}{0}　\dots 不定形$$ 
+$$and \quad \lim_{x \to c}\frac{f'(x)}{g'(x)}=L$$
+$$\lim_{x \to c}\frac{f'(x)}{g'(x)} \quad に値が存在し、Lであるならば$$
+$$\lim_{x \to c}\frac{f(x)}{g(x)}=L$$  
+</div>
+
+<div class="panel">
+$$\lim_{x \to c}f(x)=\pm \infty 
+\quad and \quad \lim_{x \to c}g(x)=\pm \infty$$
+$$\lim_{x \to c}\frac{f(x)}{g(x)}=\frac{\pm \infty}{\pm \infty}　\dots 不定形$$ 
+$$and \quad \lim_{x \to c}\frac{f'(x)}{g'(x)}=L$$
+$$\lim_{x \to c}\frac{f'(x)}{g'(x)} \quad に値が存在し、Lであるならば$$
+$$\lim_{x \to c}\frac{f(x)}{g(x)}=L$$  
+</div>
+
+例
+
+$$\lim_{x \to 0}\frac{\sin x}{x}=\frac{0}{0} \dots 不定形$$
+$$f(x)=\sin x \quad g(x)=x$$
+$$f'(x)=\cos x \quad g(x)=1$$
+$$\lim_{x \to 0}\frac{f'(x)}{g'(x)}
+=\lim_{x \to 0}\frac{\cos x}{1}=\frac{1}{1}=1$$
+したがって極限は
+$$\lim_{x \to 0}\frac{\sin x}{x}=1$$
+
+---------------
+例１
+
+$$\lim_{x \to 0}\frac{2\sin x - \sin 2x}{x-\sin x} = \frac{0}{0}$$
+不定形となるので、ロピタルの定理を使います、
+$$\lim_{x \to 0}\frac{2\cos x - 2\cos 2x}{1-\cos x}
+=\frax{2-2}{1-1}=\frac{0}{0}$$
+$$\lim_{x \to 0}\frac{-2\sin x + 4\sin 2x}{\sin x}=\frac{0}{0}$$
+$$\lim_{x \to 0}\frac{-2\cos x + 8\cos 2x}{cos x}
+=\frac{6}{1}=6$$
+したがって
+$$\lim_{x \to 0}\frac{2\sin x - \sin 2x}{x-\sin x} = 6$$
+
+--------------
+例２
+
+$$\lim_{x \to \infty}\frac{4x^2-5x}{1-3x^2}=\frac{\infty}{-\infty}$$
+$$\lim_{x \to \infty}\frac{8x-5}{-6x}=\frac{\infty}{-\infty}$$
+$$\lim_{x \to \infty}\frac{8}{-6}=-\frac{4}{3}$$
+$$\lim_{x \to \infty}\frac{4x^2-5x}{1-3x^2}=-\frac{4}{3}$$
+次のように考えることもできます
+$$\lim_{x \to \infty}\frac{4x^2-5x}{1-3x^2}
+=\lim_{x \to \infty}\frac{x^2(4-\frac{5}{x})}{x^2(\frac{1}{x^2}-3)}
+=\lim_{x \to \infty}\frac{4-\frac{5}{x}}{\frac{1}{x^2}-3}
+=\lim_{x \to \infty}\frac{4-0}{0-3}=-\frac{4}{3}$$
+
+--------------
+例３
+
+$$\lim_{x \to 1}(\frac{x}{x-1}-\frac{1}{\ln x})
+=\frac{1}{0}-\frac{1}{0}$$
+式を変形します
+$$\lim_{x \to 1}(\frac{x\ln x-(x-1)}{(x-1)\ln x})=\frac{0}{0}$$
+$$\lim_{x \to 1}\frac{\ln x + x\frac{1}{x} - 1}{\ln x + \frac{1}{x}(x-1)}=\lim_{x \to 1}\frac{\ln x}{\ln x + \frac{x-1}{x}}=\frac{0}{0}$$
+$$\lim_{x \to 1}
+\frac{\frac{1}{x}}
+{\frac{1}{x}-x^{-2}(x-1)+\frac{1}{x}}=\frac{1}{1+1}=\frac{1}{2}$$
+
+--------------
+
+## L'Hopital's Rule to solve for variable
+
+--------------
+
+##
+
+--------------
+
+## Proof of special case of l'Hôpital's rule
+
+<div class="panel">
+$$f(a)=0 \quad f'(a) は存在する$$
+$$g(a)=0 \quad g'(a) は存在する$$
+この場合
+$$\lim_{x \to a}\frac{f(x)}{g(x)}=\frac{f'(a)}{g'(a)}$$
+が成り立つ
+</div>
+$$f'(a)=\lim_{x \to a} \frac{f(x)-f(a)}{x-a}$$
+$$g'(a)=\lim_{x \to a} \frac{g(x)-g(a)}{x-a}$$
+
+$$\frac{f'(a)}{g'(a)}
+=\lim_{x \to a}
+\frac{\frac{f(x)-f(a)}{x-a}}
+     {\frac{g(x)-g(a)}{x-a}}     
+=\lim_{x \to a}\frac{f(x)-f(a)}{g(x)-g(a)}
+=\lim_{x \to a}\frac{f(x)-0}{g(x)-0}
+=\lim_{x \to a}\frac{f(x)}{g(x)}$$
+
 
 <div class="row">
   <div class="col-sm-6">
