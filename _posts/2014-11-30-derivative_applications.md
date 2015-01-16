@@ -883,12 +883,36 @@ $$\frac{f'(a)}{g'(a)}
 =\lim_{x \to a}\frac{f(x)-0}{g(x)-0}
 =\lim_{x \to a}\frac{f(x)}{g(x)}$$
 
+---------------
+
+# Local linearization
+
+---------------
+
+## Local linearization
 
 <div class="row">
   <div class="col-sm-6">
+  \(\sqrt{4.36} \approx ?\) のおおよその値を電卓を使わずに求めます<br>
+  \(\sqrt{4} = 2 \) は、わかっています、これより少し大きな値だと予想されます<br>
+  $$f(x)=\sqrt{x}=x^{\frac{1}{2}}$$
+  とします
+  \((4,f(4))\)を通る接線を\(L(x)\)としその傾きは
+  $$f'(x)=\frac{1}{2}x^{-\frac{1}{2}}$$
+  $$f'(4)=\frac{1}{2} \cdot \frac{1}{2}=\frac{1}{4}$$
+  この接線上の点\(x\)は
+  $$L(x)=f(4)+f'(4)(x-4)$$
+  なので
+  $$L(4.36)=2 \cdot \frac{1}{4} \cdot 0.36$$
+  $$L(4.36)=2.09$$
+  したがって
+  $$f(4.36) \approx 2.09$$
+  電卓で計算すると\(2.088\)です<br>
+  この方法を　Local linearization といいます
   </div>
   <div class="col-sm-6">
     <div id="svg17"></div>
+    $$白線:f(x) \quad 緑線:接線$$
   </div>
 </div>
 
@@ -1027,6 +1051,11 @@ $$\frac{f'(a)}{g'(a)}
                 .attr("width",500)
                 .style("background","#000");
   var svg16 = d3.select("#svg16")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg17 = d3.select("#svg17")
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
@@ -2154,5 +2183,57 @@ $$\frac{f'(a)}{g'(a)}
    "x2":4.5,"y2":func16(3.5)+slope16(3.5),"stroke":"#0f0"}
   ]
   drawLine(svg16,lineData16,xScale16,yScale16);
+
+  /** Local linearization */
+  var xScale17 = d3.scale.linear()
+  .domain([3.9,4.5])
+  .range([50,450]);
+
+  var yScale17 = d3.scale.linear()
+  .domain([2.12,1.99])
+  .range([50,450]);
+
+  var pathData17 =[];
+  function func17(i){
+    return Math.sqrt(i);
+  };
+  function slope17(i){
+    return Math.pow(i,-1/2)/2;
+  }
+
+  for (var i=0;i<=5;i=i+0.01){
+    pathData17.push(new Point(i,func17(i)));
+  };
+  drawPath(svg17,pathData17,{"stroke":"#fff"},xScale17,yScale17);
+
+  lineData17 = [
+   {"x1":3,"y1":func17(4)-slope17(4),
+   "x2":5,"y2":func17(4)+slope17(4),"stroke":"#f0f"}
+  ]
+  drawLine(svg17,lineData17,xScale17,yScale17);
+
+  circleData17 = [
+    {"cx":4,"cy":func17(4),"r":2,"stroke":"#fff","fillColor":"#fff"}
+   ,{"cx":4.36,"cy":func17(4)+slope17(4)*0.36,"r":2,"stroke":"#fff","fillColor":"#fff"}
+  ];
+
+  drawCircle(svg17,circleData17,xScale17,yScale17);
+
+  // mathjax
+  foData17 = [
+  {"x":4,
+  "y":2.01,
+  "text":"$$(4,f(4))$$",
+  "fontSize":"16px"},
+  
+  {"x":4.1,
+  "y":2.11,
+  "text":"$$(4.36,L(4.36))$$",
+  "fontSize":"16px"},
+
+  ];
+
+  drawMathjax(svg17,foData17,xScale17,yScale17);
+
 
 </script>
