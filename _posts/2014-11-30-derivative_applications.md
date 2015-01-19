@@ -855,14 +855,6 @@ $$\lim_{x \to 1}
 
 --------------
 
-## L'Hopital's Rule to solve for variable
-
---------------
-
-##
-
---------------
-
 ## Proof of special case of l'Hôpital's rule
 
 <div class="panel">
@@ -913,42 +905,6 @@ $$\frac{f'(a)}{g'(a)}
   <div class="col-sm-6">
     <div id="svg17"></div>
     $$白線:f(x) \quad 緑線:接線$$
-  </div>
-</div>
-
----------------
-
-##
-
-<div class="row">
-  <div class="col-sm-6">
-  </div>
-  <div class="col-sm-6">
-    <div id="svg18"></div>
-  </div>
-</div>
-
----------------
-
-##
-
-<div class="row">
-  <div class="col-sm-6">
-  </div>
-  <div class="col-sm-6">
-    <div id="svg19"></div>
-  </div>
-</div>
-
----------------
-
-##
-
-<div class="row">
-  <div class="col-sm-6">
-  </div>
-  <div class="col-sm-6">
-    <div id="svg20"></div>
   </div>
 </div>
 
