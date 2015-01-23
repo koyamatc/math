@@ -128,47 +128,107 @@ $$V(3)=3+C=-3 \to c = -6 \to V(t)=t-6$$
 $$S(t)=\int V(t)dt=\int(t-6)dt=\frac{t^2}{2}-6t+C$$
 $$S(2)=2-12+C=-10 \to C=0 \to S(t)=\frac{t^2}{2}-6t$$   
 
+---------
 
+# Area under a rate function as net change
 
+-------
 
+## Area under rate function
 
 <div class="row">
+  <div class="col-sm-6">
+    時間に対して移動する距離の割合を表す関数\(r(t)\)があります
+    $$r(t)=\frac{距離の変化}{時間の変化}=\frac{\Delta s}{\Delta t}
+    \to \Delta s = r(t) \cdot \Delta t$$
+    $$r(t)=5m/s \quad t=4s$$
+    のとき、移動距離はどのくらいでしょう
+    $$ \Delta s = r(t) \cdot \Delta t $$
+    $$\quad = 5m/s \cdot 4s = 20m$$ 
+    右のグラフでいうと、直線\(r=5\)と\(t=4\)に囲まれた面積と同じになります
+  </div>
   <div class="col-sm-6">
     <div id="svg02"></div>
   </div>
-  <div class="col-sm-6">
-  </div>
 </div>
-
---------
-
-## 
-
---------
-
-## 
 
 <div class="row">
   <div class="col-sm-6">
-    <div id="svg03"></div>
+  条件が
+  $$0 \le t \le 2 \quad r=2m/s$$
+  $$t \gt 2 \quad r=5m/s$$
+  $$ t=5s$$
+  のときはどうでしょうか
+  $$2 \cdot 2 + 5 \cdot 3 = 4 + 15 = 19m$$ 
   </div>
   <div class="col-sm-6">
+    <div id="svg03"></div>
   </div>
 </div>
+
+--------
+
+# Riemann sums (リーマン和)
+
+--------
+
+## Simple Riemann approximation using rectangles
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg04"></div>
   </div>
   <div class="col-sm-6">
+    <div class="panel">
+      関数\(f(x)=x^2+1\)で\(x \in[1,3]\)において、曲線の下側にできる面積を求める
+    </div>
+    グラフのように、\(x\)を等間隔に分割した長方形を描きます<br>
+    その長方形の面積の合計を求めます<br>
+    曲線と長方形の間には隙間がありますが、\(x\)の間隔を小さくしていくことで、隙間も小さくなります<br>
+    今回は４個の長方形で求めてみます<br>
+    $$xの幅: \Delta x = \frac{3-1}{4} = \frac{1}{2}$$
+    $$おおよその面積=
+    f(1)\cdot\Delta x +
+    f(1.5)\cdot\Delta x +
+    f(2)\cdot\Delta x +
+    f(2.5)\cdot\Delta x
+    $$
+    $$
+    = 
+    2\cdot\frac{1}{2} +
+    3.25\cdot\frac{1}{2} +
+    5\cdot\frac{1}{2} +
+    7.25\cdot\frac{1}{2}
+    =
+    8.75
+    $$
   </div>
 </div>
+
+--------
+
+## Generalizing a left Riemann sum with equally spaced rectangles
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg05"></div>
   </div>
   <div class="col-sm-6">
+    前のことを一般化します<br>
+    関数\(f(x)でx \in[a,b]\)の範囲で、曲線の下側にできる面積を求めます<br>
+    長方形は左側の境界線を元に描きます
+    $$xの幅:\Delta x = \frac{b-a}{n}$$
+    $$
+    面積\approx 
+    f(x_{0})\Delta x +
+    f(x_{1})\Delta x +
+    f(x_{2})\Delta x +
+    f(x_{3})\Delta x +
+    \cdots +
+    f(x_{n-1})\Delta x
+    $$
+    $$\approx \sum_{i=1}^{n}f(x_{n-1})\Delta x$$
+    となります
   </div>
 </div>
 
@@ -352,6 +412,27 @@ $$S(2)=2-12+C=-10 \to C=0 \to S(t)=\frac{t^2}{2}-6t$$
                 .attr("height",500)
                 .attr("width",500)
                 .style("background","#000");
+  var svg02 = d3.select("#svg02")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg03 = d3.select("#svg03")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg04 = d3.select("#svg04")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg05 = d3.select("#svg05")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
 
   var xScale01 = d3.scale.linear()
                        .domain([-5,5])
@@ -361,7 +442,6 @@ $$S(2)=2-12+C=-10 \to C=0 \to S(t)=\frac{t^2}{2}-6t$$
                        .domain([5,-5])
                        .range([50,450]);       
 
-  // 軸
   // 軸
   axesData01 = {
     "xAxis":true,
@@ -429,5 +509,324 @@ $$S(2)=2-12+C=-10 \to C=0 \to S(t)=\frac{t^2}{2}-6t$$
  
   drawMathjax(svg01,foData01,xScale01,yScale01);
  
+  /** Area under rate function **/
+  var xScale02 = d3.scale.linear()
+                       .domain([0,6])
+                       .range([50,450]);
+  
+  var yScale02 = d3.scale.linear()
+                       .domain([6,0])
+                       .range([50,450]);       
+
+  // 軸
+  axesData02 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[1,2,3,4,5],
+    "yTickValues":[1,2,3,4,5],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale02,
+    "yScale":yScale02
+  };
+  drawAxes(svg02,axesData02);
+
+  rectData02 = [
+    {"x":0,"y":5,"width":4*400/6,"height":5*400/6,
+    "fillColor":"#f0f","opacity":0.3}
+  ];
+  drawRect(svg02,rectData02,xScale02,yScale02);
+
+  lineData02 = [
+    {"x1":0,"y1":5,"x2":6,"y2":5,"stroke":"gold"},
+    {"x1":4,"y1":0,"x2":4,"y2":5,"stroke":"lime"},
+  ];
+
+  drawLine(svg02,lineData02,xScale02,yScale02);
+
+  // text   
+  foData02 = [
+    {"x":0,
+    "y":7.3,
+    "text":"$$r$$",
+    "fontSize":"24px"},
+    {"x":6.2,
+    "y":1,
+    "text":"$$t$$",
+    "fontSize":"24px"},
+    {"x":1.5,
+    "y":4,
+    "text":"$$20$$",
+    "fontSize":"48px"},
+  ];
+ 
+  drawMathjax(svg02,foData02,xScale02,yScale02);
+
+  drawAxes(svg03,axesData02);
+
+  rectData03 = [
+    {"x":0,"y":2,"width":2*400/6,"height":2*400/6,
+    "fillColor":"#f0f","opacity":0.3}
+   ,{"x":2,"y":5,"width":3*400/6,"height":5*400/6,
+    "fillColor":"#f0f","opacity":0.3}
+  ];
+  drawRect(svg03,rectData03,xScale02,yScale02);
+
+  lineData03 = [
+    {"x1":0,"y1":2,"x2":2,"y2":2,"stroke":"gold"},
+    {"x1":2,"y1":5,"x2":5,"y2":5,"stroke":"gold"},
+    {"x1":2,"y1":0,"x2":2,"y2":2,"stroke":"lime"},
+    {"x1":5,"y1":0,"x2":5,"y2":5,"stroke":"lime"},
+  ];
+
+  drawLine(svg03,lineData03,xScale02,yScale02);
+
+  // text   
+  foData03 = [
+    {"x":0,
+    "y":7.3,
+    "text":"$$r$$",
+    "fontSize":"24px"},
+    {"x":6.2,
+    "y":1,
+    "text":"$$t$$",
+    "fontSize":"24px"},
+    {"x":2.5,
+    "y":4,
+    "text":"$$19$$",
+    "fontSize":"48px"},
+  ];
+ 
+  drawMathjax(svg03,foData03,xScale02,yScale02);
+
+/** Riemann sums **/
+  var xScale04 = d3.scale.linear()
+                       .domain([0,3.5])
+                       .range([50,450]);
+  
+  var yScale04 = d3.scale.linear()
+                       .domain([11,0])
+                       .range([50,450]);
+
+  // 軸
+  axesData04 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[1,2,3],
+    "yTickValues":[5,10],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale04,
+    "yScale":yScale04
+  };
+  drawAxes(svg04,axesData04);
+
+  var pathData04 = [];
+  function func04(i){
+    return i*i + 1;
+  };
+
+  // x^2 + 1
+  for (var i = 0; i <= 3.5; i=i+0.1) {
+    pathData04.push(new Point(i,func04(i)));
+  };
+  
+  drawPath(svg04,pathData04,{"stroke":"lime"},xScale04,yScale04);
+
+
+  rectData04 = [
+    {"x":1,"y":func04(1),"width":0.5*400/3.5,"height":func04(1)*400/11,
+    "fillColor":"#f0f","opacity":0.3},
+    {"x":1.5,"y":func04(1.5),"width":0.5*400/3.5,"height":func04(1.5)*400/11,
+    "fillColor":"#f0f","opacity":0.3},
+    {"x":2,"y":func04(2),"width":0.5*400/3.5,"height":func04(2)*400/11,
+    "fillColor":"#f0f","opacity":0.3},
+    {"x":2.5,"y":func04(2.5),"width":0.5*400/3.5,"height":func04(2.5)*400/11,
+    "fillColor":"#f0f","opacity":0.3}
+  ];
+  
+  drawRect(svg04,rectData04,xScale04,yScale04);
+
+  lineData04 = [
+    {"x1":1,"y1":0,"x2":1,"y2":func04(1),"stroke":"gold"},
+    {"x1":1.5,"y1":0,"x2":1.5,"y2":func04(1.5),"stroke":"gold"},
+    {"x1":2,"y1":0,"x2":2,"y2":func04(2),"stroke":"gold"},
+    {"x1":2.5,"y1":0,"x2":2.5,"y2":func04(2.5),"stroke":"gold"},
+    {"x1":3,"y1":0,"x2":3,"y2":func04(3),"stroke":"gold"},
+  ];
+
+  drawLine(svg04,lineData04,xScale04,yScale04);
+
+  // text   
+  foData04 = [
+    {"x":0,
+    "y":14,
+    "text":"$$y$$",
+    "fontSize":"24px"},
+    {"x":3.5,
+    "y":1.5,
+    "text":"$$x$$",
+    "fontSize":"24px"},
+  ];
+ 
+  drawMathjax(svg04,foData04,xScale04,yScale04);
+
+/** Genralizing left Riemann sum **/
+  var xScale05 = d3.scale.linear()
+                       .domain([0,7])
+                       .range([50,450]);
+  
+  var yScale05 = d3.scale.linear()
+                       .domain([2,0])
+                       .range([50,450]);
+
+  // 軸
+  axesData05 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale05,
+    "yScale":yScale05
+  };
+  drawAxes(svg05,axesData05);
+
+  var pathData05 = [];
+  function func05(i){
+    return Math.cos(i-0.4)/2 + 1;
+  };
+
+  // x^2 + 1
+  for (var i = 0; i <= 7; i=i+0.1) {
+    pathData05.push(new Point(i,func05(i)));
+  };
+  
+  drawPath(svg05,pathData05,{"stroke":"lime"},xScale05,yScale05);
+
+
+  rectData05 = [
+    {"x":1,"y":func05(1),"width":0.5*400/7,"height":func05(1)*400/2,
+    "fillColor":"#f0f","opacity":0.3},
+    {"x":1.5,"y":func05(1.5),"width":0.5*400/7,"height":func05(1.5)*400/2,
+    "fillColor":"#f0f","opacity":0.3},
+    {"x":2,"y":func05(2),"width":0.5*400/7,"height":func05(2)*400/2,
+    "fillColor":"#f0f","opacity":0.3},
+    {"x":2.5,"y":func05(2.5),"width":0.5*400/7,"height":func05(2.5)*400/2,
+    "fillColor":"#f0f","opacity":0.3},
+    {"x":5.5,"y":func05(5.5),"width":0.5*400/7,"height":func05(5.5)*400/2,
+    "fillColor":"#f0f","opacity":0.3}
+  ];
+  
+  drawRect(svg05,rectData05,xScale05,yScale05);
+
+  lineData05 = [
+    {"x1":1,"y1":0,"x2":1,"y2":func05(1),"stroke":"gold"},
+    {"x1":1.5,"y1":0,"x2":1.5,"y2":func05(1.5),"stroke":"gold"},
+    {"x1":2,"y1":0,"x2":2,"y2":func05(2),"stroke":"gold"},
+    {"x1":2.5,"y1":0,"x2":2.5,"y2":func05(2.5),"stroke":"gold"},
+    {"x1":3,"y1":0,"x2":3,"y2":func05(3),"stroke":"gold"},
+    {"x1":5.5,"y1":0,"x2":5.5,"y2":func05(5.5),"stroke":"gold"},
+    {"x1":6,"y1":0,"x2":6,"y2":func05(6),"stroke":"gold"},
+  ];
+
+  drawLine(svg05,lineData05,xScale05,yScale05);
+
+  // text   
+  foData05 = [
+    {"x":6.3,
+    "y":2,
+    "text":"$$y=f(x)$$",
+    "fontSize":"18px"},
+    {"x":0,
+    "y":2.5,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":7,
+    "y":0.2,
+    "text":"$$x$$",
+    "fontSize":"20px"},
+    {"x":0.8,
+    "y":0.25,
+    "text":"$$x_{0}$$",
+    "fontSize":"18px"},
+    {"x":1.3,
+    "y":0.25,
+    "text":"$$x_{1}$$",
+    "fontSize":"18px"},
+    {"x":1.8,
+    "y":0.25,
+    "text":"$$x_{2}$$",
+    "fontSize":"18px"},
+    {"x":2.3,
+    "y":0.25,
+    "text":"$$x_{3}$$",
+    "fontSize":"18px"},
+    {"x":2.8,
+    "y":0.25,
+    "text":"$$x_{4}$$",
+    "fontSize":"18px"},
+    {"x":5.0,
+    "y":0.25,
+    "text":"$$x_{n-1}$$",
+    "fontSize":"18px"},
+    {"x":5.8,
+    "y":0.25,
+    "text":"$$x_{n}$$",
+    "fontSize":"18px"},
+
+    {"x":0.9,
+    "y":0.15,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+    {"x":5.9,
+    "y":0.15,
+    "text":"$$b$$",
+    "fontSize":"18px"},
+
+    {"x":1.1,
+    "y":0.5,
+    "text":"$$1$$",
+    "fontSize":"22px"},
+    {"x":1.6,
+    "y":0.5,
+    "text":"$$2$$",
+    "fontSize":"22px"},
+    {"x":2.1,
+    "y":0.5,
+    "text":"$$3$$",
+    "fontSize":"22px"},
+    {"x":2.6,
+    "y":0.5,
+    "text":"$$4$$",
+    "fontSize":"22px"},
+    {"x":4.1,
+    "y":0.5,
+    "text":"$$\\cdots$$",
+    "fontSize":"22px"},
+    {"x":5.6,
+    "y":0.5,
+    "text":"$$n$$",
+    "fontSize":"22px"},
+
+  ];
+ 
+  drawMathjax(svg05,foData05,xScale05,yScale05);
 
 </script>
