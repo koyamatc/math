@@ -234,36 +234,84 @@ $$S(2)=2-12+C=-10 \to C=0 \to S(t)=\frac{t^2}{2}-6t$$
 
 --------
 
-## 
+## Rectangular and trapezoidal Riemann approximations
 
 <div class="row">
   <div class="col-sm-6">
-    <div id="svg06"></div>
+    <div id="svg061"></div>
   </div>
   <div class="col-sm-6">
+    左側の辺を基準にした長方形では
+    $$\Delta x = \frac{b-a}{n}$$
+    $$\sum_{i=1}^{n}f(x_{i-1})\Delta x$$
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg062"></div>
+  </div>
+  <div class="col-sm-6">
+    右側の辺を基準にした長方形では
+    $$\Delta x = \frac{b-a}{n}$$
+    $$\sum_{i=1}^{n}f(x_{i})\Delta x$$
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg063"></div>
+  </div>
+  <div class="col-sm-6">
+    中間点の高さを基準にした長方形では
+    $$\Delta x = \frac{b-a}{n}$$
+    $$\sum_{i=1}^{n}\frac{f(x_{i}+x_{i-1})}{2}\Delta x$$
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg064"></div>
+  </div>
+  <div class="col-sm-6">
+    台形で面積を計算する場合
+    $$\Delta x = \frac{b-a}{n}$$
+    $$\sum_{i=1}^{n}\frac{f(x_{i})+f(x_{i-1})}{2}\Delta x$$
   </div>
 </div>
 
 --------
 
-# 
-
---------
-
-## 
+## Trapezoidal approximation of area under curve
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg07"></div>
   </div>
   <div class="col-sm-6">
+    $$f(x)=\sqrt{x-1}$$
+    $$\Delta x = \frac{6-1}{5}=\frac{5}{5}=1$$
+    $$
+    Area \approx 
+    \frac{f(1)+f(2)}{2}\Delta x +
+    \frac{f(2)+f(3)}{2}\Delta x +
+    \frac{f(3)+f(4)}{2}\Delta x +
+    \frac{f(4)+f(5)}{2}\Delta x +
+    \frac{f(5)+f(6)}{2}\Delta x 
+    $$
+    $$
+    \quad \approx
+    \frac{\Delta x}{2}(f(1)+2f(2)+2f(3)+2f(4)+2f(5)+f(6))
+    $$
+    $$
+    \quad \approx
+    \frac{1}{2}(0 + 2 + 2\sqrt{2} + 2\sqrt{3} + 4 + \sqrt{5})
+    $$
+    $$
+    \quae \approx 7.26
+    $$
+
+
+
   </div>
 </div>
-
---------
-
-## 
-
 
 --------
 
@@ -428,6 +476,31 @@ $$S(2)=2-12+C=-10 \to C=0 \to S(t)=\frac{t^2}{2}-6t$$
                 .attr("width",500)
                 .style("background","#000");
   var svg05 = d3.select("#svg05")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg061 = d3.select("#svg061")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg062 = d3.select("#svg062")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg063 = d3.select("#svg063")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg064 = d3.select("#svg064")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg07 = d3.select("#svg07")
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
@@ -828,5 +901,297 @@ $$S(2)=2-12+C=-10 \to C=0 \to S(t)=\frac{t^2}{2}-6t$$
   ];
  
   drawMathjax(svg05,foData05,xScale05,yScale05);
+
+  // trapezoid rule
+  var xScale06 = d3.scale.linear()
+                       .domain([0,10])
+                       .range([50,450]);
+  
+  var yScale06 = d3.scale.linear()
+                       .domain([10,0])
+                       .range([50,450]);
+
+  // 軸
+  axesData06 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale06,
+    "yScale":yScale06
+  };
+  drawAxes(svg061,axesData06);
+  drawAxes(svg062,axesData06);
+  drawAxes(svg063,axesData06);
+  drawAxes(svg064,axesData06);
+
+  var pathData06 = [];
+  function func06(i){
+    return Math.pow(i-3,2)/9+3
+  };
+
+  for (var i = 1; i <= 9; i=i+0.1) {
+    pathData06.push(new Point(i,func06(i)));
+  };
+  
+
+  rectData061 = [
+    {"x":1,"y":func06(1),"width":0.5*40,"height":func06(1)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":1.5,"y":func06(1.5),"width":0.5*40,"height":func06(1.5)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":2,"y":func06(2),"width":0.5*40,"height":func06(2)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":2.5,"y":func06(2.5),"width":0.5*40,"height":func06(2.5)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":3,"y":func06(3),"width":0.5*40,"height":func06(3)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":3.5,"y":func06(3.5),"width":0.5*40,"height":func06(3.5)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":8,"y":func06(8),"width":0.5*40,"height":func06(8)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":8.5,"y":func06(8.5),"width":0.5*40,"height":func06(8.5)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+
+  ];
+  drawRect(svg061,rectData061,xScale06,yScale06);
+
+  rectData062 = [
+    {"x":1,"y":func06(1.5),"width":0.5*40,"height":func06(1.5)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":1.5,"y":func06(2),"width":0.5*40,"height":func06(2)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":2,"y":func06(2.5),"width":0.5*40,"height":func06(2.5)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":2.5,"y":func06(3),"width":0.5*40,"height":func06(3)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":3,"y":func06(3.5),"width":0.5*40,"height":func06(3.5)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":3.5,"y":func06(4),"width":0.5*40,"height":func06(4)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":8,"y":func06(8.5),"width":0.5*40,"height":func06(8.5)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":8.5,"y":func06(9),"width":0.5*40,"height":func06(9)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+
+  ];
+  drawRect(svg062,rectData062,xScale06,yScale06);
+
+  rectData063 = [
+    {"x":1,"y":func06(1.25),"width":0.5*40,"height":func06(1.25)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":1.5,"y":func06(1.75),"width":0.5*40,"height":func06(1.75)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":2,"y":func06(2.25),"width":0.5*40,"height":func06(2.25)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":2.5,"y":func06(2.75),"width":0.5*40,"height":func06(2.75)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":3,"y":func06(3.25),"width":0.5*40,"height":func06(3.25)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":3.5,"y":func06(3.75),"width":0.5*40,"height":func06(3.75)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":8,"y":func06(8.25),"width":0.5*40,"height":func06(8.25)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+    {"x":8.5,"y":func06(8.75),"width":0.5*40,"height":func06(8.75)*40,
+    "stroke":"#ff0","fillColor":"#f0f","opacity":0.7},
+
+  ];
+  drawRect(svg063,rectData063,xScale06,yScale06);
+
+  lineData064 = [
+    {"x1":1,"y1":0,"x2":1,"y2":func06(1),"stroke":"gold"},
+    {"x1":1.5,"y1":0,"x2":1.5,"y2":func06(1.5),"stroke":"gold"},
+    {"x1":2,"y1":0,"x2":2,"y2":func06(2),"stroke":"gold"},
+    {"x1":2.5,"y1":0,"x2":2.5,"y2":func06(2.5),"stroke":"gold"},
+    {"x1":3,"y1":0,"x2":3,"y2":func06(3),"stroke":"gold"},
+    {"x1":3.5,"y1":0,"x2":3.5,"y2":func06(3.5),"stroke":"gold"},
+    {"x1":4,"y1":0,"x2":4,"y2":func06(4),"stroke":"gold"},
+    {"x1":8,"y1":0,"x2":8,"y2":func06(8),"stroke":"gold"},
+    {"x1":8.5,"y1":0,"x2":8.5,"y2":func06(8.5),"stroke":"gold"},
+    {"x1":9,"y1":0,"x2":9,"y2":func06(9),"stroke":"gold"},
+
+    {"x1":1,"y1":func06(1),"x2":1.5,"y2":func06(1.5),"stroke":"gold"},
+    {"x1":1.5,"y1":func06(1.5),"x2":2,"y2":func06(2),"stroke":"gold"},
+    {"x1":2,"y1":func06(2),"x2":2.5,"y2":func06(2.5),"stroke":"gold"},
+    {"x1":2.5,"y1":func06(2.5),"x2":3,"y2":func06(3),"stroke":"gold"},
+    {"x1":3,"y1":func06(3),"x2":3.5,"y2":func06(3.5),"stroke":"gold"},
+    {"x1":3.5,"y1":func06(3.5),"x2":4,"y2":func06(4),"stroke":"gold"},
+    {"x1":8,"y1":func06(8),"x2":8.5,"y2":func06(8.5),"stroke":"gold"},
+    {"x1":8.5,"y1":func06(8.5),"x2":9,"y2":func06(9),"stroke":"gold"},
+  ];
+
+  drawPath(svg064,pathData06,{"stroke":"lime"},xScale06,yScale06);
+  drawLine(svg064,lineData064,xScale06,yScale06);
+
+  drawPath(svg061,pathData06,{"stroke":"lime"},xScale06,yScale06);
+  drawPath(svg062,pathData06,{"stroke":"lime"},xScale06,yScale06);
+  drawPath(svg063,pathData06,{"stroke":"lime"},xScale06,yScale06);
+
+  // text   
+  foData06 = [
+    {"x":-0.3,
+    "y":12,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":10,
+    "y":1.2,
+    "text":"$$x$$",
+    "fontSize":"20px"},
+    {"x":0.8,
+    "y":1,
+    "text":"$$x_{0}$$",
+    "fontSize":"16px"},
+    {"x":1.3,
+    "y":1,
+    "text":"$$x_{1}$$",
+    "fontSize":"16px"},
+    {"x":1.8,
+    "y":1,
+    "text":"$$x_{2}$$",
+    "fontSize":"16px"},
+    {"x":2.3,
+    "y":1,
+    "text":"$$x_{3}$$",
+    "fontSize":"16px"},
+    {"x":2.8,
+    "y":1,
+    "text":"$$x_{4}$$",
+    "fontSize":"16px"},
+    {"x":3.3,
+    "y":1,
+    "text":"$$x_{5}$$",
+    "fontSize":"16px"},
+    {"x":3.8,
+    "y":1,
+    "text":"$$x_{6}$$",
+    "fontSize":"16px"},
+
+    {"x":8.0,
+    "y":1.3,
+    "text":"$$x_{n-1}$$",
+    "fontSize":"16px"},
+    {"x":8.8,
+    "y":1,
+    "text":"$$x_{n}$$",
+    "fontSize":"16px"},
+
+    {"x":0.9,
+    "y":0.5,
+    "text":"$$a$$",
+    "fontSize":"16px"},
+    {"x":8.9,
+    "y":0.5,
+    "text":"$$b$$",
+    "fontSize":"16px"},
+
+    {"x":1.1,
+    "y":3,
+    "text":"$$1$$",
+    "fontSize":"20px"},
+    {"x":1.6,
+    "y":3,
+    "text":"$$2$$",
+    "fontSize":"20px"},
+    {"x":2.1,
+    "y":3,
+    "text":"$$3$$",
+    "fontSize":"20px"},
+    {"x":2.6,
+    "y":3,
+    "text":"$$4$$",
+    "fontSize":"20px"},
+    {"x":3.1,
+    "y":3,
+    "text":"$$5$$",
+    "fontSize":"20px"},
+    {"x":3.6,
+    "y":3,
+    "text":"$$6$$",
+    "fontSize":"20px"},
+    {"x":5.6,
+    "y":3,
+    "text":"$$\\cdots$$",
+    "fontSize":"20px"},
+    {"x":7.8,
+    "y":3,
+    "text":"$$n-1$$",
+    "fontSize":"12px"},
+    {"x":8.6,
+    "y":3,
+    "text":"$$n$$",
+    "fontSize":"20px"},
+
+  ];
+ 
+  drawMathjax(svg061,foData06,xScale06,yScale06);
+  drawMathjax(svg062,foData06,xScale06,yScale06);
+  drawMathjax(svg063,foData06,xScale06,yScale06);
+  drawMathjax(svg064,foData06,xScale06,yScale06);
+ 
+ // Trapezoidal approximation of area under curve
+  var xScale07 = d3.scale.linear()
+                       .domain([0,7])
+                       .range([50,450]);
+  
+  var yScale07 = d3.scale.linear()
+                       .domain([4,0])
+                       .range([50,450]);
+
+  // 軸
+  axesData07 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[1,2,3,4,5,6],
+    "yTickValues":[1,2,3],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale07,
+    "yScale":yScale07
+  };
+  drawAxes(svg07,axesData07);
+
+  var pathData07 = [];
+  function func07(i){
+    return Math.sqrt(i-1)
+  };
+
+  for (var i = 1; i <= 6.5; i=i+0.05) {
+    pathData07.push(new Point(i,func07(i)));
+  };
+  drawPath(svg07,pathData07,{"stroke":"lime","strokeWidth":3},xScale07,yScale07); 
+
+  lineData07 = [
+    {"x1":1,"y1":0,"x2":1,"y2":func07(1),"stroke":"gold"},
+    {"x1":2,"y1":0,"x2":2,"y2":func07(2),"stroke":"gold"},
+    {"x1":3,"y1":0,"x2":3,"y2":func07(3),"stroke":"gold"},
+    {"x1":4,"y1":0,"x2":4,"y2":func07(4),"stroke":"gold"},
+    {"x1":5,"y1":0,"x2":5,"y2":func07(5),"stroke":"gold"},
+    {"x1":6,"y1":0,"x2":6,"y2":func07(6),"stroke":"gold"},
+
+    {"x1":1,"y1":func07(1),"x2":2,"y2":func07(2),"stroke":"gold"},
+    {"x1":2,"y1":func07(2),"x2":3,"y2":func07(3),"stroke":"gold"},
+    {"x1":3,"y1":func07(3),"x2":4,"y2":func07(4),"stroke":"gold"},
+    {"x1":4,"y1":func07(4),"x2":5,"y2":func07(5),"stroke":"gold"},
+    {"x1":5,"y1":func07(5),"x2":6,"y2":func07(6),"stroke":"gold"},
+  ];
+
+  drawLine(svg07,lineData07,xScale07,yScale07);
+
+
+
+
+
 
 </script>
