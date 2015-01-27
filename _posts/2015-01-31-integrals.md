@@ -308,40 +308,84 @@ $$S(2)=2-12+C=-10 \to C=0 \to S(t)=\frac{t^2}{2}-6t$$
     \quae \approx 7.26
     $$
 
-
-
   </div>
 </div>
 
 --------
 
-# 
+## Riemann sums and integrals
 
---------
+左を基準としたリーマン和は以下のようにあらわせました
+$$
+区間[a,b]で、\Delta x = \frac{b-a}{n}のとき
+\sum_{i=1}^{n}f(x_{i-1})\Delta x
+$$
+ここで　\\(\Delta x \\)が限りなく小さくなったら、
+つまり長方形の数が無限大になったら\\(n \to \infty\\)は、より面積を正確に表せます
 
-## 
+$$
+\lim_{n \to \infty}\sum_{i=1}^{n}f(x_{i-1})\Delta x
+$$
+
+これが積分の定義になります
+
+---------------
+
+## Evaluating definite integral from graph
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg08"></div>
   </div>
   <div class="col-sm-6">
+    $$\int_{-3}^{3}\sqrt{9-x^2}dx$$
+    を求めます、これは\(y=\sqrt{9-x^2}\)の曲線の下にできる面積です<br>
+    この式に手を加えます
+    $$y^2=9-x^2　\to x^2 + y^2 = 9$$
+    これは半径が３の円の式で、左図の青く塗りつぶされた部分の面積を求めることになります
+    $$\frac{\pi \cdot 3^2}{2}=\frac{9\pi}{2}$$
+
   </div>
 </div>
+
+----------
+
+# Properties of the definite integral
+
+----------
+
+## Integrating scaled version of function
+
 <div class="row">
   <div class="col-sm-6">
-    <hr>
     <div id="svg09"></div>
   </div>
   <div class="col-sm-6">
+    区間\([a,b]\)で、関数\(y=f(x)\)(緑線)と\(x\)軸との間の面積は
+    $$\int_{a}^{b}f(x)dx$$
+    \(f(x)\)を\(c\)倍した関数\(y=cf(x)\)(白線)と\(x\)軸との間の面積は
+    $$\int_{a}^{b}cf(x)dx$$
+    これは縦方向に\(c\)倍長くなった面積です
+    <div id="svg092"></div>
+    したがって
+    $$\int_{a}^{b}cf(x)dx=c\int_{a}^{b}f(x)dx$$
   </div>
 </div>
+
+--------
+
+## Integrating sums of functions
+
+
 <div class="row">
-  <div class="col-sm-6">
-    <hr>
-    <div id="svg10"></div>
+  <div class="col-sm-4">
+    <div id="svg101"></div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-4">
+    <div id="svg102"></div>
+  </div>
+  <div class="col-sm-4">
+    <div id="svg103"></div>
   </div>
 </div>
 <div class="row">
@@ -504,6 +548,36 @@ $$S(2)=2-12+C=-10 \to C=0 \to S(t)=\frac{t^2}{2}-6t$$
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
+                .style("background","#000");
+  var svg08 = d3.select("#svg08")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg09 = d3.select("#svg09")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg092 = d3.select("#svg092")
+                .append("svg")
+                .attr("height",200)
+                .attr("width",200)
+                .style("background","#000");
+  var svg101 = d3.select("#svg101")
+                .append("svg")
+                .attr("height",400)
+                .attr("width",400)
+                .style("background","#000");
+  var svg102 = d3.select("#svg102")
+                .append("svg")
+                .attr("height",400)
+                .attr("width",400)
+                .style("background","#000");
+  var svg103 = d3.select("#svg103")
+                .append("svg")
+                .attr("height",400)
+                .attr("width",400)
                 .style("background","#000");
 
 
@@ -1189,9 +1263,244 @@ $$S(2)=2-12+C=-10 \to C=0 \to S(t)=\frac{t^2}{2}-6t$$
 
   drawLine(svg07,lineData07,xScale07,yScale07);
 
+ // Evaluating definite integral from graph
+  var xScale08 = d3.scale.linear()
+                       .domain([-4,4])
+                       .range([50,450]);
+  
+  var yScale08 = d3.scale.linear()
+                       .domain([5,-3])
+                       .range([50,450]);
+
+  // 軸
+  axesData08 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[-3,3],
+    "yTickValues":[1,2,3,4],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale08,
+    "yScale":yScale08
+  };
+
+  var pathData08 = [];
+  function func08(i){
+    return Math.sqrt(9-i*i)
+  };
+  y0Func08 = function y0func08(i){
+    return 0;
+  };
+
+  for (var i = -3; i <= 3; i=i+0.05) {
+    pathData08.push(new Point(i,func08(i)));
+  };
+
+  drawArea(svg08,pathData08,y0Func08,
+    {"fillColor":"#00f","opacity":0.6},xScale08,yScale08); 
+  drawPath(svg08,pathData08,{"stroke":"lime","strokeWidth":3},xScale08,yScale08); 
+  drawAxes(svg08,axesData08);
+
+ /**Integrating scaled version of function**/
+   var xScale09 = d3.scale.linear()
+                       .domain([0,7])
+                       .range([50,450]);
+  
+  var yScale09 = d3.scale.linear()
+                       .domain([10,0])
+                       .range([50,450]);
+
+  // 軸
+  axesData09 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale09,
+    "yScale":yScale09
+  };
+
+  var pathData091 = [];
+  var pathData092 = [];
+  var areaData093 = [];
+  var areaData094 = [];
+  function func091(i){
+    return Math.sin(i)+i/3 + 1;
+  };
+  function func092(i){
+    return 3*(Math.sin(i)+i/3 + 1);
+  };
+  y0Func09 = function y0func09(i){
+    return 0;
+  };
+
+  for (var i = 0; i <= 2*pi; i=i+0.01) {
+    pathData091.push(new Point(i,func091(i)));
+    pathData092.push(new Point(i,func092(i)));
+  };
+  for (var i = 1; i <= 2*pi-0.5; i=i+0.01) {
+    areaData093.push(new Point(i,func091(i)));
+    areaData094.push(new Point(i,func092(i)));
+  };
+
+  drawArea(svg09,areaData093,y0Func09,
+    {"fillColor":"#00f","opacity":0.4},xScale09,yScale09); 
+  drawArea(svg09,areaData094,y0Func09,
+    {"fillColor":"#00f","opacity":0.4},xScale09,yScale09); 
+  drawPath(svg09,pathData091,{"stroke":"lime","strokeWidth":3},xScale09,yScale09); 
+  drawPath(svg09,pathData092,{"stroke":"#fff","strokeWidth":3},xScale09,yScale09); 
+  drawAxes(svg09,axesData09);
+
+  // text   
+  foData09 = [
+    {"x":-0.3,
+    "y":12,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":7,
+    "y":1.2,
+    "text":"$$x$$",
+    "fontSize":"20px"},
+
+    {"x":2*pi-0.5,
+    "y":1.2,
+    "text":"$$b$$",
+    "fontSize":"18px"},
+    {"x":1,
+    "y":1.2,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+
+    {"x":2*pi,
+    "y":11,
+    "text":"$$y=cf(x)$$",
+    "fontSize":"18px"},
+    {"x":2*pi,
+    "y":5,
+    "text":"$$y=f(x)$$",
+    "fontSize":"18px"},
+
+    {"x":2,
+    "y":6,
+    "text":"$$\\int_{a}^{b}cf(x)dx$$",
+    "fontSize":"18px"},
+    {"x":2,
+    "y":3,
+    "text":"$$\\int_{a}^{b}f(x)dx$$",
+    "fontSize":"18px"},
+
+  ];
+ 
+  drawMathjax(svg09,foData09,xScale09,yScale09);
+
+  rectData092 = [
+    {"x":20,"y":110,"width":60,"height":40,"stroke":"#fff"},
+    {"x":120,"y":30,"width":60,"height":120,"stroke":"#fff"},
+  ]
+  drawRect(svg092,rectData092);
+  // text   
+  foData092 = [
+    {"x":0,
+    "y":60,
+    "text":"$$\\alpha$$",
+    "fontSize":"18px"},
+    {"x":40,
+    "y":100,
+    "text":"$$\\beta$$",
+    "fontSize":"18px"},
+    {"x":30,
+    "y":60,
+    "text":"$$\\alpha\\beta$$",
+    "fontSize":"18px"},
+
+    {"x":95,
+    "y":30,
+    "text":"$$c\\alpha$$",
+    "fontSize":"18px"},
+    {"x":140,
+    "y":100,
+    "text":"$$\\beta$$",
+    "fontSize":"18px"},
+    {"x":130,
+    "y":30,
+    "text":"$$c\\alpha\\beta$$",
+    "fontSize":"18px"},
+
+  ];
+ 
+  drawMathjax(svg092,foData092);
+
+  /**Integrating sums of functions**/
+  var xScale10 = d3.scale.linear()
+                       .domain([0,7])
+                       .range([20,370]);
+  
+  var yScale10 = d3.scale.linear()
+                       .domain([10,0])
+                       .range([20,370]);
+
+  axesData10 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale10,
+    "yScale":yScale10
+  };
+
+  var pathData101 = [];
+  var pathData102 = [];
+  var pathData103 = [];
+  var areaData104 = [];
+  function func101(i){
+    return Math.sin(i)+i/3 + 1;
+  };
+  function func102(i){
+    return i*i/7 + 1;
+  };
+  y0Func10 = function y0func10(i){
+    return 0;
+  };
+
+  for (var i = 0; i <= 2*pi; i=i+0.01) {
+    pathData101.push(new Point(i,func101(i)));
+    pathData102.push(new Point(i,func102(i)));
+    pathData103.push(new Point(i,func101(i)+func102(i)));
+  };
+  for (var i = 1; i <= 2*pi-0.5; i=i+0.01) {
+    areaData104.push(new Point(i,func101(i)));
+    areaData104.push(new Point(i,func102(i)));
+  };
+
+  drawPath(svg101,pathData101,{"stroke":"#fff"},xScale10,yScale10);
+  drawPath(svg103,pathData101,{"stroke":"#fff"},xScale10,yScale10);
+  drawPath(svg103,pathData103,{"stroke":"#ff0"},xScale10,yScale10);
+  drawPath(svg102,pathData102,{"stroke":"#0f0"},xScale10,yScale10);
 
 
 
 
+  drawAxes(svg101,axesData10);
+  drawAxes(svg102,axesData10);
+  drawAxes(svg103,axesData10);
 
 </script>
