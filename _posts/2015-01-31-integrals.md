@@ -402,14 +402,23 @@ $$
 
   </div>
 </div>
+
+----------
+
+## Definite integral from and to same point
+
 <div class="row">
   <div class="col-sm-6">
-    <hr>
     <div id="svg11"></div>
   </div>
   <div class="col-sm-6">
   </div>
 </div>
+
+------------
+
+## Breaking up integral interval
+
 <div class="row">
   <div class="col-sm-6">
     <div id="svg12"></div>
