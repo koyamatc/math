@@ -380,12 +380,26 @@ $$
 <div class="row">
   <div class="col-sm-4">
     <div id="svg101"></div>
+    <div class="row">
+      <div class="col-sm-offset-5">
+        $$\int_{a}^{b}f(x)dx \qquad \qquad+$$
+      </div>
+    </div>
   </div>
   <div class="col-sm-4">
     <div id="svg102"></div>
+    <div class="row">
+      <div class="col-sm-offset-5">
+        $$\int_{a}^{b}g(x)dx \qquad \qquad =$$
+      </div>
+    </div>
   </div>
   <div class="col-sm-4">
     <div id="svg103"></div>
+    <div class="row">
+      <div class="col-sm-offset-4">$$\int_{a}^{b}(f(x)+g(x))dx$$</div>
+    </div>
+
   </div>
 </div>
 <div class="row">
@@ -1470,7 +1484,10 @@ $$
   var pathData101 = [];
   var pathData102 = [];
   var pathData103 = [];
-  var areaData104 = [];
+  var areaData101 = [];
+  var areaData102 = [];
+  var areaData103 = [];
+
   function func101(i){
     return Math.sin(i)+i/3 + 1;
   };
@@ -1487,20 +1504,111 @@ $$
     pathData103.push(new Point(i,func101(i)+func102(i)));
   };
   for (var i = 1; i <= 2*pi-0.5; i=i+0.01) {
-    areaData104.push(new Point(i,func101(i)));
-    areaData104.push(new Point(i,func102(i)));
+    areaData101.push(new Point(i,func101(i)));
+    areaData102.push(new Point(i,func102(i)));
+    areaData103.push(new Point(i,func101(i)+func102(i)));
   };
+
+  drawArea(svg101,areaData101,y0Func10,
+    {"fillColor":"#00f","opacity":0.4},xScale10,yScale10); 
+  drawArea(svg102,areaData102,y0Func10,
+    {"fillColor":"#00f","opacity":0.4},xScale10,yScale10); 
+  drawArea(svg103,areaData103,y0Func10,
+    {"fillColor":"#00f","opacity":0.4},xScale10,yScale10); 
 
   drawPath(svg101,pathData101,{"stroke":"#fff"},xScale10,yScale10);
   drawPath(svg103,pathData101,{"stroke":"#fff"},xScale10,yScale10);
-  drawPath(svg103,pathData103,{"stroke":"#ff0"},xScale10,yScale10);
+  drawPath(svg103,pathData103,{"stroke":"#0f0"},xScale10,yScale10);
   drawPath(svg102,pathData102,{"stroke":"#0f0"},xScale10,yScale10);
-
-
-
 
   drawAxes(svg101,axesData10);
   drawAxes(svg102,axesData10);
   drawAxes(svg103,axesData10);
+
+  // text   
+  foData101 = [
+    {"x":-0.3,
+    "y":12.2,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":7,
+    "y":1.3,
+    "text":"$$x$$",
+    "fontSize":"20px"},
+
+    {"x":2*pi-0.6,
+    "y":1.3,
+    "text":"$$b$$",
+    "fontSize":"18px"},
+    {"x":1,
+    "y":1.3,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+
+    {"x":2*pi-1,
+    "y":5.5,
+    "text":"$$y=f(x)$$",
+    "fontSize":"18px"},
+ 
+  ];
+ 
+
+  foData102 = [
+    {"x":-0.3,
+    "y":12.2,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":7,
+    "y":1.3,
+    "text":"$$x$$",
+    "fontSize":"20px"},
+
+    {"x":2*pi-0.6,
+    "y":1.3,
+    "text":"$$b$$",
+    "fontSize":"18px"},
+    {"x":1,
+    "y":1.3,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+
+    {"x":2*pi-1,
+    "y":9.5,
+    "text":"$$y=g(x)$$",
+    "fontSize":"18px"},
+ 
+  ];
+
+  foData103 = [
+    {"x":-0.3,
+    "y":12.2,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":7,
+    "y":1.3,
+    "text":"$$x$$",
+    "fontSize":"20px"},
+
+    {"x":2*pi-0.6,
+    "y":1.3,
+    "text":"$$b$$",
+    "fontSize":"18px"},
+    {"x":1,
+    "y":1.3,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+
+    {"x":2*pi-2,
+    "y":12.2,
+    "text":"$$y=f(x)+g(x)$$",
+    "fontSize":"18px"},
+ 
+  ];
+
+  drawMathjax(svg101,foData101,xScale10,yScale10);
+  drawMathjax(svg102,foData102,xScale10,yScale10);
+  drawMathjax(svg103,foData103,xScale10,yScale10);
+
+
 
 </script>
