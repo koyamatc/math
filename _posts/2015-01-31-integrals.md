@@ -412,6 +412,9 @@ $$
     <div id="svg11"></div>
   </div>
   <div class="col-sm-6">
+    同じ点から同じ点までの定積分は、
+    $$\int_{c}^{c}f(x)dx = 0$$
+    高さはあるが、幅は無いので、高さｘ幅=0　となります
   </div>
 </div>
 
@@ -424,47 +427,49 @@ $$
     <div id="svg12"></div>
   </div>
   <div class="col-sm-6">
+    $$a \le c \le b$$
+    $$\int_{a}^{b}f(x)dx=\int_{a}^{c}f(x)dx+\int_{c}^{b}f(x)dx$$
   </div>
 </div>
+
+---------
+
+## Definite integral of shifted function
+
 <div class="row">
   <div class="col-sm-6">
     <div id="svg13"></div>
   </div>
   <div class="col-sm-6">
+    $$\int_{a}^{b}f(x)dx=5$$
+    とすると
+    $$f(x-c)[白線]は、f(x)[緑線]を右へc分移動したものとします$$
+    この時
+    $$\int_{a+c}^{b+c}f(x-c)dx=\int_{a}^{b}f(x)dx=5$$
   </div>
 </div>
 --------
 
-## 
+## Switching bounds of definite integral
 
-<div class="row">
-  <div class="col-sm-3">
-  </div>
-  <div class="col-sm-3">
-  </div>
-  <div class="col-sm-6">
-  </div>
-</div>
-
-------
-
-<div class="row">
-  <div class="col-sm-3">
-  </div>
-  <div class="col-sm-3">
-  </div>
-  <div class="col-sm-6">
-  </div>
-</div>
 <div class="row">
   <div class="col-sm-6">
     <div id="svg14"></div>
   </div>
   <div class="col-sm-6">
+    $$\int_{a}^{b}f(x)dx=\lim_{n\to\infty}\sum_{i=1}^{n}f(x_{i})\Delta x \quad where \quad \Delta x = \frac{b-a}{n}$$
+    それでは\(a \to b\) を\(b \to a\)とした場合は
+    $$\int_{b}^{a}f(x)dx=\lim_{n\to\infty}\sum_{i=1}^{n}f(x_{i})\Delta x \quad where \quad \Delta x = \frac{a-b}{n}$$
+    この場合の\(\Delta x\)は負となります、したがって
+    $$\int_{b}^{a}f(x)dx=-\int_{a}^{b}f(x)dx$$
   </div>
 </div>
 
----------
+------
+
+# Functions defined by integrals
+
+------
 
 ## 
 
@@ -475,11 +480,6 @@ $$
   <div class="col-sm-6">
   </div>
 </div>
-
---------
-
-## 
-
 <div class="row">
   <div class="col-sm-6">
     <div id="svg16"></div>
@@ -488,7 +488,7 @@ $$
   </div>
 </div>
 
---------
+---------
 
 ## 
 
@@ -507,6 +507,30 @@ $$
 <div class="row">
   <div class="col-sm-6">
     <div id="svg18"></div>
+  </div>
+  <div class="col-sm-6">
+  </div>
+</div>
+
+--------
+
+## 
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg19"></div>
+  </div>
+  <div class="col-sm-6">
+  </div>
+</div>
+
+--------
+
+## 
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg20"></div>
   </div>
   <div class="col-sm-6">
   </div>
@@ -601,6 +625,26 @@ $$
                 .append("svg")
                 .attr("height",400)
                 .attr("width",400)
+                .style("background","#000");
+  var svg11 = d3.select("#svg11")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg12 = d3.select("#svg12")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg13 = d3.select("#svg13")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg14 = d3.select("#svg14")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
                 .style("background","#000");
 
 
@@ -1618,6 +1662,152 @@ $$
   drawMathjax(svg102,foData102,xScale10,yScale10);
   drawMathjax(svg103,foData103,xScale10,yScale10);
 
+  /* Definit integral from and to same point **/
+  drawPath(svg11,pathData092,{"stroke":"lime","strokeWidth":3},xScale09,yScale09); 
+  drawAxes(svg11,axesData09);
+  lineData11 = [
+    {"x1":2*pi-2.5,"y1":0,"x2":2*pi-2.5,"y2":func092(2*pi-2.5),
+    "stroke":"#ff0"}
+  ];
+  drawLine(svg11,lineData11,xScale09,yScale09);
+  // text   
+  foData10 = [
+    {"x":-0.3,
+    "y":12,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":7,
+    "y":1.2,
+    "text":"$$x$$",
+    "fontSize":"20px"},
 
+    {"x":2*pi-2.5,
+    "y":1.2,
+    "text":"$$c$$",
+    "fontSize":"18px"},
+    {"x":2*pi-0.5,
+    "y":1.2,
+    "text":"$$b$$",
+    "fontSize":"18px"},
+    {"x":1,
+    "y":1.2,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+
+    {"x":2*pi,
+    "y":11,
+    "text":"$$y=f(x)$$",
+    "fontSize":"18px"},
+
+  ];
+  drawMathjax(svg11,foData10,xScale09,yScale09);
+
+  /** Breaking up integral interval */
+  drawArea(svg12,areaData094,y0Func09,
+    {"fillColor":"#00f","opacity":0.4},xScale09,yScale09); 
+  drawPath(svg12,pathData092,{"stroke":"lime","strokeWidth":3},xScale09,yScale09); 
+  drawAxes(svg12,axesData09);
+  drawLine(svg12,lineData11,xScale09,yScale09);
+  drawMathjax(svg12,foData10,xScale09,yScale09);
+
+/** Definite integral of shifted function */
+  var xScale13 = d3.scale.linear()
+                       .domain([-2,8])
+                       .range([50,450]);
+  
+  var yScale13 = d3.scale.linear()
+                       .domain([10,0])
+                       .range([50,450]);
+
+  // 軸
+  axesData13 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale13,
+    "yScale":yScale13
+  };
+
+  var pathData131 = [];
+  var pathData132 = [];
+  var areaData131 = [];
+  var areaData132 = [];
+  function func131(i){
+  return 3*(Math.sin(i)+i/3 + 1);
+  };
+  y0Func13 = function y0func13(i){
+    return 0;
+  };
+
+  for (var i = 0; i <= 2*pi; i=i+0.01) {
+    pathData131.push(new Point(i-1.5,func131(i)));
+    pathData132.push(new Point(i,func131(i)));
+  };
+  for (var i = 1; i <= 2*pi-0.5; i=i+0.01) {
+    areaData131.push(new Point(i-1.5,func131(i)));
+    areaData132.push(new Point(i,func131(i)));
+  };
+
+  drawArea(svg13,areaData131,y0Func13,
+    {"fillColor":"#00f","opacity":0.6},xScale13,yScale13); 
+  drawArea(svg13,areaData132,y0Func13,
+    {"fillColor":"#f0f","opacity":0.4},xScale13,yScale13); 
+  drawPath(svg13,pathData131,{"stroke":"lime","strokeWidth":3},xScale13,yScale13); 
+  drawPath(svg13,pathData132,{"stroke":"#fff","strokeWidth":3},xScale13,yScale13); 
+  drawAxes(svg13,axesData13);
+
+  // text   
+  foData13 = [
+    {"x":-0.3,
+    "y":12,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":8,
+    "y":1.2,
+    "text":"$$x$$",
+    "fontSize":"20px"},
+
+    {"x":2*pi-2,
+    "y":1.2,
+    "text":"$$b$$",
+    "fontSize":"18px"},
+    {"x":1-2,
+    "y":1.2,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+    {"x":2*pi-0.5,
+    "y":1.2,
+    "text":"$$b+c$$",
+    "fontSize":"18px"},
+    {"x":1,
+    "y":1.2,
+    "text":"$$a+c$$",
+    "fontSize":"18px"},
+
+    {"x":2*pi,
+    "y":11,
+    "text":"$$y=f(x-c)$$",
+    "fontSize":"18px"},
+    {"x":pi-.5,
+    "y":11,
+    "text":"$$y=f(x)$$",
+    "fontSize":"18px"},
+
+  ];
+ 
+  drawMathjax(svg13,foData13,xScale13,yScale13);
+/** Swich bounds of integral*/
+  drawAxes(svg14,axesData06);
+  drawPath(svg14,pathData06,{"stroke":"lime"},xScale06,yScale06);
+  drawRect(svg14,rectData062,xScale06,yScale06);
+  drawMathjax(svg14,foData06,xScale06,yScale06);
 
 </script>
