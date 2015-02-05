@@ -467,30 +467,91 @@ $$
 
 ------
 
-# Functions defined by integrals
+# Fundamental theorem of calculus
 
 ------
 
-## 
+## Fundamental theorem of calculus 
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg15"></div>
   </div>
   <div class="col-sm-6">
+    範囲\([a,b]\)において連続な関数\(f\)があります<br>
+    $$x \in[a,b]のときF(x)=\int_{a}^{x}f(t)dtとすると$$
+    $$\frac{d}{dx}F(x)=\frac{d}{dx}\int_{a}^{x}f(t)dt=f(x)$$
   </div>
 </div>
+
+--------
+
+## Applying the fundamental theorem of calculus
+
+例１
+$$F(x)=\int_{\pi}^{x}\cot^2 t dt$$
+$$F'(x)=\frac{d}{dx}\int_{\pi}^{x}\cot^2 t dt=\cot^2 x$$
+例２
+$$F(x)=\int_{\pi}^{x^2}\cot^2 t dt$$
+$$F'(x)=\frac{d}{dx}\int_{\pi}^{x^2}\cot^2 t dt
+=\frac{d}{dx}F(x^2)=F'(x^2) \cdot \frac{d}{dx}x^2
+=\cot^2(x^2) \cdot 2x = 2x\cot^2(x^2)$$
+
+---------
+
+## Swapping the bounds for definite integral
+
+$$F(x)=\int_{x}^{3}\sqrt{|\cos t|}dt$$
+範囲が\\(x\\)から\\(3\\)の場合、\\(3\\)と\\(x\\)を入れ替えて
+$$F'(x)=\frac{d}{dx}\int_{x}^{3}\sqrt{|\cos t|}dt
+=\frac{d}{dx}-\int_{3}^{x}\sqrt{|\cos t|}dt
+=-\frac{d}{dx}\int_{3}^{x}\sqrt{|\cos t|}dt
+=-\sqrt{|\cos t|}$$
+
+----------
+
+## Both bounds being a function of x
+
+$$F(x)=\int_{x}^{x^2}\frac{\cos t}{t}dt$$
+範囲が\\(x\\)から\\(x^2\\)の場合、\\(x\\)と\\(x^2\\)の間に\\(c\\)をとると
+$$F(x)=\int_{x}^{x^2}\frac{\cos t}{t}dt
+=\int_{x}^{c}\frac{\cos t}{t}dt+\int_{c}^{x^2}\frac{\cos t}{t}dt
+=-\int_{c}^{x}\frac{\cos t}{t}dt+\int_{c}^{x^2}\frac{\cos t}{t}dt
+$$
+となります
+$$
+F'(x)=-\frac{\cos t}{t}+2x\frac{\cos x^2}{x^2}
+=-\frac{\cos t}{t}+\frac{2\cos x^2}{x}
+=\frac{2\cos x^2-\cos x}{x}$$
+
+--------
+
+## Proof of fundamental theorem of calculus
+
 <div class="row">
   <div class="col-sm-6">
     <div id="svg16"></div>
   </div>
   <div class="col-sm-6">
+    $$関数fは範囲[a,b]で連続である$$
+    $$F(x)=\int_{a}^{x}f(t)dt \quad (a \le x \le b)$$
+    とします
+    $$範囲[x,x+\Delta x]でf(t)とx軸の間の面積は$$
+    $$\int_{x}^{x+\Delta x}f(t)dt$$
+    です、この場合
+    $$F'(x)=\lim_{\Delta x \to 0}\frac{F(x+_Delta x)-F(x)}{\Delta x}$$
+    $$\quad = \lim_{\Delta x \to 0}
+
   </div>
 </div>
 
 ---------
 
-## 
+# Evaluating definite integrals
+
+---------
+
+## Riemann sums and integrals
 
 <div class="row">
   <div class="col-sm-6">
@@ -642,6 +703,21 @@ $$
                 .attr("width",500)
                 .style("background","#000");
   var svg14 = d3.select("#svg14")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg15 = d3.select("#svg15")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg16 = d3.select("#svg16")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg17 = d3.select("#svg17")
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
@@ -1809,5 +1885,70 @@ $$
   drawPath(svg14,pathData06,{"stroke":"lime"},xScale06,yScale06);
   drawRect(svg14,rectData062,xScale06,yScale06);
   drawMathjax(svg14,foData06,xScale06,yScale06);
+
+/** Fundamental theorem of calculus **/
+  var areaData15 = [];
+  function func15(i){
+    return 3*(Math.sin(i)+i/3 + 1);
+  };
+  y0Func15 = function y0func15(i){
+    return 0;
+  };
+
+  for (var i = 1; i <= 2*pi-2.5; i=i+0.01) {
+    areaData15.push(new Point(i,func15(i)));
+  };
+  // text   
+  foData15 = [
+    {"x":-0.3,
+    "y":12,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":7,
+    "y":1.2,
+    "text":"$$t$$",
+    "fontSize":"20px"},
+
+    {"x":2*pi-2.6,
+    "y":1.2,
+    "text":"$$x$$",
+    "fontSize":"18px"},
+    {"x":2*pi-0.5,
+    "y":1.2,
+    "text":"$$b$$",
+    "fontSize":"18px"},
+    {"x":1,
+    "y":1.2,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+
+    {"x":2*pi,
+    "y":11,
+    "text":"$$y=f(t)$$",
+    "fontSize":"18px"},
+   {"x":1.3,
+    "y":4,
+    "text":"$$\\int_{a}^{x}f(t)dt$$",
+    "fontSize":"18px"},
+
+  ];
+
+  drawArea(svg15,areaData15,y0Func15,
+    {"fillColor":"#00f","opacity":0.4},xScale09,yScale09); 
+  drawPath(svg15,pathData092,{"stroke":"lime","strokeWidth":3},xScale09,yScale09); 
+  drawAxes(svg15,axesData09);
+  drawLine(svg15,lineData11,xScale09,yScale09);
+  drawMathjax(svg15,foData15,xScale09,yScale09);
+
+/** Proof **/
+  drawArea(svg16,areaData15,y0Func15,
+    {"fillColor":"#00f","opacity":0.4},xScale09,yScale09); 
+  drawPath(svg16,pathData092,{"stroke":"lime","strokeWidth":3},xScale09,yScale09); 
+  drawAxes(svg16,axesData09);
+  drawLine(svg16,lineData11,xScale09,yScale09);
+  drawMathjax(svg16,foData15,xScale09,yScale09);
+
+
+
 
 </script>
