@@ -551,49 +551,112 @@ F'(x)=-\frac{\cos t}{t}+2x\frac{\cos x^2}{x^2}
 
 ---------
 
-## Riemann sums and integrals
+## Connecting the first and second fundamental theorems of calculus
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg17"></div>
   </div>
   <div class="col-sm-6">
+    $$範囲[c,d]において連続な関数fがあります$$
+    \(x \in [c,d]\)であるとき、\(c\)から\(x\)の範囲で関数\(f\)と\(x\)軸の間の面積を
+    $$F(x)=\int_{c}^{x}f(t)dt$$
+    とすると、この範囲で連続であるならば、微分可能であり、基本定理から
+    $$F'(x)=f(x)$$
+    となります
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg171"></div>
+  </div>
+  <div class="col-sm-6">
+    <h3>それでは２番目の基本定理へとつなげていきます</h3>
+    \(F(b)-F(a)\)を考えます \(a,b\in[c,d]\) です<br>
+    \(F(b)\)は\(c\)から\(b\)の範囲で関数\(f\)の下側にできる面積です<br>
+    \(F(a)\)は\(c\)から\(a\)の範囲で関数\(f\)の下側にできる面積ですから
+    $$F(b)-F(a)=\int_{c}^{b}f(t)dt-\int_{c}^{a}f(t)dt
+    =\int_{a}^{b}f(t)dt$$
+    <div class="panel">
+    2番目の基本定理  
+    $$\int_{a}^{b}f(t)dt=F(b)-F(a)$$
+    </div>
   </div>
 </div>
 
 --------
 
-## 
+## Evaluating simple definite integral
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg18"></div>
   </div>
   <div class="col-sm-6">
+    <div class="panel">
+      関数\(f(x)=x^2\) が、範囲\(x \in [1,4]\)で\(x\)軸と挟まれた領域の面積を求める 
+    </div>
+    求める面積は
+    $$\int_{1}^{4}f(x)dx$$
+    第2の基本定理から
+    $$\int_{1}^{4}f(x)dx=F(4)-F(1)$$
+    \(f(x)\)と\(F(x)\)の関係は
+    $$f(x)を積分 \to F(x)$$
+    $$F(x)を微分 \to f(x)$$
+    なので
+    $$F(x)=\int x^2 dx = \frac{x^3}{3}$$
+    ここから
+    $$F(4)-F(1)=[\frac{x^3}{3}]_{1}^{4}=\frac{64}{3}-\frac{1}{3}
+    =\frac{63}{3}=21$$
   </div>
 </div>
 
 --------
 
-## 
+# Improper integrals (広義積分) 
+
+--------
+
+## Introduction to improper integrals
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg19"></div>
   </div>
   <div class="col-sm-6">
+    <div class="panel">
+      関数\(f(x)=\frac{1}{x^2}\)において\(x=1\)から\(x\)が無限大のときの関数と\(x\)軸に挟まれた領域の面積は？
+    </div>
+    $$\int_{1}^{\infty}\frac{1}{x^2}dx$$
+    これを広義積分(improper integral)という、これは
+    $$\quad =\lim_{n \to \infty}\int_{1}^{n}\frac{1}{x^2}dx$$
+    基本定理から
+    $$\quad =\lim_{n \to \infty}[-\frac{1}{x}]_{1}^{\infty}$$
+    $$\quad =\lim_{n \to \infty}(-\frac{1}{n}+1)$$
+    $$\quad =-0+1=1$$
+    １に収束する(convergent)
   </div>
 </div>
 
 --------
 
-## 
+## Improper integral with two infinite bounds
 
 <div class="row">
   <div class="col-sm-6">
     <div id="svg20"></div>
   </div>
   <div class="col-sm-6">
+    <div class="panel">
+      $$f(x)=\frac{250}{25 + x^2}$$
+      \(x\)の範囲が\(-\infty\)から\(+\infty\)のときの、関数と\(x\)軸の間の面積を求める
+    </div>
+    面積は
+    $$\int_{-\infty}^{\infth}\frac{250}{25 + x^2}dx
+    $$\quad \int_{-\infty}^{0}\frac{250}{25 + x^2}dx
+    + \int_{0}^{\infth}\frac{250}{25 + x^2}dx$$
+    $$\quad\lim_{n \to -\infty}\int_{n}^{0}\frac{250}{25 + x^2}dx
+    + \lim_{n \to \infty}\int_{0}^{n}\frac{250}{25 + x^2}dx$$
   </div>
 </div>
 
@@ -718,6 +781,26 @@ F'(x)=-\frac{\cos t}{t}+2x\frac{\cos x^2}{x^2}
                 .attr("width",500)
                 .style("background","#000");
   var svg17 = d3.select("#svg17")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg171 = d3.select("#svg171")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg18 = d3.select("#svg18")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg19 = d3.select("#svg19")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg20 = d3.select("#svg20")
                 .append("svg")
                 .attr("height",500)
                 .attr("width",500)
@@ -1948,7 +2031,290 @@ F'(x)=-\frac{\cos t}{t}+2x\frac{\cos x^2}{x^2}
   drawLine(svg16,lineData11,xScale09,yScale09);
   drawMathjax(svg16,foData15,xScale09,yScale09);
 
+/** Connecting the first ans second fundamental theorems of **/
+  // text   
+  foData17 = [
+    {"x":-0.3,
+    "y":12,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":7,
+    "y":1.2,
+    "text":"$$t$$",
+    "fontSize":"20px"},
 
+    {"x":2*pi-2.6,
+    "y":1.2,
+    "text":"$$x$$",
+    "fontSize":"18px"},
+    {"x":1,
+    "y":1.2,
+    "text":"$$c$$",
+    "fontSize":"18px"},
+    {"x":2*pi-0.5,
+    "y":1.2,
+    "text":"$$d$$",
+    "fontSize":"18px"},
+
+    {"x":2*pi,
+    "y":11,
+    "text":"$$y=f(t)$$",
+    "fontSize":"18px"},
+   {"x":1.3,
+    "y":4,
+    "text":"$$F(x)$$",
+    "fontSize":"18px"},
+
+  ];
+  foData171 = [
+    {"x":-0.3,
+    "y":12,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":7,
+    "y":1.2,
+    "text":"$$t$$",
+    "fontSize":"20px"},
+
+    {"x":pi,
+    "y":1.2,
+    "text":"$$a$$",
+    "fontSize":"18px"},
+    {"x":2*pi-1.3,
+    "y":1.2,
+    "text":"$$b$$",
+    "fontSize":"18px"},
+    {"x":1,
+    "y":1.2,
+    "text":"$$c$$",
+    "fontSize":"18px"},
+    {"x":2*pi-0.5,
+    "y":1.2,
+    "text":"$$d$$",
+    "fontSize":"18px"},
+
+    {"x":2*pi,
+    "y":11,
+    "text":"$$y=f(t)$$",
+    "fontSize":"18px"},
+
+  ];
+  lineData171 = [
+    {"x1":1,"y1":0,"x2":1,"y2":func092(1),
+    "stroke":"#ff0"},
+    {"x1":pi,"y1":0,"x2":pi,"y2":func092(pi),
+    "stroke":"#ff0"},
+    {"x1":2*pi-1.3,"y1":0,"x2":2*pi-1.3,"y2":func092(2*pi-1.3),
+    "stroke":"#ff0"}
+  ];
+
+  var areaData17 = [];
+  var areaData171 = [];
+  function func17(i){
+    return 3*(Math.sin(i)+i/3 + 1);
+  };
+  y0Func = function y0func(i){
+    return 0;
+  };
+
+  for (var i = 1; i <= 2*pi-1.3; i=i+0.01) {
+    areaData17.push(new Point(i,func17(i)));
+  };
+  for (var i = 1; i <= pi; i=i+0.01) {
+    areaData171.push(new Point(i,func17(i)));
+  };
+
+  drawArea(svg17,areaData15,y0Func15,
+    {"fillColor":"#00f","opacity":0.4},xScale09,yScale09); 
+  drawPath(svg17,pathData092,{"stroke":"lime","strokeWidth":3},xScale09,yScale09); 
+  drawAxes(svg17,axesData09);
+  drawLine(svg17,lineData11,xScale09,yScale09);
+  drawMathjax(svg17,foData17,xScale09,yScale09);
+
+  //　svg171
+  drawArea(svg171,areaData17,y0Func,
+    {"fillColor":"#00f","opacity":0.4},xScale09,yScale09); 
+  drawArea(svg171,areaData171,y0Func,
+    {"fillColor":"#f0f","opacity":0.4},xScale09,yScale09); 
+
+  drawPath(svg171,pathData092,{"stroke":"lime","strokeWidth":3},xScale09,yScale09); 
+  drawAxes(svg171,axesData09);
+  drawLine(svg171,lineData171,xScale09,yScale09);
+  drawMathjax(svg171,foData171,xScale09,yScale09);
+
+  /*　Evaluating simple definite integral */
+  var xScale18 = d3.scale.linear()
+                       .domain([-2,5])
+                       .range([50,450]);
+  
+  var yScale18 = d3.scale.linear()
+                       .domain([20,0])
+                       .range([50,450]);       
+
+  axesData18 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[1,4],
+    "yTickValues":[1,16],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale18,
+    "yScale":yScale18
+  };
+
+  var pathData18 = [];
+  var areaData18 = [];
+
+  function func18(i){
+    return Math.pow(i,2);
+  };
+
+  for (var i = -1; i <= 4.3; i=i+0.1) {
+    pathData18.push(new Point(i,func18(i)));
+  };
+  for (var i = 1; i <= 4; i=i+0.1) {
+    areaData18.push(new Point(i,func18(i)));
+  };
+  foData18 = [
+    {"x":-0.3,
+    "y":24,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":5.2,
+    "y":1.8,
+    "text":"$$x$$",
+    "fontSize":"20px"},
+
+  ];
+
+  drawArea(svg18,areaData18,y0Func,
+    {"fillColor":"#00f","opacity":0.4},xScale18,yScale18); 
+
+  drawPath(svg18,pathData18,{"stroke":"lime","strokeWidth":3},xScale18,yScale18); 
+  drawAxes(svg18,axesData18);
+  drawMathjax(svg18,foData18,xScale18,yScale18);
+
+/** Improper integrals */
+  var xScale19 = d3.scale.linear()
+                       .domain([-2,4])
+                       .range([50,450]);
+  
+  var yScale19 = d3.scale.linear()
+                       .domain([3,0])
+                       .range([50,450]);       
+
+  axesData19 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[1],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale19,
+    "yScale":yScale19
+  };
+
+  var pathData191 = [];
+  var pathData192 = [];
+  var areaData19 = [];
+
+  function func19(i){
+    return 1/Math.pow(i,2);
+  };
+
+  for (var i = -2; i <= -0.3; i=i+0.1) {
+    pathData191.push(new Point(i,func19(i)));
+  };
+  for (var i = 0.3; i <= 4; i=i+0.1) {
+    pathData192.push(new Point(i,func19(i)));
+  };
+  for (var i = 1; i <= 4; i=i+0.1) {
+    areaData19.push(new Point(i,func19(i)));
+  };
+  foData19 = [
+    {"x":-0.3,
+    "y":3.5,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":4.2,
+    "y":0.5,
+    "text":"$$x$$",
+    "fontSize":"20px"},
+
+  ];
+
+  drawArea(svg19,areaData19,y0Func,
+    {"fillColor":"#00f","opacity":0.7},xScale19,yScale19); 
+
+  drawPath(svg19,pathData191,{"stroke":"lime","strokeWidth":3},xScale19,yScale19); 
+  drawPath(svg19,pathData192,{"stroke":"lime","strokeWidth":3},xScale19,yScale19); 
+  drawAxes(svg19,axesData19);
+  drawMathjax(svg19,foData19,xScale19,yScale19);
+
+/** Improper integral with two infinite bounds **/
+  var xScale20 = d3.scale.linear()
+                       .domain([-20,20])
+                       .range([50,450]);
+  
+  var yScale20 = d3.scale.linear()
+                       .domain([15,0])
+                       .range([50,450]);       
+
+  axesData20 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[10],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale20,
+    "yScale":yScale20
+  };
+
+  var pathData20 = [];
+  var areaData20 = [];
+
+  function func20(i){
+    return 250/(25 + Math.pow(i,2));
+  };
+
+  for (var i = -20; i <= 20; i=i+0.1) {
+    pathData20.push(new Point(i,func20(i)));
+    areaData20.push(new Point(i,func20(i)));
+  };
+  foData20 = [
+    {"x":-0.7,
+    "y":18,
+    "text":"$$y$$",
+    "fontSize":"20px"},
+    {"x":20.2,
+    "y":1.2,
+    "text":"$$x$$",
+    "fontSize":"20px"},
+
+  ];
+
+  drawArea(svg20,areaData20,y0Func,
+    {"fillColor":"#00f","opacity":0.7},xScale20,yScale20); 
+
+  drawPath(svg20,pathData20,{"stroke":"lime","strokeWidth":3},xScale20,yScale20); 
+  drawAxes(svg20,axesData20);
+  drawMathjax(svg20,foData20,xScale20,yScale20);
 
 
 </script>
