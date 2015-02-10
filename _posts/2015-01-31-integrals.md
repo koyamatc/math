@@ -652,15 +652,53 @@ F'(x)=-\frac{\cos t}{t}+2x\frac{\cos x^2}{x^2}
       \(x\)の範囲が\(-\infty\)から\(+\infty\)のときの、関数と\(x\)軸の間の面積を求める
     </div>
     面積は
-    $$\int_{-\infty}^{\infth}\frac{250}{25 + x^2}dx
-    $$\quad \int_{-\infty}^{0}\frac{250}{25 + x^2}dx
-    + \int_{0}^{\infth}\frac{250}{25 + x^2}dx$$
-    $$\quad\lim_{n \to -\infty}\int_{n}^{0}\frac{250}{25 + x^2}dx
-    + \lim_{n \to \infty}\int_{0}^{n}\frac{250}{25 + x^2}dx$$
+    $$\int_{-\infty}^{\infty}\frac{250}{25 + x^2}dx$$
+    $$\quad =\int_{-\infty}^{0}\frac{250}{25 + x^2}dx
+    + \int_{0}^{\infty}\frac{250}{25 + x^2}dx$$
+    $$\quad = \lim_{n \to -\infty}\int_{n}^{0}\frac{250}{25 + x^2}dx
+    + \lim_{m \to \infty}\int_{0}^{m}\frac{250}{25 + x^2}dx$$
+    ここで制約をもうけます
+    $$x=5\tan\theta$$
+    $$\frac{x}{5}=\tan \theta$$
+    $$\theta = \arctan \frac{x}{5}$$
+    $$\frac{dx}{d\theta}=5\sec^2 \theta \to dx = 5\sec^2 \theta d \theta$$
+  </div>
+</div>
+$$\int\frac{250}{25+x^2}dx
+=\int\frac{250 \cdot 5\sec^2\theta}{25+25\tan^2\theta}d\theta
+=\int\frac{250 \cdot 5\sec^2\theta}{25(1+\tan^2\theta)}d\theta
+=\int\frac{10 \cdot 5\sec^2\theta}{(1+\tan^2\theta)}d\theta
+=\int\frac{10 \cdot 5\sec^2\theta}{(\sec^2\theta)}d\theta$$
+$$\quad=50\int d\theta=50\theta + C = 50 \arctan(\frac{x}{5})+C$$
+
+極限の式を書き換えると
+$$\quad = \lim_{n \to -\infty}\int_{n}^{0}\frac{250}{25 + x^2}dx
+    + \lim_{m \to \infty}\int_{0}^{m}\frac{250}{25 + x^2}dx$$
+$$\quad =\lim_{n \to -\infty}50 \arctan(\frac{x}{5})|_{n}^{0}
+    +   \lim_{m \to \infty}50 \arctan(\frac{x}{5})|_{0}^{m}$$
+$$\quad =\lim_{n \to -\infty}(50\arctan(\frac{0}{5}) 
+                           - 50\arctan(\frac{n}{5}) 
+  +     \lim_{m \to \infty}(50\arctan(\frac{m}{5}) 
+                          - 50\arctan(\frac{0}{5}) 
+$$
+$$\quad =0 -(-25\pi)+ 25\pi - 0$$
+$$\quad = 50\pi$$   
+
+--------
+
+## Divergent improper integral
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg21"></div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel">
+    </div>
   </div>
 </div>
 
---------
+
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
