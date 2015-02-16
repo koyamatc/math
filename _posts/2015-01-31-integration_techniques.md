@@ -238,8 +238,226 @@ $$
 
 ---------
 
+# Reverse chain rule
 
-## u-substitution and back substitution
+<div class="panel">
+  <h3>Chain Rule</h3>
+  $$\frac{d}{dx}g(f(x))=g'(f(x)) \cdot f'(x)$$
+</div>
+$$\qquad \downarrow$$
+<div class="panel">
+  <h3>Reverse Chain Rule</h3>
+  $$\int g'(f(x)) \cdot f'(x) dx = g(f(x)) + C$$
+</div>
+
+例１
+
+<div class="panel">
+  $$\int (\sin x)^2 \cos x dx = ?$$
+</div>
+
+$$u=\sin x$$
+$$\frac{du}{dx}=\cos x \to du=\cos x dx$$
+
+$$\int (\sin x)^2 \cos x dx 
+=\int (u)^2 du = \frac{u^3}{3} + C
+=\frac{(\sin x)^3}{3} + C$$
+
+例2
+
+<div class="panel">
+  $$\int \frac{x}{2}\sin(2x^2+2) dx = ?$$
+</div>
+
+$$f(x)=2x^2 + 2$$
+$$f'(x)=4x$$
+
+$$\int \frac{x}{2}\sin(2x^2+2) dx
+=\frac{1}{2}\frac{1}{4} \int 4x \sin(2x^2+2) dx
+=\frac{1}{8}\int f'(x) \sin(f(x)) dx
+=\frac{1}{8}(-cos(f(x)))+C
+=\frac{1}{8}(-cos(2x^2 + 2))+C$$
+
+例3
+
+<div class="panel">
+  $$\int \tan x dx = ?$$
+</div>
+
+$$\int \tan x dx 
+=\int \frac{\sin x}{\cos x}dx
+=\int \sin x \frac{1}{\cos x}dx$$
+
+$$\qquad \int \frac{1}{x}= \ln|x| + c$$
+$$\qquad \int f'(x)\frac{1}{f(x)}=\ln|f(x)|+C$$
+$$\qquad f(x)= \cos x$$
+$$\qquad f'(x)= -\sin x $$ 
+
+$$
+=-\ln|\cos x| + C
+$$
+
+---------
+
+# Integration using trigonometric identities
+
+例1
+<div class="panel">
+  $$\int \cos^3 x dx = ?$$
+</div>
+
+$$
+\int \cos^3 x dx = \int (\cos x)(\cos^2 x)dx
+= \int (\cos x)(1 - \sin^2 x)dx
+$$
+
+$$\qquad u=\sin x$$
+$$\qquad du = \cos x dx$$
+
+$$
+=\int (1-u^2)du
+= u - \frac{1}{3}u^3 + C
+= \sin x - \frac{1}{3}sin^3 x + C
+$$
+
+例2
+<div class="panel">
+  $$\int \sin^2 x \cos^3 x dx = ?$$
+</div>
+
+$$
+\int \sin^2 x \cos^3 x dx = 
+\int \sin^2 x \cos^2 x \cos x dx
+=\int \sin^2 x (1-\sin^2 x) \cos x dx
+=\int (sin^2 x - \sin^4 x) \cos x dx 
+$$
+
+$$\qquad u=\sin x$$
+$$\qquad du = \cos x dx$$
+
+$$
+=\int (u^2 - u^4) du
+=\frac{u^3}{3}-\frac{u^5}{5} + C
+=\frac{sin^3 x}{3}-\frac{sin^5 x}{5} + C
+$$
+
+例3
+<div class="panel">
+  $$\int \sin^4 x dx = ?$$
+</div>
+
+$$\qquad sin^2 x = \frac{1}{2}(1 - \cos 2x)$$
+
+$$
+\int \sin^4 x dx = \int (\sin^2 x )^2 dx
+=\int (\frac{1}{2}(1 - \cos 2x))^2 dx
+=\frac{1}{4} \int (1 - 2\cos 2x + \cos^2 2x) dx
+$$
+
+$$ \qquad \cos^2 2x = \frac{1}{2}(1 + cos 4x)$$
+$$
+=\frac{1}{4} \int (1-2\cos 2x + \frac{1}{2} + \frac{1}{2}\cos 4x)dx
+=\frac{1}{4} \int (\frac{3}{2}-2\cos 2x+\frac{1}{8}4\cos 4x) dx
+=\frac{1}{4} (\frac{3}{2}x - \sin 2x + \frac{1}{8} \sin 4x) + C
+$$
+
+-----------
+
+# Trigonometric substitution
+
+例1
+<div class="panel">
+  $$\int \frac{1}{\sqrt{1-x^2}} dx = ?$$
+</div>
+
+$$\qquad -1 \lt x \lt 1 $$
+$$\qquad x = \sin \theta$$
+$$\qquad dx = \cos \theta d\theta$$
+$$\qquad \theta = \arcsin x$$
+
+$$
+\int \frac{1}{\sqrt{1-x^2}} dx
+=\int \frac{\cos \theta}{\sqrt{(1-sin^2 \theta)}}d\theta
+=\int \frac{\cos \theta}{\sqrt{cos^2 \theta}}d\theta
+=\int \frac{\cos \theta}{|cos \theta|}d\theta
+$$
+
+$$\qquad \cos \theta \ge 0 $$
+$$
+=\int d\theta
+=\theta + C
+=\arcsin x + C
+$$
+
+例２
+<div class="panel">
+  $$\int \frac{\pi}{\sqrt{8-2x^2}} dx = ?$$
+</div>
+
+$$\qquad a^2 - x^2 \to x=a\sin \theta$$
+$$\qquad a^2 - a^2\sin^2 \theta) = a(1-sin^2 \theta)$$
+$$\qquad x = 2\sin \theta$$
+$$\qquad dx = 2\cos \theta d\theta$$
+$$\qquad \theta = \arcsin(\frac{x}{2})$$
+$$\qquad 8 - 2x^2 = 2(4-x^2)= 2(2^2-2^2sin^2 \theta) 
+= 2\cdot 2^2(1-\sin^2 \theta)=8\cos^2 \theta$$
+
+$$\int \frac{\pi}{\sqrt{8-2x^2}} dx 
+=\pi \int \frac{2\cos \theta}{\sqrt{8\cos^2 \theta}} d\theta
+=\pi \int \frac{2\cos \theta}{2\sqrt{2}\cos\theta} d\theta
+=\frac{\pi}{\sqrt{2}}\int d\theta
+=\frac{\pi}{\sqrt{2}}\theta + C
+=\frac{\pi}{\sqrt{2}}\arcsin(\frac{x}{2}) + C$$
+
+例3
+<div class="panel">
+  $$\int \frac{1}{\sqrt{3-2x^2}} dx = ?$$
+</div>
+
+変形します
+$$\int \frac{1}{\sqrt{3-2x^2}} dx 
+=\int \frac{1}{\sqrt{3(1-\frac{2}{3}x^2)}} 
+$$
+
+$$\qquad \frac{2}{3}x^2=sin^2 \theta$$
+$$\qquad \frac{\sqrt{2}}{\sqrt{3}}x^2=sin \theta$$
+$$\qquad \theta = \arcsin(\frac{\sqrt{2}}{\sqrt{3}}x)$$
+$$\qquad x=\frac{\sqrt{3}}{\sqrt{2}}\sin \theta$$
+$$\qquad dx=\frac{\sqrt{3}}{\sqrt{2}}\cos \theta d\theta$$
+
+$$
+=\int \frac{\frac{\sqrt{3}}{\sqrt{2}}\cos \theta d\theta}
+{\sqrt{3(1-sin^2 x)}}
+=\int \frac{\frac{\sqrt{3}}{\sqrt{2}}\cos \theta d\theta}
+{\sqrt{3(cos^2 x)}}
+=\int \frac{\frac{\sqrt{3}}{\sqrt{2}}\cos \theta d\theta}
+{\sqrt{3}cos x)}
+=\int \frac{1}{\sqrt{2}}d\theta
+=\frac{1}{\sqrt{2}} \int d \theta
+$$
+$$
+=\frac{1}{\sqrt{2}}\theta + C
+=\frac{1}{\sqrt{2}}\arcsin(\frac{\sqrt{2}}{\sqrt{3}}x) + C
+$$
+
+例4
+<div class="panel">
+  $$\int x^3 \sqrt{9-x^2} dx = ?$$
+</div>
+
+$$\qquad 9-x^2 = 3^2 - x^2$$
+$$\qquad x=a\sin \theta$$
+$$\qquad 3^2 - 3^2 \sin^2 \theta=9(1-sin^2 \theta}$$
+$$\qquad \sqrt{9-x^2}=\sqrt{9\cos^2 \theta}=3\cos \theta$$
+
+$$
+\int x^3 \sqrt{9-x^2} dx
+=\int x^3 3\cos \theta dx
+=
+$$
+
+
+
 
 
 
