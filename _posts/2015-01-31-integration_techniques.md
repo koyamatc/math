@@ -446,20 +446,167 @@ $$
 </div>
 
 $$\qquad 9-x^2 = 3^2 - x^2$$
-$$\qquad x=a\sin \theta$$
-$$\qquad 3^2 - 3^2 \sin^2 \theta=9(1-sin^2 \theta}$$
+$$\qquad x=a\sin \theta = 3\sin \theta \to \sin \theta = \frac{x}{3}$$
+$$\qquad dx = 3\cos \theta d\theta$$
+$$\qquad 3^2 - 3^2 \sin^2 \theta = 9(1-sin^2 \theta)$$
 $$\qquad \sqrt{9-x^2}=\sqrt{9\cos^2 \theta}=3\cos \theta$$
 
 $$
 \int x^3 \sqrt{9-x^2} dx
-=\int x^3 3\cos \theta dx
-=
+=\int 27\sin^3 \theta 3\cos \theta \cdot 3\cos \theta d\theta
+$$
+$$
+=243 \int sin^3 \theta \cos^2 \theta d\theta
+$$
+$$
+=243 \int sin^2 \theta \cos^2 \theta \sin \theta d\theta
+$$
+$$
+=243 \int (1-cos^2 \theta) \cos^2 \theta \sin \theta d\theta
 $$
 
+$$\qquad u= \cos \theta$$
+$$\qquad du = -\sin \theta d\theta$$
 
+$$
+=-243 \int (1-cos^2 \theta) \cos^2 \theta -\sin \theta d\theta
+$$
+$$
+=-243 \int (1-u^2) \u^2  du
+=-243 \int(u^2 - u^4) du
+=-243(\frac{u^3}{3}-\frac{u^5}{5}) + C
+$$
 
+$$\qquad \sin \theta = \frac{x}{3}$$ 
+$$\qquad \cos \theta = \frac{\sqrt{9-x^2}}{3} 
+=\sqrt{\frac{1}{9}(9-x^2)}
+= (1-\frac{x^2}{9})^{\frac{1}{2}}=u$$
+$$
+=243(\frac{u^5}{5}-\frac{u^3}{3}) + C
+$$
+$$
+=243(\frac{(1-\frac{x^2}{9})^{\frac{5}{2}}}{5}
+-\frac{(1-\frac{x^2}{9})^{\frac{3}{2}}}{3}) + C
+$$
 
+例5 
+<div class="panel">
+  $$\int \frac{1}{9 + x^2} dx = ?$$
+</div>
 
+$$\qquad a^2 - x^2 \to x = a\sin \theta としてきましたが$$
+$$\qquad a^2 + x^2 \to x = a\tan \theta とします$$
+$$\qquad = a^2 + a^2\tan^2 \theta
+=a^2(1 + tan^2 \theta)
+=a^2(\frac{\cos^2 \theta}{\cos^2 \theta} 
+   + \frac{\sin^2 \theta}{\cos^2 \theta})
+=a^2(\frac{\cos^2 \theta + \sin^2 \theta}{\cos^2 \theta}) 
+=a^2(\frac{1}{\cos^2 \theta}) 
+=a^2\sec^2 \theta$$
+$$\qquad 9+x^2 = 3^2 + x^2=3^2\sec^2 \theta$$
+$$\qquad a = 3$$
+$$\qquad x = 3\tan \theta$$
+$$\qquad dx = 3\sec^2 \theta d\theta$$
+$$\qquad \frac{x}{3}=\tan \theta$$
+$$\qquad \theta = \arctan(\frac{x}{3})$$
+
+$$\int \frac{1}{9 + x^2} dx 
+=\int \frac{3\sec^2 \theta d\theta}{9\sec^2 \theta}
+=\frac{1}{3}\int d\theta
+=\frac{1}{3} \theta + C
+$$
+$$
+=\frac{1}{3} \arctan(\frac{x}{3}) + C
+$$ 
+
+例6 
+<div class="panel">
+  $$\int \frac{1}{36 + x^2} dx = ?$$
+</div>
+
+まず変形します
+$$=\int \frac{1}{36(1+\frac{x^2}{36})}$$
+
+$$\qquad \frac{x^2}{36}= \tan^2 \theta 
+\to \frac{x}{6} \to x=6\tan \theta$$
+$$\qquad 1 + \tan^2 \theta = 1 + \frac{\sin^2 \theta}{\cos^2 \theta}
+=\frac{\cos^2 \theta}{\cos^2 \theta} + \frac{\sin^2 \theta}{\cos^2 \theta}
+=\frac{\cos^2 \theta + \sin^2 \theta}{\cos^2 \theta}
+=\frac{1}{\cos^2 \theta}=sec^2 \theta$$
+$$\qquad dx=6\sec^2 \theta d\theta$$
+$$\qquad \arctan \frac{x}{6} = \theta$$
+
+$$=\int \frac{6\sec^2 \theta d\theta}{36(1+\tan^2 \theta)}
+=\int \frac{6\sec^2 \theta d\theta}{36\sec^2 \theta}
+$$
+$$
+=\frac{1}{6}\int d\theta
+$$
+$$
+=\frac{1}{6}\theta + C
+=\frac{1}{6}\arctan(\frac{x}{6}) + C
+$$ 
+
+例7 
+<div class="panel">
+  $$\int \sqrt{6x-x^2 -5} dx = ?$$
+</div>
+
+これを変形します
+$$
+=\int \sqrt{-5 +9 -(x^2-6x +9)} dx
+=\int \sqrt{4 - (x-3)^2} dx
+=\int \sqrt{4(1 - \frac{(x-3)^2}{4}} dx
+=\int 2 \sqrt{1-(\frac{x-3}{2})^2} dx 
+$$
+
+$$\qquad \cos^2 \theta = 1 - \sin^2 \theta$$
+$$\qquad sin^2 \theta = (\frac{x-3}{2})^2 
+\to \sin \theta = \frac{x-3}{2}$$
+$$\qquad \theta = \arcsin(\frac{x-3}{2})$$ 
+$$\qquad x = 2\sin \theta + 3$$
+$$\qquad dx = 2\cos \theta d\theta$$
+
+$$
+=\int2 \sqrt{1-\sin^2 \theta} 2\cos \theta d\theta
+=\int 4\cos^2 \theta d\theta
+$$
+
+$$\qquad \cos^2 \theta = \frac{1}{2}(1 - \cos2\theta)$$
+
+$$
+=\int 4 \cdot \frac{1}{2}(1 - \cos2\theta)d\theta
+=\int 2(1 - \cos2\theta)d \theta
+=\int(2-2\cos2\theta) d \theta
+$$
+$$
+=2\theta-\sin 2\theta + C
+$$  
+
+$$\qquad \sin 2\theta = \sin(\theta + \theta)
+= \sin \theta \cos \theta + \sin \theta + \cos \theta =
+=2\sin \theta \cos \theta
+$$
+
+$$
+=2\theta + 2\sin \theta \cos \theta + C
+=2\theta + 2\sin \theta \sqrt{1-sin^2 \theta} + C
+$$
+$$=2\theta + 2\sin \theta \sqrt{1-sin^2 \theta} +C$$
+$$=2\arcsin(\frac{x-3}{2}) + 2\frac{x-3}{2} \sqrt{1-(\frac{x-3}{2})^2}+C$$
+$$=2\arcsin(\frac{x-3}{2})+\frac{x-3}{2}\sqrt{4} \sqrt{1-\frac{(x-3)^2}{4}}+C$$
+$$=2\arcsin(\frac{x-3}{2})+\frac{x-3}{2}\sqrt{4-(x-3)^2}+C$$
+$$=2\arcsin(\frac{x-3}{2})+\frac{x-3}{2}\sqrt{4-(x^2-6x+9)}+C$$
+$$=2\arcsin(\frac{x-3}{2})+\frac{x-3}{2}\sqrt{6x-x^2-5)}+C$$
+
+------------
+
+# Division and partial fraction expansion
+
+例1 
+<div class="panel">
+  $$\int \frac{x^2+x-5}{x^2-1} dx = ?$$
+</div>
 
 
 <div class="row">
