@@ -601,39 +601,11 @@ $$=2\arcsin(\frac{x-3}{2})+\frac{x-3}{2}\sqrt{6x-x^2-5)}+C$$
 
 ------------
 
-# Division and partial fraction expansion
-
-例1 
-<div class="panel">
-  $$\int \frac{x^2+x-5}{x^2-1} dx = ?$$
-</div>
-
-
-<div class="row">
-  <div class="col-sm-6">
-    <div id="svg01"></div>
-  </div>
-  <div class="col-sm-6">
-    <div class="panel">
-    </div>
-  </div>
-</div>
-
-
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="{{site.url}}/js/d3draws.js" charset="utf-8"></script>
 
 <script>
-
-
-/**  */
-  var svg01 = d3.select("#svg01")
-                .append("svg")
-                .attr("height",500)
-                .attr("width",500)
-                .style("background","#000");
-
 
 </script>
