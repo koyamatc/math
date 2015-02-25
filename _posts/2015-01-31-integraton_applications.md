@@ -317,6 +317,26 @@ categories: integral
   </div>
 </div>
 
+-------
+
+# Solids of revolution - shell method
+
+## Shell method for rotating around vertical line
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg13"></div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel">
+      区間[1,3]で関数\(f(x)=(x-3)^2(x-1)\)　とx軸の間にできる断面がy軸を中心に360°回転してできる立体の体積を求める
+    </div>
+    回転体の体積は、半径xの円が高さ\(f(x)\)積みあがったものが区間[1,3]連なったものです
+    $$V=\int_{1}^{3}2\pi x f(x)dx =2\pi\int_{1}^{3}(x-3)^2(x-1)dx$$
+    $$=2\pi\int_{1}^{3}(x^3-7x^2+15x-9)dx$$
+  </div>
+</div>
+
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="{{site.url}}/js/d3draws.js" charset="utf-8"></script>
@@ -398,6 +418,12 @@ categories: integral
                 .attr("width",500)
                 .style("background","#000");
 
+  var svg13 = d3.select("#svg13")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
   var xScale01 = d3.scale.linear()
                        .domain([0,1.2])
                        .range([50,450]);
@@ -459,11 +485,19 @@ categories: integral
   var yScale11 = d3.scale.linear()
                        .domain([3.5,-1.2])
                        .range([50,450]);       
+
   var xScale12 = d3.scale.linear()
                        .domain([-0.2,4.2])
                        .range([50,450]);
   var yScale12 = d3.scale.linear()
                        .domain([2,-0.2])
+                       .range([50,450]);       
+
+  var xScale13 = d3.scale.linear()
+                       .domain([-3.2,3.2])
+                       .range([50,450]);
+  var yScale13 = d3.scale.linear()
+                       .domain([3,-0.2])
                        .range([50,450]);       
 
   // 軸
@@ -1075,5 +1109,57 @@ categories: integral
     "yScale":yScale12
   };
   drawAxes(svg12,axesData12);
+
+  //Shell method 
+  function func131(x){
+    return Math.pow(x,3)-7*Math.pow(x,2)+15*x-9;
+  };
+  function func132(x){
+    return Math.pow(x,2);
+  };
+  function func134(x){
+    return -Math.sqrt(x,2);
+  };
+
+  var pathData131=[];
+  var pathData132=[];
+
+  for (var i = 1; i <= 3.02; i=i+0.02) {
+    pathData131.push(new Point(i,func131(i)));
+    pathData132.push(new Point(-i,func131(i)));
+  };
+
+  drawArea(svg13,pathData131,y0func,
+    {"fillColor":"#00f","opacity":0.6},xScale13,yScale13); 
+  drawArea(svg13,pathData132,y0func,
+    {"fillColor":"#ccc","opacity":0.6},xScale13,yScale13); 
+
+  drawPath(svg13,pathData131,{"stroke":"#0f0"},xScale13,yScale13); 
+  drawPath(svg13,pathData132,{"stroke":"#f0f"},xScale13,yScale13); 
+
+  lineData13 = [
+    {"x1":2.5,"y1":func131(2.5),"x2":2.5,"y2":0,"stroke":"#fff"},
+    {"x1":-2.5,"y1":func131(2.5),"x2":-2.5,"y2":0,"stroke":"#fff"},
+    {"x1":2.5,"y1":func131(2.5),"x2":-2.5,"y2":func131(2.5),"stroke":"#fff"},
+  ];
+
+  drawLine(svg13,lineData13,xScale13,yScale13);
+
+  axesData13 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[-3,-1,1,3],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale13,
+    "yScale":yScale13
+  };
+  drawAxes(svg13,axesData13);
 
 </script>
