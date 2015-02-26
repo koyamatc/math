@@ -301,7 +301,7 @@ categories: integral
   <div class="col-sm-6">
     <div class="panel">
       $$y=x^2-1が区間-1 \le y \le 3 で$$
-      $x=-2を軸に360°回転してできる図形の体積は$$
+      $$x=2を軸に360°回転してできる図形の体積は$$
     </div>
     回転してできた図形の断面積は
     $$\qquad y=x^2-1 \to x=\sqrt{y+1}$$
@@ -336,6 +336,80 @@ categories: integral
     $$=2\pi\int_{1}^{3}(x^3-7x^2+15x-9)dx$$
   </div>
 </div>
+
+## Shell method for rotating around horizontal line
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg14"></div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel">
+      区間[0,8]で関数\(y=\sqrt[3]{x}\)　とx軸の間にできる断面がx軸を中心に360°回転してできる立体の体積を求める
+    </div>
+    回転体の体積は、半径yの円が高さ\(8-x\)積みあがったものがyの区間[0,2]連なったものです
+    $$y=\sqrt[3]{x} \to x = y^3$$
+    $$V=\int_{0}^{2}2\pi y (8-y^3)dy =2\pi\int_{0}^{2}y(8-y^3)dy$$
+    $$=2\pi\int_{0}^{2}(8y-y^4)dy$$
+  </div>
+</div>
+
+## Shell method with two functions of x
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg15"></div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel">
+      区間[0,1]で関数\(y=\sqrt{x}\)と\(y=x^2\)の間にできる断面がx=2を中心に360°回転してできる立体の体積を求める
+    </div>
+    回転体の体積は、半径\(2-x\)の円が高さ\(\sqrt{x}-x^2\)積みあがったものがyの区間[0,1]連なったものです
+    $$円周：2\pi (2-x)$$
+    $$表面積：2\pi (2-x)(\sqrt{x}-x^2)$$
+    $$V=\int_{0}^{1}2\pi (2-x)(\sqrt{x}-x^2)dx$$ 
+    $$=2\pi\int_{0}^{1}(2-x)(\sqrt{x}-x^2)dx$$
+  </div>
+</div>
+
+## Shell method with two functions of y
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg16"></div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel">
+      xの区間[0,4]で関数\(x=(y-1)^2\)と\(y=x-1\)の間にできる断面がy=-2を中心に360°回転してできる立体の体積を求める
+    </div>
+    回転体の体積は、半径\(y+2\)の円が高さ\(\y+1-(y-1)^2\)積みあがったものがyの区間[0,3]連なったものです
+    $$円周：2\pi (y+2)$$
+    $$表面積：2\pi (y+2)(y+1-(y-1)^2)$$
+    $$V=2\pi \int_{0}^{3}(y+2)(y+1-(y-1)^2)dy$$ 
+  </div>
+</div>
+
+-------
+
+# Area defined by polar graphs
+
+## Area enclosed by polar graph formula intuition
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg16"></div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel">
+      xの区間[0,4]で関数\(x=(y-1)^2\)と\(y=x-1\)の間にできる断面がy=-2を中心に360°回転してできる立体の体積を求める
+    </div>
+    回転体の体積は、半径\(y+2\)の円が高さ\(\y+1-(y-1)^2\)積みあがったものがyの区間[0,3]連なったものです
+    $$円周：2\pi (y+2)$$
+    $$表面積：2\pi (y+2)(y+1-(y-1)^2)$$
+    $$V=2\pi \int_{0}^{3}(y+2)(y+1-(y-1)^2)dy$$ 
+  </div>
+</div>
+
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -424,6 +498,24 @@ categories: integral
                 .attr("width",500)
                 .style("background","#000");
 
+ var svg14 = d3.select("#svg14")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
+ var svg15 = d3.select("#svg15")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
+ var svg16 = d3.select("#svg16")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
   var xScale01 = d3.scale.linear()
                        .domain([0,1.2])
                        .range([50,450]);
@@ -498,6 +590,27 @@ categories: integral
                        .range([50,450]);
   var yScale13 = d3.scale.linear()
                        .domain([3,-0.2])
+                       .range([50,450]);       
+
+  var xScale14 = d3.scale.linear()
+                       .domain([-0.1,8.2])
+                       .range([50,450]);
+  var yScale14 = d3.scale.linear()
+                       .domain([2.5,-2.5])
+                       .range([50,450]);       
+
+  var xScale15 = d3.scale.linear()
+                       .domain([-0.1,4.2])
+                       .range([50,450]);
+  var yScale15 = d3.scale.linear()
+                       .domain([2.2,-0.1])
+                       .range([50,450]);       
+
+  var xScale16 = d3.scale.linear()
+                       .domain([-0.1,5.2])
+                       .range([50,450]);
+  var yScale16 = d3.scale.linear()
+                       .domain([4.2,-8.2])
                        .range([50,450]);       
 
   // 軸
@@ -1161,5 +1274,181 @@ categories: integral
     "yScale":yScale13
   };
   drawAxes(svg13,axesData13);
+
+  //Shell method around horisontal line
+  function func141(x){
+    return Math.cbrt(x);
+  };
+  function func142(x){
+    return Math.pow(x,2);
+  };
+  function func144(x){
+    return -Math.sqrt(x,2);
+  };
+
+  var pathData141=[];
+  var pathData142=[];
+
+  for (var i = 0; i <= 8.02; i=i+0.02) {
+    pathData141.push(new Point(i,func141(i)));
+    pathData142.push(new Point(i,-func141(i)));
+  };
+
+  drawArea(svg14,pathData141,y0func,
+    {"fillColor":"#00f","opacity":0.6},xScale14,yScale14); 
+  drawArea(svg14,pathData142,y0func,
+    {"fillColor":"#ccc","opacity":0.6},xScale14,yScale14); 
+
+  drawPath(svg14,pathData141,{"stroke":"#0f0"},xScale14,yScale14); 
+  drawPath(svg14,pathData142,{"stroke":"#f0f"},xScale14,yScale14); 
+
+  lineData14 = [
+    {"x1":2.5,"y1":func141(2.5),"x2":2.5,"y2":-func141(2.5),"stroke":"#fff"},
+    {"x1":2.5,"y1":-func141(2.5),"x2":8,"y2":-func141(2.5),"stroke":"#fff"},
+    {"x1":2.5,"y1":func141(2.5),"x2":8,"y2":func141(2.5),"stroke":"#fff"},
+  ];
+
+  drawLine(svg14,lineData14,xScale14,yScale14);
+
+  axesData14 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[8],
+    "yTickValues":[2],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale14,
+    "yScale":yScale14
+  };
+  drawAxes(svg14,axesData14);
+
+  //Shell method with two functions of x
+  function func151(x){
+    return Math.sqrt(x);
+  };
+  func152 = function func152(x){
+    return Math.pow(x,2);
+  };
+  func154 = function func154(x){
+    return Math.pow(4-x,2);;
+  };
+
+  var pathData151=[];
+  var pathData152=[];
+  var pathData153=[];
+  var pathData154=[];
+
+  for (var i = 0; i <= 1.02; i=i+0.02) {
+    pathData151.push(new Point(i,func151(i)));
+    pathData152.push(new Point(i,func152(i)));
+    pathData153.push(new Point(4-i,func151(i)));
+    pathData154.push(new Point(4-i,func152(i)));
+  };
+
+  drawArea(svg15,pathData151,func152,
+    {"fillColor":"#00f","opacity":0.6},xScale15,yScale15); 
+  drawArea(svg15,pathData153,func154,
+    {"fillColor":"#ccc","opacity":0.6},xScale15,yScale15); 
+
+  drawPath(svg15,pathData151,{"stroke":"#0f0"},xScale15,yScale15); 
+  drawPath(svg15,pathData152,{"stroke":"#f0f"},xScale15,yScale15); 
+  drawPath(svg15,pathData153,{"stroke":"#0f0"},xScale15,yScale15); 
+  drawPath(svg15,pathData154,{"stroke":"#f0f"},xScale15,yScale15); 
+
+  lineData15 = [
+    {"x1":2,"y1":-0.1,"x2":2,"y2":1.5,"stroke":"#fff"},
+    {"x1":0.5,"y1":func151(0.5),"x2":0.5,"y2":func152(0.5),"stroke":"#fff"},
+    {"x1":0.5,"y1":func151(0.5),"x2":3.5,"y2":func151(0.5),"stroke":"#fff"},
+    {"x1":0.5,"y1":func152(0.5),"x2":3.5,"y2":func152(0.5),"stroke":"#fff"},
+    {"x1":3.5,"y1":func151(0.5),"x2":3.5,"y2":func152(0.5),"stroke":"#fff"},
+  ];
+
+  drawLine(svg15,lineData15,xScale15,yScale15);
+
+  axesData15 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[2],
+    "yTickValues":[1],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale15,
+    "yScale":yScale15
+  };
+  drawAxes(svg15,axesData15);
+
+  //Shell method with two functions of y
+  function func161(y){
+    return Math.pow(y,2)-2*y+1;
+  };
+  func162 = function func162(x){
+    return x-1;
+  };
+  func164 = function func164(x){
+    return -x-3;
+  };
+
+  var pathData161=[];
+  var pathData162=[];
+  var pathData163=[];
+  var pathData164=[];
+
+  for (var i = 0; i <= 3.02; i=i+0.02) {
+    pathData161.push(new Point(func161(i),i));
+    pathData163.push(new Point(func161(i),-i-4));
+  };
+  for (var i = 1; i <= 4.02; i=i+0.02) {
+    pathData162.push(new Point(i,func162(i)));
+    pathData164.push(new Point(i,-func162(i)-4));
+  };
+
+  drawArea(svg16,pathData161,func162,
+    {"fillColor":"#00f","opacity":0.6},xScale16,yScale16); 
+  drawArea(svg16,pathData163,func164,
+    {"fillColor":"#ccc","opacity":0.6},xScale16,yScale16); 
+
+  drawPath(svg16,pathData161,{"stroke":"#0f0"},xScale16,yScale16); 
+  drawPath(svg16,pathData162,{"stroke":"#f0f"},xScale16,yScale16); 
+  drawPath(svg16,pathData163,{"stroke":"#0f0"},xScale16,yScale16); 
+  drawPath(svg16,pathData164,{"stroke":"#f0f"},xScale16,yScale16); 
+
+  lineData16 = [
+    {"x1":-0.1,"y1":-2,"x2":4.5,"y2":-2,"stroke":"#fff"},
+    {"x1":func151(2)-0.2,"y1":2,"x2":3,"y2":2,"stroke":"#fff"},
+    {"x1":func151(2)-0.2,"y1":-6,"x2":3,"y2":-6,"stroke":"#fff"},
+    {"x1":func151(2)-0.2,"y1":2,"x2":func151(2)-0.2,"y2":-6,"stroke":"#fff"},
+    {"x1":3,"y1":2,"x2":3,"y2":-6,"stroke":"#fff"},
+
+
+  ];
+
+  drawLine(svg16,lineData16,xScale16,yScale16);
+
+  axesData16 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[1,2,3,4],
+    "yTickValues":[-7,-2,1,3],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale16,
+    "yScale":yScale16
+  };
+  drawAxes(svg16,axesData16);
 
 </script>
