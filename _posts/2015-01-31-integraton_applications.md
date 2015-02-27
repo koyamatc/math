@@ -395,22 +395,10 @@ categories: integral
 
 ## Area enclosed by polar graph formula intuition
 
-<div class="row">
-  <div class="col-sm-6">
-    <div id="svg16"></div>
-  </div>
-  <div class="col-sm-6">
-    <div class="panel">
-      xの区間[0,4]で関数\(x=(y-1)^2\)と\(y=x-1\)の間にできる断面がy=-2を中心に360°回転してできる立体の体積を求める
-    </div>
-    回転体の体積は、半径\(y+2\)の円が高さ\(\y+1-(y-1)^2\)積みあがったものがyの区間[0,3]連なったものです
-    $$円周：2\pi (y+2)$$
-    $$表面積：2\pi (y+2)(y+1-(y-1)^2)$$
-    $$V=2\pi \int_{0}^{3}(y+2)(y+1-(y-1)^2)dy$$ 
-  </div>
-</div>
+$$Area = \frac{1}{2} \int_{a}^{b}f(\theta)^2 d\theta$$ 
 
-
+## Arc length of polar graph
+$$ length = \frac{1}{2} \int_{a}^{b}\sqrt{f'(\theta)^2+f(\theta)^2} d\theta$$
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="{{site.url}}/js/d3draws.js" charset="utf-8"></script>
