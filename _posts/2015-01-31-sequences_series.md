@@ -156,6 +156,104 @@ $$a_{n}=\frac{(-2)^{n+1}}{2n+1}$$
 
 # Geometric series
 
+<h3>
+  Geometric sequence
+$$a,ar,ar^2,ar^3, \cdots$$
+$$r \cdots 比率$$
+
+$$1,-3,9,-27,81,\cdots \qquad r=-3$$
+$$3,6,12,24,48, \cdots \qquad r=2$$
+
+  Geometric series
+$$1+(-3)+9+(-27)+81+ \cdots$$
+$$3+6+12+24+48+ \cdots$$
+$$\qquad \downarrow$$
+$$\sum_{k=0}^{n}ar^k = ar^0+ar^1+ar^2+ar^3+ \cdots + ar^n$$
+</h3>
+
+## Formula for a finite geometric series
+
+<h3>
+$$S_{n}=\sum_{k=0}^{n}ar^k = ar^0+ar^1+ar^2+ar^3+ \cdots + ar^n$$
+上の式をr倍したものを
+$$rS_{n}=\sum_{k=0}^{n}ar^{+1} = ar^1+ar^2+ar^3+ar^4+ \cdots + ar^{n+1}$$
+上の式から下の式を引きます
+$$S_{n}-rS_{n}=ar^0-ar^{n+1}$$
+$$S_{n}(1-r)=a-a^{n+1}$$
+$$S_{n}=\sum_{k=0}^{n}ar^k =\frac{a-a^{n+1}}{1-r}$$
+</h3>
+
+## Sum of an infinite geometric series
+
+<h3>
+$$\sum_{k=0}^{n}ar^k =\frac{a-a^{n+1}}{1-r}$$
+$$n \to \inftyのとき$$
+$$\lim_{n \to \infty}\sum_{k=0}^{n}ar^k
+=\lim_{n \to \infty}\frac{a-a^{n+1}}{1-r}$$
+\(r>1\)のときは、発散してしまい極限がない
+$$0 \lt |r| \lt 1で$$
+\(a^{n+1}\)限りなく小さくなり\(\to 0\)なので
+$$\sum_{k=0}^{\infty}ar^k =\frac{a}{1-r}$$
+</h3>
+
+---------
+
+# Tests for convergence and divergence
+
+## The nth term divergence test
+
+<div class="panel">
+<h3>
+$$もし \lim_{n \to \infty}a_{n} \ne 0ならば、
+\sum_{n =1}^{\infty}a_{n}は発散する$$
+$$0のときは、収束するか発散するかは決定できない$$
+</h3>
+</div>
+<h3>
+$$\sum_{n=1}^{\infty}\frac{4n^2-n^3}{7-3n^3}$$
+$$\lim_{n \to \infty}\frac{4n^2-n^3}{7-3n^3}
+=\lim_{n \to \infty}\frac{\frac{4}{n}-1}{\frac{7}{n^3}-3}=\frac{1}{3}$$
+$$\sum_{n=1}^{\infty}\frac{4n^2-n^3}{7-3n^3}は発散する$$
+</h3>
+
+## Ratio test
+
+<h3>
+<div class="panel">
+$$ \sum_{n=k}^{\infty}r^n=r^k+r^{k+1}+r^{k+2}+ \cdots $$
+比率は
+$$r=\frac{r^{n+1}}{r^n}$$
+$$もし|r| \lt 1ならば、収束する$$
+</div>
+ $$\sum_{n=5}^{\infty}\frac{n^{10}}{n!}は収束するか？$$
+ 比率は
+ $$\frac{(n+1)^{10}}{(n+1)!}\cdot\frac{n!}{n^{10}}
+ =\frac{(n+1)^{10}}{(n+1)n^{10}} =\frac{(n+1)^{10}}{n^11+n^{10}}$$
+ $$\lim_{n \to \infth}\frac{(n+1)^{10}}{n^11+n^{10}}=0$$
+
+ <div class="panel">
+  $$\sum_{n=k}^{\infty}a_{n} で、\lim_{n \to \infty}|\frac{a_{n+1}}{a_{n}}|=Lのとき$$
+  $$L \lt 1 \to 収束する$$
+  $$L \gt 1 \to 発散する$$
+  $$L = 1 \to わからない$$ 
+ </div>
+</h3>
+
+## Comparison test
+
+<h3>
+<div class="panel">
+$$\sum_{n=1}^{\infty}a_{n} \quad \sum_{n=1}^{\infty}b_{n}
+\quad は、 a_{n},b_{n} \ge 0　かつ a_{n} \le b_{n}のとき$$
+$$\sum_{n=1}^{\infty}b_{n}が収束するならば、
+\sum_{n=1}^{\infty}a_{n}は収束する$$
+$$\sum_{n=1}^{\infty}a_{n}が発散するならば、
+\sum_{n=1}^{\infty}b_{n}は発散する$$
+</div>
+</h3>
+
+## Famous proof that harmonic series diverges
+
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
