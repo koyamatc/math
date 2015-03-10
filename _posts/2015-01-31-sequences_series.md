@@ -228,8 +228,8 @@ $$もし|r| \lt 1ならば、収束する$$
  $$\sum_{n=5}^{\infty}\frac{n^{10}}{n!}は収束するか？$$
  比率は
  $$\frac{(n+1)^{10}}{(n+1)!}\cdot\frac{n!}{n^{10}}
- =\frac{(n+1)^{10}}{(n+1)n^{10}} =\frac{(n+1)^{10}}{n^11+n^{10}}$$
- $$\lim_{n \to \infth}\frac{(n+1)^{10}}{n^11+n^{10}}=0$$
+ =\frac{(n+1)^{10}}{(n+1)n^{10}} =\frac{(n+1)^{10}}{n^{11}+n^{10}}$$
+ $$\lim_{n \to \infty}\frac{(n+1)^{10}}{n^{11}+n^{10}}=0$$
 
  <div class="panel">
   $$\sum_{n=k}^{\infty}a_{n} で、\lim_{n \to \infty}|\frac{a_{n+1}}{a_{n}}|=Lのとき$$
@@ -253,6 +253,126 @@ $$\sum_{n=1}^{\infty}a_{n}が発散するならば、
 </h3>
 
 ## Famous proof that harmonic series diverges
+
+<h3>
+<div class="panel">
+Harmonic series（調和級数）
+$$\sum_{n=1}^{\infty}\frac{1}{n}
+= 1 + \frac{1}{2}+ \frac{1}{3}+ \frac{1}{4}+ \frac{1}{5}
++ \frac{1}{6}+ \frac{1}{7}+ \frac{1}{8}+ \frac{1}{9} + \cdots$$
+は発散する
+</div>
+上の式から別の式を作成します、各項と\(\frac{1}{2}\)のべき乗とを比べ、項目の値を超えないべき乗の最大値とっていきます
+<br>
+１と1/2のべき乗では、1が1/2のべき乗の最大値なので1を<br>
+1/2と1/2のべき乗では、1/2が1/2のべき乗の最大値なので1/2を<br>
+1/3,1/4と1/2のべき乗では、1/4が項目の値を超えないべき乗の最大値なので1/4を<br>
+1/5,1/6,1/7,1/8と1/2のべき乗では、1/4が1/2のべき乗の最大値で項目の値を超えないので1/8を<br>
+$$S=\quad 1 + \frac{1}{2}
++ \frac{1}{4}+ \frac{1}{4}
++ \frac{1}{8}+ \frac{1}{8}+ \frac{1}{8}+ \frac{1}{8}
++ \frac{1}{16}+ \cdots$$
+
+２つの式の項目を見るとすべて正の数です。そして対応する項目は下の式の値は同じか上の式の項目の値より小さい。<br>
+下の式を見ると、\(\frac{1}{4}\)は2つあるので\(\frac{1}{2}\)、
+\(\frac{1}{8}\)は4つあるので\(\frac{1}{2}\)、
+\(\frac{1}{16}\)は8つあると予想されるので\(\frac{1}{2}\)、
+\(S\)を書き換えます
+$$S=1 + \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + \cdots = \infty$$
+\(S\)は発散します、つまり比較テストの決まりから調和級数は発散します
+</h3>
+
+## Comparison test to show convergence
+
+<h3>
+<div class="panel">
+$$\sum_{n=1}^{\infty}\frac{1}{2^n+n}$$
+収束するのか、発散するのか
+</div>
+$$\sum_{n=1}^{\infty}\frac{1}{2^n+n}
+=\frac{1}{3}+\frac{1}{6}+\frac{1}{11}+\frac{1}{20}+ \cdots$$
+$$\sum_{n=1}^{\infty}\frac{1}{2^n}
+=\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+\frac{1}{16}+ \cdots$$
+$$\sum_{n=1}^{\infty}\frac{1}{2^n}
+=\sum_{n=1}^{\infty}(\frac{1}{2})^n$$
+$$|\frac{1}{2}| \lt 1 \to 
+\sum_{n=1}^{\infty}(\frac{1}{2})^n は収束する$$
+2つの式の項目はすべて正である、上の式の項目の値は下の式の対応する項目の値以下である、
+したがって、下の式が収束するならば、上の式も収束する
+</h3>
+
+## Limit comparison test
+
+<h3>
+Comparison Test  
+$$\sum_{n=1}^{\infty}\frac{1}{2^n+1} \qquad \sum_{n=1}^{\infty}\frac{1}{2^n+1}$$
+$$\frac{1}{2^n+1} \ge \frac{1}{2^n+1} \quad n=1,2,3,4,5,\cdots$$
+$$um_{n=1}^{\infty}\frac{1}{2^n+1}は収束するので、
+\sum_{n=1}^{\infty}\frac{1}{2^n}は収束する$$
+<div class="panel">
+$$\sum_{n=1}^{\infty}\frac{1}{2^n-1}$$
+収束するのか発散するのか？
+</div>
+$$\frac{1}{2^n-1} \ge \frac{1}{2^n}$$
+なので別のテスト方法 Limit comparison test 使います<br>
+Limit Comparison Test
+$$\sum_{n=k}^{\infty}a_{n} \quad \sum_{n=k}^{\infty}b_{n}$$
+$$a_{n} \ge 0, \quad b_{n} \gt 0 \quad すべての n=k,k+1,k+2,\cdots$$
+$$\lim_{n=k}^{\infty}\frac{a_{n}}{b_{n}}の値が正で定まれば
+両方とも収束するか両方とも発散する$$
+
+$$\lim_{n=1}^{\infty}\frac{\frac{1}{2^n-1}}{\frac{1}{2^n}}
+=\lim_{n=1}^{\infty}\frac{2^n}{2^n-1}
+=\lim_{n=1}^{\infty}\frac{1}{1-\frac{1}{2^n}}=1$$
+$$この値は正であり、\sum_{n=1}^{\infty}\frac{1}{2^n}は収束するので$$
+$$\sum_{n=1}^{\infty}\frac{1}{2^n-1}は収束する$$
+</h3>
+
+## Alternating series test
+
+<h3>
+<div class="panel">
+$$\sum_{n=k}^{\infty}a_{n}　\qquad
+a_{n}=(-1)^{n}b_{n} \quad or \quad a_{n}=(-1)^{n+1}b_{n}$$
+この時
+$$1. \quad \lim_{n \to \infty}b_{n}=0$$
+$$2. \quad {b_{n}}の数列は、だんだん小さくなる$$
+この場合
+$$\sum_{n=k}^{\infty}a_{n}\ quad は収束する$$
+
+例
+$$\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}
+=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\frac{1}{5}+\cdots$$
+$$a_{n}=\frac{(-1)^{n+1}}{n} \qquad b_{n}=\frac{1}{n}$$
+$$\lim_{n \to \infty}\frac{1}{n}= 0$$
+$${\frac{1}{n}}は小さくなっていく$$
+したがって
+$$\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}\quad は収束する$$
+
+※上記の条件に適合しない場合は、収束するか発散するかはわからな
+</div>
+</h3>
+
+## Conditional and absolute convergence
+
+<h3>
+$$\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}
+=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\frac{1}{5}+\cdots$$
+この式は収束します、では絶対値の総和はどうでしょうか
+$$\sum_{n=1}^{\infty}|\frac{(-1)^{n+1}}{n}|
+=\sum_{n=1}^{\infty}\frac{1^{n+1}}{n}
+=1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{5}+\cdots$$
+こちらは発散します（条件付き収束）
+$$\sum_{n=1}^{\infty}(-\frac{1}{2})^{n+1} \to 収束します$$
+$$\sum_{n=1}^{\infty}|(-\frac{1}{2})^{n+1}|
+=\sum_{n=1}^{\infty}(\frac{1}{2})^{n+1} \to 収束します$$
+（絶対的収束）
+</h3>
+
+## Integral test intuition
+
+
+
 
 
 
