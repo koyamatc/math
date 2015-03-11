@@ -371,9 +371,88 @@ $$\sum_{n=1}^{\infty}|(-\frac{1}{2})^{n+1}|
 
 ## Integral test intuition
 
+<div clas="row">
+  <div class="col-sm-6">
+    <h3>
+      $$\sum_{n=1}^{\infty}\frac{1}{n^2}
+      =1+\frac{1}{4}+\frac{1}{9}+\frac{1}{16}+ \cdots$$
+      項はすべて正の数で急激に０に近づきます
+      $$f(x)=\frac{1}{x^2} \quad を考えます（右のグラフ）$$
+      級数の最初の項は、1 x 1 の正方形の面積<br>
+      2番目の項は、1 x 1/4 の長方形の面積<br>
+      3番目の項は、1 x 1/9 の長方形の面積<br>
+      4番目の項は、1 x 1/16 の長方形の面積<br>
+      ここで
+      $$区間[1.\infty]で、f(x)とx軸の間の面積は$$ 
+      $$\int_{1}{\infty}f(x)dx$$
+      上の級数の式を書き換えます
+      $$\sum_{n=1}^{\infty}\frac{1}{n^2}
+      =1+\sum_{n=2}^{\infty}\frac{1}{n^2}
+      \lt 1+\int_{1}{\infty}\frac{1}{x^2}dx$$
+      四角形は必ずf(x)の下にあります
+    </h3>
+  </div>
+  <div class="col-sm-6">
+    <div id="svg01"></div>
+  </div>
+</div>
+<h3>
+$$\quad \lim_{t \to \infty}x^{-2}dx=
+\lim_{t \to \infty}[-\frac{1}{x}]_{1}^{t}=
+\lim_{t \to \infty}(-\frac{1}{t}+1)=1$$
+$$\sum_{n=1}^{\infty}\frac{1}{n^2} \lt 2$$
+この級数には上限がり無限大になりません、つまり収束します。
+</h3>
 
+---*---*---*---*---*---
 
+<h3>
+関数\(f(x)\)は、区間\([k,\infty)\)で、正の値をとり、連続で、だんだん小さくなる場合
+$$1. \quad \int_{k}^{\infty}f(x)dx \quad が収束するならば \quad
+\sum_{n=k}^{\infty}f(n) \quad も収束する$$
+$$2. \quad \int_{k}^{\infty}f(x)dx \quad が発散するならば \quad
+\sum_{n=k}^{\infty}f(n) \quad も発散する$$
+</h3>
 
+---------
+
+# Estimating infinite series
+
+## Using integrals to place bounds on infinite sum
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>
+      $$S = \sum_{n=1}^{\infty}f(n)
+      =\sum_{n=1}^{k}f(n) + \sum_{n=k+1}^{\infty}f(n)$$
+      $$ \qquad S_{k}=\sum_{n=1}^{k}f(n)
+         \qquad R_{k}=\sum_{n=k+1}^{\infty}f(n)$$
+      $$S = S_{k} + R_{k}$$
+      $$R_{k} \le \int_{k}^{\infty}f(x)dx$$
+      $$S \le S_{k} + \int_{k}^{\infty}f(x)dx$$
+    </h3>
+
+  </div>
+  <div class="col-sm-6">
+    <div id="svg021"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <h3>
+      $$R_{k} \le \int_{k+1}^{\infty}f(x)dx$$
+      $$S \ge S_{k} + \int_{k+1}^{\infty}f(x)dx$$
+      $$$$
+      $$S_{k} + \int_{k+1}^{\infty}f(x)dx \le S \le
+      S_{k} + \int_{k}^{\infty}f(x)dx$$
+    </h3>
+  </div>
+  <div class="col-sm-6">
+    <div id="svg022"></div>
+  </div>
+</div>
+
+## Alternating series error estimation
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
@@ -385,6 +464,196 @@ $$\sum_{n=1}^{\infty}|(-\frac{1}{2})^{n+1}|
   y0func = function y0func(x){
     return 0;
   };
+
+  var svg01 = d3.select("#svg01")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg021 = d3.select("#svg021")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg022 = d3.select("#svg022")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
+  var xScale01 = d3.scale.linear()
+                       .domain([0,4])
+                       .range([50,450]);
+  var yScale01 = d3.scale.linear()
+                       .domain([4,0])
+                       .range([50,450]);       
+
+  var xScale02 = d3.scale.linear()
+                       .domain([0,6])
+                       .range([50,450]);
+  var yScale02 = d3.scale.linear()
+                       .domain([4,0])
+                       .range([50,450]);       
+  // 軸
+  axesData01 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[1,2,3],
+    "yTickValues":[1],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale01,
+    "yScale":yScale01
+  };
+  axesData02 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale02,
+    "yScale":yScale02
+  };
+
+  function func01(x){
+    return 1/Math.pow(x,2);
+  };
+
+  var pathData01 = [];
+  var areaData01 = [];
+
+  for (var i = 0.5; i <= 4; i=i+0.02) {
+    pathData01.push(new Point(i,func01(i)));
+  };
+  for (var i = 1; i <= 4; i=i+0.02) {
+    areaData01.push(new Point(i,func01(i)));
+  };
+
+  drawArea(svg01,areaData01,y0func,
+    {"fillColor":"#00f","opacity":0.6},xScale01,yScale01); 
+
+  drawPath(svg01,pathData01,{"stroke":"lime","strokeWidth":2},xScale01,yScale01);
+
+  lineData01 = [
+    {"x1":0,"y1":1,"x2":1,"y2":1,"stroke":"#fff"},
+    {"x1":1,"y1":1,"x2":1,"y2":0,"stroke":"#fff"},
+    {"x1":1,"y1":1/4,"x2":2,"y2":1/4,"stroke":"#fff"},
+    {"x1":2,"y1":1/4,"x2":2,"y2":0,"stroke":"#fff"},
+    {"x1":2,"y1":1/9,"x2":3,"y2":1/9,"stroke":"#fff"},
+    {"x1":3,"y1":1/9,"x2":3,"y2":0,"stroke":"#fff"},
+    {"x1":3,"y1":1/16,"x2":4,"y2":1/16,"stroke":"#fff"},
+    {"x1":4,"y1":1/16,"x2":4,"y2":0,"stroke":"#fff"},
+  ]
+
+  drawLine(svg01,lineData01,xScale01,yScale01);
+
+  drawAxes(svg01,axesData01);
+
+// 
+  function func02(x){
+    return 1/x;
+  };
+
+  var pathData02 = [];
+  var areaData021 = [];
+  var areaData022 = [];
+
+  for (var i = 0.3; i <= 6; i=i+0.02) {
+    pathData02.push(new Point(i,func02(i)));
+  };
+  for (var i = 1; i <= 6; i=i+0.02) {
+    areaData021.push(new Point(i,func02(i)));
+  };
+  for (var i = 2; i <= 6; i=i+0.02) {
+    areaData022.push(new Point(i,func02(i)));
+  };
+
+  drawArea(svg021,areaData021,y0func,
+    {"fillColor":"#00f","opacity":0.6},xScale02,yScale02); 
+  drawArea(svg022,areaData022,y0func,
+    {"fillColor":"#00f","opacity":0.6},xScale02,yScale02); 
+
+  drawPath(svg021,pathData02,{"stroke":"lime","strokeWidth":2},xScale02,yScale02);
+  drawPath(svg022,pathData02,{"stroke":"lime","strokeWidth":2},xScale02,yScale02);
+
+  lineData021 = [
+    {"x1":1,"y1":0,"x2":1,"y2":1/2,"stroke":"#fff"},
+    {"x1":1,"y1":1/2,"x2":2,"y2":1/2,"stroke":"#fff"},
+    {"x1":2,"y1":0,"x2":2,"y2":1/2,"stroke":"#fff"},
+
+    {"x1":2,"y1":1/3,"x2":3,"y2":1/3,"stroke":"#fff"},
+    {"x1":3,"y1":1/3,"x2":3,"y2":0,"stroke":"#fff"},
+
+    {"x1":3,"y1":1/4,"x2":4,"y2":1/4,"stroke":"#fff"},
+    {"x1":4,"y1":1/4,"x2":4,"y2":0,"stroke":"#fff"},
+
+    {"x1":4,"y1":1/5,"x2":5,"y2":1/5,"stroke":"#fff"},
+    {"x1":5,"y1":1/5,"x2":5,"y2":0,"stroke":"#fff"},
+
+    {"x1":5,"y1":1/6,"x2":6,"y2":1/6,"stroke":"#fff"},
+    {"x1":6,"y1":1/6,"x2":6,"y2":0,"stroke":"#fff"},
+
+  ]
+  drawLine(svg021,lineData021,xScale02,yScale02);
+
+  lineData022 = [
+    {"x1":2,"y1":0,"x2":2,"y2":1/2,"stroke":"#fff"},
+    {"x1":2,"y1":1/2,"x2":3,"y2":1/2,"stroke":"#fff"},
+    {"x1":3,"y1":1/2,"x2":3,"y2":0,"stroke":"#fff"},
+
+    {"x1":3,"y1":1/3,"x2":4,"y2":1/3,"stroke":"#fff"},
+    {"x1":4,"y1":1/3,"x2":4,"y2":0,"stroke":"#fff"},
+
+    {"x1":4,"y1":1/4,"x2":5,"y2":1/4,"stroke":"#fff"},
+    {"x1":5,"y1":1/4,"x2":5,"y2":0,"stroke":"#fff"},
+
+    {"x1":5,"y1":1/5,"x2":6,"y2":1/5,"stroke":"#fff"},
+    {"x1":6,"y1":1/5,"x2":6,"y2":0,"stroke":"#fff"},
+
+  ]
+  drawLine(svg022,lineData022,xScale02,yScale02);
+
+  drawAxes(svg021,axesData02);
+  drawAxes(svg022,axesData02);
+
+  foData02 = [
+    {"x":0.9,
+    "y":0.4,
+    "text":"$$k$$",
+    "fontSize":"16px"},
+    {"x":1.9,
+    "y":0.4,
+    "text":"$$k+1$$",
+    "fontSize":"16px"},
+    {"x":2.9,
+    "y":0.4,
+    "text":"$$k+2$$",
+    "fontSize":"16px"},
+    {"x":3.9,
+    "y":0.4,
+    "text":"$$k+3$$",
+    "fontSize":"16px"},
+    {"x":4.9,
+    "y":0.4,
+    "text":"$$k+4$$",
+    "fontSize":"16px"},
+
+  ];
+
+  drawMathjax(svg021,foData02,xScale02,yScale02);
+  drawMathjax(svg022,foData02,xScale02,yScale02);
+
 
 
 
