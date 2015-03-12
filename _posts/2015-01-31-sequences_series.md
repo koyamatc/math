@@ -425,9 +425,10 @@ $$2. \quad \int_{k}^{\infty}f(x)dx \quad が発散するならば \quad
     <h3>
       $$S = \sum_{n=1}^{\infty}f(n)
       =\sum_{n=1}^{k}f(n) + \sum_{n=k+1}^{\infty}f(n)$$
-      $$ \qquad S_{k}=\sum_{n=1}^{k}f(n)
-         \qquad R_{k}=\sum_{n=k+1}^{\infty}f(n)$$
+      $$ \qquad S_{k}=\sum_{n=1}^{k}f(n) \codts 有限和
+         \qquad R_{k}=\sum_{n=k+1}^{\infty}f(n) \cdots 無限和（残りの部分）$$
       $$S = S_{k} + R_{k}$$
+      残りの部分の面積は、曲線より下にあるので
       $$R_{k} \le \int_{k}^{\infty}f(x)dx$$
       $$S \le S_{k} + \int_{k}^{\infty}f(x)dx$$
     </h3>
@@ -440,9 +441,10 @@ $$2. \quad \int_{k}^{\infty}f(x)dx \quad が発散するならば \quad
 <div class="row">
   <div class="col-sm-6">
     <h3>
+      残りの部分の面積は、曲線より大きいので
       $$R_{k} \le \int_{k+1}^{\infty}f(x)dx$$
       $$S \ge S_{k} + \int_{k+1}^{\infty}f(x)dx$$
-      $$$$
+      先ほどの結果とあわせて
       $$S_{k} + \int_{k+1}^{\infty}f(x)dx \le S \le
       S_{k} + \int_{k}^{\infty}f(x)dx$$
     </h3>
@@ -451,9 +453,55 @@ $$2. \quad \int_{k}^{\infty}f(x)dx \quad が発散するならば \quad
     <div id="svg022"></div>
   </div>
 </div>
+<h3>
+例
+$$S=\sum_{n=1}^{\infty}\frac{1}{n^2}=S_{5}+R_{5}$$
+$$S_{5}=\sum_{n=1}^{5}\frac{1}{n^2} \approx 1.464$$
+$$R_{5}=\int_{6}^{\infty}\frac{1}{n^2}dx
+=\lim_{t \to \infty}\int_{6}^{\infty}\frac{1}{n^2}dx
+=\lim_{t \to \infty}[-n^{-1}]_{6}^{\infty}
+=\lim_{t \to \infty}(-\frac{1}{t}+\frac{1}{6})=\frac{1}{6}$$
+$$R_{5}=\int_{5}^{\infty}\frac{1}{n^2}dx=\frac{1}{5}$$
+$$1.464 + \fra{1}{6} \le S \le 1.464 + \frac{1}{5}$$
+</h3>
 
 ## Alternating series error estimation
 
+<h3>
+$$\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n^2}
+=1 - \frac{1}{4} + \frac{1}{9} -\frac{1}{16} + \frac{1}{25} 
+- \frac{1}{36} + \frac{1}{49} - \frac{1}{64} + \cdots$$
+|___________|    |___________________| |________________________|  
+$$\quad S \qquad = \qquad \qquad S_{4} \qquad  + \qquad \qquad R_{4}$$
+$$S_{4}=\frac{115}{144}$$
+$$R_{4}=(\frac{1}{25}-\frac{1}{36}) + (\frac{1}{49} - \frac{1}{64}) +() \cdots$$
+()の中はすべて＋となるので
+$$R_{4} \ge 0$$
+$$R_{4}=\frac{1}{25}-(\frac{1}{36}-\frac{1}{49})
+                    -(\frac{1}{64})\frac{1}{81}) \cdots$$
+()の中はすべて＋となるので、\(\frac{1}{25}\)は超えない
+$$R_{4} \le 0.04$$
+
+$$\frac{115}{144} \le S \le \frac{115}{144} + 0.04$$
+</h3>
+
+### 例
+
+<h3>
+$$\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{\sqrt{n}}
+=1 - \frac{1}{\sqrt{2}}+\frac{1}{\sqrt{3}}-\frac{1}{\sqrt{4}}+ cdots$$
+$$S = S_{k} + R_{k}$$
+$$|R_{k}| \le 0.001 \quad となる最少のkを求める$$
+$$R_{k}=\frac{(-1)^{k+2}}{\sqrt{k+1}}+\frac{(-1)^{k+3}}{\sqrt{k+2}}+\cdots$$
+\(R_{k}\)の最初の項を調べる
+$$|R_{k}|=|\frac{(-1)^{k+2}}{\sqrt{k+1}}| \le 0.001$$
+$$\frac{1}{\sqrt{k+1}} \le 0.001$$
+$$1000 = \sqrt{k+1}$$
+$$1000000 = k + 1$$
+$$999999 = k$$
+$$S=S_{999999}-\frac{1}{\sqrt{1000000}}
+=S_{999999}-\frac{1}{1000}$$
+</h3>
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
