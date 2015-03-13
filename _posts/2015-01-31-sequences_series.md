@@ -554,6 +554,13 @@ $$f(x)=\sum_{n=0}^{\infty}2(-4x^2)^n=\frac{2}{1-(-4x^2)}
 =\frac{2}{1+4x^2}$$
 </h3>
 
+-------
+
+# Maclaurin and Taylor series intuition
+
+
+
+
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="{{site.url}}/js/d3draws.js" charset="utf-8"></script>
