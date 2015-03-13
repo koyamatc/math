@@ -14,7 +14,7 @@ categories: integral
 
 ## Explicit and recursive definitions of sequences
 
-+ finite sequence
++ finite sequence (有限数列)
 $$\\{a\\}_{k=0}^{3}=\\{1,4,7,10\\}
 \to a_{0}=1,a_{1}=4,a_{2}=7,a_{3}=10$$
 Explicit definition
@@ -22,7 +22,7 @@ $$\\{a\\}_{k=0}^{3}=1+3k$$
 $$a(k)=1+3k$$
 Recursive definition
 $$\\{a\\}_{k=0}^{3}においてa_{0}=1 \quad a_{k}=a_{k-1}+3$$ 
-+ infinite sequence
++ infinite sequence (無限数列)
 $$\\{a_{k}\\}_{k=0}^{\infty}=\\{3,7,11,15, \cdots \\}$$
 Explicit definition
 $$\\{a_{k}\\}_{k=0}^{\infty}=3+4k$$
@@ -74,7 +74,7 @@ $$\\{a\\}_{k=0}^{\infty}においてa_{0}=3 \quad a_{k}=a_{k-1}+4$$
 
 -----------
 
-# Series
+# Series　（級数）
 
 ## Sigma notation for sums
 
@@ -87,11 +87,11 @@ $$\\{a\\}_{k=0}^{\infty}においてa_{0}=3 \quad a_{k}=a_{k-1}+4$$
 ## Series as sum of sequence
 
 <h3>
-Geometric sequence  
+Geometric sequence  （等比数列）
 $$\{1,\frac{1}{2},\frac{1}{4},\frac{1}{8}, \cdots\}$$
 $$\{a_{n}\}_{n=0}^{\infty}=\frac{1}{2}^n$$
 
-Geometric series
+Geometric series　（等比級数/幾何級数）
 $$1+\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+ \cdots
 = \sum_{n=0}^{\infty}\frac{1}{2}^n$$
 
@@ -140,7 +140,7 @@ $$a_{n}=\frac{(-2)^{n+1}}{2n+1}$$
 </div>
 <div class="panel">
   <h3>
-  Arithmetric series  
+  Arithmetric series  （等差級数）
   $$S_{n}=a\qquad \qquad \quad+a+\qquad \quad d+a+\qquad \quad2d+\cdots +a+(n-1)d$$
   $$S_{n}=a+(n-1)d+a+(n-2)d+a+(n-1)d+\cdots + a$$
   2行を足します
@@ -154,7 +154,7 @@ $$a_{n}=\frac{(-2)^{n+1}}{2n+1}$$
 
 -----------
 
-# Geometric series
+# Geometric series　（等比級数）
 
 <h3>
   Geometric sequence
@@ -501,6 +501,57 @@ $$1000000 = k + 1$$
 $$999999 = k$$
 $$S=S_{999999}-\frac{1}{\sqrt{1000000}}
 =S_{999999}-\frac{1}{1000}$$
+</h3>
+
+---------
+
+# Power series function representation using algebra
+
+## Power series radius and interval of convergence
+
+### Power series (冪級数)
+<h3>
+$$f(x)=\sum_{n=0}^{\infty}a_{n}(x-c)^{n}
+=a_{0}(x-c)^{0}+a_{1}(x-c)^{1}+a_{2}(x-c)^{2}+a_{3}(x-c)^{3}+ \cdots$$
+</h3>
+
+### Geometric series (等比級数)
+
+<h3>
+$$g(x)=\sum_{n=0}^{\infty}ax^{n}
+=ax^{0}+ax^{1}+ax^{2}+ax^{3}+ax^{4}+ \cdots = \frac{a}{1-x}$$
+この式が収束する条件は
+$$|x| \lt 1 \to -1 \lt x \lt 1$$
+interval of convergence(収束範囲)=2  -1 から　1の範囲<br>
+radius of convergence(収束半径)=1<br>
+<br>
+次の関数について考えます
+$$h(x)=\frac{1}{3+x^2}$$
+$$=\frac{1}{3(1+\frac{x^2}{3})}=\frac{\frac{1}{3}}{1-(-\frac{x^2}{3})}$$
+このことから
+$$h(x)=\sum_{n=0}^{\infty}\frac{1}{3}(-\frac{x^2}{3})
+=\frac{1}{3}-\frac{1}{9}x^2 + \frac{1}{27}x^4 \cdots $$ 
+収束区間は？  収束条件は
+$$|(-\frac{x^2}{3})| \lt 1$$
+$$x^2 \lt 3 \to |x| \lt \sqrt{3} \to -\sqrt{3} \lt x \lt \sqrt{3}$$
+$$h(x)は\quad -\sqrt{3} \lt x \lt \sqrt{3} \quad とき収束する$$
+</h3>
+
+## Function as geometric series
+
+<h3>
+$$f(x)= 2 -8x^2 + 32x^4 - 128x^6 \cdots$$
+$$2 \to  -8x^2 = 2\cdot(-4x^2) \quad -8x^2 \to 32x^4=-8x^2\cdot(-4x^2)$$
+比率=(-4x^2) \quad 初項=2
+$$f(x)=\sum_{n=0}^{\infty}2(-4x^2)^n$$
+収束条件は
+$$|-4x^2| \lt 1$$
+$$4x^2 \lt 1 \to x^2 \lt \frac{1}{4}$$
+$$|x| \lt \frac{1}{2}$$
+収束範囲は
+$$-\frac{1}{2} \lt x \lt \frac{1}{2}$$
+$$f(x)=\sum_{n=0}^{\infty}2(-4x^2)^n=\frac{2}{1-(-4x^2)}
+=\frac{2}{1+4x^2}$$
 </h3>
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
