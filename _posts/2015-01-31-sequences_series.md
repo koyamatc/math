@@ -179,8 +179,8 @@ $$S_{n}=\sum_{k=0}^{n}ar^k = ar^0+ar^1+ar^2+ar^3+ \cdots + ar^n$$
 $$rS_{n}=\sum_{k=0}^{n}ar^{+1} = ar^1+ar^2+ar^3+ar^4+ \cdots + ar^{n+1}$$
 上の式から下の式を引きます
 $$S_{n}-rS_{n}=ar^0-ar^{n+1}$$
-$$S_{n}(1-r)=a-a^{n+1}$$
-$$S_{n}=\sum_{k=0}^{n}ar^k =\frac{a-a^{n+1}}{1-r}$$
+$$S_{n}(1-r)=a-ar^{n+1}$$
+$$S_{n}=\sum_{k=0}^{n}ar^k =\frac{a-ar^{n+1}}{1-r}$$
 </h3>
 
 ## Sum of an infinite geometric series
@@ -558,6 +558,120 @@ $$f(x)=\sum_{n=0}^{\infty}2(-4x^2)^n=\frac{2}{1-(-4x^2)}
 
 # Maclaurin and Taylor series intuition
 
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg03"></div>
+  </div>
+  <div class="col-sm-6">
+    関数\(f(x)\)は、多項式で表せます、この関数を１次微分、２次微分、３次微分、４次\(\cdots\)と続けていくと最後に定数が残ります。
+    <br>
+    では\(x=0\)とした場合
+    $$f(0),f'(0),f''(0),f'''(0),f''''(0),\cdots$$
+    \(f(0)\)を最後に残った定数とすると\(y=f(0)\)の\(x\)軸に平行な直線です
+    <br>
+    今度は元の多項式を組み立てていきます
+    $$p(0)=f(0)$$
+    $$(1)\cdots \quad p(x)=f(0)$$
+    １項追加します
+    $$p'(0)=f'(0)$$
+    $$(2)\cdots \quad p(x)=f(0)+f'(0)x$$
+  </div>
+</div>
+１項追加します
+$$p'(x)=f'(0)+f''(0)x$$
+$$(3)\cdots \quad p(x)=f(0)+f'(0)x+\frac{1}{2}x^2$$
+$$(4)\cdots \quad p(x)=f(0)+f'(0)x+\frac{1}{2}x^2+\frac{1}{2*3}x^3$$
+これを続けていくと
+$$p(x)=f(0)+f'(0)x+\frac{1}{2}f''(0)x^2+\frac{1}{3*2}f'''(0)x^3
++\frac{1}{4*3*2}f''''(0)x^4+\cdots+
+\frac{1}{n!}f^n(0)x^n$$
+これをマクローリン級数といい、テイラー級数で\(x=0\)近辺の特別な場合です
+
+<h3>
+例1
+$$f(x)=\cos x \qquad f(0)=1$$
+$$f'(x)=\-sin x \qquad f'(0)=0$$
+$$f''(x)=\-cos x \qquad f''(0)=-1$$
+$$f'''(x)=\sin x \qquad f'''(0)=0$$
+$$f''''(x)=\cos x \qquad f''''(0)=1$$
+多項式を組み立てます
+$$p(x)=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\frac{x^8}{8!}
+-\frac{x^10}{10!}+\frac{x^12}{12!}\cdots$$
+<br>
+例2
+$$f(x)=\sin x \qquad f(0)=0$$
+$$f'(x)=\cos x \qquad f'(0)=1$$
+$$f''(x)=\-sin x \qquad f''(0)=0$$
+$$f'''(x)=\-cos x \qquad f'''(0)=-1$$
+$$f''''(x)=\sin x \qquad f''''(0)=0$$
+多項式を組み立てます
+$$p(x)=\frac{x^1}{1!}-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}
++\frac{x^9}{9!}-\frac{x^11}{11!}\cdots$$
+<br>
+例3
+$$f(x)=e^x =f'(x)=f''(x)=f^{(3)}(x)=f^{(4)}(x)\cdots$$
+$$e^0=1=f'(0)=f''(0)=f^{(3)}(0)=f^{(4)}(0)\cdots$$
+$$e^x \approx 1+\frac{x^1}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\frac{x^4}{4!}\cdots$$
+$$e \approx 1+\frac{1}{1!}+\frac{1}{2!}+\frac{1}{3!}+\frac{1}{4!}\cdots$$
+</h3>
+
+## Euler's formula and Euler's identity
+
+$$e^{ix} \approx 1+ix+\frac{(ix)^{2}}{2!}+\frac{(ix)^{3}}{3!}
++\frac{(ix)^{4}}{4!}+\frac{(ix)^{5}}{5!}+\frac{(ix)^{6}}{6!}+\cdots$$
+$$\quad \approx 
+1+ix-\frac{x^{2}}{2!}+\frac{ix^{3}}{3!}-\frac{x^{4}}{4!}
++\frac{ix^{5}}{5!}-\frac{x^{6}}{6!}+\frac{ix^{7}}{7!}\cdots$$
+実数部と虚数部を分けます
+$$e^{ix}=
+(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\cdots)
+i(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\cdots)$$
+<h3>
+$$e^{ix}=\cos x + i\sin x \cdots オイラーの公式$$
+</h3>
+$$x=\piのとき$$
+$$e^{i\pi}=-1$$
+<h3>
+$$e^{i\pi}+1=0 \cdots オイラーの等式$$
+</h3>
+
+--------
+
+# Taylor series approximations
+
+<div class="row">
+  <div class="col-sm-6">
+    \(\sin x\)はピンク色の曲線です
+    <br>
+    \(\sin x\)をマクローリン展開すると
+    $$\sin x = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}
+    +\frac{x^9}{9!}\cdots$$
+    最初の項\(x\)の線は　\(\dots\) 青い線
+    <br>
+    最初から２個の項\(x-\frac{x^3}{3!}\)の線は　\(\dots\) 白い線
+    <br>
+    最初から３個の項\(x-\frac{x^3}{3!}+\frac{x^5}{5!}\)の線は　\(\dots\) 黄い線
+    <br>
+    最初から４個の項\(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}\)の線は　\(\dots\) 赤の線
+    <br>
+    最初から5個の項
+    \(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}
+    +\frac{x^9}{9!}\)の線は　\(\dots\) 緑の線
+    <br>
+    項を増やしていくとだんだんとピンクの線\(\sin x\)に近づいてゆきます
+  </div>
+  <div class="col-sm-6">
+    <div id="svg04"></div>
+  </div>
+</div>
+
+## Generalized Taylor series approximation
+
+テーラー展開は\(x=c\)の場合です
+<h3>
+$$p(x)=f(c)+f'(c)(x-c)+\frac{f''(c)(x-c)^2}{2!}
++\frac{f^{3}(c)(x-c)^3}{3!}+\frac{f^{4}(c)(x-c)^4}{4!}+\cdots$$
+</h3>
 
 
 
@@ -586,6 +700,16 @@ $$f(x)=\sum_{n=0}^{\infty}2(-4x^2)^n=\frac{2}{1-(-4x^2)}
                 .attr("height",500)
                 .attr("width",500)
                 .style("background","#000");
+  var svg03 = d3.select("#svg03")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg04 = d3.select("#svg04")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
 
   var xScale01 = d3.scale.linear()
                        .domain([0,4])
@@ -599,6 +723,19 @@ $$f(x)=\sum_{n=0}^{\infty}2(-4x^2)^n=\frac{2}{1-(-4x^2)}
                        .range([50,450]);
   var yScale02 = d3.scale.linear()
                        .domain([4,0])
+                       .range([50,450]);       
+
+  var xScale03 = d3.scale.linear()
+                       .domain([-2,2])
+                       .range([50,450]);
+  var yScale03 = d3.scale.linear()
+                       .domain([2,-2])
+                       .range([50,450]);       
+  var xScale04 = d3.scale.linear()
+                       .domain([-6,6])
+                       .range([50,450]);
+  var yScale04 = d3.scale.linear()
+                       .domain([6,-6])
                        .range([50,450]);       
   // 軸
   axesData01 = {
@@ -630,6 +767,36 @@ $$f(x)=\sum_{n=0}^{\infty}2(-4x^2)^n=\frac{2}{1-(-4x^2)}
     "fillColor":"none",
     "xScale":xScale02,
     "yScale":yScale02
+  };
+  axesData03 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale03,
+    "yScale":yScale03
+  };
+  axesData04 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[-6,-4,-2,2,4,6],
+    "yTickValues":[-6,-4,-2,2,4,6],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale04,
+    "yScale":yScale04
   };
 
   function func01(x){
@@ -760,7 +927,86 @@ $$f(x)=\sum_{n=0}^{\infty}2(-4x^2)^n=\frac{2}{1-(-4x^2)}
   drawMathjax(svg021,foData02,xScale02,yScale02);
   drawMathjax(svg022,foData02,xScale02,yScale02);
 
+  // Maclaurin Sereis
+  function func03(x){
+    return Math.pow(x,3)/7-2*Math.pow(x,2)/5+x+0.5;
+  };
 
+  var pathData03 = [];
 
+  for (var i = -2.0; i <= 2.0; i=i+0.02) {
+    pathData03.push(new Point(i,func03(i)));
+  };
+
+  drawPath(svg03,pathData03,{"stroke":"lime","strokeWidth":2},xScale03,yScale03);
+
+  drawAxes(svg03,axesData03);
+ 
+  foData03 = [
+    {"x":-0.2,
+    "y":2.8,
+    "text":"$$y$$",
+    "fontSize":"18px"},
+    {"x":2.1,
+    "y":0.5,
+    "text":"$$x$$",
+    "fontSize":"18px"},
+    {"x":2,
+    "y":2.5,
+    "text":"$$f(x)$$",
+    "fontSize":"16px"},
+    {"x":-0.4,
+    "y":1.2,
+    "text":"$$f(0)$$",
+    "fontSize":"16px"},
+
+  ];
+
+  drawMathjax(svg03,foData03,xScale03,yScale03);
+
+  // Taylor 
+  function func041(x){
+    return Math.sin(x);
+  };
+  function func042(x){
+    return x;
+  };
+  function func043(x){
+    return x-Math.pow(x,3)/6;
+  };
+  function func044(x){
+    return x-Math.pow(x,3)/6+Math.pow(x,5)/120;
+  };
+  function func045(x){
+    return x-Math.pow(x,3)/6+Math.pow(x,5)/120-Math.pow(x,7)/5040;
+  };
+  function func046(x){
+    return x-Math.pow(x,3)/6+Math.pow(x,5)/120-Math.pow(x,7)/5040
+    +Math.pow(x,9)/362880;
+  };
+  var pathData041 = [];
+  var pathData042 = [];
+  var pathData043 = [];
+  var pathData044 = [];
+  var pathData045 = [];
+  var pathData046 = [];
+
+  for (var i = -6.0; i <= 6.0; i=i+0.02) {
+    pathData041.push(new Point(i,func041(i)));
+    pathData042.push(new Point(i,func042(i)));
+    pathData043.push(new Point(i,func043(i)));
+    pathData044.push(new Point(i,func044(i)));
+    pathData045.push(new Point(i,func045(i)));
+    pathData046.push(new Point(i,func046(i)));
+  };
+
+  drawPath(svg04,pathData041,{"stroke":"#f0f","strokeWidth":2},xScale04,yScale04);
+  drawPath(svg04,pathData042,{"stroke":"#00f","strokeWidth":2},xScale04,yScale04);
+  drawPath(svg04,pathData043,{"stroke":"#fff","strokeWidth":2},xScale04,yScale04);
+  drawPath(svg04,pathData044,{"stroke":"#ff0","strokeWidth":2},xScale04,yScale04);
+  drawPath(svg04,pathData045,{"stroke":"#f00","strokeWidth":2},xScale04,yScale04);
+  drawPath(svg04,pathData046,{"stroke":"lime","strokeWidth":2},xScale04,yScale04);
+
+  drawAxes(svg04,axesData04);
 
 </script>
