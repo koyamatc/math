@@ -667,12 +667,11 @@ $$e^{i\pi}+1=0 \cdots オイラーの等式$$
 
 ## Generalized Taylor series approximation
 
-テーラー展開は\(x=c\)の場合です
+テーラー展開は\\(x=c\\)を中心に展開する場合です
 <h3>
 $$p(x)=f(c)+f'(c)(x-c)+\frac{f''(c)(x-c)^2}{2!}
 +\frac{f^{3}(c)(x-c)^3}{3!}+\frac{f^{4}(c)(x-c)^4}{4!}+\cdots$$
 </h3>
-
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
