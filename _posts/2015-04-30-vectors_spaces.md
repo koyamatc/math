@@ -48,7 +48,45 @@ categories: linear_algebra
 
 --------
 
-## Explicit and recursive definitions of sequences
+## Adding vectors　（加算）
+
+<div class="row">
+  <div class="col-sm-7">
+    <h3>
+    $$
+    \vec{a}=
+    =\left[
+        \begin{matrix}
+        6 \\
+        -2 \\
+        \end{matrix}
+    \right]
+    \qquad
+    \vec{b}
+    =\left[
+        \begin{matrix}
+        -4 \\
+        4 \\
+        \end{matrix}
+    \right]
+    $$
+    $$
+    \vec{a}+\vec{b}=
+    =\left[
+        \begin{matrix}
+        2 \\
+        2 \\
+        \end{matrix}
+    \right]
+    $$    
+
+    </h3>
+  </div>
+  <div class="col-sm-5">
+    <div id="svg02"></div>
+  </div>
+</div>
+
 
 
 
@@ -63,11 +101,22 @@ categories: linear_algebra
                 .attr("height",500)
                 .attr("width",500)
                 .style("background","#000");
+  var svg02 = d3.select("#svg02")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
 
   var xScale01 = d3.scale.linear()
                        .domain([-1,6])
                        .range([50,450]);
   var yScale01 = d3.scale.linear()
+                       .domain([7,-7])
+                       .range([50,450]);       
+  var xScale02 = d3.scale.linear()
+                       .domain([-7,7])
+                       .range([50,450]);
+  var yScale02 = d3.scale.linear()
                        .domain([6,-1])
                        .range([50,450]);       
 
@@ -86,6 +135,21 @@ categories: linear_algebra
     "fillColor":"none",
     "xScale":xScale01,
     "yScale":yScale01
+  };
+  axesData02 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[],
+    "yTickValues":[],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale02,
+    "yScale":yScale02
   };
 
   drawAxes(svg01,axesData01);
@@ -117,4 +181,14 @@ foData01 = [
 
   drawMathjax(svg01,foData01,xScale01,yScale01);
 
+  // Adding
+  var vecData02 = [
+{"x1":0,"y1":0,"x2":6,"y2":-2,"stroke":"#00f","strokeWidth":4},
+{"x1":0,"y1":0,"x2":-4,"y2":4,"stroke":"#f0f","strokeWidth":4}
+];    
+drawVectorB(svg02,vecData02,xScale02,yScale02);
+
+
+
+  drawAxes(svg02,axesData02);
 </script>
