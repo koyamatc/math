@@ -99,7 +99,86 @@ $$
 
 ## Separable differential equations introduction
 
+<h3>
+<div class="panel">
+$$\frac{dy}{dx}=\frac{-x}{ye^{x^2}}$$
+この答えとなる関数は(0,1)を通ります、その関数を求めよ
+</div>
+左辺にyを、右辺にxを集めます(2つに分けることからseparable)
+$$y \cdot dy = -x e^{-x^2}\cdot dx$$
+両辺を積分します
+$$\int y \, dy = \int -x e^{-x^2}\, dx$$
+$$\frac{y^2}{2} + C_{1}=\frac{1}{2} \int -2xe^{-x^2}\, dx$$
+$$ \frac{y^2}{2} + C_{1}=\frac{1}{2}e^{-x^2}+C_{2}$$
+両辺から\(C_{1}\)を引きます、右辺の定数は\(C_{2}-C_{1}=C\)とおけます
+$$\frac{y^2}{2}=\frac{1}{2}e^{-x^2}+C$$
+通過点(0,1)を代入する
+$$\frac{1}{2}=\frac{1}{2}+C \to C=0$$
+$$\frac{y^2}{2}=\frac{1}{2}e^{-x^2}$$
+$$y^2=e^{-x^2}$$
+両辺の平方根をとる
+$$y=\pm \sqrt{e^{-x^2}}$$
+yはプラスなので
+$$y=e^{\frac{-x^2}{2}}$$
+</h3>
+<br>
+<h3>
+例
+<div class="panel">
+$$\frac{dy}{dx}=2y^2$$
+\((1,-1)\)を通る関数を求める
+</div>
+$$\frac{dy}{2y^2}=dx$$
+$$\int \frac{1}{2}y^{-2}\,dy=\int\,dx$$
+$$-\frac{1}{2}y^{-1}=x+C$$
+$$\frac{1}{y}=-2x+C$$
+$$y=\frac{1}{c-2x}$$
+$$-1=\frac{1}{c-2}$$
+$$2-c=1$$
+$$c=1$$
+$$y=\frac{1}{-2x+1}$$ 
+</h3>
 
+--------
+
+# Modeling with differential equations
+
+## Modeling population with simple differential equation
+<h3>
+<div class="panel">
+人口に関してモデル化してみます<br>
+変数を定義します<br>
+P:人口　　t:時間（日数）<br>
+人口の変化率は
+$$\frac{dP}{dt}=kP$$
+この一般解を求めよ
+</div>
+$$\frac{1}{P}dP=kdt$$
+$$\int \frac{1}{P}dP=\int kdt$$
+$$\ln |P|=kt+C_{1}$$
+$$|P|=e^{kt+C_{1}}$$
+$$|P|=e^{kt}e^{c_{1}}$$
+$$e^{c_{1}は定数となりますからCとします$$
+$$|P|=Ce^{kt}$$
+Pは人口で正の数ですから
+$$P=Ce^{kt}$$
+</h3>
+
+## Particular solution given initial conditions for population
+
+<h3>
+<div class="panel">
+初期情報を与えます
+$$t=0 \qquad P=100$$
+$$t=50 \qquad P=200$$
+これでCとkは求められるでしょうか
+</div>
+$$100=Ce^{0k}$$
+$$200=Ce^{50k}$$
+$$C=100$$
+$$200=100e^{50k} \to 2=e^{50k} \to \ln\,2=50k \to k= \frac{\ln 2}{50}$$
+$$P(t)=100e^{(\frac{\ln2}{50})t}$$
+</h3>
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>

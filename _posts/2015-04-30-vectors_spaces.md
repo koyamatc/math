@@ -54,7 +54,7 @@ categories: linear_algebra
   <div class="col-sm-7">
     <h3>
     $$
-    \vec{a}=
+    \vec{a}
     =\left[
         \begin{matrix}
         6 \\
@@ -71,7 +71,7 @@ categories: linear_algebra
     \right]
     $$
     $$
-    \vec{a}+\vec{b}=
+    \vec{a}+\vec{b}
     =\left[
         \begin{matrix}
         2 \\
@@ -111,13 +111,13 @@ categories: linear_algebra
                        .domain([-1,6])
                        .range([50,450]);
   var yScale01 = d3.scale.linear()
-                       .domain([7,-7])
+                       .domain([6,-1])
                        .range([50,450]);       
   var xScale02 = d3.scale.linear()
                        .domain([-7,7])
                        .range([50,450]);
   var yScale02 = d3.scale.linear()
-                       .domain([6,-1])
+                       .domain([7,-7])
                        .range([50,450]);       
 
   // 軸
@@ -154,7 +154,7 @@ categories: linear_algebra
 
   drawAxes(svg01,axesData01);
   var vecData01 = [
-{"x1":0,"y1":0,"x2":5,"y2":0,"stroke":"#00f","strokeWidth":4},
+{"x1":0,"y1":0,"x2":5,"y2":0,"stroke":"#0f0","strokeWidth":4},
 {"x1":0,"y1":0,"x2":4,"y2":3,"stroke":"#f0f","strokeWidth":4}
 ];    
 drawVectorB(svg01,vecData01,xScale01,yScale01);
@@ -183,12 +183,39 @@ foData01 = [
 
   // Adding
   var vecData02 = [
-{"x1":0,"y1":0,"x2":6,"y2":-2,"stroke":"#00f","strokeWidth":4},
-{"x1":0,"y1":0,"x2":-4,"y2":4,"stroke":"#f0f","strokeWidth":4}
+{"x1":0,"y1":0,"x2":6,"y2":-2,"stroke":"#0f0","strokeWidth":4},
+{"x1":0,"y1":0,"x2":-4,"y2":4,"stroke":"#f0f","strokeWidth":4},
+{"x1":0,"y1":0,"x2":2,"y2":2,"stroke":"#ff0","strokeWidth":4},
+{"x1":6,"y1":-2,"x2":2,"y2":2,"stroke":"#f0f","strokeWidth":4},
 ];    
 drawVectorB(svg02,vecData02,xScale02,yScale02);
+drawAxes(svg02,axesData02);
+
+foData02 = [
+    {"x":-0.5,
+    "y":9,
+    "text":"$$y$$",
+    "fontSize":"18px"},
+    {"x":7.2,
+    "y":1,
+    "text":"$$x$$",
+    "fontSize":"18px"},
+    {"x":2.5,
+    "y":0.5,
+    "text":"$$\\vec{a}$$",
+    "fontSize":"16px"},
+    {"x":-3,
+    "y":3.5,
+    "text":"$$\\vec{b}$$",
+    "fontSize":"16px"},
+    {"x":3.5,
+    "y":3.5,
+    "text":"$$\\vec{b^{'}}$$",
+    "fontSize":"16px"},
+
+  ];
+
+  drawMathjax(svg02,foData02,xScale02,yScale02);
 
 
-
-  drawAxes(svg02,axesData02);
 </script>
