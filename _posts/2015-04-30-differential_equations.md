@@ -158,7 +158,7 @@ $$\int \frac{1}{P}dP=\int kdt$$
 $$\ln |P|=kt+C_{1}$$
 $$|P|=e^{kt+C_{1}}$$
 $$|P|=e^{kt}e^{c_{1}}$$
-$$e^{c_{1}は定数となりますからCとします$$
+$$e^{c_{1}}は定数となりますからCとします$$
 $$|P|=Ce^{kt}$$
 Pは人口で正の数ですから
 $$P=Ce^{kt}$$
@@ -179,6 +179,37 @@ $$C=100$$
 $$200=100e^{50k} \to 2=e^{50k} \to \ln\,2=50k \to k= \frac{\ln 2}{50}$$
 $$P(t)=100e^{(\frac{\ln2}{50})t}$$
 </h3>
+
+## Newton's law of Cooling
+
+<h3>
+<div class="panel">
+物体の温度が周囲の温度によってどう変化していくかをモデル化します
+$$T:物体の温度 \qquad T_{a}:周囲の温度(ambient temperature)$$
+温度の時間による変化を
+$$\frac{dT}{dt}=k(T-T_{a})$$
+$$k>0\quadで、T \ge t_{a} \quad のとき\quad \frac{dT}{dt}\le 0$$
+なので
+$$\frac{dT}{dt}=-k(T-T_{a})$$
+この一般解を求めます
+</div>
+$$\frac{1}{T-T_{a}}\,dT = -k\,dt$$
+両辺を積分します
+$$\int \frac{1}{T-T_{a}}\,dT = \int -k\,dt$$
+$$\ln |T-T_{a}|=-kt+C_{1}$$
+$$|T-T_{a}|=e^{-kt+C_{1}} \to |T-T_{a}|=e^{-kt}e^{C_{1}}$$
+$$|T-T_{a}|=Ce^{-kt}$$
+$$T \ge T_{a} \qquad T(t)=Ce^{-kt}+T_{a}$$ 
+$$T \lt T_{a} \qquad T(t)=T_{a}-Ce^{-kt}$$ 
+</h3>
+
+---------
+
+# Logistic differential equation and function
+
+## Modeling population as an exponential function
+
+
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>

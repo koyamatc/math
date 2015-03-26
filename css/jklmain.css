@@ -126,6 +126,9 @@ p,ol,li {
 .MathJax_SVG_Display {
   text-align: left !important;
 }
+.MathJax_SVG_Display line {
+  stroke:#fff;
+}
 .MathJax_SVG g{
   stroke:#fff;
   stroke-width:2;

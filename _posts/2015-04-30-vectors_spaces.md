@@ -87,7 +87,106 @@ categories: linear_algebra
   </div>
 </div>
 
+--------
 
+## Multiplying a vector by a scalar　（乗算）
+
+<div class="row">
+  <div class="col-sm-7">
+    <h3>
+    $$
+    \vec{a}
+    =\left[
+        \begin{matrix}
+        2 \\
+        1 \\
+        \end{matrix}
+    \right]
+    \qquad
+    3\vec{a}
+    =3\left[
+        \begin{matrix}
+        2 \\
+        1 \\
+        \end{matrix}
+    \right]
+    =\left[
+        \begin{matrix}
+        3 \cdot 2 \\
+        3 \cdot 1 \\
+        \end{matrix}
+    \right]
+    =\left[
+        \begin{matrix}
+        6 \\
+        3 \\
+        \end{matrix}
+    \right]
+    $$
+    $$
+    -1\vec{a}
+    =\left[
+        \begin{matrix}
+        -2 \\
+        -1 \\
+        \end{matrix}
+    \right]
+    
+    $$
+
+    </h3>
+  </div>
+  <div class="col-sm-5">
+    <div id="svg03"></div>
+  </div>
+</div>
+
+## Unit vector notation
+
+<div class="row">
+  <div class="col-sm-7">
+    <h3>
+    $$
+    \vec{v}
+    =\left[
+        \begin{matrix}
+        2 \\
+        3 \\
+        \end{matrix}
+    \right]
+    $$
+    単位ベクトル
+    $$
+    \hat{\imath}
+    =\left[
+        \begin{matrix}
+        1 \\
+        0 \\
+        \end{matrix}
+    \right]
+    \qquad
+    \hat{\jmath}
+    =\left[
+        \begin{matrix}
+        0 \\
+        1 \\
+        \end{matrix}
+    \right]
+    $$
+    $$\vec{v}を単位ベクトルで表すと\qquad \vec{v}=2\hat{\imath}+3\hat{\jmath}$$
+    $$
+    \vec{b}=-\hat{\imath} + 4\hat{\jmath}
+    $$
+    $$
+    \vec{v}+\vec{b}=(2-1)\hat{\imath}+(3+4)\hat{\jmath}=\hat{\imath}+7\hat{\jmath}
+    $$
+
+    </h3>
+  </div>
+  <div class="col-sm-5">
+    <div id="svg04"></div>
+  </div>
+</div>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
@@ -106,6 +205,16 @@ categories: linear_algebra
                 .attr("height",500)
                 .attr("width",500)
                 .style("background","#000");
+  var svg03 = d3.select("#svg03")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg04 = d3.select("#svg04")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
 
   var xScale01 = d3.scale.linear()
                        .domain([-1,6])
@@ -118,6 +227,13 @@ categories: linear_algebra
                        .range([50,450]);
   var yScale02 = d3.scale.linear()
                        .domain([7,-7])
+                       .range([50,450]);       
+
+  var xScale04 = d3.scale.linear()
+                       .domain([0,4])
+                       .range([50,450]);
+  var yScale04 = d3.scale.linear()
+                       .domain([4,0])
                        .range([50,450]);       
 
   // 軸
@@ -217,5 +333,53 @@ foData02 = [
 
   drawMathjax(svg02,foData02,xScale02,yScale02);
 
+// Multiplying 
+
+var vecData03 = [
+{"x1":0,"y1":0,"x2":6,"y2":3,"stroke":"#0f0","strokeWidth":6},
+{"x1":0,"y1":0,"x2":2,"y2":1,"stroke":"#f0f","strokeWidth":2},
+{"x1":0,"y1":0,"x2":-2,"y2":-1,"stroke":"#ff0","strokeWidth":4}
+]; 
+
+drawVectorB(svg03,vecData03,xScale02,yScale02);
+
+drawAxes(svg03,axesData02);
+
+// Unit vectors
+var vecData04 = [
+{"x1":0,"y1":0,"x2":2,"y2":0,"stroke":"#fff","strokeWidth":5},
+{"x1":2,"y1":0,"x2":2,"y2":3,"stroke":"#fff","strokeWidth":5},
+{"x1":0,"y1":0,"x2":2,"y2":3,"stroke":"#f0f","strokeWidth":5},
+{"x1":0,"y1":0,"x2":1,"y2":0,"stroke":"#0f0","strokeWidth":3},
+{"x1":0,"y1":0,"x2":0,"y2":1,"stroke":"#0f0","strokeWidth":3}
+]; 
+
+drawVectorB(svg04,vecData04,xScale04,yScale04);
+
+foData04 = [
+    {"x":1,
+    "y":2.5,
+    "text":"$$\\vec{v}$$",
+    "fontSize":"16px"},
+    {"x":0.5,
+    "y":0.4,
+    "text":"$$\\hat{\\imath}$$",
+    "fontSize":"16px"},
+    {"x":-0.2,
+    "y":1,
+    "text":"$$\\hat{\\jmath}$$",
+    "fontSize":"16px"},
+    {"x":1.2,
+    "y":0.4,
+    "text":"$$2$$",
+    "fontSize":"16px"},
+    {"x":2.2,
+    "y":2.0,
+    "text":"$$3$$",
+    "fontSize":"18px"},
+
+  ];
+
+  drawMathjax(svg04,foData04,xScale04,yScale04);
 
 </script>
