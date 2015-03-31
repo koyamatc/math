@@ -62,9 +62,9 @@ __Khan Academy__ で勉強したことなどをまとめています。
 		</ol>			
 	</div>
 	<div class="col-sm-4">
-		<h3><span class="label label-info">*****</span></h3>
+		<h3><span class="label label-info">Basic Geometry</span></h3>
 		<ol class="post-list">
- 			{% for post in site.categories. %}
+ 			{% for post in site.categories.basic_geometry %}
    				<li><a href="{{ post.url }}">{{ post.postTitle }}</a></li>
  			{% endfor %}
 		</ol>			
