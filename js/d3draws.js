@@ -192,7 +192,8 @@
             return yScale? yScale(d.y2):d.y2;
           })        
           .attr("id",function(d,i){
-            return d.id?d.id:"vectorW"+i;
+            return "vectorW"+i;
+            //return d.id?d.id:"vectorW"+i;
           })
           .attr("class",function(d){
             return d.class?d.class:"";
