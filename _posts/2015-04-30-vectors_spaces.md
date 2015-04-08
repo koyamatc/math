@@ -188,6 +188,29 @@ categories: linear_algebra
   </div>
 </div>
 
+## unit vector
+
+<div class="row">
+  <div class="col-sm-7">
+    <h3>
+      大きさが１のベクトルを単位ベクトルといいます<br>
+      これを\(\hat{u}\) と表し \(||\vec{u}||=1\)
+      <br>
+      \(\vec{a}=(3,4)\) の単位べくとルを求める
+      $$||\vec{a}|| = \sqrt{3^2+4^2}=\sqrt{25}=5$$
+      $$\hat{u}=\frac{\vec{a}}{||\vec{a}||}
+      =\frac{1}{5}(3,4)=(\frac{3}{5},\frac{4}{5})$$ 
+
+    </h3>
+  </div>
+  <div class="col-sm-5">
+    <div id="svg05"></div>
+  </div>
+</div>
+
+----------
+
+## Parametric representations of lines
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -215,6 +238,11 @@ categories: linear_algebra
                 .attr("height",500)
                 .attr("width",500)
                 .style("background","#000");
+  var svg05 = d3.select("#svg05")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
 
   var xScale01 = d3.scale.linear()
                        .domain([-1,6])
@@ -234,6 +262,13 @@ categories: linear_algebra
                        .range([50,450]);
   var yScale04 = d3.scale.linear()
                        .domain([4,0])
+                       .range([50,450]);       
+
+  var xScale05 = d3.scale.linear()
+                       .domain([0,5])
+                       .range([50,450]);
+  var yScale05 = d3.scale.linear()
+                       .domain([5,0])
                        .range([50,450]);       
 
   // 軸
@@ -345,7 +380,7 @@ drawVectorB(svg03,vecData03,xScale02,yScale02);
 
 drawAxes(svg03,axesData02);
 
-// Unit vectors
+// Unit vectors notation
 var vecData04 = [
 {"x1":0,"y1":0,"x2":2,"y2":0,"stroke":"#fff","strokeWidth":5},
 {"x1":2,"y1":0,"x2":2,"y2":3,"stroke":"#fff","strokeWidth":5},
@@ -381,5 +416,37 @@ foData04 = [
   ];
 
   drawMathjax(svg04,foData04,xScale04,yScale04);
+
+  // unit vector
+var vecData05 = [
+{"x1":0,"y1":0,"x2":3,"y2":0,"stroke":"#fff","strokeWidth":5},
+{"x1":3,"y1":0,"x2":3,"y2":4,"stroke":"#fff","strokeWidth":5},
+{"x1":0,"y1":0,"x2":3,"y2":4,"stroke":"#f0f","strokeWidth":5},
+{"x1":0,"y1":0,"x2":3/5,"y2":4/5,"stroke":"#0f0","strokeWidth":3},
+]; 
+
+drawVectorB(svg05,vecData05,xScale05,yScale05);
+
+foData05 = [
+    {"x":1.5,
+    "y":3.5,
+    "text":"$$\\vec{a}$$",
+    "fontSize":"16px"},
+    {"x":0.1,
+    "y":1.4,
+    "text":"$$\\hat{u}$$",
+    "fontSize":"16px"},
+    {"x":1.5,
+    "y":0.4,
+    "text":"$$3$$",
+    "fontSize":"16px"},
+    {"x":3.2,
+    "y":2.0,
+    "text":"$$4$$",
+    "fontSize":"18px"},
+
+  ];
+
+  drawMathjax(svg05,foData05,xScale05,yScale05);
 
 </script>
