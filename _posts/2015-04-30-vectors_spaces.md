@@ -446,6 +446,209 @@ $$z=3t+7$$
 パラメータでの表現は、もっと多くの次元にも対応できます
 </h3>
 
+-------------
+
+# Linear combinations and span
+
+--------------
+
+## Linear combination(線型結合)　とは
+
+###  ベクトルの線形結合は
+
+<h3>
+  いくつかのベクトルがあります
+  $$v_{1},v_{2},v_{3}, \cdots ,v_{n} \in \Bbb{R}$$
+  <strong>この加算を意味します</strong><br>
+
+  各ベクトルにはスカラー値（実数）倍されています
+  $$c_{1}v_{1}+c_{2}v_{2}+c_{3}v_{3}+ \cdots +c_{n}v_{n} 
+  \mid c \in \Bbb{R}$$
+</h3>
+
+### 例
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>
+      ベクトルを定義します
+      $$
+      \vec{a}=
+        \left[
+        \begin{matrix}
+          1  \\
+          2  \\
+        \end{matrix}
+        \right]
+      
+      \qquad
+      
+      \vec{b}=
+        \left[
+        \begin{matrix}
+          0  \\
+          3  \\
+        \end{matrix}
+        \right]
+      $$
+      定数が　0　のとき
+      $$
+      0\vec{a}+0\vec{b}=
+        \left[
+        \begin{matrix}
+          0  \\
+          0  \\
+        \end{matrix}
+        \right]
+      = \large{0}
+      \quad \text{0 ベクトル}
+      $$
+      次の場合
+      $$
+      3\vec{a}+(-2)\vec{b}=
+        \left[
+        \begin{matrix}
+          3  \\
+          0  \\
+        \end{matrix}
+        \right]
+      $$
+      定数は様々な値をとり続けることができます。<br>
+      これが線型結合です<br>
+      つまり多くの\(\vec{a}\)　と　\(\vec{b}\)の線型結合があります
+      <br>
+      ３つ目のベクトル
+      $$
+      \vec{c}=
+        \left[
+        \begin{matrix}
+          7  \\
+          2  \\
+        \end{matrix}
+        \right]
+      $$
+      があり、これを　\(8\vec{c}\)として、加えることができます
+      $$3\vec{a}+(-2)\vec{b}+ 8\vec{c}$$ 
+    </h3>
+  </div>
+  <div class="col-sm-6"></div>
+</div>
+
+## グラフに描いてみましょう
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg071"></div>
+      <button id="btnReset071" class="btn btn-lg btn-warning">
+        Reset
+      </button>
+ 
+  </div>
+  <div class="col-sm-6">
+    <h3>
+      <button id="btn071-1" class="btn btn-lg btn-primary">
+        $$\vec{a} \text{ を描く}$$
+      </button>
+      <button id="btn071-2" class="btn btn-lg btn-primary">
+        $$\vec{b} \text{ を描く}$$
+      </button>
+      <button id="btn071-3" class="btn btn-lg btn-primary">
+        $$3\vec{a} \text{ を描く}$$
+      </button>
+      <button id="btn071-4" class="btn btn-lg btn-primary">
+        $$-2\vec{b} \text{ を描く}$$
+      </button>
+      <br><br>
+      <button id="btn071-5" class="btn btn-lg btn-primary">
+        $$3\vec{a}-2\vec{b} \text{ を描く}$$
+      </button>
+      <button id="btn071-6" class="btn btn-lg btn-primary">
+        $$\frac{11}{2}\vec{a}-2\vec{b} \text{ を描く}$$
+      </button>
+      <br><br>
+      <button id="btn071-7" class="btn btn-lg btn-primary">
+        $$色々な定数でベクトルを描く$$
+      </button>
+    </h3>
+  </div>
+</div>
+
+<h3>
+$$
+c_{1}\vec{a}+c_{2}\vec{b} 
+\text{ で、２次元平面上のすべての点を表すことができます}
+$$
+この２つのベクトルと定数で表すことのできる空間を<strong>ベクトル空間(span)</strong>
+といいます。
+$$Span(\vec{a},\vec{b})=\Bbb{R}^2$$
+</h3>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="svg072"></div>
+      <button id="btnReset072" class="btn btn-lg btn-warning">
+        Reset
+      </button>
+   </div>
+  <div class="col-sm-6">
+    <h3>
+      次の２つのベクトルの場合を見ましょう
+      $$
+      \vec{a}=
+        \left[
+        \begin{matrix}
+          2  \\
+          2  \\
+        \end{matrix}
+        \right]
+      
+      \qquad
+      
+      \vec{b}=
+        \left[
+        \begin{matrix}
+          -2  \\
+          -2  \\
+        \end{matrix}
+        \right]
+      $$
+      <button id="btn072-1" class="btn btn-lg btn-primary">
+        $$\vec{a} \text{ を描く}$$
+      </button>
+      <button id="btn072-2" class="btn btn-lg btn-primary">
+        $$\vec{b} \text{ を描く}$$
+      </button>
+      <button id="btn072-3" class="btn btn-lg btn-primary">
+        $$c_{1}\vec{a} \text{ を描く}$$
+      </button>
+      <button id="btn072-4" class="btn btn-lg btn-primary">
+        $$c_{2}\vec{b} \text{ を描く}$$
+      </button>
+
+    </h3>
+  </div>
+</div>
+<h3>
+$$
+c_{1}\vec{a}+c_{2}\vec{b} 
+\text{　今回のベクトル空間は１本の線上です、平面全体を表していません}
+$$
+２つのベクトルが同一線上にある場合には、面全体を表すことはできません。
+<br>
+また　０ベクトルも面全体を表せません
+<br><br>
+$$Span(v_{1},v_{2},v_{3},\cdots,v_{n})=
+\{c_{1}v_{1}+c_{2}v_{2}+c_{3}v_{3}+\cdots+c_{n}v_{n}\}
+\mid c_{i} \in \Bbb{R}^{n} \quad 1 \ge i \ge n
+$$
+</h3>
+
+---------
+
+# Linear dependence and independence
+
+---------
+
+## 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -490,6 +693,17 @@ $$z=3t+7$$
                 .attr("width",500)
                 .style("background","#000");
 
+  var svg071 = d3.select("#svg071")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+  var svg072 = d3.select("#svg072")
+                .append("svg")
+                .attr("height",500)
+                .attr("width",500)
+                .style("background","#000");
+
   var xScale01 = d3.scale.linear()
                        .domain([-1,6])
                        .range([50,450]);
@@ -522,6 +736,12 @@ $$z=3t+7$$
                        .range([20,480]);
   var yScale06 = d3.scale.linear()
                        .domain([6,-6])
+                       .range([20,480]);       
+  var xScale07 = d3.scale.linear()
+                       .domain([-10,10])
+                       .range([20,480]);
+  var yScale07 = d3.scale.linear()
+                       .domain([10,-10])
                        .range([20,480]);       
 
   // 軸
@@ -569,6 +789,22 @@ $$z=3t+7$$
     "fillColor":"none",
     "xScale":xScale06,
     "yScale":yScale06
+  };
+
+  axesData07 = {
+    "xAxis":true,
+    "yAxis":true,
+    "xTickValues":[-10,-8,-6,-4,-2,2,4,6,8,10],
+    "yTickValues":[-10,-8,-6,-4,-2,2,4,6,8,10],
+    "xTickPadding":5,
+    "yTickPadding":2,
+    "xOrient":["bottom"],
+    "yOrient":["left"],
+    "stroke":"#ff0",
+    "strokeWidth":1,
+    "fillColor":"none",
+    "xScale":xScale07,
+    "yScale":yScale07
   };
 
   drawAxes(svg01,axesData01);
@@ -852,5 +1088,218 @@ foData05 = [
     drawVectorB(svg062,vecData062,xScale06,yScale06);
 
   };
+
+/* Linear combinations and span*/
+  // Object
+  function vecObj(ax,ay,bx,by,c1,c2,stroke,sWidth){
+    this.x1 = 0;
+    this.y1 = 0;
+    this.x2 = ax*c1 + bx*c2;
+    this.y2 = ay*c1 + by*c2;
+    this.stroke = stroke?stroke:"#fff";
+    this.strokeWidth = sWidth?sWidth:2;
+    return this;
+  };
+
+gridData07 = 
+{
+"xGrid":true,
+"yGrid":true,
+"xStep":2,
+"yStep":2,
+"stroke":"#0f0",
+"strokeWidth":1,
+"opacity":0.3,
+"xScale":xScale07,
+"yScale":yScale07
+};
+
+  var vecData071 = [];
+  
+  init071();
+
+  d3.select("#btn071-1").on("click", function(){
+
+    vecData071.push(new vecObj(1,2,0,0,1,1,"#fff",3));
+
+    drawVectorB(svg071,vecData071,xScale07,yScale07);
+    $("#btn071-2").removeClass("disabled");
+  });  
+  
+  d3.select("#btn071-2").on("click", function(){
+
+    vecData071.push(new vecObj(0,0,0,3,1,1,"#f00",3));
+
+    drawVectorB(svg071,vecData071,xScale07,yScale07);
+    $("#btn071-3").removeClass("disabled");
+  });  
+
+  d3.select("#btn071-3").on("click", function(){
+
+    vecData071.push(new vecObj(1,2,0,0,3,1,"#ccc",2));
+
+    drawVectorB(svg071,vecData071,xScale07,yScale07);
+    $("#btn071-4").removeClass("disabled");
+  });  
+
+  d3.select("#btn071-4").on("click", function(){
+
+    vecData071.push(new vecObj(0,0,0,3,1,-2,"#f0f",2));
+
+    drawVectorB(svg071,vecData071,xScale07,yScale07);
+    $("#btn071-5").removeClass("disabled");
+  });  
+
+  d3.select("#btn071-5").on("click", function(){
+
+    vecData071.push(new vecObj(1,2,0,3,3,-2,"#0f0",4));
+
+    drawVectorB(svg071,vecData071,xScale07,yScale07);
+    $("#btn071-6").removeClass("disabled");
+  });  
+
+  d3.select("#btn071-6").on("click", function(){
+
+    vecData071.push(new vecObj(1,2,0,3,11/2,-2,"#0f0",4));
+
+    drawVectorB(svg071,vecData071,xScale07,yScale07);
+    $("#btn071-7").removeClass("disabled");
+
+  });  
+
+  d3.select("#btn071-7").on("click", function(){
+
+    var x2,y2;
+    for (var i=0;i<90;i++){
+
+      x2 = Math.random() * 10 * Math.pow(-1,Math.floor(Math.random()*2)+1);
+      y2 = Math.random() * 10 * Math.pow(-1,Math.floor(Math.random()*2)+1);
+      vecData071.push(new vecObj(x2,y2,0,0,1,1,"#f0f",1));
+    };
+
+    drawVectorB(svg071,vecData071,xScale07,yScale07);
+    $("#btn071-5").removeClass("disabled");
+
+  });  
+
+  d3.select("#btnReset071").on("click", function(){
+    init071();
+  });     
+function init071(){
+
+  $("#btn071-2").addClass("disabled");
+  $("#btn071-3").addClass("disabled");
+  $("#btn071-4").addClass("disabled");
+  $("#btn071-5").addClass("disabled");
+  $("#btn071-6").addClass("disabled");
+  $("#btn071-7").addClass("disabled");
+
+  svg071.selectAll("svg g").remove();
+  svg071.selectAll("svg path").remove();
+  svg071.selectAll("svg line").remove();
+
+  vecData071=[];
+
+  drawAxes(svg071,axesData07);   
+  drawGrid(svg071,gridData07); 
+}
+
+  //  
+  
+  var vecData072 = [];
+  
+  init072();
+
+  d3.select("#btn072-1").on("click", function(){
+
+    vecData072.push(new vecObj(2,2,0,0,1,1,"#fff",3));
+
+    drawVectorB(svg072,vecData072,xScale07,yScale07);
+    $("#btn072-2").removeClass("disabled");
+  });  
+  
+  d3.select("#btn072-2").on("click", function(){
+
+    vecData072.push(new vecObj(0,0,-2,-2,1,1,"#f00",3));
+
+    drawVectorB(svg072,vecData072,xScale07,yScale07);
+    $("#btn072-3").removeClass("disabled");
+  });  
+
+  d3.select("#btn072-3").on("click", function(){
+
+    for (var i=-10;i<10;i=i+0.5){
+      vecData072.push(new vecObj(2,2,0,0,i,1,"#ccc",2));
+    };
+
+    drawVectorB(svg072,vecData072,xScale07,yScale07);
+    $("#btn072-4").removeClass("disabled");
+  });  
+
+  d3.select("#btn072-4").on("click", function(){
+
+    for (var i=-10;i<10;i=i+0.5){
+      vecData072.push(new vecObj(0,0,-2,-2,1,i,"#f0f",2));
+    };
+
+    drawVectorB(svg072,vecData072,xScale07,yScale07);
+    $("#btn072-5").removeClass("disabled");
+  });  
+
+  d3.select("#btn072-5").on("click", function(){
+
+    vecData072.push(new vecObj(1,2,0,3,3,-2,"#0f0",4));
+
+    drawVectorB(svg072,vecData072,xScale07,yScale07);
+    $("#btn072-6").removeClass("disabled");
+  });  
+
+  d3.select("#btn072-6").on("click", function(){
+
+    vecData072.push(new vecObj(1,2,0,3,11/2,-2,"#0f0",4));
+
+    drawVectorB(svg072,vecData072,xScale07,yScale07);
+    $("#btn072-7").removeClass("disabled");
+
+  });  
+
+  d3.select("#btn072-7").on("click", function(){
+
+    var x2,y2;
+    for (var i=0;i<90;i++){
+
+      x2 = Math.random() * 10 * Math.pow(-1,Math.floor(Math.random()*2)+1);
+      y2 = Math.random() * 10 * Math.pow(-1,Math.floor(Math.random()*2)+1);
+      vecData072.push(new vecObj(x2,y2,0,0,1,1,"#f0f",1));
+    };
+
+    drawVectorB(svg072,vecData072,xScale07,yScale07);
+    $("#btn072-5").removeClass("disabled");
+
+  });  
+
+  d3.select("#btnReset072").on("click", function(){
+    init072();
+  });     
+
+
+function init072(){
+
+  $("#btn072-2").addClass("disabled");
+  $("#btn072-3").addClass("disabled");
+  $("#btn072-4").addClass("disabled");
+  $("#btn072-5").addClass("disabled");
+  $("#btn072-6").addClass("disabled");
+  $("#btn072-7").addClass("disabled");
+
+  svg072.selectAll("svg g").remove();
+  svg072.selectAll("svg path").remove();
+  svg072.selectAll("svg line").remove();
+
+  vecData072=[];
+
+  drawAxes(svg072,axesData07);   
+  drawGrid(svg072,gridData07); 
+}
 
 </script>
