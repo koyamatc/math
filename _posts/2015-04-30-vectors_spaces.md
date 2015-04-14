@@ -644,11 +644,286 @@ $$
 
 ---------
 
-# Linear dependence and independence
+# Vector dot and cross products
 
 ---------
 
-## 
+## Vector dot product and vector length
+
+### Dot Product (ドット積)
+
+<h3>
+$$
+  \vec{a}=
+    \left[
+      \begin{matrix}
+        a_{1}  \\
+        a_{2}  \\
+        \vdots \\
+        a_{n}  \\
+      \end{matrix}
+    \right]
+
+  \qquad   
+
+  \vec{b}=
+    \left[
+      \begin{matrix}
+        b_{1}  \\
+        b_{2}  \\
+        \vdots \\
+        b_{n}  \\
+      \end{matrix}
+    \right]
+
+    \qquad
+    \vec{a} \cdot \vec{b} =
+    a_{1}b_{1} + a_{2}b_{2} + \cdots + a_{n}b_{n}
+$$
+例
+$$
+    \left[
+      \begin{matrix}
+        2  \\
+        5  \\
+      \end{matrix}
+    \right]
+    \cdot
+    \left[
+      \begin{matrix}
+        3  \\
+        7  \\
+      \end{matrix}
+    \right]
+    = 2 \cdot 3 + 5 \cdot 7 = 6 + 35 = 41
+$$    
+
+<br>
+
+Length (ベクトル長)
+
+$$
+  \vec{a}=
+    \left[
+      \begin{matrix}
+        a_{1}  \\
+        a_{2}  \\
+        \vdots \\
+        a_{n}  \\
+      \end{matrix}
+    \right]
+
+  \qquad 
+    
+  \lVert \vec{a} \rVert = \sqrt{a_{1}^2+a_{2}^2+ \cdots + a_{n}^2}
+$$  
+$$
+  \vec{a} \cdot \vec{a} = a_{1}^2+a_{2}^2+ \cdots + a_{n}^2
+\qquad 
+  \lVert \vec{a} \rVert ^2 = \vec{a} \cdot \vec{a}
+$$  
+
+</h3>
+
+## Proving vector dot product properties
+
+<h3>
+$$
+  \vec{v}=
+    \left[
+      \begin{matrix}
+        v_{1}  \\
+        v_{2}  \\
+        \vdots \\
+        v_{n}  \\
+      \end{matrix}
+    \right]
+
+  \qquad 
+
+  \vec{w}=
+    \left[
+      \begin{matrix}
+        w_{1}  \\
+        w_{2}  \\
+        \vdots \\
+        w_{n}  \\
+      \end{matrix}
+    \right]
+
+  \qquad 
+
+  \vec{x}=
+    \left[
+      \begin{matrix}
+        x_{1}  \\
+        x_{2}  \\
+        \vdots \\
+        x_{3}  \\
+      \end{matrix}
+    \right]
+$$
+
+<div class="panel">
+$$ \vec{v} \cdot \vec{w} = \vec{w} \cdot \vec{v}$$
+</div>
+<div class="col-sm-offset-2">
+$$
+\vec{v} \cdot \vec{w} = v_{1}w_{1}+v_{2}w_{2}+ \cdots +v_{n}w_{n}
+$$
+$$
+\vec{w} \cdot \vec{v} = w_{1}v_{1}+w_{2}v_{2}+ \cdots +w_{n}v_{n}
+$$
+$$
+v_{1}w_{1}=w_{1}v_{1} \qquad v_{1}\text{　と } w_{1} 
+\text{入れ替え可能(commutative)です}
+$$
+</div>
+
+<div class="panel">
+$$ (\vec{v} + \vec{w}) \cdot \vec{x} 
+  = \vec{v} \cdot \vec{x} + \vec{w} \cdot \vec{x}$$
+</div>
+<div class="col-sm-offset-2">
+$$
+\vec{v} + \vec{w} = 
+    \left[
+      \begin{matrix}
+        v_{1} + w_{1}  \\
+        v_{2} + w_{2}  \\
+        \vdots \\
+        v_{n} + w_{n}  \\
+      \end{matrix}
+    \right]
+$$
+$$
+(\vec{v} + \vec{w}) \cdot \vec{x}  = 
+    \left[
+      \begin{matrix}
+        v_{1} + w_{1}  \\
+        v_{2} + w_{2}  \\
+        \vdots \\
+        v_{n} + w_{n}  \\
+      \end{matrix}
+    \right]
+  \cdot 
+    \left[
+      \begin{matrix}
+        x_{1}  \\
+        x_{2}  \\
+        \vdots \\
+        x_{3}  \\
+      \end{matrix}
+    \right]
+    $$
+    $$
+\begin{aligned}
+  = (v_{1} + w_{1})x_{1} + (v_{2} + w_{2})x_{2} \cdots (v_{n} + w_{n})x_{n}
+\end{aligned}
+  $$
+
+$$
+\vec{v} \cdot \vec{x} + \vec{w} \cdot \vec{x}
+=v_{1}x_{1}+v_{2}x_{2}+ \cdots v_{n}x_{n} +
+w_{1}x_{1}+w_{2}x_{2}+ \cdots w_{n}x_{n}
+$$
+$$
+= (v_{1} + w_{1})x_{1} + (v_{2} + w_{2})x_{2} \cdots (v_{n} + w_{n})x_{n}
+$$  
+</div>
+
+<div class="panel">
+$$ c\vec{v} \cdot \vec{w} = c(\vec{v} \cdot \vec{w})$$
+</div>
+</h3>
+
+## Proof of the Cauchy-Schwarz inequality (コーシー=シュワルツの不等式)
+
+<h3>
+<div class="panel">
+$$
+\text{０で無い２つのベクトル } \vec{x},\vec{y} \in \Bbb{R}^n
+\text{ ならば}
+$$
+$$
+\lvert \vec{x} \cdot \vec{y} \rvert 
+\le 
+\lVert \vec{x} \rVert \lVert \vec{y} \rVert
+$$
+$$
+\lvert \vec{x} \cdot \vec{y} \rvert 
+= \lVert \vec{x} \rVert \lVert \vec{y} \rVert
+\iff
+\vec{x}=c\vec{y}
+$$
+</div>
+証明<br>
+関数を定義します
+$$
+p(t)=\lVert t\vec{y}-\vec{x} \rVert ^2 \ge 0
+\qquad \text{ここであるベクトルの長さを定義します}
+\quad
+\lVert{\vec{v}} \rVert = \sqrt{v_{1}^2+v_{2}^2+ \cdots +v_{n}^2}
+\ge 0$$
+$$\qquad \lVert \vec{v} \rVert ^2 = \vec{v} \cdot \vec{v}$$
+$$
+=(t\vec{y}-\vec{x}) \cdot (t\vec{y}-\vec{x})
+$$
+$$
+=t\vec{y} \cdot t\vec{y} - t\vec{y} \cdot  \vec{x}
+-\vec{x} \cdot t\vec{y} -1\vec{x} \cdot -1\vec{x}
+$$
+$$
+=(\vec{y}\cdot \vec{y})t^2 -2(\vec{x}\cdot\vec{y})t + \vec{x}\cdot\vec{x} \ge 0
+$$
+$$
+\text{ここで　}
+\vec{y}\cdot \vec{y}=a \quad 2(\vec{x}\cdot\vec{y})=b \quad
+\vec{x}\cdot\vec{x} \text{ として式を書き換えます}
+$$
+$$
+p(t)=at^2 -bt +c \ge 0
+$$
+$$
+p(\frac{b}{2a})=a(\frac{b}{2a})^2-b\frac{b}{2a}+c \ge 0
+$$
+$$
+\frac{b^2}{4a}-\frac{b^2}{2a} + c \ge 0
+$$
+$$
+\frac{-b^2}{4a} + c \ge 0  \to c \ge \frac{b^2}{4a} \to 4ac \ge b^2
+$$
+$$
+4(\lVert \vec{y} \rVert^2 \lVert \vec{x} \rVert^2) \ge 
+(2(\vec{x}\cdot\vec{y})^2
+$$
+$$
+\lVert \vec{y} \rVert^2 \lVert \vec{x} \rVert^2 \ge 
+(\vec{x}\cdot\vec{y})^2 \Rightarrow 
+\lVert \vec{x} \rVert \lVert \vec{y} \rVert \ge 
+\lvert \vec{x}\cdot\vec{y}\rvert
+$$
+$$
+\vec{x}=c\vec{y}
+$$
+$$
+\lvert \vec{x}\cdot\vec{y}\rvert = \lvert c\vec{y}\cdot \vec{y} \rVert
+= \lvert c \rvert \lvert \vec{y}\cdot \vec{y} \rVert
+= \lvert c \rvert \lVert \vec{y} \rVert^2
+= \lvert c \rvert \lVert \vec{y} \rVert \lVert \vec{y} \rVert
+= \lVert c \vec{y} \rVert \lVert \vec{y} \rVert
+= \lVert \vec{x} \rVert \lVert \vec{y} \rVert
+$$
+</h3>
+
+## Vector triangle inequality
+
+## Defining the angle between vectors
+
+## Defining a plane in R3 with a point and normal vector
+
+## Cross product introduction
+
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
