@@ -60,7 +60,7 @@ categories: linear_algebra
    $$\quad \text{real valued function / scalor valued function}$$
    $$f:\Bbb{R}^2 \to \Bbb{R}^3$$ 
    $$\quad \text{vector valued function}　$$
-   $$\quad \text{１次元より大きいcodommainへ関連付ける関数}$$
+   $$\quad \text{１次元より大きいcodomainへ関連付ける関数}$$
     </h3>
   </div>
 </div>
