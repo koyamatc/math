@@ -275,10 +275,10 @@ categories: trig
     graph3Data02.push(new Point(i,Math.sin(aDegree*i)*2));
     graph4Data02.push(new Point(i,Math.sin(aDegree*i*3)));
   };
-  path1Attr02 = {"id":"path1","stroke":"#f00","opacity":"1"};
-  path2Attr02 = {"id":"path2","stroke":"#0f0","opacity":"0"};
-  path3Attr02 = {"id":"path3","stroke":"#ff0","opacity":"0"};
-  path4Attr02 = {"id":"path4","stroke":"#f0f","opacity":"0"};
+  path1Attr02 = {"_id":"path1","stroke":"#f00","opacity":"1"};
+  path2Attr02 = {"_id":"path2","stroke":"#0f0","opacity":"0"};
+  path3Attr02 = {"_id":"path3","stroke":"#ff0","opacity":"0"};
+  path4Attr02 = {"_id":"path4","stroke":"#f0f","opacity":"0"};
   drawPath(svg02,graph1Data02,path1Attr02,xScale02,yScale02);
   drawPath(svg02,graph2Data02,path2Attr02,xScale02,yScale02);
   drawPath(svg02,graph3Data02,path3Attr02,xScale02,yScale02);

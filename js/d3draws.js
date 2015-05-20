@@ -293,6 +293,7 @@
   /* path　描画関数　*/
   function drawPath(svg,data,attrs,xScale,yScale){
 
+    console.log(attrs);
     var stroke = stroke?stroke:"#000";
     var strokeWidth = strokeWidth?strokeWidth:2;
     var fillColor = fillColor?fillColor:"none";
